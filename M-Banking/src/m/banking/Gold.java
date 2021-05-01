@@ -4,8 +4,8 @@ package m.banking;
 
 public class Gold extends Member {
     
-    public Gold(int limitTransfer, int aturLimit, int currentUsage, int bunga, int biayaAdmin, String nama, double saldo, int noRekening, String ibuKandung, String alamat, String pin, int point) {
-        super(limitTransfer, aturLimit, currentUsage, bunga, biayaAdmin, nama, saldo, noRekening, ibuKandung, alamat, pin, point);
+    public Gold(String nama, double rupiah, int noRekening, String ibuKandung, String alamat, String pin) {
+        super(50000000, 50000000, 0, 3, 30000, nama, rupiah, noRekening, ibuKandung, alamat, pin, 0);
     }
     
 }

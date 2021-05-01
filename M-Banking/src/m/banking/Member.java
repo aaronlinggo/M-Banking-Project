@@ -9,26 +9,30 @@ public abstract class Member {
     protected int bunga;
     protected int biayaAdmin;
     protected String nama;
-    protected double saldo;
+    protected double rupiah;
     protected int noRekening;
     protected String ibuKandung;
     protected String alamat;
     protected String pin;
     protected int point;
+    protected double euro;
+    protected double usd;
 
-    public Member(int limitTransfer, int aturLimit, int currentUsage, int bunga, int biayaAdmin, String nama, double saldo, int noRekening, String ibuKandung, String alamat, String pin, int point) {
+    public Member(int limitTransfer, int aturLimit, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String ibuKandung, String alamat, String pin, int point) {
         this.limitTransfer = limitTransfer;
         this.aturLimit = aturLimit;
         this.currentUsage = currentUsage;
         this.bunga = bunga;
         this.biayaAdmin = biayaAdmin;
         this.nama = nama;
-        this.saldo = saldo;
+        this.rupiah = rupiah;
         this.noRekening = noRekening;
         this.ibuKandung = ibuKandung;
         this.alamat = alamat;
         this.pin = pin;
         this.point = point;
+        this.euro = 0;
+        this.usd = 0;
     }
 
     public int getLimitTransfer() {
@@ -79,13 +83,31 @@ public abstract class Member {
         this.nama = nama;
     }
 
-    public double getSaldo() {
-        return saldo;
+    public double getRupiah() {
+        return rupiah;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
+    public void setRupiah(double rupiah) {
+        this.rupiah = rupiah;
     }
+
+    public double getEuro() {
+        return euro;
+    }
+
+    public void setEuro(double euro) {
+        this.euro = euro;
+    }
+
+    public double getUsd() {
+        return usd;
+    }
+
+    public void setUsd(double usd) {
+        this.usd = usd;
+    }
+
+    
 
     public int getNoRekening() {
         return noRekening;
