@@ -18,10 +18,8 @@ public class MBanking {
         long starttime=System.currentTimeMillis();
         while(true)
         {
-            
             double timepassed=System.currentTimeMillis()-starttime;
             double secondspassed=timepassed/1000;
-            System.out.println(secondspassed);
             if (secondspassed >= 7.3){
                 LS.setVisible(false);
                 Login L = new Login();
