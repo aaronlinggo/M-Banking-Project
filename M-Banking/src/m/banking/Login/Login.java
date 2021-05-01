@@ -35,7 +35,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(74, 119, 140));
+        jPanel1.setBackground(new java.awt.Color(119, 172, 241));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/logo_bank.png"))); // NOI18N
 
@@ -60,6 +60,7 @@ public class Login extends javax.swing.JFrame {
 
         pin.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         pin.setText("pin123");
+        pin.setBorder(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
