@@ -25,25 +25,25 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new RoundJTextField(25);
+        logo = new javax.swing.JLabel();
+        labelIDRekening = new javax.swing.JLabel();
+        norek = new RoundJTextField(25);
         Exit = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new RoundJPasswordField(15);
+        labelPin = new javax.swing.JLabel();
+        pin = new RoundJPasswordField(25);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 159, 197));
+        jPanel1.setBackground(new java.awt.Color(74, 119, 140));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/logo_bank.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/logo_bank.png"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ID Rekening");
+        labelIDRekening.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
+        labelIDRekening.setForeground(new java.awt.Color(255, 255, 255));
+        labelIDRekening.setText("ID Rekening");
 
-        jTextField1.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        norek.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
 
         Exit.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
         Exit.setText("X");
@@ -54,30 +54,30 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Pin");
+        labelPin.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
+        labelPin.setForeground(new java.awt.Color(255, 255, 255));
+        labelPin.setText("Pin");
 
-        jPasswordField1.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
-        jPasswordField1.setText("jPasswordField1");
+        pin.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        pin.setText("pin123");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 200, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147)
+                .addGap(0, 199, Short.MAX_VALUE)
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(148, 148, 148)
                 .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelPin)
+                    .addComponent(labelIDRekening)
+                    .addComponent(norek)
+                    .addComponent(pin, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE))
+                .addGap(91, 91, 91))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,18 +85,18 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Exit)))
                 .addGap(41, 41, 41)
-                .addComponent(jLabel1)
+                .addComponent(labelIDRekening)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(norek, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(labelPin)
                 .addGap(18, 18, 18)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(463, Short.MAX_VALUE))
         );
 
@@ -156,11 +156,11 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Exit;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel labelIDRekening;
+    private javax.swing.JLabel labelPin;
+    private javax.swing.JLabel logo;
+    private javax.swing.JTextField norek;
+    private javax.swing.JPasswordField pin;
     // End of variables declaration//GEN-END:variables
 }
