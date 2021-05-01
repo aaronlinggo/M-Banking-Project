@@ -7,6 +7,7 @@ public class MBanking {
         // TODO code application logic here
         System.out.println("bruh?");
         System.out.println("abc");
+        int a = 5;
     }
     
 }
