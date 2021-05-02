@@ -6,7 +6,9 @@ import RoundedField.RoundJPanel;
 import RoundedField.RoundJPasswordField;
 import RoundedField.RoundJTextField;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 
@@ -36,9 +38,9 @@ public class Login extends javax.swing.JFrame {
         pin = new RoundJPasswordField(25);
         jPLogin = new RoundJPanel(25, new Color(4, 0, 154));
         loginBtn = new javax.swing.JLabel();
-        jPLogin1 = new RoundJPanel(25, new Color(4, 0, 154));
-        loginBtn1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jPRekBaru = new RoundJPanel(25, new Color(4, 0, 154));
+        rekBaruBtn = new javax.swing.JLabel();
+        jPFooter = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,53 +105,53 @@ public class Login extends javax.swing.JFrame {
         );
         jPLoginLayout.setVerticalGroup(
             jPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 71, Short.MAX_VALUE)
+            .addGap(0, 65, Short.MAX_VALUE)
             .addGroup(jPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+                .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
         );
 
-        jPLogin1.setBackground(new java.awt.Color(4, 0, 154));
-        jPLogin1.setOpaque(false);
+        jPRekBaru.setBackground(new java.awt.Color(4, 0, 154));
+        jPRekBaru.setOpaque(false);
 
-        loginBtn1.setFont(new java.awt.Font("Microsoft YaHei", 1, 30)); // NOI18N
-        loginBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        loginBtn1.setText("       Buat Rekening Baru");
-        loginBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rekBaruBtn.setFont(new java.awt.Font("Microsoft YaHei", 1, 30)); // NOI18N
+        rekBaruBtn.setForeground(new java.awt.Color(255, 255, 255));
+        rekBaruBtn.setText("       Buat Rekening Baru");
+        rekBaruBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        javax.swing.GroupLayout jPLogin1Layout = new javax.swing.GroupLayout(jPLogin1);
-        jPLogin1.setLayout(jPLogin1Layout);
-        jPLogin1Layout.setHorizontalGroup(
-            jPLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPLogin1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPRekBaruLayout = new javax.swing.GroupLayout(jPRekBaru);
+        jPRekBaru.setLayout(jPRekBaruLayout);
+        jPRekBaruLayout.setHorizontalGroup(
+            jPRekBaruLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPRekBaruLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(loginBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rekBaruBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPLogin1Layout.setVerticalGroup(
-            jPLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPLogin1Layout.createSequentialGroup()
+        jPRekBaruLayout.setVerticalGroup(
+            jPRekBaruLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPRekBaruLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(loginBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                .addComponent(rekBaruBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPFooter.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         jLabel2.setText("Selamat datang di Bank Jago Mobile");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPFooterLayout = new javax.swing.GroupLayout(jPFooter);
+        jPFooter.setLayout(jPFooterLayout);
+        jPFooterLayout.setHorizontalGroup(
+            jPFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFooterLayout.createSequentialGroup()
+                .addContainerGap(125, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPFooterLayout.setVerticalGroup(
+            jPFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPFooterLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -159,7 +161,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPFooter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,16 +171,16 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(labelIDRekening, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(norek, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
                         .addComponent(pin)
-                        .addComponent(jPLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPRekBaru, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(81, 81, 81))
+                .addGap(96, 96, 96))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
+                .addGap(85, 85, 85)
                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelIDRekening)
@@ -190,10 +192,10 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(pin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(jPLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPRekBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addComponent(jPFooter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -262,16 +264,16 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPFooter;
     private javax.swing.JPanel jPLogin;
-    private javax.swing.JPanel jPLogin1;
+    private javax.swing.JPanel jPRekBaru;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labelIDRekening;
     private javax.swing.JLabel labelPin;
     private javax.swing.JLabel loginBtn;
-    private javax.swing.JLabel loginBtn1;
     private javax.swing.JLabel logo;
     private javax.swing.JTextField norek;
     private javax.swing.JPasswordField pin;
+    private javax.swing.JLabel rekBaruBtn;
     // End of variables declaration//GEN-END:variables
 }

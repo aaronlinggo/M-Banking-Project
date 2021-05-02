@@ -1,6 +1,8 @@
 
 package m.banking;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.concurrent.TimeUnit;
 import m.banking.Login.Login;
 import m.banking.Screen.LoadingScreen;
@@ -23,6 +25,8 @@ public class MBanking {
             if (secondspassed >= 7.3){
                 LS.setVisible(false);
                 Login L = new Login();
+                Image icon = Toolkit.getDefaultToolkit().getImage("src/m/banking/Asset/favicon.png");
+                L.setIconImage(icon);  
                 L.setVisible(true);
                 break;
             }
