@@ -1,0 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package m.banking;
+
+/**
+ *
+ * @author maxdr
+ */
+public interface inbox {
+    void logTransfer();
+    void logExchange();
+    void logUsdNews();
+    void logEurNews();
+    void logBiayaAdmin();
+    void logReq();
+    void logBunga();
+    void resetinbox();
+}

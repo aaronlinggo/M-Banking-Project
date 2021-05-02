@@ -1,6 +1,8 @@
 
 package m.banking;
 
+import java.util.ArrayList;
+
 
 public abstract class Member {
     protected int limitTransfer;
@@ -17,6 +19,8 @@ public abstract class Member {
     protected int point;
     protected double euro;
     protected double usd;
+    protected ArrayList<String> inbox;
+            
 
     public Member(int limitTransfer, int aturLimit, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String ibuKandung, String alamat, String pin, int point) {
         this.limitTransfer = limitTransfer;
@@ -33,8 +37,18 @@ public abstract class Member {
         this.point = point;
         this.euro = 0;
         this.usd = 0;
+        this.inbox = new ArrayList<>();
     }
 
+    public ArrayList<String> getInbox() {
+        return inbox;
+    }
+
+    public void setInbox(ArrayList<String> inbox) {
+        this.inbox = inbox;
+    }
+    
+    
     public int getLimitTransfer() {
         return limitTransfer;
     }
@@ -148,4 +162,5 @@ public abstract class Member {
     public void setPoint(int point) {
         this.point = point;
     }
+    
 }
