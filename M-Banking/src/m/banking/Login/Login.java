@@ -48,7 +48,7 @@ public class Login extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1 = new ImagePanel("src/m/banking/Asset/image.png");
+        jPanel1 = new ImagePanel("src/m/banking/Asset/bglogin.png");
         jPanel1.setOpaque(false);
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/logo_bank1.png"))); // NOI18N
@@ -157,8 +157,8 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(labelPin, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(labelIDRekening, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(norek, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(pin)
-                        .addComponent(jPRekBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPRekBaru, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pin))
                     .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
             .addComponent(footer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
