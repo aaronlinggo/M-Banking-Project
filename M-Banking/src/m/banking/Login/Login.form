@@ -62,7 +62,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
-              <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+              <Component id="footer" alignment="0" max="32767" attributes="0"/>
               <Component id="notch" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
@@ -85,7 +85,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jPRekBaru" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="114" max="32767" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="53" max="-2" attributes="0"/>
+                  <Component id="footer" min="-2" pref="53" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -273,7 +273,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="footer">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Microsoft YaHei" size="24" style="1"/>

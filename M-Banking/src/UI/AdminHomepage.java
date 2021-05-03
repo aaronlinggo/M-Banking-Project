@@ -32,16 +32,16 @@ public class AdminHomepage extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new RoundJPanel(75);
-        jPanel2 = new RoundJPanel(50, new java.awt.Color(255, 255, 255));
+        jPanel2 = new RoundJPanel(75, new java.awt.Color(80,76,92));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(18, 110, 130));
+        jPanel1.setBackground(new java.awt.Color(55, 53, 61));
         jPanel1.setOpaque(false);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(80, 76, 92));
         jPanel2.setOpaque(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

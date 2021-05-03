@@ -22,9 +22,9 @@ public abstract class Member {
     protected ArrayList<String> inbox;
             
 
-    public Member(int limitTransfer, int aturLimit, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String ibuKandung, String alamat, String pin, int point) {
+    public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String ibuKandung, String alamat, String pin, int point) {
         this.limitTransfer = limitTransfer;
-        this.aturLimit = aturLimit;
+        this.aturLimit = limitTransfer;
         this.currentUsage = currentUsage;
         this.bunga = bunga;
         this.biayaAdmin = biayaAdmin;
