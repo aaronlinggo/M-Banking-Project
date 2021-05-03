@@ -17,6 +17,7 @@ public class AdminHomepage extends javax.swing.JFrame {
     /**
      * Creates new form AdminHomepage
      */
+    //tes
     public AdminHomepage() {
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
