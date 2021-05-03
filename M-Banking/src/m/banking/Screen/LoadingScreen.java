@@ -1,6 +1,7 @@
 
 package m.banking.Screen;
 
+import Image.ImagePanel;
 import RoundedField.RoundJPanel;
 import java.awt.Color;
 import java.util.Timer;
@@ -13,10 +14,8 @@ public class LoadingScreen extends javax.swing.JFrame {
      * Creates new form LoadingScreen
      */
     public LoadingScreen(){
-        setUndecorated(true);
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
-        
     }
 
     /**
@@ -37,7 +36,7 @@ public class LoadingScreen extends javax.swing.JFrame {
 
         jPanel1.setOpaque(false);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/Comp_1.gif"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/a.gif"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

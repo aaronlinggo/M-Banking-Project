@@ -19,6 +19,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
     }
 
     /**
@@ -30,7 +31,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new ImagePanel();
+        jPanel1 = new RoundJPanel(75);
         logo = new javax.swing.JLabel();
         labelIDRekening = new javax.swing.JLabel();
         norek = new RoundJTextField(25);
@@ -40,16 +41,20 @@ public class Login extends javax.swing.JFrame {
         loginBtn = new javax.swing.JLabel();
         jPRekBaru = new RoundJPanel(25, new Color(4, 0, 154));
         rekBaruBtn = new javax.swing.JLabel();
-        jPFooter = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        notch = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
+
+        jPanel1 = new ImagePanel("src/m/banking/Asset/image.png");
+        jPanel1.setOpaque(false);
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/logo_bank1.png"))); // NOI18N
 
         labelIDRekening.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
-        labelIDRekening.setForeground(new java.awt.Color(0, 0, 0));
+        labelIDRekening.setForeground(new java.awt.Color(255, 255, 255));
         labelIDRekening.setText("Nomor Rekening");
 
         norek.setMargin(new Insets(10, 10, 10, 10));
@@ -65,7 +70,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         labelPin.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
-        labelPin.setForeground(new java.awt.Color(0, 0, 0));
+        labelPin.setForeground(new java.awt.Color(255, 255, 255));
         labelPin.setText("Pin");
 
         pin.setBackground(new java.awt.Color(204, 204, 204));
@@ -124,7 +129,7 @@ public class Login extends javax.swing.JFrame {
             jPRekBaruLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPRekBaruLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(rekBaruBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rekBaruBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPRekBaruLayout.setVerticalGroup(
@@ -135,33 +140,15 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPFooter.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        jLabel2.setText("Selamat datang di Bank Jago Mobile");
+        jLabel2.setText("    Selamat datang di Bank Jago Mobile");
 
-        javax.swing.GroupLayout jPFooterLayout = new javax.swing.GroupLayout(jPFooter);
-        jPFooter.setLayout(jPFooterLayout);
-        jPFooterLayout.setHorizontalGroup(
-            jPFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFooterLayout.createSequentialGroup()
-                .addContainerGap(125, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
-        );
-        jPFooterLayout.setVerticalGroup(
-            jPFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPFooterLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        notch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/notch.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPFooter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,18 +156,19 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jPLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelPin, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(labelIDRekening, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(norek, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+                        .addComponent(norek, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(pin)
-                        .addComponent(jPRekBaru, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(96, 96, 96))
+                        .addComponent(jPRekBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(notch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
+                .addComponent(notch, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelIDRekening)
@@ -194,8 +182,9 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jPLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPRekBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(jPFooter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -264,7 +253,6 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPFooter;
     private javax.swing.JPanel jPLogin;
     private javax.swing.JPanel jPRekBaru;
     private javax.swing.JPanel jPanel1;
@@ -273,6 +261,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel loginBtn;
     private javax.swing.JLabel logo;
     private javax.swing.JTextField norek;
+    private javax.swing.JLabel notch;
     private javax.swing.JPasswordField pin;
     private javax.swing.JLabel rekBaruBtn;
     // End of variables declaration//GEN-END:variables
