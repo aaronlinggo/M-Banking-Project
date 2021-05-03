@@ -6,6 +6,7 @@
 package UI;
 
 import RoundedField.RoundJPanel;
+import java.awt.Color;
 /**
  *
  * @author maxdr
@@ -17,6 +18,7 @@ public class UserUi extends javax.swing.JFrame {
      */
     public UserUi() {
         initComponents();
+        this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
     }
 
     /**
@@ -28,20 +30,31 @@ public class UserUi extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bgUtama = new javax.swing.JPanel();
-        footer = new javax.swing.JPanel();
-        daftar = new javax.swing.JPanel();
+        bgUtama = new RoundJPanel(75);
+        footer = new RoundJPanel(75);
+        daftar = new RoundJPanel(25);
         jLabel1 = new javax.swing.JLabel();
-        daftar1 = new javax.swing.JPanel();
+        transfer = new RoundJPanel(25);
         jLabel2 = new javax.swing.JLabel();
+        exchange = new RoundJPanel(25);
+        jLabel3 = new javax.swing.JLabel();
+        notch = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(500, 900));
+        setUndecorated(true);
 
-        bgUtama.setBackground(new java.awt.Color(18, 110, 130));
-        bgUtama.setPreferredSize(new java.awt.Dimension(650, 912));
+        bgUtama.setBackground(new java.awt.Color(58, 53, 61));
+        bgUtama.setForeground(new java.awt.Color(102, 102, 102));
+        bgUtama.setMaximumSize(null);
+        bgUtama.setOpaque(false);
+        bgUtama.setPreferredSize(new java.awt.Dimension(500, 900));
 
-        footer.setBackground(new java.awt.Color(255, 255, 255));
-        footer.setPreferredSize(new java.awt.Dimension(650, 32));
+        footer.setBackground(new java.awt.Color(80, 76, 92));
+        footer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        footer.setMaximumSize(new java.awt.Dimension(500, 100));
+        footer.setOpaque(false);
+        footer.setPreferredSize(new java.awt.Dimension(500, 72));
 
         javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
         footer.setLayout(footerLayout);
@@ -51,11 +64,18 @@ public class UserUi extends javax.swing.JFrame {
         );
         footerLayout.setVerticalGroup(
             footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
+            .addGap(0, 72, Short.MAX_VALUE)
         );
 
-        daftar.setBackground(new java.awt.Color(0, 102, 255));
+        daftar.setBackground(new java.awt.Color(88, 188, 228));
+        daftar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         daftar.setFont(new java.awt.Font("Microsoft YaHei", 0, 36)); // NOI18N
+        daftar.setOpaque(false);
+        daftar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                daftarMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -66,41 +86,81 @@ public class UserUi extends javax.swing.JFrame {
         daftarLayout.setHorizontalGroup(
             daftarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(115, 115, 115))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         daftarLayout.setVerticalGroup(
             daftarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(daftarLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        daftar1.setBackground(new java.awt.Color(0, 102, 255));
-        daftar1.setFont(new java.awt.Font("Microsoft YaHei", 0, 36)); // NOI18N
+        transfer.setBackground(new java.awt.Color(88, 188, 228));
+        transfer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        transfer.setFont(new java.awt.Font("Microsoft YaHei", 0, 36)); // NOI18N
+        transfer.setOpaque(false);
+        transfer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                transferMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("TRANSFER");
 
-        javax.swing.GroupLayout daftar1Layout = new javax.swing.GroupLayout(daftar1);
-        daftar1.setLayout(daftar1Layout);
-        daftar1Layout.setHorizontalGroup(
-            daftar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(daftar1Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
+        javax.swing.GroupLayout transferLayout = new javax.swing.GroupLayout(transfer);
+        transfer.setLayout(transferLayout);
+        transferLayout.setHorizontalGroup(
+            transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        daftar1Layout.setVerticalGroup(
-            daftar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftar1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+        transferLayout.setVerticalGroup(
+            transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
+
+        exchange.setBackground(new java.awt.Color(88, 188, 228));
+        exchange.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exchange.setFont(new java.awt.Font("Microsoft YaHei", 0, 36)); // NOI18N
+        exchange.setOpaque(false);
+        exchange.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exchangeMouseClicked(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Microsoft YaHei", 1, 40)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Exchange Point");
+
+        javax.swing.GroupLayout exchangeLayout = new javax.swing.GroupLayout(exchange);
+        exchange.setLayout(exchangeLayout);
+        exchangeLayout.setHorizontalGroup(
+            exchangeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exchangeLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel3)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        exchangeLayout.setVerticalGroup(
+            exchangeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exchangeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        notch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/notch.png"))); // NOI18N
 
         javax.swing.GroupLayout bgUtamaLayout = new javax.swing.GroupLayout(bgUtama);
         bgUtama.setLayout(bgUtamaLayout);
@@ -108,20 +168,27 @@ public class UserUi extends javax.swing.JFrame {
             bgUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(footer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgUtamaLayout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
-                .addGroup(bgUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(daftar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(daftar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(105, 105, 105))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(bgUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(exchange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(daftar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(transfer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(64, 64, 64))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgUtamaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(notch))
         );
         bgUtamaLayout.setVerticalGroup(
             bgUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgUtamaLayout.createSequentialGroup()
-                .addGap(182, 182, 182)
+                .addComponent(notch)
+                .addGap(128, 128, 128)
                 .addComponent(daftar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
-                .addComponent(daftar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 387, Short.MAX_VALUE)
+                .addGap(57, 57, 57)
+                .addComponent(transfer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(exchange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
                 .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -139,7 +206,21 @@ public class UserUi extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void transferMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transferMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_transferMouseClicked
+
+    private void daftarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_daftarMouseClicked
+
+    private void exchangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exchangeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exchangeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -180,9 +261,12 @@ public class UserUi extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgUtama;
     private javax.swing.JPanel daftar;
-    private javax.swing.JPanel daftar1;
+    private javax.swing.JPanel exchange;
     private javax.swing.JPanel footer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel notch;
+    private javax.swing.JPanel transfer;
     // End of variables declaration//GEN-END:variables
 }
