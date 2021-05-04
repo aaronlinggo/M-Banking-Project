@@ -17,6 +17,7 @@ public class AdminHomepage extends javax.swing.JFrame {
     /**
      * Creates new form AdminHomepage
      */
+    
     public AdminHomepage() {
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
@@ -25,13 +26,15 @@ public class AdminHomepage extends javax.swing.JFrame {
         gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png")));
         content.removeAll();
         AdminDashboard ad = new AdminDashboard();
+        ad.getAdmin(this);
         ad.setVisible(true);
         ad.setBounds(0,0, 500, 768);
         content.add(ad);
         content.revalidate();
         content.repaint();
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +44,7 @@ public class AdminHomepage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new RoundJPanel(75);
+        jPanel1 = new RoundJPanel(140);
         notch = new javax.swing.JLabel();
         navbar_dashboard = new RoundJPanel(75, new java.awt.Color(80,76,92));
         dashboard = new javax.swing.JLabel();
@@ -101,12 +104,12 @@ public class AdminHomepage extends javax.swing.JFrame {
         navbar_dashboardLayout.setVerticalGroup(
             navbar_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(navbar_dashboardLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(navbar_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(member, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                    .addComponent(gift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addGroup(navbar_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(gift, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(member, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         content.setBackground(new java.awt.Color(55, 53, 61));
@@ -120,7 +123,7 @@ public class AdminHomepage extends javax.swing.JFrame {
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -161,10 +164,10 @@ public class AdminHomepage extends javax.swing.JFrame {
         dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_white.png")));
         gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png")));
         content.removeAll();
-        AdminMember ad = new AdminMember();
-        ad.setVisible(true);
-        ad.setBounds(0,0, 500, 768);
-        content.add(ad);
+        AdminMember am = new AdminMember();
+        am.setVisible(true);
+        am.setBounds(0,0, 500, 768);
+        content.add(am);
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_memberMouseClicked
@@ -175,6 +178,7 @@ public class AdminHomepage extends javax.swing.JFrame {
         gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png")));
         content.removeAll();
         AdminDashboard ad = new AdminDashboard();
+        ad.getAdmin(this);
         ad.setVisible(true);
         ad.setBounds(0,0, 500, 768);
         content.add(ad);
@@ -187,10 +191,10 @@ public class AdminHomepage extends javax.swing.JFrame {
         dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_white.png")));
         gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_teal.png")));
         content.removeAll();
-        AdminGift ad = new AdminGift();
-        ad.setVisible(true);
-        ad.setBounds(0,0, 500, 768);
-        content.add(ad);
+        AdminGift ag = new AdminGift();
+        ag.setVisible(true);
+        ag.setBounds(0,0, 500, 768);
+        content.add(ag);
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_giftMouseClicked

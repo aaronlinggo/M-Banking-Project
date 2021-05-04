@@ -22,7 +22,7 @@ public class MBanking {
         {
             double timepassed=System.currentTimeMillis()-starttime;
             double secondspassed=timepassed/1000;
-            if (secondspassed >= 7.3){
+            if (secondspassed >= 6){
                 LS.setVisible(false);
                 Login L = new Login();
                 Image icon = Toolkit.getDefaultToolkit().getImage("src/m/banking/Asset/favicon.png");
