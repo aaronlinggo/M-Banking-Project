@@ -20,6 +20,16 @@ public class AdminHomepage extends javax.swing.JFrame {
     public AdminHomepage() {
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_white.png")));
+        dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_teal.png")));
+        gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png")));
+        content.removeAll();
+        AdminDashboard ad = new AdminDashboard();
+        ad.setVisible(true);
+        ad.setBounds(0,0, 500, 768);
+        content.add(ad);
+        content.revalidate();
+        content.repaint();
     }
 
     /**
@@ -32,12 +42,12 @@ public class AdminHomepage extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new RoundJPanel(75);
-        jPanel2 = new RoundJPanel(75, new java.awt.Color(80,76,92));
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         notch = new javax.swing.JLabel();
-        content = new javax.swing.JPanel();
+        navbar_dashboard = new RoundJPanel(75, new java.awt.Color(80,76,92));
+        dashboard = new javax.swing.JLabel();
+        member = new javax.swing.JLabel();
+        gift = new javax.swing.JLabel();
+        content = new RoundJPanel(75);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -46,40 +56,61 @@ public class AdminHomepage extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(55, 53, 61));
         jPanel1.setOpaque(false);
 
-        jPanel2.setBackground(new java.awt.Color(80, 76, 92));
-        jPanel2.setOpaque(false);
+        notch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/notch.png"))); // NOI18N
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_white.png"))); // NOI18N
+        navbar_dashboard.setBackground(new java.awt.Color(80, 76, 92));
+        navbar_dashboard.setOpaque(false);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_white.png"))); // NOI18N
+        dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_teal.png"))); // NOI18N
+        dashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dashboardMouseClicked(evt);
+            }
+        });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png"))); // NOI18N
+        member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_white.png"))); // NOI18N
+        member.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        member.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                memberMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(jLabel1)
+        gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png"))); // NOI18N
+        gift.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        gift.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                giftMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout navbar_dashboardLayout = new javax.swing.GroupLayout(navbar_dashboard);
+        navbar_dashboard.setLayout(navbar_dashboardLayout);
+        navbar_dashboardLayout.setHorizontalGroup(
+            navbar_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navbar_dashboardLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(dashboard)
                 .addGap(96, 96, 96)
-                .addComponent(jLabel2)
+                .addComponent(member)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(gift)
                 .addGap(87, 87, 87))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        navbar_dashboardLayout.setVerticalGroup(
+            navbar_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navbar_dashboardLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(navbar_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(member, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(gift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        notch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/notch.png"))); // NOI18N
+        content.setBackground(new java.awt.Color(55, 53, 61));
+        content.setOpaque(false);
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
@@ -96,9 +127,9 @@ public class AdminHomepage extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(notch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(navbar_dashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +138,7 @@ public class AdminHomepage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(navbar_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,12 +149,51 @@ public class AdminHomepage extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void memberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_memberMouseClicked
+        member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_teal.png")));
+        dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_white.png")));
+        gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png")));
+        content.removeAll();
+        AdminMember ad = new AdminMember();
+        ad.setVisible(true);
+        ad.setBounds(0,0, 500, 768);
+        content.add(ad);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_memberMouseClicked
+
+    private void dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseClicked
+        member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_white.png")));
+        dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_teal.png")));
+        gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png")));
+        content.removeAll();
+        AdminDashboard ad = new AdminDashboard();
+        ad.setVisible(true);
+        ad.setBounds(0,0, 500, 768);
+        content.add(ad);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_dashboardMouseClicked
+
+    private void giftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_giftMouseClicked
+        member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_white.png")));
+        dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_white.png")));
+        gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_teal.png")));
+        content.removeAll();
+        AdminGift ad = new AdminGift();
+        ad.setVisible(true);
+        ad.setBounds(0,0, 500, 768);
+        content.add(ad);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_giftMouseClicked
 
     /**
      * @param args the command line arguments
@@ -162,11 +232,11 @@ public class AdminHomepage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel content;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel dashboard;
+    private javax.swing.JLabel gift;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel member;
+    private javax.swing.JPanel navbar_dashboard;
     private javax.swing.JLabel notch;
     // End of variables declaration//GEN-END:variables
 }

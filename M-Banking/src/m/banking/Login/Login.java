@@ -5,11 +5,13 @@ import Image.ImagePanel;
 import RoundedField.RoundJPanel;
 import RoundedField.RoundJPasswordField;
 import RoundedField.RoundJTextField;
+import UI.AdminHomepage;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 
 public class Login extends javax.swing.JFrame {
@@ -213,7 +215,18 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_pinFocusGained
 
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
-        // TODO add your handling code here:
+        System.out.println(norek.getText());
+        System.out.println(pin.getPassword());
+        
+        if (norek.getText().equals("admin") && new String(pin.getPassword()).equals("admin")) {
+            this.setVisible(false);
+            AdminHomepage Admin = new AdminHomepage();
+            Admin.setVisible(true);
+            JOptionPane.showMessageDialog(this, "Success Login");
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "gagal Login");
+        }
     }//GEN-LAST:event_loginBtnMouseClicked
 
     /**
