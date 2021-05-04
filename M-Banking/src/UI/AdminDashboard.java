@@ -353,6 +353,7 @@ public class AdminDashboard extends javax.swing.JPanel {
         this.setVisible(false);
         Login l = new Login();
         l.setVisible(true);
+        ah.setVisible(false);
     }//GEN-LAST:event_isi4MouseClicked
 
 
