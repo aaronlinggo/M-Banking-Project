@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package m.banking;
+package UI;
 
 import RoundedField.RoundJPanel;
 import java.awt.Color;
@@ -19,7 +19,15 @@ public class InfoKurs extends javax.swing.JFrame {
      */
     public InfoKurs() {
         initComponents();
-        jComboBox1.setBackground(Color.YELLOW);
+        Color a = new Color(102,255,255);
+        jComboBox1.setBackground(a);
+        Container.removeAll();
+        InfoKursBuy ikb = new InfoKursBuy();
+        ikb.setVisible(true);
+        ikb.setBounds(0,0,500,660);
+        Container.add(ikb);
+        Container.revalidate();
+        Container.repaint();
     }
 
     /**
@@ -48,10 +56,11 @@ public class InfoKurs extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(55, 53, 61));
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 900));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Total Balance");
 
-        jComboBox1.setBackground(new java.awt.Color(0, 0, 255));
+        jComboBox1.setBackground(new java.awt.Color(102, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rupiah", "Dollar", "Euro" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,11 +68,17 @@ public class InfoKurs extends javax.swing.JFrame {
             }
         });
 
+        Saldo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         Saldo.setForeground(new java.awt.Color(255, 255, 255));
         Saldo.setText("jLabel2");
 
         PanelBuy.setBackground(new java.awt.Color(245, 245, 245));
         PanelBuy.setOpaque(false);
+        PanelBuy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HandlerBuy(evt);
+            }
+        });
 
         Buy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Buy.setText("Buy");
@@ -84,9 +99,14 @@ public class InfoKurs extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        PanelSell.setBackground(new java.awt.Color(245, 245, 245));
+        PanelSell.setBackground(new java.awt.Color(55, 53, 61));
         PanelSell.setOpaque(false);
         PanelSell.setPreferredSize(new java.awt.Dimension(131, 52));
+        PanelSell.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HandlerSell(evt);
+            }
+        });
 
         Sell.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Sell.setText("Sell");
@@ -108,6 +128,8 @@ public class InfoKurs extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
+        Container.setPreferredSize(new java.awt.Dimension(0, 660));
+
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
         Container.setLayout(ContainerLayout);
         ContainerLayout.setHorizontalGroup(
@@ -116,21 +138,24 @@ public class InfoKurs extends javax.swing.JFrame {
         );
         ContainerLayout.setVerticalGroup(
             ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 679, Short.MAX_VALUE)
+            .addGap(0, 658, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Container, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Saldo))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(88, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
@@ -138,7 +163,6 @@ public class InfoKurs extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(PanelSell, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43))))
-            .addComponent(Container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,16 +172,14 @@ public class InfoKurs extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Saldo)
-                .addGap(29, 29, 29)
+                .addComponent(Saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(PanelSell, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(Container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(PanelBuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(PanelSell, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelBuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Container, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,6 +203,22 @@ public class InfoKurs extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void HandlerBuy(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HandlerBuy
+        // TODO add your handling code here:
+        Color c = new Color(245,245,245);
+        PanelBuy.setBackground(c);
+        Color d = new Color(55,53,61);
+        PanelSell.setBackground(d);
+    }//GEN-LAST:event_HandlerBuy
+
+    private void HandlerSell(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HandlerSell
+        // TODO add your handling code here:
+        Color c = new Color(245,245,245);
+        PanelSell.setBackground(c);
+        Color d = new Color(55,53,61);
+        PanelBuy.setBackground(d);
+    }//GEN-LAST:event_HandlerSell
 
     /**
      * @param args the command line arguments
