@@ -6,6 +6,7 @@ import RoundedField.RoundJPanel;
 import RoundedField.RoundJPasswordField;
 import RoundedField.RoundJTextField;
 import UI.AdminHomepage;
+import UI.UserHomepage;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Insets;
@@ -222,6 +223,12 @@ public class Login extends javax.swing.JFrame {
             this.setVisible(false);
             AdminHomepage Admin = new AdminHomepage();
             Admin.setVisible(true);
+            JOptionPane.showMessageDialog(this, "Success Login");
+        }
+        else if (norek.getText().equals("tes") && new String(pin.getPassword()).equals("tes")) {
+            this.setVisible(false);
+            UserHomepage user = new UserHomepage();
+            user.setVisible(true);
             JOptionPane.showMessageDialog(this, "Success Login");
         }
         else{

@@ -31,14 +31,11 @@ public class UserUi extends javax.swing.JFrame {
     private void initComponents() {
 
         bgUtama = new RoundJPanel(75);
-        footer = new RoundJPanel(75);
-        daftar = new RoundJPanel(25);
-        jLabel1 = new javax.swing.JLabel();
-        transfer = new RoundJPanel(25);
-        jLabel2 = new javax.swing.JLabel();
-        exchange = new RoundJPanel(25);
-        jLabel3 = new javax.swing.JLabel();
         notch = new javax.swing.JLabel();
+        navbar_dashboard = new RoundJPanel(75, new java.awt.Color(80,76,92));
+        dashboard = new javax.swing.JLabel();
+        member = new javax.swing.JLabel();
+        gift = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(500, 900));
@@ -50,146 +47,77 @@ public class UserUi extends javax.swing.JFrame {
         bgUtama.setOpaque(false);
         bgUtama.setPreferredSize(new java.awt.Dimension(500, 900));
 
-        footer.setBackground(new java.awt.Color(80, 76, 92));
-        footer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        footer.setMaximumSize(new java.awt.Dimension(500, 100));
-        footer.setOpaque(false);
-        footer.setPreferredSize(new java.awt.Dimension(500, 72));
+        notch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/notch.png"))); // NOI18N
 
-        javax.swing.GroupLayout footerLayout = new javax.swing.GroupLayout(footer);
-        footer.setLayout(footerLayout);
-        footerLayout.setHorizontalGroup(
-            footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        footerLayout.setVerticalGroup(
-            footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 72, Short.MAX_VALUE)
-        );
+        navbar_dashboard.setBackground(new java.awt.Color(80, 76, 92));
+        navbar_dashboard.setOpaque(false);
 
-        daftar.setBackground(new java.awt.Color(88, 188, 228));
-        daftar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        daftar.setFont(new java.awt.Font("Microsoft YaHei", 0, 36)); // NOI18N
-        daftar.setOpaque(false);
-        daftar.addMouseListener(new java.awt.event.MouseAdapter() {
+        dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_teal.png"))); // NOI18N
+        dashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                daftarMouseClicked(evt);
+                dashboardMouseClicked(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("DAFTAR");
-
-        javax.swing.GroupLayout daftarLayout = new javax.swing.GroupLayout(daftar);
-        daftar.setLayout(daftarLayout);
-        daftarLayout.setHorizontalGroup(
-            daftarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarLayout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(74, Short.MAX_VALUE))
-        );
-        daftarLayout.setVerticalGroup(
-            daftarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(daftarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        transfer.setBackground(new java.awt.Color(88, 188, 228));
-        transfer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        transfer.setFont(new java.awt.Font("Microsoft YaHei", 0, 36)); // NOI18N
-        transfer.setOpaque(false);
-        transfer.addMouseListener(new java.awt.event.MouseAdapter() {
+        member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_white.png"))); // NOI18N
+        member.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        member.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                transferMouseClicked(evt);
+                memberMouseClicked(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("TRANSFER");
-
-        javax.swing.GroupLayout transferLayout = new javax.swing.GroupLayout(transfer);
-        transfer.setLayout(transferLayout);
-        transferLayout.setHorizontalGroup(
-            transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        transferLayout.setVerticalGroup(
-            transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(transferLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(9, Short.MAX_VALUE))
-        );
-
-        exchange.setBackground(new java.awt.Color(88, 188, 228));
-        exchange.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        exchange.setFont(new java.awt.Font("Microsoft YaHei", 0, 36)); // NOI18N
-        exchange.setOpaque(false);
-        exchange.addMouseListener(new java.awt.event.MouseAdapter() {
+        gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png"))); // NOI18N
+        gift.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        gift.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exchangeMouseClicked(evt);
+                giftMouseClicked(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Microsoft YaHei", 1, 40)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Exchange Point");
-
-        javax.swing.GroupLayout exchangeLayout = new javax.swing.GroupLayout(exchange);
-        exchange.setLayout(exchangeLayout);
-        exchangeLayout.setHorizontalGroup(
-            exchangeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(exchangeLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel3)
+        javax.swing.GroupLayout navbar_dashboardLayout = new javax.swing.GroupLayout(navbar_dashboard);
+        navbar_dashboard.setLayout(navbar_dashboardLayout);
+        navbar_dashboardLayout.setHorizontalGroup(
+            navbar_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navbar_dashboardLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(dashboard)
+                .addGap(96, 96, 96)
+                .addComponent(member)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(gift)
+                .addGap(87, 87, 87))
+        );
+        navbar_dashboardLayout.setVerticalGroup(
+            navbar_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navbar_dashboardLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(navbar_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(gift, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(member, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
-        exchangeLayout.setVerticalGroup(
-            exchangeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(exchangeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        notch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/notch.png"))); // NOI18N
 
         javax.swing.GroupLayout bgUtamaLayout = new javax.swing.GroupLayout(bgUtama);
         bgUtama.setLayout(bgUtamaLayout);
         bgUtamaLayout.setHorizontalGroup(
             bgUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(footer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgUtamaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(bgUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(exchange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(daftar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(transfer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(64, 64, 64))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgUtamaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(notch))
+            .addGroup(bgUtamaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(navbar_dashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         bgUtamaLayout.setVerticalGroup(
             bgUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgUtamaLayout.createSequentialGroup()
                 .addComponent(notch)
-                .addGap(128, 128, 128)
-                .addComponent(daftar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(transfer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(exchange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
-                .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 762, Short.MAX_VALUE)
+                .addComponent(navbar_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,18 +137,26 @@ public class UserUi extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void transferMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transferMouseClicked
-        // TODO add your handling code here:
+    private void dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseClicked
+        member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_white.png")));
+        dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_teal.png")));
+        gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png")));
+       
+    }//GEN-LAST:event_dashboardMouseClicked
+
+    private void memberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_memberMouseClicked
+        member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_teal.png")));
+        dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_white.png")));
+        gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png")));
+       
+    }//GEN-LAST:event_memberMouseClicked
+
+    private void giftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_giftMouseClicked
+        member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_white.png")));
+        dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_white.png")));
+        gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_teal.png")));
         
-    }//GEN-LAST:event_transferMouseClicked
-
-    private void daftarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_daftarMouseClicked
-
-    private void exchangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exchangeMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_exchangeMouseClicked
+    }//GEN-LAST:event_giftMouseClicked
 
     /**
      * @param args the command line arguments
@@ -260,13 +196,10 @@ public class UserUi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgUtama;
-    private javax.swing.JPanel daftar;
-    private javax.swing.JPanel exchange;
-    private javax.swing.JPanel footer;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel dashboard;
+    private javax.swing.JLabel gift;
+    private javax.swing.JLabel member;
+    private javax.swing.JPanel navbar_dashboard;
     private javax.swing.JLabel notch;
-    private javax.swing.JPanel transfer;
     // End of variables declaration//GEN-END:variables
 }
