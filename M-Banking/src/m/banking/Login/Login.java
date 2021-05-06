@@ -144,7 +144,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         footer.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        footer.setText("    Selamat datang di Bank Jago Mobile");
+        footer.setText("    Selamat datang di Bank Rut Mobile");
 
         notch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/notch.png"))); // NOI18N
 
@@ -162,7 +162,7 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(norek, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPRekBaru, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pin))
-                    .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
             .addComponent(footer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(notch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

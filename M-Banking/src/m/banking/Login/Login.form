@@ -50,7 +50,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="jPLogin" max="32767" attributes="0"/>
                           <Component id="labelPin" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="labelIDRekening" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -58,7 +58,7 @@
                           <Component id="jPRekBaru" alignment="1" max="32767" attributes="0"/>
                           <Component id="pin" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="logo" min="-2" pref="376" max="-2" attributes="0"/>
+                      <Component id="logo" min="-2" pref="409" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
@@ -278,7 +278,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Microsoft YaHei" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="    Selamat datang di Bank Jago Mobile"/>
+            <Property name="text" type="java.lang.String" value="    Selamat datang di Bank Rut Mobile"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="notch">

@@ -7,6 +7,8 @@ package UI;
 
 import RoundedField.RoundJPanel;
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.BoxLayout;
 
 /**
  *
@@ -32,27 +34,18 @@ public class AdminGift extends javax.swing.JPanel {
     private void initComponents() {
 
         content = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
 
-        content.setBackground(new java.awt.Color(0, 204, 204));
-
-        jButton1.setText("jButton1");
+        content.setBackground(new java.awt.Color(55, 53, 61));
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentLayout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addComponent(jButton1)
-                .addContainerGap(223, Short.MAX_VALUE))
+            .addGap(0, 500, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
-                .addContainerGap(394, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(352, 352, 352))
+            .addGap(0, 778, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -72,6 +65,5 @@ public class AdminGift extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel content;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
