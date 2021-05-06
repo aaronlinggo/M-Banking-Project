@@ -7,7 +7,15 @@ package UI;
 
 import RoundedField.RoundJPanel;
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneLayout;
 
 /**
  *
@@ -18,15 +26,11 @@ public class AdminMember extends javax.swing.JPanel {
     /**
      * Creates new form AdminDashboard
      */
+    int total = 0;
+    ArrayList<panelMember_Admin> paAdmin = new ArrayList<>();
     public AdminMember() {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
-        jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        jTable1.getTableHeader().setOpaque(false);
-        jTable1.getTableHeader().setBackground(new Color(32,136,203));
-        jTable1.getTableHeader().setForeground(new Color(255,255,255));
-        jTable1.setRowHeight(25);
-        
     }
 
     /**
@@ -39,48 +43,62 @@ public class AdminMember extends javax.swing.JPanel {
     private void initComponents() {
 
         content = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tes = new javax.swing.JScrollPane();
+        a = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         content.setBackground(new java.awt.Color(55, 53, 61));
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        tes.setBackground(new java.awt.Color(55, 53, 61));
+        tes.setBorder(null);
+        tes.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        tes.setRequestFocusEnabled(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Name", "No Rekening", "Saldo", "Request", "Tagihan"
+        a.setBackground(new java.awt.Color(55, 53, 61));
+        a.setPreferredSize(new java.awt.Dimension(387, 390));
+
+        javax.swing.GroupLayout aLayout = new javax.swing.GroupLayout(a);
+        a.setLayout(aLayout);
+        aLayout.setHorizontalGroup(
+            aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 407, Short.MAX_VALUE)
+        );
+        aLayout.setVerticalGroup(
+            aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+
+        tes.setViewportView(a);
+
+        jButton1.setText("add");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
             }
-        ));
-        jTable1.setFocusable(false);
-        jTable1.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        jTable1.setRequestFocusEnabled(false);
-        jTable1.setRowHeight(25);
-        jTable1.setSelectionBackground(new java.awt.Color(252, 57, 95));
-        jTable1.setShowVerticalLines(false);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        });
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contentLayout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(jButton1))
+                    .addGroup(contentLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(tes, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
-                .addContainerGap(302, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+            .addGroup(contentLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(tes, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(jButton1)
+                .addContainerGap(189, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -97,10 +115,30 @@ public class AdminMember extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        
+        a.removeAll();
+        total++;
+        if ((182+10)*total >= 400) {
+            a.setPreferredSize(new Dimension(387, (182+10)*total));
+        }
+        for (int i = 0; i < total; i++) {
+            System.out.println(i);
+            paAdmin.add(new panelMember_Admin());
+            paAdmin.get(i).setBounds(0, 182*i, 390,182);
+            paAdmin.get(i).setVisible(true);
+            a.add(paAdmin.get(i));
+        }
+        a.revalidate();
+        a.repaint();
+    }//GEN-LAST:event_jButton1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel a;
     private javax.swing.JPanel content;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane tes;
     // End of variables declaration//GEN-END:variables
 }

@@ -54,6 +54,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1 = new ImagePanel("src/m/banking/Asset/image.png");
         jPanel1.setOpaque(false);
 
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/logo_bank1.png"))); // NOI18N
 
         labelIDRekening.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
