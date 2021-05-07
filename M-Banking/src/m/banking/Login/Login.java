@@ -126,7 +126,7 @@ public class Login extends javax.swing.JFrame {
         jPLogin.setLayout(jPLoginLayout);
         jPLoginLayout.setHorizontalGroup(
             jPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 424, Short.MAX_VALUE)
             .addGroup(jPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPLoginLayout.createSequentialGroup()
                     .addContainerGap()
@@ -145,8 +145,13 @@ public class Login extends javax.swing.JFrame {
 
         rekBaruBtn.setFont(new java.awt.Font("Microsoft YaHei", 1, 30)); // NOI18N
         rekBaruBtn.setForeground(new java.awt.Color(255, 255, 255));
-        rekBaruBtn.setText("       Buat Rekening Baru");
+        rekBaruBtn.setText("      Create New Account");
         rekBaruBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rekBaruBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rekBaruBtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPRekBaruLayout = new javax.swing.GroupLayout(jPRekBaru);
         jPRekBaru.setLayout(jPRekBaruLayout);
@@ -161,7 +166,7 @@ public class Login extends javax.swing.JFrame {
             jPRekBaruLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPRekBaruLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(rekBaruBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addComponent(rekBaruBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -207,7 +212,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jPLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPRekBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addComponent(footer, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -298,6 +303,14 @@ public class Login extends javax.swing.JFrame {
         mousepX = evt.getX();
         mousepY = evt.getY();
     }//GEN-LAST:event_formMousePressed
+
+    private void rekBaruBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rekBaruBtnMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        newAccount nA = new newAccount();
+        nA.setVisible(true);
+        nA.passLogin(this);
+    }//GEN-LAST:event_rekBaruBtnMouseClicked
 
     /**
      * @param args the command line arguments

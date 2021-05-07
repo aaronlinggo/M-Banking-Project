@@ -145,11 +145,11 @@ public class AdminHomepage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(77, 77, 77)
                 .addComponent(dashboard)
-                .addGap(105, 105, 105)
+                .addGap(119, 119, 119)
                 .addComponent(member)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(gift)
-                .addGap(81, 81, 81))
+                .addGap(70, 70, 70))
             .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(

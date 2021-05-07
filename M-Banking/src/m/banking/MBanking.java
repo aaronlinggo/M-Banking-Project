@@ -3,6 +3,7 @@ package m.banking;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import m.banking.Login.Login;
 import m.banking.Screen.LoadingScreen;
@@ -11,6 +12,8 @@ public class MBanking {
 
     public static int WIDTH = 650;
     public static int HEIGHT = 900;
+    public ArrayList<Member> requestMember = new ArrayList<Member>();
+    public ArrayList<Member> Account = new ArrayList<Member>();
     
     public static void main(String[] args) throws InterruptedException {
         // TODO code application logic here
