@@ -51,7 +51,7 @@ public class MyScrollBarUI extends BasicScrollBarUI {
   protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
     Graphics2D g2 = (Graphics2D) g.create();
     g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-        RenderingHints.VALUE_ANTIALIAS_ON);
+    RenderingHints.VALUE_ANTIALIAS_ON);
     JScrollBar sb = (JScrollBar) c;
     
     g2.setPaint(new Color(250,243,243));
