@@ -44,11 +44,11 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="Logo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="Welcome" min="-2" max="-2" attributes="0"/>
+                              <Component id="Hello" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="32" max="32767" attributes="0"/>
                       </Group>
@@ -66,12 +66,12 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="Logo" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="Hello" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="Welcome" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
@@ -84,7 +84,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="Hello">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -98,7 +98,7 @@
             <Property name="text" type="java.lang.String" value="Hello, Admin,"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="Welcome">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="36" style="1"/>
@@ -109,7 +109,7 @@
             <Property name="text" type="java.lang.String" value="Welcome back!"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanel2">
+        <Container class="javax.swing.JPanel" name="Logo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="58" green="4f" red="49" type="rgb"/>
@@ -161,7 +161,7 @@
             <Property name="verticalScrollBarPolicy" type="int" value="21"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//jScrollPane1.setLayout(new ScrollPaneLayout() {&#xa;//      @Override&#xa;//      public void layoutContainer(Container parent) {&#xa;//        JScrollPane scrollPane = (JScrollPane) parent;&#xa;//&#xa;//        Rectangle availR = scrollPane.getBounds();&#xa;//        availR.x = availR.y = 0;&#xa;//&#xa;//        Insets parentInsets = parent.getInsets();&#xa;//        availR.x = parentInsets.left;&#xa;//        availR.y = parentInsets.top;&#xa;//        availR.width -= parentInsets.left + parentInsets.right;&#xa;//        availR.height -= parentInsets.top + parentInsets.bottom;&#xa;//&#xa;//        Rectangle vsbR = new Rectangle();&#xa;//        vsbR.width = 12;&#xa;//        vsbR.height = availR.height;&#xa;//        vsbR.x = availR.x + availR.width - vsbR.width;&#xa;//        vsbR.y = availR.y;&#xa;//&#xa;//        if (viewport != null) {&#xa;//          viewport.setBounds(availR);&#xa;//        }&#xa;//        if (vsb != null) {&#xa;//          vsb.setVisible(false);&#xa;//          vsb.setBounds(vsbR);&#xa;//        }&#xa;//      }&#xa;//    });&#xa;    jScrollPane1.getHorizontalScrollBar().setUI(new MyScrollBarUI());"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//jScrollPane1.setLayout(new ScrollPaneLayout() {&#xa;//      @Override&#xa;//      public void layoutContainer(Container parent) {&#xa;//        JScrollPane scrollPane = (JScrollPane) parent;&#xa;//&#xa;//        Rectangle availR = scrollPane.getBounds();&#xa;//        availR.x = availR.y = 0;&#xa;//&#xa;//        Insets parentInsets = parent.getInsets();&#xa;//        availR.x = parentInsets.left;&#xa;//        availR.y = parentInsets.top;&#xa;//        availR.width -= parentInsets.left + parentInsets.right;&#xa;//        availR.height -= parentInsets.top + parentInsets.bottom;&#xa;//&#xa;//        Rectangle vsbR = new Rectangle();&#xa;//        vsbR.width = 12;&#xa;//        vsbR.height = availR.height;&#xa;//        vsbR.x = availR.x + availR.width - vsbR.width;&#xa;//        vsbR.y = availR.y;&#xa;//&#xa;//        if (viewport != null) {&#xa;//          viewport.setBounds(availR);&#xa;//        }&#xa;//        if (vsb != null) {&#xa;//          vsb.setVisible(false);&#xa;//          vsb.setBounds(vsbR);&#xa;//        }&#xa;//      }&#xa;//    });&#xa;    jScrollPane1.getHorizontalScrollBar().setUI(new MyScrollBarUI());&#xa;&#xa;MouseAdapter ma = new MouseAdapter() {&#xa;&#xa;private Point origin;&#xa;&#xa;@Override&#xa;public void mousePressed(MouseEvent e) {&#xa;    origin = new Point(e.getPoint());&#xa;}&#xa;&#xa;@Override&#xa;public void mouseReleased(MouseEvent e) {&#xa;}&#xa;&#xa;@Override&#xa;public void mouseDragged(MouseEvent e) {&#xa;    if (origin != null) {&#xa;        JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, jPanel6);&#xa;        if (viewPort != null) {&#xa;            int deltaX = origin.x - e.getX();&#xa;            int deltaY = origin.y - e.getY();&#xa;&#xa;            Rectangle view = viewPort.getViewRect();&#xa;            view.x += deltaX;&#xa;            view.y += deltaY;&#xa;&#xa;            jPanel6.scrollRectToVisible(view);&#xa;        }&#xa;    }&#xa;}&#xa;&#xa;};&#xa;&#xa;jPanel6.addMouseListener(ma);&#xa;jPanel6.addMouseMotionListener(ma);"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -200,8 +200,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="isi1" max="32767" attributes="0"/>
                               <Component id="isi4" max="32767" attributes="0"/>
+                              <Component id="isi1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -256,7 +256,7 @@
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="52" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -488,7 +488,7 @@
                               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="112" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

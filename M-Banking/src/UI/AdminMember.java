@@ -12,11 +12,16 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
+import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JViewport;
 import javax.swing.ScrollPaneLayout;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -44,17 +49,18 @@ public class AdminMember extends javax.swing.JPanel {
     private void initComponents() {
 
         content = new javax.swing.JPanel();
-        tes = new javax.swing.JScrollPane();
-        a = new javax.swing.JPanel();
+        panelScroll = new javax.swing.JScrollPane();
+        memberCard = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jPanel1 = new RoundJPanel(35);
+        jLabel1 = new javax.swing.JLabel();
 
-        content.setBackground(new java.awt.Color(55, 53, 61));
+        content.setBackground(new java.awt.Color(250, 243, 243));
 
-        tes.setBackground(new java.awt.Color(55, 53, 61));
-        tes.setBorder(null);
-        tes.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        tes.setRequestFocusEnabled(false);
-        tes.setLayout(new ScrollPaneLayout() {
+        panelScroll.setBackground(new java.awt.Color(250, 243, 243));
+        panelScroll.setBorder(null);
+        panelScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        panelScroll.setLayout(new ScrollPaneLayout() {
             @Override
             public void layoutContainer(Container parent) {
                 JScrollPane scrollPane = (JScrollPane) parent;
@@ -83,23 +89,58 @@ public class AdminMember extends javax.swing.JPanel {
                 }
             }
         });
-        tes.getVerticalScrollBar().setUI(new MyScrollBarUI());
+        panelScroll.getVerticalScrollBar().setUI(new MyScrollBarUI());
+        MouseAdapter ma = new MouseAdapter() {
 
-        a.setBackground(new java.awt.Color(55, 53, 61));
-        a.setPreferredSize(new java.awt.Dimension(387, 390));
+            private Point origin;
 
-        javax.swing.GroupLayout aLayout = new javax.swing.GroupLayout(a);
-        a.setLayout(aLayout);
-        aLayout.setHorizontalGroup(
-            aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            @Override
+            public void mousePressed(MouseEvent e) {
+                origin = new Point(e.getPoint());
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                if (origin != null) {
+                    JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, memberCard);
+                    if (viewPort != null) {
+                        int deltaX = origin.x - e.getX();
+                        int deltaY = origin.y - e.getY();
+
+                        Rectangle view = viewPort.getViewRect();
+                        view.x += deltaX;
+                        view.y += deltaY;
+
+                        memberCard.scrollRectToVisible(view);
+                    }
+                }
+            }
+
+        };
+
+        memberCard.addMouseListener(ma);
+        memberCard.addMouseMotionListener(ma);
+
+        memberCard.setBackground(new java.awt.Color(250, 243, 243));
+        memberCard.setPreferredSize(new java.awt.Dimension(387, 390));
+        memberCard.setAutoscrolls(true);
+
+        javax.swing.GroupLayout memberCardLayout = new javax.swing.GroupLayout(memberCard);
+        memberCard.setLayout(memberCardLayout);
+        memberCardLayout.setHorizontalGroup(
+            memberCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 407, Short.MAX_VALUE)
         );
-        aLayout.setVerticalGroup(
-            aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        memberCardLayout.setVerticalGroup(
+            memberCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
 
-        tes.setViewportView(a);
+        panelScroll.setViewportView(memberCard);
 
         jButton1.setText("add");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -108,6 +149,30 @@ public class AdminMember extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(254, 174, 72));
+        jPanel1.setOpaque(false);
+
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("New Member");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(76, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(72, 72, 72))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
@@ -115,21 +180,27 @@ public class AdminMember extends javax.swing.JPanel {
             .addGroup(contentLayout.createSequentialGroup()
                 .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contentLayout.createSequentialGroup()
-                        .addGap(200, 200, 200)
+                        .addGap(220, 220, 220)
                         .addComponent(jButton1))
                     .addGroup(contentLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(tes, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                        .addGap(53, 53, 53)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
+                .addGap(0, 61, Short.MAX_VALUE)
+                .addComponent(panelScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(tes, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addContainerGap(103, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
+                .addComponent(panelScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -140,34 +211,36 @@ public class AdminMember extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         
-        a.removeAll();
+        memberCard.removeAll();
         total++;
         if ((182+10)*total >= 400) {
-            a.setPreferredSize(new Dimension(387, 182*total));
+            memberCard.setPreferredSize(new Dimension(387, (182+15)*total));
         }
         for (int i = 0; i < total; i++) {
             System.out.println(i);
             paAdmin.add(new panelMember_Admin());
-            paAdmin.get(i).setBounds(0, 182*i, 390,182);
+            paAdmin.get(i).setBounds(0, (182+15)*i, 390,182);
             paAdmin.get(i).setVisible(true);
-            a.add(paAdmin.get(i));
+            memberCard.add(paAdmin.get(i));
         }
-        a.revalidate();
-        a.repaint();
+        memberCard.revalidate();
+        memberCard.repaint();
     }//GEN-LAST:event_jButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel a;
     private javax.swing.JPanel content;
     private javax.swing.JButton jButton1;
-    private javax.swing.JScrollPane tes;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel memberCard;
+    private javax.swing.JScrollPane panelScroll;
     // End of variables declaration//GEN-END:variables
 }

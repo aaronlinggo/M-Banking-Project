@@ -10,9 +10,14 @@ import ScrollBar.MyScrollBarUI;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Insets;
+import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JViewport;
 import javax.swing.ScrollPaneLayout;
+import javax.swing.SwingUtilities;
 import m.banking.Login.Login;
 
 /**
@@ -44,9 +49,9 @@ public class AdminDashboard extends javax.swing.JPanel {
     private void initComponents() {
 
         content = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new RoundJPanel(35);
+        Hello = new javax.swing.JLabel();
+        Welcome = new javax.swing.JLabel();
+        Logo = new RoundJPanel(35);
         jLabel14 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
@@ -71,32 +76,32 @@ public class AdminDashboard extends javax.swing.JPanel {
 
         content.setBackground(new java.awt.Color(250, 243, 243));
 
-        jLabel1.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Hello, Admin,");
+        Hello.setBackground(new java.awt.Color(51, 51, 51));
+        Hello.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        Hello.setForeground(new java.awt.Color(0, 0, 0));
+        Hello.setText("Hello, Admin,");
 
-        jLabel2.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Welcome back!");
+        Welcome.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        Welcome.setForeground(new java.awt.Color(0, 0, 0));
+        Welcome.setText("Welcome back!");
 
-        jPanel2.setBackground(new java.awt.Color(73, 79, 88));
-        jPanel2.setOpaque(false);
+        Logo.setBackground(new java.awt.Color(73, 79, 88));
+        Logo.setOpaque(false);
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/logo_bank.2.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout LogoLayout = new javax.swing.GroupLayout(Logo);
+        Logo.setLayout(LogoLayout);
+        LogoLayout.setHorizontalGroup(
+            LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LogoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel14)
                 .addContainerGap(10, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        LogoLayout.setVerticalGroup(
+            LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LogoLayout.createSequentialGroup()
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 13, Short.MAX_VALUE))
         );
@@ -135,6 +140,41 @@ public class AdminDashboard extends javax.swing.JPanel {
                 //      }
             //    });
     jScrollPane1.getHorizontalScrollBar().setUI(new MyScrollBarUI());
+
+    MouseAdapter ma = new MouseAdapter() {
+
+        private Point origin;
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            origin = new Point(e.getPoint());
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            if (origin != null) {
+                JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, jPanel6);
+                if (viewPort != null) {
+                    int deltaX = origin.x - e.getX();
+                    int deltaY = origin.y - e.getY();
+
+                    Rectangle view = viewPort.getViewRect();
+                    view.x += deltaX;
+                    view.y += deltaY;
+
+                    jPanel6.scrollRectToVisible(view);
+                }
+            }
+        }
+
+    };
+
+    jPanel6.addMouseListener(ma);
+    jPanel6.addMouseMotionListener(ma);
 
     jPanel6.setBackground(new java.awt.Color(250, 243, 243));
     jPanel6.setPreferredSize(new java.awt.Dimension(600, 241));
@@ -198,7 +238,7 @@ public class AdminDashboard extends javax.swing.JPanel {
             .addComponent(jLabel4)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jLabel6)
-            .addContainerGap(52, Short.MAX_VALUE))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
     isi2.setBackground(new java.awt.Color(73, 79, 88));
@@ -312,7 +352,7 @@ public class AdminDashboard extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
             .addComponent(jLabel12)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap(112, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -336,8 +376,8 @@ public class AdminDashboard extends javax.swing.JPanel {
         .addGroup(jPanel6Layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(isi1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(isi4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(isi4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(isi1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addContainerGap())
         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -379,11 +419,11 @@ public class AdminDashboard extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGroup(contentLayout.createSequentialGroup()
                     .addGap(43, 43, 43)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1))
+                        .addComponent(Welcome)
+                        .addComponent(Hello))
                     .addGap(0, 32, Short.MAX_VALUE))
                 .addGroup(contentLayout.createSequentialGroup()
                     .addContainerGap()
@@ -395,12 +435,12 @@ public class AdminDashboard extends javax.swing.JPanel {
         .addGroup(contentLayout.createSequentialGroup()
             .addContainerGap()
             .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(contentLayout.createSequentialGroup()
                     .addGap(17, 17, 17)
-                    .addComponent(jLabel1)
+                    .addComponent(Hello)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jLabel2)))
+                    .addComponent(Welcome)))
             .addGap(32, 32, 32)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
@@ -429,17 +469,18 @@ public class AdminDashboard extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Hello;
+    private javax.swing.JPanel Logo;
+    private javax.swing.JLabel Welcome;
     private javax.swing.JPanel content;
     private javax.swing.JPanel isi1;
     private javax.swing.JPanel isi2;
     private javax.swing.JPanel isi4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -448,7 +489,6 @@ public class AdminDashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
