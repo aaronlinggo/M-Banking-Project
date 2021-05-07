@@ -52,7 +52,7 @@
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="200" max="32767" attributes="0"/>
+                  <EmptySpace pref="60" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -90,7 +90,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Card Number"/>
+            <Property name="text" type="java.lang.String" value="Card Number xxxx-xxxx"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -98,7 +98,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nama"/>
+            <Property name="text" type="java.lang.String" value="Nama koko myKoko"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -106,7 +106,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Member"/>
+            <Property name="text" type="java.lang.String" value="Platinum"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -114,7 +114,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Saldo"/>
+            <Property name="text" type="java.lang.String" value="Saldo Rp. 999.999.999"/>
           </Properties>
         </Component>
       </SubComponents>

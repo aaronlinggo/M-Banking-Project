@@ -21,10 +21,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="content" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="content" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -61,7 +58,7 @@
                   <Component id="tes" min="-2" pref="400" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="189" max="32767" attributes="0"/>
+                  <EmptySpace pref="156" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -78,6 +75,9 @@
             <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tes.setLayout(new ScrollPaneLayout() {&#xa;      @Override&#xa;      public void layoutContainer(Container parent) {&#xa;        JScrollPane scrollPane = (JScrollPane) parent;&#xa;&#xa;        Rectangle availR = scrollPane.getBounds();&#xa;        availR.x = availR.y = 0;&#xa;&#xa;        Insets parentInsets = parent.getInsets();&#xa;        availR.x = parentInsets.left;&#xa;        availR.y = parentInsets.top;&#xa;        availR.width -= parentInsets.left + parentInsets.right;&#xa;        availR.height -= parentInsets.top + parentInsets.bottom;&#xa;&#xa;        Rectangle vsbR = new Rectangle();&#xa;        vsbR.width = 12;&#xa;        vsbR.height = availR.height;&#xa;        vsbR.x = availR.x + availR.width - vsbR.width;&#xa;        vsbR.y = availR.y;&#xa;&#xa;        if (viewport != null) {&#xa;          viewport.setBounds(availR);&#xa;        }&#xa;        if (vsb != null) {&#xa;          vsb.setVisible(true);&#xa;          vsb.setBounds(vsbR);&#xa;        }&#xa;      }&#xa;    });&#xa;    tes.getVerticalScrollBar().setUI(new MyScrollBarUI());"/>
+          </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>

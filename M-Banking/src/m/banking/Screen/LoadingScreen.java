@@ -13,6 +13,8 @@ public class LoadingScreen extends javax.swing.JFrame {
     /**
      * Creates new form LoadingScreen
      */
+    int mousepX;
+    int mousepY;
     public LoadingScreen(){
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
@@ -33,6 +35,16 @@ public class LoadingScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         jPanel1.setOpaque(false);
 
@@ -63,6 +75,20 @@ public class LoadingScreen extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+        int koordinatX = evt.getXOnScreen();
+        int koordinatY = evt.getYOnScreen();
+        
+        this.setLocation(koordinatX-mousepX, koordinatY-mousepY);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+        mousepX = evt.getX();
+        mousepY = evt.getY();
+    }//GEN-LAST:event_formMousePressed
 
     /**
      * @param args the command line arguments

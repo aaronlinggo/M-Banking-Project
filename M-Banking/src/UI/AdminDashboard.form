@@ -16,10 +16,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="content" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="content" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -160,8 +157,12 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="verticalScrollBarPolicy" type="int" value="21"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//jScrollPane1.setLayout(new ScrollPaneLayout() {&#xa;//      @Override&#xa;//      public void layoutContainer(Container parent) {&#xa;//        JScrollPane scrollPane = (JScrollPane) parent;&#xa;//&#xa;//        Rectangle availR = scrollPane.getBounds();&#xa;//        availR.x = availR.y = 0;&#xa;//&#xa;//        Insets parentInsets = parent.getInsets();&#xa;//        availR.x = parentInsets.left;&#xa;//        availR.y = parentInsets.top;&#xa;//        availR.width -= parentInsets.left + parentInsets.right;&#xa;//        availR.height -= parentInsets.top + parentInsets.bottom;&#xa;//&#xa;//        Rectangle vsbR = new Rectangle();&#xa;//        vsbR.width = 12;&#xa;//        vsbR.height = availR.height;&#xa;//        vsbR.x = availR.x + availR.width - vsbR.width;&#xa;//        vsbR.y = availR.y;&#xa;//&#xa;//        if (viewport != null) {&#xa;//          viewport.setBounds(availR);&#xa;//        }&#xa;//        if (vsb != null) {&#xa;//          vsb.setVisible(false);&#xa;//          vsb.setBounds(vsbR);&#xa;//        }&#xa;//      }&#xa;//    });&#xa;    jScrollPane1.getHorizontalScrollBar().setUI(new MyScrollBarUI());"/>
+          </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
@@ -552,15 +553,33 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="280" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="227" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel11">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Courier New" size="36" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Ranking Point"/>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

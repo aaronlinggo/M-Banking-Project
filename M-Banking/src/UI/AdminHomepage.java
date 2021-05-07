@@ -18,7 +18,8 @@ public class AdminHomepage extends javax.swing.JFrame {
     /**
      * Creates new form AdminHomepage
      */
-    
+    int mousepX;
+    int mousepY;
     public AdminHomepage() {
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
@@ -29,7 +30,7 @@ public class AdminHomepage extends javax.swing.JFrame {
         AdminDashboard ad = new AdminDashboard();
         ad.getAdmin(this);
         ad.setVisible(true);
-        ad.setBounds(0,0, 500, 768);
+        ad.setBounds(0,0, 500, 717);
         content.add(ad);
         content.revalidate();
         content.repaint();
@@ -57,6 +58,16 @@ public class AdminHomepage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         frame.setBackground(new java.awt.Color(0, 0, 0));
         frame.setOpaque(false);
@@ -191,41 +202,55 @@ public class AdminHomepage extends javax.swing.JFrame {
         member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_teal.png")));
         dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_white.png")));
         gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png")));
-        background.removeAll();
+        content.removeAll();
         AdminMember am = new AdminMember();
         am.setVisible(true);
-        am.setBounds(0,0, 500, 768);
-        background.add(am);
-        background.revalidate();
-        background.repaint();
+        am.setBounds(0,0, 500, 717);
+        content.add(am);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_memberMouseClicked
 
     private void dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseClicked
         member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_white.png")));
         dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_teal.png")));
         gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png")));
-        background.removeAll();
+        content.removeAll();
         AdminDashboard ad = new AdminDashboard();
         ad.getAdmin(this);
         ad.setVisible(true);
-        ad.setBounds(0,0, 500, 768);
-        background.add(ad);
-        background.revalidate();
-        background.repaint();
+        ad.setBounds(0,0, 500, 717);
+        content.add(ad);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_dashboardMouseClicked
 
     private void giftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_giftMouseClicked
         member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/member_white.png")));
         dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_white.png")));
         gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_teal.png")));
-        background.removeAll();
+        content.removeAll();
         AdminGift ag = new AdminGift();
         ag.setVisible(true);
-        ag.setBounds(0,0, 500, 768);
-        background.add(ag);
-        background.revalidate();
-        background.repaint();
+        ag.setBounds(0,0, 500, 717);
+        content.add(ag);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_giftMouseClicked
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+        int koordinatX = evt.getXOnScreen();
+        int koordinatY = evt.getYOnScreen();
+        
+        this.setLocation(koordinatX-mousepX, koordinatY-mousepY);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+        mousepX = evt.getX();
+        mousepY = evt.getY();
+    }//GEN-LAST:event_formMousePressed
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,7 @@
 package UI;
 
 import RoundedField.RoundJPanel;
+import ScrollBar.MyScrollBarUI;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -53,6 +54,36 @@ public class AdminMember extends javax.swing.JPanel {
         tes.setBorder(null);
         tes.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         tes.setRequestFocusEnabled(false);
+        tes.setLayout(new ScrollPaneLayout() {
+            @Override
+            public void layoutContainer(Container parent) {
+                JScrollPane scrollPane = (JScrollPane) parent;
+
+                Rectangle availR = scrollPane.getBounds();
+                availR.x = availR.y = 0;
+
+                Insets parentInsets = parent.getInsets();
+                availR.x = parentInsets.left;
+                availR.y = parentInsets.top;
+                availR.width -= parentInsets.left + parentInsets.right;
+                availR.height -= parentInsets.top + parentInsets.bottom;
+
+                Rectangle vsbR = new Rectangle();
+                vsbR.width = 12;
+                vsbR.height = availR.height;
+                vsbR.x = availR.x + availR.width - vsbR.width;
+                vsbR.y = availR.y;
+
+                if (viewport != null) {
+                    viewport.setBounds(availR);
+                }
+                if (vsb != null) {
+                    vsb.setVisible(true);
+                    vsb.setBounds(vsbR);
+                }
+            }
+        });
+        tes.getVerticalScrollBar().setUI(new MyScrollBarUI());
 
         a.setBackground(new java.awt.Color(55, 53, 61));
         a.setPreferredSize(new java.awt.Dimension(387, 390));
@@ -98,7 +129,7 @@ public class AdminMember extends javax.swing.JPanel {
                 .addComponent(tes, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
                 .addComponent(jButton1)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -109,9 +140,7 @@ public class AdminMember extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -121,7 +150,7 @@ public class AdminMember extends javax.swing.JPanel {
         a.removeAll();
         total++;
         if ((182+10)*total >= 400) {
-            a.setPreferredSize(new Dimension(387, (182+10)*total));
+            a.setPreferredSize(new Dimension(387, 182*total));
         }
         for (int i = 0; i < total; i++) {
             System.out.println(i);

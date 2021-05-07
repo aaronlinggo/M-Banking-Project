@@ -37,16 +37,16 @@ public class panelMember_Admin extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel1.setText("Card Number");
+        jLabel1.setText("Card Number xxxx-xxxx");
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel2.setText("Nama");
+        jLabel2.setText("Nama koko myKoko");
 
         jLabel3.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel3.setText("Member");
+        jLabel3.setText("Platinum");
 
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel4.setText("Saldo");
+        jLabel4.setText("Saldo Rp. 999.999.999");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,7 +61,7 @@ public class panelMember_Admin extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel1))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(27, 27, 27)
