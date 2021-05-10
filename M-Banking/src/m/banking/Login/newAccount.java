@@ -20,11 +20,16 @@ import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
+import javax.swing.ButtonModel;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JViewport;
 import javax.swing.SwingUtilities;
+import m.banking.Member;
 
 
 public class newAccount extends javax.swing.JFrame implements PropertyChangeListener {
@@ -35,16 +40,33 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
     int mousepX;
     int mousepY;
     Login l;
-    
-    public newAccount() {
+    ArrayList<Member> Account;
+    ArrayList<Member> requestMember;
+    CalendarFrame cf;
+    public newAccount(Login l) {
+        this.l = l;
+        System.out.println(String.valueOf(l.noRek).substring(0,4) + "-" + String.valueOf(l.noRek).substring(4,8));
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
     }
-
+    
+    public newAccount() {
+        this.l = l;
+        initComponents();
+        this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+    }
+    
     public void passLogin(Login l){
         this.l = l;
     }
     
+    public void passAccount(ArrayList<Member> Account){
+        this.Account = Account;
+    }
+    
+    public void passRequestMember(ArrayList<Member> requestMember){
+        this.requestMember = requestMember;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,9 +104,9 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         jLabel8 = new javax.swing.JLabel();
         nomorHP = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        silverBtn = new javax.swing.JRadioButton();
+        goldBtn = new javax.swing.JRadioButton();
+        platinumBtn = new javax.swing.JRadioButton();
         jLabel10 = new javax.swing.JLabel();
         saldo = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -94,7 +116,7 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         jLabel14 = new javax.swing.JLabel();
         pin = new javax.swing.JPasswordField();
         confirmPin = new javax.swing.JPasswordField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField(DateFormat.getDateInstance(DateFormat.SHORT));
+        tglLahir = new javax.swing.JFormattedTextField(DateFormat.getDateInstance(DateFormat.SHORT));
         btnPickDate = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
 
@@ -140,6 +162,11 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         Reset.setBackground(new java.awt.Color(254, 174, 72));
         Reset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Reset.setOpaque(false);
+        Reset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ResetMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -287,23 +314,23 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Jenis Kartu");
 
-        jRadioButton1.setBackground(new java.awt.Color(250, 243, 243));
-        jenisKartu.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton1.setText("Silver");
+        silverBtn.setBackground(new java.awt.Color(250, 243, 243));
+        jenisKartu.add(silverBtn);
+        silverBtn.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        silverBtn.setForeground(new java.awt.Color(0, 0, 0));
+        silverBtn.setText("Silver");
 
-        jRadioButton2.setBackground(new java.awt.Color(250, 243, 243));
-        jenisKartu.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton2.setText("Gold");
+        goldBtn.setBackground(new java.awt.Color(250, 243, 243));
+        jenisKartu.add(goldBtn);
+        goldBtn.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        goldBtn.setForeground(new java.awt.Color(0, 0, 0));
+        goldBtn.setText("Gold");
 
-        jRadioButton3.setBackground(new java.awt.Color(250, 243, 243));
-        jenisKartu.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton3.setText("Platinum");
+        platinumBtn.setBackground(new java.awt.Color(250, 243, 243));
+        jenisKartu.add(platinumBtn);
+        platinumBtn.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        platinumBtn.setForeground(new java.awt.Color(0, 0, 0));
+        platinumBtn.setText("Platinum");
 
         jLabel10.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
@@ -321,16 +348,15 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
 
         jLabel12.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("XXXX-XXXX-XXXX");
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("XXXX-XXXX");
+        jLabel12.setText(String.valueOf(l.noRek).substring(0,4) + "-" + String.valueOf(l.noRek).substring(4,8));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
+            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,9 +380,10 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
 
         confirmPin.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
 
-        jFormattedTextField1.setValue(new Date());
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d MMMM yyyy"))));
-        jFormattedTextField1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        tglLahir.setValue(new Date(l.d1.getD1().getYear(), l.d1.getD1().getMonth(), l.d1.getD1().getDate()));
+        System.out.println(l.d1.getD1().getYear() + " - " + l.d1.getD1().getMonth() + " - " + l.d1.getD1().getDate());
+        tglLahir.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d MMMM yyyy"))));
+        tglLahir.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
 
         btnPickDate.setBackground(new java.awt.Color(153, 153, 153));
         btnPickDate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -395,7 +422,7 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(formLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addComponent(jFormattedTextField1)
+                .addComponent(tglLahir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnPickDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
@@ -426,15 +453,15 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                             .addComponent(address)
                             .addComponent(nomorHP)
                             .addGroup(formLayout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(silverBtn)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2)
+                                .addComponent(goldBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jRadioButton3))
+                                .addComponent(platinumBtn))
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formLayout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formLayout.createSequentialGroup()
                         .addComponent(pin, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -458,7 +485,7 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jFormattedTextField1)
+                    .addComponent(tglLahir)
                     .addComponent(btnPickDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
@@ -478,9 +505,9 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
+                    .addComponent(silverBtn)
+                    .addComponent(goldBtn)
+                    .addComponent(platinumBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -640,17 +667,37 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
         // TODO add your handling code here:
-        CalendarFrame cf = new CalendarFrame();
-        cf.addPropertyChangeListener(this);
-        cf.setLocation(jFormattedTextField1.getLocationOnScreen().x, 
-                (jFormattedTextField1.getLocationOnScreen().y + jFormattedTextField1.getHeight()));
-        Date selectedDate = (Date) jFormattedTextField1.getValue();
-        cf.resetSelection(selectedDate);
-        cf.setVisible(true);
+        if (!cf.isVisible()){
+            cf = new CalendarFrame();
+            cf.addPropertyChangeListener(this);
+            cf.setLocation(tglLahir.getLocationOnScreen().x, 
+                    (tglLahir.getLocationOnScreen().y + tglLahir.getHeight()));
+            Date selectedDate = (Date) tglLahir.getValue();
+            cf.resetSelection(selectedDate);
+            cf.setVisible(true);
+        }
     }//GEN-LAST:event_jLabel15MouseClicked
 
-    
-    
+    private void ResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResetMouseClicked
+        // TODO add your handling code here:
+        this.firstName.setText("");
+        this.lastName.setText("");
+        this.tglLahir = new javax.swing.JFormattedTextField(DateFormat.getDateInstance(DateFormat.SHORT));
+        this.tglLahir.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d MMMM yyyy"))));
+        this.maleBtn.setSelected(false);
+        this.femaleBtn.setSelected(false);
+        this.address.setText("");
+        this.nomorHP.setText("");
+        this.silverBtn.setSelected(false);
+        this.goldBtn.setSelected(false);
+        this.platinumBtn.setSelected(false);
+        this.saldo.setText("");
+        this.pin.setText("");
+        this.confirmPin.setText("");
+        this.GenderGroup.clearSelection();
+        this.jenisKartu.clearSelection();
+    }//GEN-LAST:event_ResetMouseClicked
+ 
     /**
      * @param args the command line arguments
      */
@@ -699,7 +746,7 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
     private javax.swing.JRadioButton femaleBtn;
     private javax.swing.JTextField firstName;
     private javax.swing.JPanel form;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JRadioButton goldBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -719,9 +766,6 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.ButtonGroup jenisKartu;
     private javax.swing.JTextField lastName;
@@ -729,8 +773,11 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
     private javax.swing.JTextField nomorHP;
     private javax.swing.JLabel notch;
     private javax.swing.JPasswordField pin;
+    private javax.swing.JRadioButton platinumBtn;
     private javax.swing.JTextField saldo;
     private javax.swing.JScrollPane scroll;
+    private javax.swing.JRadioButton silverBtn;
+    private javax.swing.JFormattedTextField tglLahir;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -738,7 +785,7 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         if (event.getPropertyName().equals("selectedDate")){
             java.util.Calendar cal = (java.util.Calendar) event.getNewValue();
             Date selDate = cal.getTime();
-            jFormattedTextField1.setValue(selDate);
+            tglLahir.setValue(selDate);
         }
     }
 }

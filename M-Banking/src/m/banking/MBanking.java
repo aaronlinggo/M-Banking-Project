@@ -27,8 +27,9 @@ public class MBanking {
                 Login L = new Login();
 //                Image icon = Toolkit.getDefaultToolkit().getImage("src/m/banking/Asset/favicon.png");
 //                L.setIconImage(icon);
-                L.passRequestMember(requestMember);
-                L.passAccount(Account);
+                //L.passRequestMember(requestMember);
+                //L.passAccount(Account);
+                L.passData(this);
                 L.setVisible(true);
                 break;
             }

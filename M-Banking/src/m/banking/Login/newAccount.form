@@ -243,6 +243,9 @@
                     </Property>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ResetMouseClicked"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundJPanel(30)"/>
                   </AuxValues>
@@ -352,7 +355,7 @@
                               <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextField1" max="32767" attributes="0"/>
+                                  <Component id="tglLahir" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="btnPickDate" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
@@ -387,11 +390,11 @@
                                               <Component id="address" alignment="0" max="32767" attributes="0"/>
                                               <Component id="nomorHP" alignment="0" max="32767" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="silverBtn" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="goldBtn" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="platinumBtn" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="jPanel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
@@ -400,7 +403,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="46" max="32767" attributes="0"/>
+                                  <EmptySpace pref="49" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="pin" min="-2" pref="345" max="-2" attributes="0"/>
@@ -429,7 +432,7 @@
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jFormattedTextField1" max="32767" attributes="0"/>
+                                      <Component id="tglLahir" max="32767" attributes="0"/>
                                       <Component id="btnPickDate" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -451,9 +454,9 @@
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jRadioButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="silverBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="goldBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="platinumBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
@@ -629,7 +632,7 @@
                             <Property name="text" type="java.lang.String" value="Jenis Kartu"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+                        <Component class="javax.swing.JRadioButton" name="silverBtn">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="f3" green="f3" red="fa" type="rgb"/>
@@ -646,7 +649,7 @@
                             <Property name="text" type="java.lang.String" value="Silver"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+                        <Component class="javax.swing.JRadioButton" name="goldBtn">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="f3" green="f3" red="fa" type="rgb"/>
@@ -663,7 +666,7 @@
                             <Property name="text" type="java.lang.String" value="Gold"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButton3">
+                        <Component class="javax.swing.JRadioButton" name="platinumBtn">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="f3" green="f3" red="fa" type="rgb"/>
@@ -721,11 +724,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace pref="93" max="32767" attributes="0"/>
-                                      <Component id="jLabel12" min="-2" pref="163" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel12" alignment="1" pref="343" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -747,8 +746,12 @@
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="0" green="0" red="0" type="rgb"/>
                                 </Property>
-                                <Property name="text" type="java.lang.String" value="XXXX-XXXX-XXXX"/>
+                                <Property name="horizontalAlignment" type="int" value="0"/>
+                                <Property name="text" type="java.lang.String" value="XXXX-XXXX"/>
                               </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel12.setText(String.valueOf(l.noRek).substring(0,4) + &quot;-&quot; + String.valueOf(l.noRek).substring(4,8));"/>
+                              </AuxValues>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -790,7 +793,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+                        <Component class="javax.swing.JFormattedTextField" name="tglLahir">
                           <Properties>
                             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                               <Format format="d MMMM yyyy" subtype="-1" type="1"/>
@@ -801,7 +804,7 @@
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(DateFormat.getDateInstance(DateFormat.SHORT))"/>
-                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jFormattedTextField1.setValue(new Date());"/>
+                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tglLahir.setValue(new Date(l.d1.getD1().getYear(), l.d1.getD1().getMonth(), l.d1.getD1().getDate()));&#xa;System.out.println(l.d1.getD1().getYear() + &quot; - &quot; + l.d1.getD1().getMonth() + &quot; - &quot; + l.d1.getD1().getDate());"/>
                           </AuxValues>
                         </Component>
                         <Container class="javax.swing.JPanel" name="btnPickDate">

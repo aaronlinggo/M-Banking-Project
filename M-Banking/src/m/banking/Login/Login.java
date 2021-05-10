@@ -11,8 +11,19 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import m.banking.DateBankRut;
+import m.banking.MBanking;
+import m.banking.Member;
 
 
 public class Login extends javax.swing.JFrame {
@@ -22,11 +33,69 @@ public class Login extends javax.swing.JFrame {
      */
     int mousepX;
     int mousepY;
+    public ArrayList<Member> requestMember = new ArrayList<Member>();
+    public ArrayList<Member> Account = new ArrayList<Member>();
+    Date d2 = new Date(2021, 1, 1);
+    public DateBankRut d1 = null;
+    int noRek;
+    MBanking mb;
     public Login() {
+        String filename = "date.ser";
+        
+//        try
+//        {
+//            FileOutputStream file = new FileOutputStream(filename);
+//            ObjectOutputStream out = new ObjectOutputStream(file);
+//
+//            out.writeObject(d1);
+//
+//            out.close();
+//            file.close();
+//
+//            System.out.println("Object has been serialized");
+//
+//        }
+//
+//        catch(IOException ex)
+//        {
+//            System.out.println("IOException is caught");
+//        }
+
+        try
+        {
+            FileInputStream file = new FileInputStream(filename);
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            d1 = (DateBankRut) in.readObject();
+
+            in.close();
+            file.close();
+            System.out.println(d1.getD1().getDate() + " - " + d1.getD1().getMonth() + " - " + d1.getD1().getYear());
+        }
+        catch(IOException ex)
+        {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex)
+        {
+            System.out.println("ClassNotFoundException is caught");
+        }
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
     }
 
+    public void passData(MBanking mb){
+        this.mb = mb;
+    }
+    
+//    public void passAccount(ArrayList<Member> Account){
+//        this.Account = Account;
+//    }
+//    
+//    public void passRequestMember(ArrayList<Member> requestMember){
+//        this.requestMember = requestMember;
+//    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -307,9 +376,40 @@ public class Login extends javax.swing.JFrame {
     private void rekBaruBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rekBaruBtnMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        newAccount nA = new newAccount();
+        noRek = new Random().nextInt(99999999);
+        do{
+            if (noRek >= 10000000){
+                boolean cek = false;
+                for (int i = 0; i < mb.requestMember.size(); i++){
+                    if (noRek == mb.requestMember.get(i).getNoRekening()){
+                        cek = true;
+                        break;
+                    }
+                }
+                if (!cek){
+                    for (int i = 0; i < mb.Account.size(); i++){
+                        if (noRek == mb.Account.get(i).getNoRekening()){
+                            cek = true;
+                            break;
+                        }
+                    }
+                }
+                if (!cek){
+                    break;
+                }
+                else {
+                    noRek = new Random().nextInt(99999999);
+                }
+            }
+            else {
+                noRek = new Random().nextInt(99999999);
+            }
+        }
+        while(true);
+        newAccount nA = new newAccount(this);
         nA.setVisible(true);
-        nA.passLogin(this);
+        
+        //nA.passLogin(this);
     }//GEN-LAST:event_rekBaruBtnMouseClicked
 
     /**
