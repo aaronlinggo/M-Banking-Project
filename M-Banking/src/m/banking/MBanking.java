@@ -9,14 +9,11 @@ import m.banking.Login.Login;
 import m.banking.Screen.LoadingScreen;
 
 public class MBanking {
-
-    public static int WIDTH = 650;
-    public static int HEIGHT = 900;
     public ArrayList<Member> requestMember = new ArrayList<Member>();
     public ArrayList<Member> Account = new ArrayList<Member>();
+    int tanggal,bulan,tahun;
     
-    public static void main(String[] args) throws InterruptedException {
-        // TODO code application logic here
+    public MBanking(){
         LoadingScreen LS = new LoadingScreen();
         LS.setVisible(true);
         long displayMinutes=0;
@@ -29,11 +26,18 @@ public class MBanking {
                 LS.setVisible(false);
                 Login L = new Login();
 //                Image icon = Toolkit.getDefaultToolkit().getImage("src/m/banking/Asset/favicon.png");
-//                L.setIconImage(icon);  
+//                L.setIconImage(icon);
+                L.passRequestMember(requestMember);
+                L.passAccount(Account);
                 L.setVisible(true);
                 break;
             }
         }
+    }
+    
+    public static void main(String[] args) throws InterruptedException {
+        // TODO code application logic here
+        new MBanking();
     }
     
 }

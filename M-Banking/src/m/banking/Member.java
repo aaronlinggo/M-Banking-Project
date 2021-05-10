@@ -20,9 +20,9 @@ public abstract class Member {
     protected double euro;
     protected double usd;
     protected ArrayList<String> inbox;
-            
+    private String tanggalLahir;
 
-    public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String ibuKandung, String alamat, String pin, int point) {
+    public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String ibuKandung, String alamat, String pin, int point, String tanggalLahir) {
         this.limitTransfer = limitTransfer;
         this.aturLimit = limitTransfer;
         this.currentUsage = currentUsage;
@@ -38,6 +38,7 @@ public abstract class Member {
         this.euro = 0;
         this.usd = 0;
         this.inbox = new ArrayList<>();
+        this.tanggalLahir = tanggalLahir;
     }
 
     public ArrayList<String> getInbox() {
