@@ -61,8 +61,7 @@ public class Login extends javax.swing.JFrame {
 //            System.out.println("IOException is caught");
 //        }
 
-        try
-        {
+        try {
             FileInputStream file = new FileInputStream(filename);
             ObjectInputStream in = new ObjectInputStream(file);
 
@@ -72,14 +71,29 @@ public class Login extends javax.swing.JFrame {
             file.close();
             System.out.println(d1.getD1().getDate() + " - " + d1.getD1().getMonth() + " - " + d1.getD1().getYear());
         }
-        catch(IOException ex)
-        {
+        catch(IOException ex) {
             System.out.println("IOException is caught");
         }
-        catch(ClassNotFoundException ex)
-        {
+        catch(ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException is caught");
         }
+        
+        try {
+            FileInputStream file = new FileInputStream("requestMember.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            requestMember = (ArrayList<Member>) in.readObject();
+
+            in.close();
+            file.close();
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         //System.out.println(requestMember.size());
