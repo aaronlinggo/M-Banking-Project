@@ -30,7 +30,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JViewport;
 import javax.swing.SwingUtilities;
+import m.banking.Gold;
 import m.banking.Member;
+import m.banking.Platinum;
+import m.banking.Silver;
 
 
 public class newAccount extends javax.swing.JFrame implements PropertyChangeListener {
@@ -190,6 +193,11 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         Create.setBackground(new java.awt.Color(84, 190, 229));
         Create.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Create.setOpaque(false);
+        Create.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CreateMouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -683,27 +691,150 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
 
     private void ResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResetMouseClicked
         // TODO add your handling code here:
-        this.firstName.setText("");
-        this.lastName.setText("");
-        this.tglLahir = new javax.swing.JFormattedTextField(DateFormat.getDateInstance(DateFormat.SHORT));
-        this.tglLahir.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d MMMM yyyy"))));
-        this.maleBtn.setSelected(false);
-        this.femaleBtn.setSelected(false);
-        this.address.setText("");
-        this.nomorHP.setText("");
-        this.silverBtn.setSelected(false);
-        this.goldBtn.setSelected(false);
-        this.platinumBtn.setSelected(false);
-        this.saldo.setText("");
-        this.pin.setText("");
-        this.confirmPin.setText("");
-        this.GenderGroup.clearSelection();
-        this.jenisKartu.clearSelection();
-        int year = l.d1.getD1().getYear()-1900;
-        int month  = l.d1.getD1().getMonth()-1;
-        int date = l.d1.getD1().getDate();
-        this.tglLahir.setValue(new Date(year, month, date));
+        initComponents();
+//        this.firstName.setText("");
+//        this.lastName.setText("");
+//        this.tglLahir = new javax.swing.JFormattedTextField(DateFormat.getDateInstance(DateFormat.SHORT));
+//        this.tglLahir.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d MMMM yyyy"))));
+//        this.maleBtn.setSelected(false);
+//        this.femaleBtn.setSelected(false);
+//        this.address.setText("");
+//        this.nomorHP.setText("");
+//        this.silverBtn.setSelected(false);
+//        this.goldBtn.setSelected(false);
+//        this.platinumBtn.setSelected(false);
+//        this.saldo.setText("");
+//        this.pin.setText("");
+//        this.confirmPin.setText("");
+//        this.GenderGroup.clearSelection();
+//        this.jenisKartu.clearSelection();
+//        int year = l.d1.getD1().getYear()-1900;
+//        int month  = l.d1.getD1().getMonth()-1;
+//        int date = l.d1.getD1().getDate();
+//        this.tglLahir.setValue(new Date(year, month, date));
     }//GEN-LAST:event_ResetMouseClicked
+
+    public boolean isNumeric(String str)
+    {
+        for (char c : str.toCharArray())
+        {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    private void CreateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateMouseClicked
+        // TODO add your handling code here:
+        if (!firstName.getText().equals("")){
+            if (!lastName.getText().equals("")){
+                if ((maleBtn.isSelected() && !femaleBtn.isSelected()) || (!maleBtn.isSelected() && femaleBtn.isSelected())){
+                    if (!address.getText().equals("")){
+                        if (!nomorHP.equals("")){
+                            if ((silverBtn.isSelected() && !goldBtn.isSelected() && !platinumBtn.isSelected()) ||
+                                    (!silverBtn.isSelected() && goldBtn.isSelected() && !platinumBtn.isSelected()) ||
+                                    (!silverBtn.isSelected() && !goldBtn.isSelected() && platinumBtn.isSelected())){
+                                if (!saldo.getText().equals("")){
+                                    String tempPin = new String(pin.getPassword());
+                                    if (!tempPin.equals("")){
+                                        String tempConfirmPin = new String(confirmPin.getPassword());
+                                        if (!tempConfirmPin.equals("")){
+                                            if (isNumeric(nomorHP.getText())){
+                                                if (isNumeric(saldo.getText())){
+                                                    int jumlahSaldo = Integer.parseInt(saldo.getText());
+                                                    if (jumlahSaldo >= 50000){
+                                                        if (isNumeric(tempPin)){
+                                                            if (isNumeric(tempConfirmPin)){
+                                                                if (tempPin.equals(tempConfirmPin)){
+                                                                    if (silverBtn.isSelected()){
+                                                                        if (maleBtn.isSelected()){
+                                                                            l.requestMember.add(new Silver(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Male"));
+                                                                        }
+                                                                        else if (femaleBtn.isSelected()){
+                                                                            l.requestMember.add(new Silver(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Female"));
+                                                                        }
+                                                                    }
+                                                                    else if (goldBtn.isSelected()){
+                                                                        if (maleBtn.isSelected()){
+                                                                            l.requestMember.add(new Gold(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Male"));
+                                                                        }
+                                                                        else if (femaleBtn.isSelected()){
+                                                                            l.requestMember.add(new Gold(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Female"));
+                                                                        }
+                                                                    }
+                                                                    else if (platinumBtn.isSelected()){
+                                                                        if (maleBtn.isSelected()){
+                                                                            l.requestMember.add(new Platinum(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Male"));
+                                                                        }
+                                                                        else if (femaleBtn.isSelected()){
+                                                                            l.requestMember.add(new Platinum(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Female"));
+                                                                        }
+                                                                    }
+                                                                    JOptionPane.showMessageDialog(this, "Berhasil membuat member.. tunggu konfirmasi dari admin");
+                                                                    this.setVisible(false);
+                                                                    l.setVisible(true);
+                                                                }
+                                                                else {
+                                                                    JOptionPane.showMessageDialog(this, "Confirm Pin tidak sesuai");
+                                                                }
+                                                            }
+                                                            else {
+                                                                JOptionPane.showMessageDialog(this, "Confirm Pin Harus digit");
+                                                            }
+                                                        }
+                                                        else {
+                                                            JOptionPane.showMessageDialog(this, "Pin Harus digit");
+                                                        }
+                                                    }
+                                                    else {
+                                                        JOptionPane.showMessageDialog(this, "Saldo minimum 50000");
+                                                    }
+                                                }
+                                                else {
+                                                    JOptionPane.showMessageDialog(this, "Saldo Harus digit");
+                                                }
+                                            }
+                                            else {
+                                                JOptionPane.showMessageDialog(this, "Nomor HP Harus digit");
+                                            }
+                                        }
+                                        else {
+                                            JOptionPane.showMessageDialog(this, "Confirm Pin harus diisi");
+                                        }
+                                    }
+                                    else {
+                                        JOptionPane.showMessageDialog(this, "Pin harus diisi");
+                                    }
+                                }
+                                else {
+                                    JOptionPane.showMessageDialog(this, "Saldo harus diisi");
+                                }
+                            }
+                            else {
+                                JOptionPane.showMessageDialog(this, "Jenis Kartu harus diisi");
+                            }
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(this, "Nomor HP harus diisi");
+                        }
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(this, "Address harus diisi");
+                    }
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Gender harus diisi");
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Last Name harus diisi");
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "First Name harus diisi");
+        }
+    }//GEN-LAST:event_CreateMouseClicked
  
     /**
      * @param args the command line arguments

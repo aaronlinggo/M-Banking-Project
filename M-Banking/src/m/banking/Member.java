@@ -14,16 +14,17 @@ public abstract class Member {
     protected String nama;
     protected double rupiah;
     protected int noRekening;
-    protected String ibuKandung;
+    protected String nomorHP;
     protected String alamat;
     protected String pin;
     protected int point;
     protected double euro;
     protected double usd;
     protected ArrayList<String> inbox;
-    private Date tanggalLahir;
+    protected Date tanggalLahir;
+    protected String gender;
 
-    public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String ibuKandung, String alamat, String pin, int point, Date tanggalLahir) {
+    public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String nomorHP, String alamat, String pin, int point, Date tanggalLahir, String gender) {
         this.limitTransfer = limitTransfer;
         this.aturLimit = limitTransfer;
         this.currentUsage = currentUsage;
@@ -32,7 +33,7 @@ public abstract class Member {
         this.nama = nama;
         this.rupiah = rupiah;
         this.noRekening = noRekening;
-        this.ibuKandung = ibuKandung;
+        this.nomorHP = nomorHP;
         this.alamat = alamat;
         this.pin = pin;
         this.point = point;
@@ -40,6 +41,7 @@ public abstract class Member {
         this.usd = 0;
         this.inbox = new ArrayList<>();
         this.tanggalLahir = tanggalLahir;
+        this.gender = gender;
     }
 
     public ArrayList<String> getInbox() {
@@ -133,13 +135,23 @@ public abstract class Member {
         this.noRekening = noRekening;
     }
 
-    public String getIbuKandung() {
-        return ibuKandung;
+    public String getNomorHP() {
+        return nomorHP;
     }
 
-    public void setIbuKandung(String ibuKandung) {
-        this.ibuKandung = ibuKandung;
+    public void setNomorHP(String nomorHP) {
+        this.nomorHP = nomorHP;
     }
+
+    public Date getTanggalLahir() {
+        return tanggalLahir;
+    }
+
+    public void setTanggalLahir(Date tanggalLahir) {
+        this.tanggalLahir = tanggalLahir;
+    }
+
+    
 
     public String getAlamat() {
         return alamat;

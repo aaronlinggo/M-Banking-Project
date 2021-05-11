@@ -82,6 +82,7 @@ public class Login extends javax.swing.JFrame {
         }
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        //System.out.println(requestMember.size());
     }
 
     public void passData(MBanking mb){
