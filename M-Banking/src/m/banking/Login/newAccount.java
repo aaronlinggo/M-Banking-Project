@@ -19,6 +19,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -691,27 +694,26 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
 
     private void ResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResetMouseClicked
         // TODO add your handling code here:
-        initComponents();
-//        this.firstName.setText("");
-//        this.lastName.setText("");
-//        this.tglLahir = new javax.swing.JFormattedTextField(DateFormat.getDateInstance(DateFormat.SHORT));
-//        this.tglLahir.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d MMMM yyyy"))));
-//        this.maleBtn.setSelected(false);
-//        this.femaleBtn.setSelected(false);
-//        this.address.setText("");
-//        this.nomorHP.setText("");
-//        this.silverBtn.setSelected(false);
-//        this.goldBtn.setSelected(false);
-//        this.platinumBtn.setSelected(false);
-//        this.saldo.setText("");
-//        this.pin.setText("");
-//        this.confirmPin.setText("");
-//        this.GenderGroup.clearSelection();
-//        this.jenisKartu.clearSelection();
-//        int year = l.d1.getD1().getYear()-1900;
-//        int month  = l.d1.getD1().getMonth()-1;
-//        int date = l.d1.getD1().getDate();
-//        this.tglLahir.setValue(new Date(year, month, date));
+        this.firstName.setText("");
+        this.lastName.setText("");
+        this.tglLahir = new javax.swing.JFormattedTextField(DateFormat.getDateInstance(DateFormat.SHORT));
+        this.tglLahir.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d MMMM yyyy"))));
+        this.maleBtn.setSelected(false);
+        this.femaleBtn.setSelected(false);
+        this.address.setText("");
+        this.nomorHP.setText("");
+        this.silverBtn.setSelected(false);
+        this.goldBtn.setSelected(false);
+        this.platinumBtn.setSelected(false);
+        this.saldo.setText("");
+        this.pin.setText("");
+        this.confirmPin.setText("");
+        this.GenderGroup.clearSelection();
+        this.jenisKartu.clearSelection();
+        int year = l.d1.getD1().getYear()-1900;
+        int month  = l.d1.getD1().getMonth()-1;
+        int date = l.d1.getD1().getDate();
+        this.tglLahir.setValue(new Date(year, month, date));
     }//GEN-LAST:event_ResetMouseClicked
 
     public boolean isNumeric(String str)
@@ -770,6 +772,22 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                                                                         else if (femaleBtn.isSelected()){
                                                                             l.requestMember.add(new Platinum(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Female"));
                                                                         }
+                                                                    }
+                                                                    String filename = "requestMember.ser";
+                                                                    try {
+                                                                        FileOutputStream file = new FileOutputStream(filename);
+                                                                        ObjectOutputStream out = new ObjectOutputStream(file);
+
+                                                                        out.writeObject(l.requestMember);
+
+                                                                        out.close();
+                                                                        file.close();
+
+                                                                        System.out.println("Object has been serialized");
+
+                                                                    }
+                                                                    catch(IOException ex) {
+                                                                        System.out.println("IOException is caught");
                                                                     }
                                                                     JOptionPane.showMessageDialog(this, "Berhasil membuat member.. tunggu konfirmasi dari admin");
                                                                     this.setVisible(false);
