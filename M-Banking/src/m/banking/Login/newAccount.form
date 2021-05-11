@@ -796,7 +796,7 @@
                         <Component class="javax.swing.JFormattedTextField" name="tglLahir">
                           <Properties>
                             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                              <Format format="d MMMM yyyy" subtype="-1" type="1"/>
+                              <Format format="d/M/yyyy" subtype="-1" type="1"/>
                             </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Courier New" size="18" style="0"/>
@@ -804,7 +804,7 @@
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(DateFormat.getDateInstance(DateFormat.SHORT))"/>
-                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tglLahir.setValue(new Date(l.d1.getD1().getYear(), l.d1.getD1().getMonth(), l.d1.getD1().getDate()));&#xa;System.out.println(l.d1.getD1().getYear() + &quot; - &quot; + l.d1.getD1().getMonth() + &quot; - &quot; + l.d1.getD1().getDate());"/>
+                            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="int year = l.d1.getD1().getYear()-1900;&#xa;int month  = l.d1.getD1().getMonth()-1;&#xa;int date = l.d1.getD1().getDate();&#xa;tglLahir.setValue(new Date(year, month, date));&#xa;System.out.println(tglLahir.getValue());&#xa;System.out.println(l.d1.getD1().getYear() + &quot; - &quot; + l.d1.getD1().getMonth() + &quot; - &quot; + l.d1.getD1().getDate());"/>
                           </AuxValues>
                         </Component>
                         <Container class="javax.swing.JPanel" name="btnPickDate">

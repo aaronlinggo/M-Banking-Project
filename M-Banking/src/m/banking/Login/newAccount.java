@@ -20,6 +20,7 @@ import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
@@ -380,10 +381,14 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
 
         confirmPin.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
 
-        tglLahir.setValue(new Date(l.d1.getD1().getYear(), l.d1.getD1().getMonth(), l.d1.getD1().getDate()));
-        System.out.println(l.d1.getD1().getYear() + " - " + l.d1.getD1().getMonth() + " - " + l.d1.getD1().getDate());
-        tglLahir.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d MMMM yyyy"))));
+        tglLahir.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d/M/yyyy"))));
         tglLahir.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        int year = l.d1.getD1().getYear()-1900;
+        int month  = l.d1.getD1().getMonth()-1;
+        int date = l.d1.getD1().getDate();
+        tglLahir.setValue(new Date(year, month, date));
+        System.out.println(tglLahir.getValue());
+        System.out.println(l.d1.getD1().getYear() + " - " + l.d1.getD1().getMonth() + " - " + l.d1.getD1().getDate());
 
         btnPickDate.setBackground(new java.awt.Color(153, 153, 153));
         btnPickDate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -667,15 +672,13 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
         // TODO add your handling code here:
-        if (!cf.isVisible()){
-            cf = new CalendarFrame();
-            cf.addPropertyChangeListener(this);
-            cf.setLocation(tglLahir.getLocationOnScreen().x, 
-                    (tglLahir.getLocationOnScreen().y + tglLahir.getHeight()));
-            Date selectedDate = (Date) tglLahir.getValue();
-            cf.resetSelection(selectedDate);
-            cf.setVisible(true);
-        }
+        cf = new CalendarFrame();
+        cf.addPropertyChangeListener(this);
+        cf.setLocation(tglLahir.getLocationOnScreen().x, 
+                (tglLahir.getLocationOnScreen().y + tglLahir.getHeight()));
+        Date selectedDate = (Date) tglLahir.getValue();
+        cf.resetSelection(selectedDate);
+        cf.setVisible(true);
     }//GEN-LAST:event_jLabel15MouseClicked
 
     private void ResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResetMouseClicked
@@ -696,6 +699,10 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         this.confirmPin.setText("");
         this.GenderGroup.clearSelection();
         this.jenisKartu.clearSelection();
+        int year = l.d1.getD1().getYear()-1900;
+        int month  = l.d1.getD1().getMonth()-1;
+        int date = l.d1.getD1().getDate();
+        this.tglLahir.setValue(new Date(year, month, date));
     }//GEN-LAST:event_ResetMouseClicked
  
     /**
