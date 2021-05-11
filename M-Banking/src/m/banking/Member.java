@@ -2,6 +2,7 @@
 package m.banking;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public abstract class Member {
@@ -20,9 +21,9 @@ public abstract class Member {
     protected double euro;
     protected double usd;
     protected ArrayList<String> inbox;
-    private String tanggalLahir;
+    private Date tanggalLahir;
 
-    public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String ibuKandung, String alamat, String pin, int point, String tanggalLahir) {
+    public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String ibuKandung, String alamat, String pin, int point, Date tanggalLahir) {
         this.limitTransfer = limitTransfer;
         this.aturLimit = limitTransfer;
         this.currentUsage = currentUsage;
