@@ -1,11 +1,12 @@
 
 package m.banking;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 
-public abstract class Member {
+public abstract class Member implements Serializable{
     protected int limitTransfer;
     protected int aturLimit;
     protected int currentUsage;
