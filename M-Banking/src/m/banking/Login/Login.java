@@ -35,7 +35,7 @@ public class Login extends javax.swing.JFrame {
     int mousepY;
     public ArrayList<Member> requestMember = new ArrayList<Member>();
     public ArrayList<Member> Account = new ArrayList<Member>();
-    Date d2 = new Date(2021, 1, 1);
+    //Date d2 = new Date(2021, 1, 1);
     public DateBankRut d1 = null;
     int noRek;
     MBanking mb;
@@ -356,6 +356,7 @@ public class Login extends javax.swing.JFrame {
         if (norek.getText().equals("admin") && new String(pin.getPassword()).equals("admin")) {
             this.setVisible(false);
             AdminHomepage Admin = new AdminHomepage();
+            Admin.passData(this);
             Admin.setVisible(true);
             JOptionPane.showMessageDialog(this, "Success Login");
         }

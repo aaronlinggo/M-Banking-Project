@@ -30,6 +30,7 @@ public class AdminDashboard extends javax.swing.JPanel {
      * Creates new form AdminDashboard
      */
     AdminHomepage ah;
+    Login l;
     public AdminDashboard() {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
@@ -37,6 +38,10 @@ public class AdminDashboard extends javax.swing.JPanel {
     
     public void getAdmin(AdminHomepage ah){
         this.ah = ah;
+    }
+    
+    public void passData(Login l){
+        this.l = l;
     }
     
     /**
@@ -182,6 +187,11 @@ public class AdminDashboard extends javax.swing.JPanel {
     isi1.setBackground(new java.awt.Color(254, 174, 72));
     isi1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     isi1.setOpaque(false);
+    isi1.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            isi1MouseClicked(evt);
+        }
+    });
 
     jPanel4.setBackground(new java.awt.Color(255, 255, 255));
     jPanel4.setOpaque(false);
@@ -211,7 +221,7 @@ public class AdminDashboard extends javax.swing.JPanel {
     jLabel5.setText("Change");
 
     jLabel6.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-    jLabel6.setForeground(new java.awt.Color(153, 153, 153));
+    jLabel6.setForeground(new java.awt.Color(255, 255, 255));
     jLabel6.setText("Date, Month, Year");
 
     javax.swing.GroupLayout isi1Layout = new javax.swing.GroupLayout(isi1);
@@ -272,7 +282,7 @@ public class AdminDashboard extends javax.swing.JPanel {
     jLabel9.setText("Log");
 
     jLabel10.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-    jLabel10.setForeground(new java.awt.Color(153, 153, 153));
+    jLabel10.setForeground(new java.awt.Color(255, 255, 255));
     jLabel10.setText("Log All Member");
 
     javax.swing.GroupLayout isi2Layout = new javax.swing.GroupLayout(isi2);
@@ -466,6 +476,18 @@ public class AdminDashboard extends javax.swing.JPanel {
         l.setVisible(true);
         ah.setVisible(false);
     }//GEN-LAST:event_isi4MouseClicked
+
+    private void isi1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_isi1MouseClicked
+        // TODO add your handling code here:
+        ah.getContent().removeAll();
+        AdminChangeDate acd = new AdminChangeDate();
+        acd.passDashboad(this);
+        acd.setVisible(true);
+        acd.setBounds(0,0, 512, 825);
+        ah.getContent().add(acd);
+        ah.getContent().revalidate();
+        ah.getContent().repaint();
+    }//GEN-LAST:event_isi1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -8,6 +8,8 @@ package UI;
 import Image.ImagePanel;
 import RoundedField.RoundJPanel;
 import java.awt.Color;
+import javax.swing.JPanel;
+import m.banking.Login.Login;
 
 /**
  *
@@ -20,6 +22,7 @@ public class AdminHomepage extends javax.swing.JFrame {
      */
     int mousepX;
     int mousepY;
+    Login l;
     public AdminHomepage() {
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
@@ -36,6 +39,9 @@ public class AdminHomepage extends javax.swing.JFrame {
         content.repaint();
     }
     
+    public void passData(Login l){
+        this.l = l;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -218,6 +224,7 @@ public class AdminHomepage extends javax.swing.JFrame {
         content.removeAll();
         AdminDashboard ad = new AdminDashboard();
         ad.getAdmin(this);
+        ad.passData(l);
         ad.setVisible(true);
         ad.setBounds(0,0, 500, 717);
         content.add(ad);
@@ -297,4 +304,13 @@ public class AdminHomepage extends javax.swing.JFrame {
     private javax.swing.JLabel member;
     private javax.swing.JLabel notch;
     // End of variables declaration//GEN-END:variables
+
+    public JPanel getContent() {
+        return content;
+    }
+
+    public void setContent(JPanel content) {
+        this.content = content;
+    }
+    
 }
