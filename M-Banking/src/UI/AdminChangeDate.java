@@ -193,6 +193,11 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
         cancel.setBackground(new java.awt.Color(255, 51, 102));
         cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cancel.setOpaque(false);
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -398,6 +403,16 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
         ad.ah.getContent().revalidate();
         ad.ah.getContent().repaint();
     }//GEN-LAST:event_backMouseClicked
+
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+        // TODO add your handling code here:
+        int year = d1.getD1().getYear()-1900;
+        int month  = d1.getD1().getMonth()-1;
+        int date = d1.getD1().getDate();
+        newDate.setValue(new Date(year, month, date));
+        JOptionPane.showMessageDialog(this, "Canceling Change Date");
+
+    }//GEN-LAST:event_cancelMouseClicked
     
     @Override
     public void propertyChange(PropertyChangeEvent event) {

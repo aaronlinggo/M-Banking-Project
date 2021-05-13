@@ -29,7 +29,7 @@ public class MBanking {
 //                L.setIconImage(icon);
                 //L.passRequestMember(requestMember);
                 //L.passAccount(Account);
-                L.passData(this);
+                //L.passData(this);
                 L.setVisible(true);
                 break;
             }
