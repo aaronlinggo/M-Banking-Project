@@ -37,6 +37,16 @@ public class AdminMember1 extends javax.swing.JPanel {
     public AdminMember1() {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
+        newMember.setBackground(new Color(84,190,229));
+        member.setBackground(new Color(250,243,243));
+        upgrade.setBackground(new Color(250,243,243));
+        AdminNewMember ADM = new AdminNewMember();
+        ADM.setBounds(0, 0, 488,616);
+        ADM.setVisible(true);
+        container.removeAll();
+        container.add(ADM);
+        container.revalidate();
+        container.repaint();
     }
 
     /**
@@ -49,188 +59,142 @@ public class AdminMember1 extends javax.swing.JPanel {
     private void initComponents() {
 
         content = new javax.swing.JPanel();
-        panelScroll = new javax.swing.JScrollPane();
-        memberCard = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jPanel1 = new RoundJPanel(35);
+        newMember = new RoundJPanel(35);
+        jLabel6 = new javax.swing.JLabel();
+        member = new RoundJPanel(35);
+        jLabel5 = new javax.swing.JLabel();
+        upgrade = new RoundJPanel(35);
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        container = new javax.swing.JPanel();
 
         content.setBackground(new java.awt.Color(250, 243, 243));
 
-        panelScroll.setBackground(new java.awt.Color(250, 243, 243));
-        panelScroll.setBorder(null);
-        panelScroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        panelScroll.setLayout(new ScrollPaneLayout() {
-            @Override
-            public void layoutContainer(Container parent) {
-                JScrollPane scrollPane = (JScrollPane) parent;
-
-                Rectangle availR = scrollPane.getBounds();
-                availR.x = availR.y = 0;
-
-                Insets parentInsets = parent.getInsets();
-                availR.x = parentInsets.left;
-                availR.y = parentInsets.top;
-                availR.width -= parentInsets.left + parentInsets.right;
-                availR.height -= parentInsets.top + parentInsets.bottom;
-
-                Rectangle vsbR = new Rectangle();
-                vsbR.width = 12;
-                vsbR.height = availR.height;
-                vsbR.x = availR.x + availR.width - vsbR.width;
-                vsbR.y = availR.y;
-
-                if (viewport != null) {
-                    viewport.setBounds(availR);
-                }
-                if (vsb != null) {
-                    vsb.setVisible(true);
-                    vsb.setBounds(vsbR);
-                }
-            }
-        });
-        panelScroll.getVerticalScrollBar().setUI(new MyScrollBarUI());
-        MouseAdapter ma = new MouseAdapter() {
-
-            private Point origin;
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                origin = new Point(e.getPoint());
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                if (origin != null) {
-                    JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, memberCard);
-                    if (viewPort != null) {
-                        int deltaX = origin.x - e.getX();
-                        int deltaY = origin.y - e.getY();
-
-                        Rectangle view = viewPort.getViewRect();
-                        view.x += deltaX;
-                        view.y += deltaY;
-
-                        memberCard.scrollRectToVisible(view);
-                    }
-                }
-            }
-
-        };
-
-        memberCard.addMouseListener(ma);
-        memberCard.addMouseMotionListener(ma);
-
-        memberCard.setBackground(new java.awt.Color(204, 204, 204));
-        memberCard.setPreferredSize(new java.awt.Dimension(387, 390));
-        memberCard.setAutoscrolls(true);
-
-        javax.swing.GroupLayout memberCardLayout = new javax.swing.GroupLayout(memberCard);
-        memberCard.setLayout(memberCardLayout);
-        memberCardLayout.setHorizontalGroup(
-            memberCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 407, Short.MAX_VALUE)
-        );
-        memberCardLayout.setVerticalGroup(
-            memberCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-
-        panelScroll.setViewportView(memberCard);
-
-        jButton1.setText("add");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        newMember.setBackground(new java.awt.Color(250, 243, 243));
+        newMember.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        newMember.setOpaque(false);
+        newMember.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                newMemberMouseClicked(evt);
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(254, 174, 72));
+        jLabel6.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("New Member");
 
-        jLabel1.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        javax.swing.GroupLayout newMemberLayout = new javax.swing.GroupLayout(newMember);
+        newMember.setLayout(newMemberLayout);
+        newMemberLayout.setHorizontalGroup(
+            newMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+        );
+        newMemberLayout.setVerticalGroup(
+            newMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(newMemberLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        member.setBackground(new java.awt.Color(250, 243, 243));
+        member.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        member.setOpaque(false);
+        member.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                memberMouseClicked(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Member");
+
+        javax.swing.GroupLayout memberLayout = new javax.swing.GroupLayout(member);
+        member.setLayout(memberLayout);
+        memberLayout.setHorizontalGroup(
+            memberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(memberLayout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        memberLayout.setVerticalGroup(
+            memberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, memberLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        upgrade.setBackground(new java.awt.Color(250, 243, 243));
+        upgrade.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        upgrade.setOpaque(false);
+        upgrade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                upgradeMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("New Member");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Upgrade");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(72, 72, 72))
+        javax.swing.GroupLayout upgradeLayout = new javax.swing.GroupLayout(upgrade);
+        upgrade.setLayout(upgradeLayout);
+        upgradeLayout.setHorizontalGroup(
+            upgradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1)
-                .addContainerGap(22, Short.MAX_VALUE))
+        upgradeLayout.setVerticalGroup(
+            upgradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(upgradeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jLabel2.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Member");
+        container.setBackground(new java.awt.Color(250, 243, 243));
 
-        jLabel3.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("New Member");
-
-        jLabel4.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Upgrade");
+        javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
+        container.setLayout(containerLayout);
+        containerLayout.setHorizontalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        containerLayout.setVerticalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 616, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
-                .addGap(0, 59, Short.MAX_VALUE)
-                .addComponent(panelScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
             .addGroup(contentLayout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(contentLayout.createSequentialGroup()
+                        .addComponent(newMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(member, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(upgrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(newMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(member, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(upgrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(22, 22, 22))
+                .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -245,35 +209,51 @@ public class AdminMember1 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void newMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newMemberMouseClicked
         // TODO add your handling code here:
+        newMember.setBackground(new Color(84,190,229));
+        member.setBackground(new Color(250,243,243));
+        upgrade.setBackground(new Color(250,243,243));
+        AdminNewMember ADM = new AdminNewMember();
+        ADM.setBounds(0, 0, 488,616);
+        ADM.setVisible(true);
+        container.removeAll();
+        container.add(ADM);
+        container.revalidate();
+        container.repaint();
+    }//GEN-LAST:event_newMemberMouseClicked
+
+    private void memberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_memberMouseClicked
+        // TODO add your handling code here:
+        newMember.setBackground(new Color(250,243,243));
+        member.setBackground(new Color(84,190,229));
+        upgrade.setBackground(new Color(250,243,243));
         
-        memberCard.removeAll();
-        total++;
-        if ((182+10)*total >= 400) {
-            memberCard.setPreferredSize(new Dimension(387, (182+15)*total));
-        }
-        for (int i = 0; i < total; i++) {
-            System.out.println(i);
-            paAdmin.add(new panelMember_Admin());
-            paAdmin.get(i).setBounds(0, (182+15)*i, 390,182);
-            paAdmin.get(i).setVisible(true);
-            memberCard.add(paAdmin.get(i));
-        }
-        memberCard.revalidate();
-        memberCard.repaint();
-    }//GEN-LAST:event_jButton1MouseClicked
+        container.removeAll();
+        container.revalidate();
+        container.repaint();
+    }//GEN-LAST:event_memberMouseClicked
+
+    private void upgradeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_upgradeMouseClicked
+        // TODO add your handling code here:
+        newMember.setBackground(new Color(250,243,243));
+        member.setBackground(new Color(250,243,243));
+        upgrade.setBackground(new Color(84,190,229));
+        
+        container.removeAll();
+        container.revalidate();
+        container.repaint();
+    }//GEN-LAST:event_upgradeMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel container;
     private javax.swing.JPanel content;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel memberCard;
-    private javax.swing.JScrollPane panelScroll;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel member;
+    private javax.swing.JPanel newMember;
+    private javax.swing.JPanel upgrade;
     // End of variables declaration//GEN-END:variables
 }

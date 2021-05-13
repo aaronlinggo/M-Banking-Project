@@ -38,7 +38,6 @@ public class panelMember_Admin extends javax.swing.JPanel {
         Saldo = new javax.swing.JLabel();
 
         Card.setBackground(new java.awt.Color(254, 174, 72));
-        Card.setOpaque(false);
 
         CardNumber.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         CardNumber.setForeground(new java.awt.Color(0, 0, 0));
@@ -69,7 +68,7 @@ public class panelMember_Admin extends javax.swing.JPanel {
                 .addGroup(CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Saldo)
                     .addComponent(CardNumber))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(228, Short.MAX_VALUE))
             .addGroup(CardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CardLayout.createSequentialGroup()
                     .addGap(27, 27, 27)
