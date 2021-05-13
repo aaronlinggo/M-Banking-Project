@@ -189,8 +189,8 @@ public class UserHomepage extends javax.swing.JFrame {
         transfer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/trans_nav_putih.png")));
         profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/profile_nav_biru.png")));
         content.removeAll();
-        UserMainmenu uh = new UserMainmenu();
-        uh.getUser(this);
+        UserProfile uh = new UserProfile();
+        //uh.getUser(this);
         uh.setVisible(true);
         uh.setBounds(0,0, 500, 768);
         content.add(uh);
