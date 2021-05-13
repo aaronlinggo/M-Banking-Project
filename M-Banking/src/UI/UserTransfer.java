@@ -328,11 +328,20 @@ public class UserTransfer extends javax.swing.JPanel {
     UserHomepage u;
     private void exchangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exchangeMouseClicked
         this.setVisible(false);
+        u.getContent().removeAll();
+        UserMerchandise uh = new UserMerchandise();
     }//GEN-LAST:event_exchangeMouseClicked
 
     private void daftarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarMouseClicked
         // TODO add your handling code here:
-        
+        u.getContent().removeAll();
+        UTDaftar uh = new UTDaftar();
+        uh.pass(this);
+        uh.setVisible(true);
+        uh.setBounds(0,0, 500, 750);
+        u.getContent().add(uh);
+        u.getContent().revalidate();
+        u.getContent().repaint();
     }//GEN-LAST:event_daftarMouseClicked
     public void getUser(UserHomepage u){
         this.u = u;
