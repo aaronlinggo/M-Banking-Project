@@ -215,7 +215,7 @@ public class AdminMember1 extends javax.swing.JPanel {
         member.setBackground(new Color(250,243,243));
         upgrade.setBackground(new Color(250,243,243));
         AdminNewMember ADM = new AdminNewMember();
-        ADM.setBounds(0, 0, 488,616);
+        ADM.setBounds(0, 0, 500,716);
         ADM.setVisible(true);
         container.removeAll();
         container.add(ADM);
@@ -228,8 +228,11 @@ public class AdminMember1 extends javax.swing.JPanel {
         newMember.setBackground(new Color(250,243,243));
         member.setBackground(new Color(84,190,229));
         upgrade.setBackground(new Color(250,243,243));
-        
+        AdminListMember ALM = new AdminListMember();
+        ALM.setBounds(0, 0, 500, 716);
+        ALM.setVisible(true);
         container.removeAll();
+        container.add(ALM);
         container.revalidate();
         container.repaint();
     }//GEN-LAST:event_memberMouseClicked
