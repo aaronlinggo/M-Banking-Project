@@ -194,7 +194,7 @@ public class UserHomepage extends javax.swing.JFrame {
         profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/profile_nav_biru.png")));
         content.removeAll();
         UserProfile uh = new UserProfile();
-        //uh.getUser(this);
+        uh.passData(this);
         uh.setVisible(true);
         uh.setBounds(0,0, 500, 750);
         content.add(uh);
