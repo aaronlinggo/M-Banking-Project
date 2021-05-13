@@ -33,28 +33,26 @@ public class UserTransfer extends javax.swing.JPanel {
 
         bg = new javax.swing.JPanel();
         greetings = new javax.swing.JLabel();
-        m_info = new RoundJPanel(50);
+        daftar = new RoundJPanel(50);
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new RoundJPanel(35);
         jLabel3 = new javax.swing.JLabel();
-        m_transfer = new RoundJPanel(50);
+        transfer = new RoundJPanel(50);
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         logo = new RoundJPanel(35);
         jLabel1 = new javax.swing.JLabel();
-        dummy = new RoundJPanel(50);
-        jLabel11 = new javax.swing.JLabel();
-        logout = new RoundJPanel(50);
+        exchange = new RoundJPanel(50);
         jPanel1 = new RoundJPanel(35);
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         Logo = new RoundJPanel(35);
         jLabel14 = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(496, 659));
-        setPreferredSize(new java.awt.Dimension(500, 900));
+        setMaximumSize(new java.awt.Dimension(500, 768));
+        setPreferredSize(new java.awt.Dimension(500, 768));
 
         bg.setBackground(new java.awt.Color(55, 53, 61));
         bg.setMaximumSize(new java.awt.Dimension(500, 768));
@@ -63,23 +61,28 @@ public class UserTransfer extends javax.swing.JPanel {
         greetings.setForeground(new java.awt.Color(255, 255, 255));
         greetings.setText("Hi, " );
 
-        m_info.setBackground(new java.awt.Color(80, 76, 92));
-        m_info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        m_info.setOpaque(false);
+        daftar.setBackground(new java.awt.Color(80, 76, 92));
+        daftar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        daftar.setOpaque(false);
+        daftar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                daftarMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("M-Info");
+        jLabel5.setText("Daftar");
 
         jLabel6.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel6.setText("Profile, Saldo, Kartu");
+        jLabel6.setText("Tambah List Transfer");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setMaximumSize(new java.awt.Dimension(60, 60));
         jPanel2.setOpaque(false);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/m_info_biru.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/daftar_tf_biru.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -92,51 +95,51 @@ public class UserTransfer extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout m_infoLayout = new javax.swing.GroupLayout(m_info);
-        m_info.setLayout(m_infoLayout);
-        m_infoLayout.setHorizontalGroup(
-            m_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, m_infoLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addContainerGap())
-            .addGroup(m_infoLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(m_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        m_infoLayout.setVerticalGroup(
-            m_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(m_infoLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+
+        javax.swing.GroupLayout daftarLayout = new javax.swing.GroupLayout(daftar);
+        daftar.setLayout(daftarLayout);
+        daftarLayout.setHorizontalGroup(
+            daftarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(daftarLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGroup(daftarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        daftarLayout.setVerticalGroup(
+            daftarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(daftarLayout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addGroup(daftarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(daftarLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        m_transfer.setBackground(new java.awt.Color(80, 76, 92));
-        m_transfer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        m_transfer.setOpaque(false);
+        transfer.setBackground(new java.awt.Color(80, 76, 92));
+        transfer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        transfer.setMaximumSize(new java.awt.Dimension(415, 120));
+        transfer.setOpaque(false);
+        transfer.setPreferredSize(new java.awt.Dimension(415, 120));
 
         jLabel8.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("M-Transfer");
+        jLabel8.setText("Transfer");
 
         jLabel10.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel10.setText("Daftar, Transfer,");
-
-        jLabel15.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel15.setText("Inbox");
+        jLabel10.setText("Antar Rek, Virtual Acc,Inbox");
 
         logo.setBackground(new java.awt.Color(255, 255, 255));
         logo.setOpaque(false);
@@ -161,108 +164,97 @@ public class UserTransfer extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout m_transferLayout = new javax.swing.GroupLayout(m_transfer);
-        m_transfer.setLayout(m_transferLayout);
-        m_transferLayout.setHorizontalGroup(
-            m_transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(m_transferLayout.createSequentialGroup()
+        javax.swing.GroupLayout transferLayout = new javax.swing.GroupLayout(transfer);
+        transfer.setLayout(transferLayout);
+        transferLayout.setHorizontalGroup(
+            transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(m_transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel8))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-        m_transferLayout.setVerticalGroup(
-            m_transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(m_transferLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15)
-                .addGap(15, 15, 15))
+                .addGroup(transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel10))
+                .addContainerGap(103, Short.MAX_VALUE))
+        );
+        transferLayout.setVerticalGroup(
+            transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferLayout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addGroup(transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(transferLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10))
+                    .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        dummy.setBackground(new java.awt.Color(80, 76, 92));
-        dummy.setOpaque(false);
-
-        jLabel11.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Dummy");
-
-        javax.swing.GroupLayout dummyLayout = new javax.swing.GroupLayout(dummy);
-        dummy.setLayout(dummyLayout);
-        dummyLayout.setHorizontalGroup(
-            dummyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dummyLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        dummyLayout.setVerticalGroup(
-            dummyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dummyLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
-        );
-
-        logout.setBackground(new java.awt.Color(80, 76, 92));
-        logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        logout.setOpaque(false);
-        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+        exchange.setBackground(new java.awt.Color(80, 76, 92));
+        exchange.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exchange.setOpaque(false);
+        exchange.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoutMouseClicked(evt);
+                exchangeMouseClicked(evt);
             }
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMaximumSize(new java.awt.Dimension(60, 60));
         jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(60, 60));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/exit.png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/exc_point_biru.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 59, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel13)
+                .addGap(5, 5, 5))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel12.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Log out");
+        jLabel12.setText("Exchange Points");
 
-        javax.swing.GroupLayout logoutLayout = new javax.swing.GroupLayout(logout);
-        logout.setLayout(logoutLayout);
-        logoutLayout.setHorizontalGroup(
-            logoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logoutLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(logoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jLabel11.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel11.setText("Dapatkan Piring Cantik");
+
+        javax.swing.GroupLayout exchangeLayout = new javax.swing.GroupLayout(exchange);
+        exchange.setLayout(exchangeLayout);
+        exchangeLayout.setHorizontalGroup(
+            exchangeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exchangeLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(exchangeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel11))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        logoutLayout.setVerticalGroup(
-            logoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logoutLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel12)
-                .addContainerGap(95, Short.MAX_VALUE))
+        exchangeLayout.setVerticalGroup(
+            exchangeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exchangeLayout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addGroup(exchangeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exchangeLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         Logo.setBackground(new java.awt.Color(255, 255, 255));
@@ -292,20 +284,15 @@ public class UserTransfer extends javax.swing.JPanel {
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(m_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dummy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(44, 44, 44)
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(m_transfer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(daftar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(bgLayout.createSequentialGroup()
                         .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(greetings)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addComponent(greetings))
+                    .addComponent(transfer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(exchange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,15 +304,13 @@ public class UserTransfer extends javax.swing.JPanel {
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(greetings)))
-                .addGap(58, 58, 58)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(m_transfer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(m_info, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dummy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addGap(70, 70, 70)
+                .addComponent(daftar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addComponent(transfer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addComponent(exchange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -341,9 +326,14 @@ public class UserTransfer extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     UserHomepage u;
-    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+    private void exchangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exchangeMouseClicked
         this.setVisible(false);
-    }//GEN-LAST:event_logoutMouseClicked
+    }//GEN-LAST:event_exchangeMouseClicked
+
+    private void daftarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_daftarMouseClicked
     public void getUser(UserHomepage u){
         this.u = u;
     }
@@ -352,7 +342,8 @@ public class UserTransfer extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Logo;
     private javax.swing.JPanel bg;
-    private javax.swing.JPanel dummy;
+    private javax.swing.JPanel daftar;
+    private javax.swing.JPanel exchange;
     private javax.swing.JLabel greetings;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -360,7 +351,6 @@ public class UserTransfer extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -368,8 +358,6 @@ public class UserTransfer extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel logo;
-    private javax.swing.JPanel logout;
-    private javax.swing.JPanel m_info;
-    private javax.swing.JPanel m_transfer;
+    private javax.swing.JPanel transfer;
     // End of variables declaration//GEN-END:variables
 }

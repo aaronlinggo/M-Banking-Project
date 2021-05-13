@@ -7,6 +7,10 @@ package UI;
 
 import RoundedField.RoundJPanel;
 import java.awt.Color;
+import javax.accessibility.AccessibleContext;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRootPane;
 
 /**
  *
@@ -161,7 +165,7 @@ public class UserHomepage extends javax.swing.JFrame {
         transfer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/trans_nav_biru.png")));
         profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/profile_nav_putih.png")));
         content.removeAll();
-        UserMainmenu uh = new UserMainmenu();
+        UserTransfer uh = new UserTransfer();
         uh.getUser(this);
         uh.setVisible(true);
         uh.setBounds(0,0, 500, 768);
@@ -234,6 +238,63 @@ public class UserHomepage extends javax.swing.JFrame {
         });
     }
 
+    public JPanel getContent() {
+        return content;
+    }
+
+    public void setContent(JPanel content) {
+        this.content = content;
+    }
+
+    public JLabel getHome() {
+        return home;
+    }
+
+    public void setHome(JLabel home) {
+        this.home = home;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getNavbar_dashboard() {
+        return navbar_dashboard;
+    }
+
+    public void setNavbar_dashboard(JPanel navbar_dashboard) {
+        this.navbar_dashboard = navbar_dashboard;
+    }
+
+    public JLabel getNotch() {
+        return notch;
+    }
+
+    public void setNotch(JLabel notch) {
+        this.notch = notch;
+    }
+
+    public JLabel getProfile() {
+        return profile;
+    }
+
+    public void setProfile(JLabel profile) {
+        this.profile = profile;
+    }
+
+    public JLabel getTransfer() {
+        return transfer;
+    }
+
+    public void setTransfer(JLabel transfer) {
+        this.transfer = transfer;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel content;
     private javax.swing.JLabel home;

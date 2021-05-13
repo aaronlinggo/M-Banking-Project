@@ -126,6 +126,11 @@ public class UserMainmenu extends javax.swing.JPanel {
         m_transfer.setBackground(new java.awt.Color(80, 76, 92));
         m_transfer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         m_transfer.setOpaque(false);
+        m_transfer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_transferMouseClicked(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -337,7 +342,7 @@ public class UserMainmenu extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -351,6 +356,21 @@ public class UserMainmenu extends javax.swing.JPanel {
     public void getUser(UserHomepage u){
         this.u = u;
     }  
+    private void m_transferMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_transferMouseClicked
+        // TODO add your handling code here:
+        u.getHome().setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/home_nav_putih.png")));
+        u.getTransfer().setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/trans_nav_biru.png")));
+        u.getProfile().setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/profile_nav_putih.png")));
+        u.getContent().removeAll();
+        UserTransfer uh = new UserTransfer();
+        uh.getUser(u);
+        uh.setVisible(true);
+        uh.setBounds(0,0, 500, 768);
+        u.getContent().add(uh);
+        u.getContent().revalidate();
+        u.getContent().repaint();
+    }//GEN-LAST:event_m_transferMouseClicked
+    
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -365,7 +385,6 @@ public class UserMainmenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -373,7 +392,6 @@ public class UserMainmenu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel logo;
-    private javax.swing.JPanel logo1;
     private javax.swing.JPanel logout;
     private javax.swing.JPanel m_info;
     private javax.swing.JPanel m_transfer;
