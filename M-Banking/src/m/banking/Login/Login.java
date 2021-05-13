@@ -38,7 +38,6 @@ public class Login extends javax.swing.JFrame {
     //Date d2 = new Date(2021, 1, 1);
     public DateBankRut d1 = null;
     int noRek;
-    MBanking mb;
     public Login() {
         String filename = "date.ser";
         
@@ -99,9 +98,6 @@ public class Login extends javax.swing.JFrame {
         //System.out.println(requestMember.size());
     }
 
-    public void passData(MBanking mb){
-        this.mb = mb;
-    }
     
 //    public void passAccount(ArrayList<Member> Account){
 //        this.Account = Account;
@@ -396,15 +392,15 @@ public class Login extends javax.swing.JFrame {
         do{
             if (noRek >= 10000000){
                 boolean cek = false;
-                for (int i = 0; i < mb.requestMember.size(); i++){
-                    if (noRek == mb.requestMember.get(i).getNoRekening()){
+                for (int i = 0; i < requestMember.size(); i++){
+                    if (noRek == requestMember.get(i).getNoRekening()){
                         cek = true;
                         break;
                     }
                 }
                 if (!cek){
-                    for (int i = 0; i < mb.Account.size(); i++){
-                        if (noRek == mb.Account.get(i).getNoRekening()){
+                    for (int i = 0; i < Account.size(); i++){
+                        if (noRek == Account.get(i).getNoRekening()){
                             cek = true;
                             break;
                         }

@@ -209,7 +209,7 @@ public class AdminHomepage extends javax.swing.JFrame {
         dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/dashboard_white.png")));
         gift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/gift_white.png")));
         content.removeAll();
-        AdminMember am = new AdminMember();
+        AdminMember1 am = new AdminMember1();
         am.setVisible(true);
         am.setBounds(0,0, 500, 717);
         content.add(am);
