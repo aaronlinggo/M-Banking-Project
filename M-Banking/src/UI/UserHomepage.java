@@ -29,7 +29,7 @@ public class UserHomepage extends javax.swing.JFrame {
         UserMainmenu uh = new UserMainmenu();
         uh.getUser(this);
         uh.setVisible(true);
-        uh.setBounds(0,0, 500, 768);
+        uh.setBounds(0,0, 500, 750);
         content.add(uh);
         content.revalidate();
         content.repaint();
@@ -168,7 +168,7 @@ public class UserHomepage extends javax.swing.JFrame {
         UserTransfer uh = new UserTransfer();
         uh.getUser(this);
         uh.setVisible(true);
-        uh.setBounds(0,0, 500, 768);
+        uh.setBounds(0,0, 500, 750);
         content.add(uh);
         content.revalidate();
         content.repaint();
@@ -182,7 +182,7 @@ public class UserHomepage extends javax.swing.JFrame {
         UserMainmenu uh = new UserMainmenu();
         uh.getUser(this);
         uh.setVisible(true);
-        uh.setBounds(0,0, 500, 768);
+        uh.setBounds(0,0, 500, 750);
         content.add(uh);
         content.revalidate();
         content.repaint();
@@ -196,7 +196,7 @@ public class UserHomepage extends javax.swing.JFrame {
         UserProfile uh = new UserProfile();
         //uh.getUser(this);
         uh.setVisible(true);
-        uh.setBounds(0,0, 500, 768);
+        uh.setBounds(0,0, 500, 750);
         content.add(uh);
         content.revalidate();
         content.repaint();
