@@ -398,12 +398,15 @@ public class AdminNewMember extends javax.swing.JPanel {
             String jenis = "";
             if (requestMember.get(i) instanceof Silver){
                 jenis = "Silver";
+                ALNM.get(i).setNewColorKartu(229, 228, 226);
             }
             else if (requestMember.get(i) instanceof Gold){
                 jenis = "Gold";
+                ALNM.get(i).setNewColorKartu(255,215,0);
             }
             else if (requestMember.get(i) instanceof Platinum){
                 jenis = "Platinum";
+                ALNM.get(i).setNewColorKartu(128,128,128);
             }
             ALNM.get(i).setJenisKartu(jenis);
             ALNM.get(i).setBounds(0, (300+15)*i, 470,300);

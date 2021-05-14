@@ -39,6 +39,7 @@ public class AdminListNewMember extends javax.swing.JPanel {
         phoneNumber = new javax.swing.JLabel();
         saldo = new javax.swing.JLabel();
         noRek = new javax.swing.JLabel();
+        kartu = new RoundJPanel(20);
         jenisKartu = new javax.swing.JLabel();
 
         bg.setBackground(new java.awt.Color(254, 174, 72));
@@ -73,10 +74,30 @@ public class AdminListNewMember extends javax.swing.JPanel {
         noRek.setForeground(new java.awt.Color(0, 0, 0));
         noRek.setText("Card Number   : 1234-5678");
 
+        kartu.setBackground(new java.awt.Color(204, 204, 204));
+        kartu.setOpaque(false);
+
         jenisKartu.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jenisKartu.setForeground(new java.awt.Color(0, 0, 0));
         jenisKartu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jenisKartu.setText("Platinum");
+
+        javax.swing.GroupLayout kartuLayout = new javax.swing.GroupLayout(kartu);
+        kartu.setLayout(kartuLayout);
+        kartuLayout.setHorizontalGroup(
+            kartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kartuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jenisKartu, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        kartuLayout.setVerticalGroup(
+            kartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kartuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jenisKartu)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
@@ -85,15 +106,23 @@ public class AdminListNewMember extends javax.swing.JPanel {
             .addGroup(bgLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(noRek)
-                    .addComponent(saldo)
-                    .addComponent(phoneNumber)
-                    .addComponent(alamat)
-                    .addComponent(tglLahir)
-                    .addComponent(gender)
-                    .addComponent(fullName))
-                .addContainerGap(167, Short.MAX_VALUE))
-            .addComponent(jenisKartu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(alamat)
+                            .addComponent(gender))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(noRek)
+                            .addComponent(saldo)
+                            .addComponent(phoneNumber)
+                            .addComponent(tglLahir)
+                            .addComponent(fullName))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                .addContainerGap(144, Short.MAX_VALUE)
+                .addComponent(kartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(132, 132, 132))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,8 +142,8 @@ public class AdminListNewMember extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(saldo)
                 .addGap(18, 18, 18)
-                .addComponent(jenisKartu)
-                .addGap(22, 22, 22))
+                .addComponent(kartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -136,6 +165,7 @@ public class AdminListNewMember extends javax.swing.JPanel {
     private javax.swing.JLabel fullName;
     private javax.swing.JLabel gender;
     private javax.swing.JLabel jenisKartu;
+    private javax.swing.JPanel kartu;
     private javax.swing.JLabel noRek;
     private javax.swing.JLabel phoneNumber;
     private javax.swing.JLabel saldo;
@@ -144,6 +174,10 @@ public class AdminListNewMember extends javax.swing.JPanel {
     
     public void setNewColorBG(int w1, int w2, int w3){
         this.bg.setBackground(new Color(w1,w2,w3));
+    }
+    
+    public void setNewColorKartu(int w1, int w2, int w3){
+        this.kartu.setBackground(new Color(w1, w2, w3));
     }
     
     public void setFullName(String fullname){
