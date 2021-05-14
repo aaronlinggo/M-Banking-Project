@@ -228,7 +228,7 @@ public class AdminMember1 extends javax.swing.JPanel {
         newMember.setBackground(new Color(250,243,243));
         member.setBackground(new Color(84,190,229));
         upgrade.setBackground(new Color(250,243,243));
-        AdminListMember ALM = new AdminListMember();
+        AdminListMemberTemp ALM = new AdminListMemberTemp();
         ALM.setBounds(0, 0, 500, 716);
         ALM.setVisible(true);
         container.removeAll();

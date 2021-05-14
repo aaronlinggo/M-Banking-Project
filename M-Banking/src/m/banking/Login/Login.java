@@ -92,7 +92,7 @@ public class Login extends javax.swing.JFrame {
         catch(ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException is caught");
         }
-        
+        System.out.println(requestMember.size());
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         //System.out.println(requestMember.size());

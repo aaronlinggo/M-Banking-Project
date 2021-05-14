@@ -5,6 +5,7 @@
  */
 package UI;
 
+import RoundedField.RoundJPanel;
 import java.awt.Color;
 
 /**
@@ -18,6 +19,7 @@ public class AdminListNewMember extends javax.swing.JPanel {
      */
     public AdminListNewMember() {
         initComponents();
+        this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
     }
 
     /**
@@ -29,7 +31,7 @@ public class AdminListNewMember extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bg = new javax.swing.JPanel();
+        bg = new RoundJPanel(50);
         fullName = new javax.swing.JLabel();
         gender = new javax.swing.JLabel();
         tglLahir = new javax.swing.JLabel();
@@ -41,6 +43,7 @@ public class AdminListNewMember extends javax.swing.JPanel {
 
         bg.setBackground(new java.awt.Color(254, 174, 72));
         bg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bg.setOpaque(false);
 
         fullName.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         fullName.setForeground(new java.awt.Color(0, 0, 0));
