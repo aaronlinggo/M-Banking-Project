@@ -749,28 +749,33 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                                                         if (isNumeric(tempPin)){
                                                             if (isNumeric(tempConfirmPin)){
                                                                 if (tempPin.equals(tempConfirmPin)){
+                                                                    Date temp = (Date) tglLahir.getValue();
+                                                                    //String temp = (String) tglLahir.getValue();
+                                                                    System.out.println("- " + temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000));
+                                                                    String tempTgl = temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000);
+                                                                    //System.out.println(temp);
                                                                     if (silverBtn.isSelected()){
                                                                         if (maleBtn.isSelected()){
-                                                                            l.requestMember.add(new Silver(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Male"));
+                                                                            l.requestMember.add(new Silver(firstName.getText() + " " + lastName.getText(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
                                                                         }
                                                                         else if (femaleBtn.isSelected()){
-                                                                            l.requestMember.add(new Silver(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Female"));
+                                                                            l.requestMember.add(new Silver(firstName.getText() + " " + lastName.getText(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
                                                                         }
                                                                     }
                                                                     else if (goldBtn.isSelected()){
                                                                         if (maleBtn.isSelected()){
-                                                                            l.requestMember.add(new Gold(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Male"));
+                                                                            l.requestMember.add(new Gold(firstName.getText() + " " + lastName.getText(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
                                                                         }
                                                                         else if (femaleBtn.isSelected()){
-                                                                            l.requestMember.add(new Gold(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Female"));
+                                                                            l.requestMember.add(new Gold(firstName.getText() + " " + lastName.getText(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
                                                                         }
                                                                     }
                                                                     else if (platinumBtn.isSelected()){
                                                                         if (maleBtn.isSelected()){
-                                                                            l.requestMember.add(new Platinum(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Male"));
+                                                                            l.requestMember.add(new Platinum(firstName.getText() + " " + lastName.getText(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
                                                                         }
                                                                         else if (femaleBtn.isSelected()){
-                                                                            l.requestMember.add(new Platinum(firstName + " " + lastName, Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), pin.getText(), (Date) tglLahir.getValue(), "Female"));
+                                                                            l.requestMember.add(new Platinum(firstName.getText() + " " + lastName.getText(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
                                                                         }
                                                                     }
                                                                     String filename = "requestMember.ser";

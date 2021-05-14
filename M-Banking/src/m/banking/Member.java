@@ -22,10 +22,10 @@ public abstract class Member implements Serializable{
     protected double euro;
     protected double usd;
     protected ArrayList<String> inbox;
-    protected Date tanggalLahir;
+    protected String tanggalLahir;
     protected String gender;
 
-    public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String nomorHP, String alamat, String pin, int point, Date tanggalLahir, String gender) {
+    public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String nomorHP, String alamat, String pin, int point, String tanggalLahir, String gender) {
         this.limitTransfer = limitTransfer;
         this.aturLimit = limitTransfer;
         this.currentUsage = currentUsage;
@@ -45,6 +45,14 @@ public abstract class Member implements Serializable{
         this.gender = gender;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    
     public ArrayList<String> getInbox() {
         return inbox;
     }
@@ -126,8 +134,6 @@ public abstract class Member implements Serializable{
         this.usd = usd;
     }
 
-    
-
     public int getNoRekening() {
         return noRekening;
     }
@@ -144,15 +150,13 @@ public abstract class Member implements Serializable{
         this.nomorHP = nomorHP;
     }
 
-    public Date getTanggalLahir() {
+    public String getTanggalLahir() {
         return tanggalLahir;
     }
 
-    public void setTanggalLahir(Date tanggalLahir) {
+    public void setTanggalLahir(String tanggalLahir) {
         this.tanggalLahir = tanggalLahir;
     }
-
-    
 
     public String getAlamat() {
         return alamat;

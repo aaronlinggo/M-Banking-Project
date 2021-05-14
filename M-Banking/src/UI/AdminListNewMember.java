@@ -5,6 +5,8 @@
  */
 package UI;
 
+import java.awt.Color;
+
 /**
  *
  * @author LINGGO
@@ -27,35 +29,149 @@ public class AdminListNewMember extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        bg = new javax.swing.JPanel();
+        fullName = new javax.swing.JLabel();
+        gender = new javax.swing.JLabel();
+        tglLahir = new javax.swing.JLabel();
+        alamat = new javax.swing.JLabel();
+        phoneNumber = new javax.swing.JLabel();
+        saldo = new javax.swing.JLabel();
+        noRek = new javax.swing.JLabel();
+        jenisKartu = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(254, 174, 72));
+        bg.setBackground(new java.awt.Color(254, 174, 72));
+        bg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
+        fullName.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        fullName.setForeground(new java.awt.Color(0, 0, 0));
+        fullName.setText("Full Name     : ADMIN");
+
+        gender.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        gender.setForeground(new java.awt.Color(0, 0, 0));
+        gender.setText("Gender        : \"\"");
+
+        tglLahir.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        tglLahir.setForeground(new java.awt.Color(0, 0, 0));
+        tglLahir.setText("Date of Birth : \"\"");
+
+        alamat.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        alamat.setForeground(new java.awt.Color(0, 0, 0));
+        alamat.setText("Address       : \"\"");
+
+        phoneNumber.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        phoneNumber.setForeground(new java.awt.Color(0, 0, 0));
+        phoneNumber.setText("Phone Number  : \"\"");
+
+        saldo.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        saldo.setForeground(new java.awt.Color(0, 0, 0));
+        saldo.setText("Balance       : 0");
+
+        noRek.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        noRek.setForeground(new java.awt.Color(0, 0, 0));
+        noRek.setText("Card Number   : 1234-5678");
+
+        jenisKartu.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jenisKartu.setForeground(new java.awt.Color(0, 0, 0));
+        jenisKartu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jenisKartu.setText("Platinum");
+
+        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
+        bg.setLayout(bgLayout);
+        bgLayout.setHorizontalGroup(
+            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(noRek)
+                    .addComponent(saldo)
+                    .addComponent(phoneNumber)
+                    .addComponent(alamat)
+                    .addComponent(tglLahir)
+                    .addComponent(gender)
+                    .addComponent(fullName))
+                .addContainerGap(167, Short.MAX_VALUE))
+            .addComponent(jenisKartu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        bgLayout.setVerticalGroup(
+            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(fullName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tglLahir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(gender)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(alamat)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(phoneNumber)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(noRek)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(saldo)
+                .addGap(18, 18, 18)
+                .addComponent(jenisKartu)
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel alamat;
+    private javax.swing.JPanel bg;
+    private javax.swing.JLabel fullName;
+    private javax.swing.JLabel gender;
+    private javax.swing.JLabel jenisKartu;
+    private javax.swing.JLabel noRek;
+    private javax.swing.JLabel phoneNumber;
+    private javax.swing.JLabel saldo;
+    private javax.swing.JLabel tglLahir;
     // End of variables declaration//GEN-END:variables
+    
+    public void setNewColorBG(int w1, int w2, int w3){
+        this.bg.setBackground(new Color(w1,w2,w3));
+    }
+    
+    public void setFullName(String fullname){
+        this.fullName.setText(fullname);
+    }
+    
+    public void setGender(String gender){
+        this.gender.setText(gender);
+    }
+    
+    public void setTglLahir(String tgl){
+        this.tglLahir.setText(tgl);
+    }
+    
+    public void setAlamat(String alamat){
+        this.alamat.setText(alamat);
+    }
+    
+    public void setNoHP(String noHP){
+        this.phoneNumber.setText(noHP);
+    }
+    
+    public void setNoRek(String noRek){
+        this.noRek.setText(noRek);
+    }
+    
+    public void setSaldo(String saldo){
+        this.saldo.setText(saldo);
+    }
+    
+    public void setJenisKartu(String jenis){
+        this.jenisKartu.setText(jenis);
+    }
 }
