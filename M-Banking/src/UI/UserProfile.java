@@ -165,6 +165,11 @@ public class UserProfile extends javax.swing.JPanel {
         btnTagihan.setBackground(new java.awt.Color(84, 190, 229));
         btnTagihan.setForeground(new java.awt.Color(0, 51, 255));
         btnTagihan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTagihan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTagihanMouseClicked(evt);
+            }
+        });
 
         jLabel4.setForeground(new java.awt.Color(55, 53, 61));
         jLabel4.setText("TAGIHAN");
@@ -251,6 +256,18 @@ public class UserProfile extends javax.swing.JPanel {
         uh.getContent().revalidate();
         uh.getContent().repaint();
     }//GEN-LAST:event_btnAturLimitMouseClicked
+
+    private void btnTagihanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTagihanMouseClicked
+        // TODO add your handling code here:
+        uh.getContent().removeAll();
+        UserProfileTagihan ta = new UserProfileTagihan();
+        ta.passData(this);
+        ta.setVisible(true);
+        ta.setBounds(0,0, 500, 717);
+        uh.getContent().add(ta);
+        uh.getContent().revalidate();
+        uh.getContent().repaint();
+    }//GEN-LAST:event_btnTagihanMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
