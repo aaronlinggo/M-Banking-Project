@@ -46,24 +46,15 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="alamat" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="gender" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="noRek" min="-2" max="-2" attributes="0"/>
-                              <Component id="saldo" min="-2" max="-2" attributes="0"/>
-                              <Component id="phoneNumber" min="-2" max="-2" attributes="0"/>
-                              <Component id="tglLahir" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="fullName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="alamat" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="gender" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="noRek" min="-2" max="-2" attributes="0"/>
+                      <Component id="saldo" min="-2" max="-2" attributes="0"/>
+                      <Component id="phoneNumber" min="-2" max="-2" attributes="0"/>
+                      <Component id="tglLahir" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="fullName" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="144" max="32767" attributes="0"/>

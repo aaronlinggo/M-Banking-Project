@@ -267,6 +267,7 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         jLabel1.setText("First Name");
 
         firstName.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        firstName.setBorder(null);
 
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -274,11 +275,12 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         jLabel4.setText("Last Name");
 
         lastName.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        lastName.setBorder(null);
 
         jLabel5.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Tanggal Lahir");
+        jLabel5.setText("Date of Birth");
 
         jLabel6.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -313,18 +315,20 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         jLabel7.setText("Address");
 
         address.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        address.setBorder(null);
 
         jLabel8.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Nomor HP");
+        jLabel8.setText("Phone Number");
 
         nomorHP.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        nomorHP.setBorder(null);
 
         jLabel9.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Jenis Kartu");
+        jLabel9.setText("Member Card");
 
         silverBtn.setBackground(new java.awt.Color(250, 243, 243));
         jenisKartu.add(silverBtn);
@@ -350,6 +354,7 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         jLabel10.setText("Card Number");
 
         saldo.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        saldo.setBorder(null);
 
         jLabel11.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
@@ -389,9 +394,12 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         jLabel14.setText("Confirm Pin");
 
         pin.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        pin.setBorder(null);
 
         confirmPin.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        confirmPin.setBorder(null);
 
+        tglLahir.setBorder(null);
         tglLahir.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d/M/yyyy"))));
         tglLahir.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         int year = l.d1.getD1().getYear()-1900;
@@ -401,7 +409,7 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         System.out.println(tglLahir.getValue());
         System.out.println(l.d1.getD1().getYear() + " - " + l.d1.getD1().getMonth() + " - " + l.d1.getD1().getDate());
 
-        btnPickDate.setBackground(new java.awt.Color(153, 153, 153));
+        btnPickDate.setBackground(new java.awt.Color(84, 190, 229));
         btnPickDate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel15.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
@@ -450,6 +458,15 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formLayout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formLayout.createSequentialGroup()
+                        .addComponent(pin, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formLayout.createSequentialGroup()
+                        .addComponent(confirmPin, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))))
             .addGroup(formLayout.createSequentialGroup()
                 .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(formLayout.createSequentialGroup()
@@ -468,23 +485,15 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                             .addComponent(saldo)
                             .addComponent(address)
                             .addComponent(nomorHP)
-                            .addGroup(formLayout.createSequentialGroup()
-                                .addComponent(silverBtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(goldBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(platinumBtn))
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(formLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(silverBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(goldBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(platinumBtn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formLayout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formLayout.createSequentialGroup()
-                        .addComponent(pin, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formLayout.createSequentialGroup()
-                        .addComponent(confirmPin, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))))
         );
         formLayout.setVerticalGroup(
             formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

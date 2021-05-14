@@ -14,10 +14,15 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.Date;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.ScrollPaneLayout;
 import javax.swing.SwingUtilities;
+import m.banking.DateBankRut;
 import m.banking.Login.Login;
 
 /**
@@ -31,9 +36,65 @@ public class AdminDashboard extends javax.swing.JPanel {
      */
     AdminHomepage ah;
     Login l;
+    DateBankRut d1;
     public AdminDashboard() {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
+        String filename = "date.ser";
+        try {
+            FileInputStream file = new FileInputStream(filename);
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            d1 = (DateBankRut) in.readObject();
+
+            in.close();
+            file.close();
+            System.out.println(d1.getD1().getDate() + " - " + d1.getD1().getMonth() + " - " + d1.getD1().getYear());
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        String bulan = "";
+        if (d1.getD1().getMonth() == 1){
+            bulan = "Januari";
+        }
+        else if (d1.getD1().getMonth() == 2){
+            bulan = "Februari";
+        }
+        else if (d1.getD1().getMonth() == 3){
+            bulan = "Maret";
+        }
+        else if (d1.getD1().getMonth() == 4){
+            bulan = "April";
+        }
+        else if (d1.getD1().getMonth() == 5){
+            bulan = "Mei";
+        }
+        else if (d1.getD1().getMonth() == 6){
+            bulan = "Juni";
+        }
+        else if (d1.getD1().getMonth() == 7){
+            bulan = "Juli";
+        }
+        else if (d1.getD1().getMonth() == 8){
+            bulan = "Agustus";
+        }
+        else if (d1.getD1().getMonth() == 9){
+            bulan = "September";
+        }
+        else if (d1.getD1().getMonth() == 10){
+            bulan = "Oktober";
+        }
+        else if (d1.getD1().getMonth() == 11){
+            bulan = "November";
+        }
+        else if (d1.getD1().getMonth() == 12){
+            bulan = "Desember";
+        }
+        date.setText(d1.getD1().getDate() + " " + bulan + " " + d1.getD1().getYear());
     }
     
     public void getAdmin(AdminHomepage ah){
@@ -53,6 +114,7 @@ public class AdminDashboard extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
         content = new javax.swing.JPanel();
         Hello = new javax.swing.JLabel();
         Welcome = new javax.swing.JLabel();
@@ -78,6 +140,51 @@ public class AdminDashboard extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        jPanel2 = new RoundJPanel(35);
+        jPanel9 = new RoundJPanel(25);
+        jLabel2 = new javax.swing.JLabel();
+        date = new javax.swing.JLabel();
+        jPanel7 = new RoundJPanel(35);
+        jPanel8 = new RoundJPanel(25);
+        jLabel1 = new javax.swing.JLabel();
+
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.getVerticalScrollBar().setUI(new MyScrollBarUI());
+        MouseAdapter ma1 = new MouseAdapter() {
+
+            private Point origin;
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                origin = new Point(e.getPoint());
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                if (origin != null) {
+                    JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, content);
+                    if (viewPort != null) {
+                        int deltaX = origin.x - e.getX();
+                        int deltaY = origin.y - e.getY();
+
+                        Rectangle view = viewPort.getViewRect();
+                        view.x += deltaX;
+                        view.y += deltaY;
+
+                        content.scrollRectToVisible(view);
+                    }
+                }
+            }
+
+        };
+
+        content.addMouseListener(ma1);
+        content.addMouseMotionListener(ma1);
 
         content.setBackground(new java.awt.Color(250, 243, 243));
 
@@ -415,7 +522,102 @@ public class AdminDashboard extends javax.swing.JPanel {
         .addGroup(jPanel3Layout.createSequentialGroup()
             .addGap(18, 18, 18)
             .addComponent(jLabel11)
-            .addContainerGap(227, Short.MAX_VALUE))
+            .addContainerGap(189, Short.MAX_VALUE))
+    );
+
+    jPanel2.setBackground(new java.awt.Color(84, 190, 229));
+    jPanel2.setOpaque(false);
+
+    jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel9.setOpaque(false);
+
+    jLabel2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+    jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+    jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jLabel2.setText("Current Date");
+
+    javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+    jPanel9.setLayout(jPanel9Layout);
+    jPanel9Layout.setHorizontalGroup(
+        jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+    );
+    jPanel9Layout.setVerticalGroup(
+        jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel9Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+
+    date.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+    date.setForeground(new java.awt.Color(0, 0, 0));
+    date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    date.setText("tgl");
+
+    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+    jPanel2.setLayout(jPanel2Layout);
+    jPanel2Layout.setHorizontalGroup(
+        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGap(41, 41, 41)
+            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(45, Short.MAX_VALUE))
+        .addGroup(jPanel2Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+    jPanel2Layout.setVerticalGroup(
+        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel2Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(date)
+            .addContainerGap(40, Short.MAX_VALUE))
+    );
+
+    jPanel7.setBackground(new java.awt.Color(254, 174, 72));
+    jPanel7.setOpaque(false);
+
+    jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+    jPanel8.setOpaque(false);
+
+    jLabel1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+    jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+    jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jLabel1.setText("Kurs");
+
+    javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+    jPanel8.setLayout(jPanel8Layout);
+    jPanel8Layout.setHorizontalGroup(
+        jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+    );
+    jPanel8Layout.setVerticalGroup(
+        jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel8Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jLabel1)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+
+    javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+    jPanel7.setLayout(jPanel7Layout);
+    jPanel7Layout.setHorizontalGroup(
+        jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel7Layout.createSequentialGroup()
+            .addGap(73, 73, 73)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    jPanel7Layout.setVerticalGroup(
+        jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel7Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
@@ -423,22 +625,22 @@ public class AdminDashboard extends javax.swing.JPanel {
     contentLayout.setHorizontalGroup(
         contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(contentLayout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGroup(contentLayout.createSequentialGroup()
+            .addGap(43, 43, 43)
+            .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
             .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(contentLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGroup(contentLayout.createSequentialGroup()
-                    .addGap(43, 43, 43)
-                    .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Welcome)
-                        .addComponent(Hello))
-                    .addGap(0, 32, Short.MAX_VALUE))
-                .addGroup(contentLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addContainerGap())
+                .addComponent(Welcome)
+                .addComponent(Hello))
+            .addGap(0, 0, Short.MAX_VALUE))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
     );
     contentLayout.setVerticalGroup(
         contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,20 +655,26 @@ public class AdminDashboard extends javax.swing.JPanel {
                     .addComponent(Welcome)))
             .addGap(32, 32, 32)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(18, 18, 18)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(8, 8, 8)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
+
+    jScrollPane2.setViewportView(content);
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
     );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -495,14 +703,17 @@ public class AdminDashboard extends javax.swing.JPanel {
     private javax.swing.JPanel Logo;
     private javax.swing.JLabel Welcome;
     private javax.swing.JPanel content;
+    private javax.swing.JLabel date;
     private javax.swing.JPanel isi1;
     private javax.swing.JPanel isi2;
     private javax.swing.JPanel isi4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -511,10 +722,15 @@ public class AdminDashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
