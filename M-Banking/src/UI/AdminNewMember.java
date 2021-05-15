@@ -6,7 +6,6 @@
 package UI;
 
 import ScrollBar.MyScrollBarUI;
-import SelectionHandler.SharedListSelectionHandler;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
