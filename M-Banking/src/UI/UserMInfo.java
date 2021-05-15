@@ -293,7 +293,14 @@ public class UserMInfo extends javax.swing.JPanel
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel2MouseClicked
     {//GEN-HEADEREND:event_jPanel2MouseClicked
-        JOptionPane.showMessageDialog(this, "Test");
+        UserInfoSaldo uis = new UserInfoSaldo();
+        uis.passUserMInfo(this);
+        umm.uh.getContent().removeAll();
+        uis.setBounds(0,0,500,750);
+        uis.setVisible(true);
+        umm.uh.getContent().add(uis);
+        umm.uh.getContent().revalidate();
+        umm.uh.getContent().repaint();
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel1MouseClicked
