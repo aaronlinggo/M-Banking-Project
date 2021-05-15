@@ -133,7 +133,7 @@ public class AdminMember extends javax.swing.JPanel {
         memberCard.setLayout(memberCardLayout);
         memberCardLayout.setHorizontalGroup(
             memberCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 407, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
         memberCardLayout.setVerticalGroup(
             memberCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,19 +186,16 @@ public class AdminMember extends javax.swing.JPanel {
                         .addGap(53, 53, 53)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(79, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(panelScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+            .addComponent(panelScroll)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentLayout.createSequentialGroup()
                 .addContainerGap(103, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(50, 50, 50)
                 .addComponent(panelScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(jButton1)
                 .addGap(22, 22, 22))
         );
@@ -220,13 +217,13 @@ public class AdminMember extends javax.swing.JPanel {
         
         memberCard.removeAll();
         total++;
-        if ((182+10)*total >= 400) {
-            memberCard.setPreferredSize(new Dimension(387, (182+15)*total));
+        if ((250+10)*total >= 400) {
+            memberCard.setPreferredSize(new Dimension(470, (250+10)*total));
         }
         for (int i = 0; i < total; i++) {
             System.out.println(i);
             paAdmin.add(new panelMember_Admin());
-            paAdmin.get(i).setBounds(0, (182+15)*i, 390,182);
+            paAdmin.get(i).setBounds(0, (250+10)*i, 470,250);
             paAdmin.get(i).setVisible(true);
             memberCard.add(paAdmin.get(i));
         }
