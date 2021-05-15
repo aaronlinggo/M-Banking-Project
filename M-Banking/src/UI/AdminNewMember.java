@@ -373,8 +373,8 @@ public class AdminNewMember extends javax.swing.JPanel {
             System.out.println("ClassNotFoundException is caught");
         }
         listnewMember.removeAll();
-        if ((300+15)*requestMember.size() >= 542) {
-            listnewMember.setPreferredSize(new Dimension(470, (300+15)*requestMember.size()));
+        if ((313+10)*requestMember.size() >= 542) {
+            listnewMember.setPreferredSize(new Dimension(470, (313+10)*requestMember.size()));
         }
         else {
             listnewMember.setPreferredSize(new Dimension(488, 542));
@@ -408,7 +408,7 @@ public class AdminNewMember extends javax.swing.JPanel {
                 ALNM.get(i).setNewColorKartu(128,128,128);
             }
             ALNM.get(i).setJenisKartu(jenis);
-            ALNM.get(i).setBounds(0, (300+15)*i, 470,300);
+            ALNM.get(i).setBounds(0, (313+10)*i, 470,313);
             ALNM.get(i).setVisible(true);
             ALNM.get(i).addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e){

@@ -12,12 +12,12 @@ import java.awt.Color;
  *
  * @author LINGGO
  */
-public class AdminListNewMember extends javax.swing.JPanel {
+public class AdminCardListMember extends javax.swing.JPanel {
 
     /**
      * Creates new form AdminListNewMember
      */
-    public AdminListNewMember() {
+    public AdminCardListMember() {
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
     }
@@ -34,10 +34,6 @@ public class AdminListNewMember extends javax.swing.JPanel {
         jPanel1 = new RoundJPanel(50);
         bg = new RoundJPanel(50);
         fullName = new javax.swing.JLabel();
-        gender = new javax.swing.JLabel();
-        tglLahir = new javax.swing.JLabel();
-        alamat = new javax.swing.JLabel();
-        phoneNumber = new javax.swing.JLabel();
         saldo = new javax.swing.JLabel();
         noRek = new javax.swing.JLabel();
         kartu = new RoundJPanel(20);
@@ -53,22 +49,6 @@ public class AdminListNewMember extends javax.swing.JPanel {
         fullName.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         fullName.setForeground(new java.awt.Color(0, 0, 0));
         fullName.setText("Full Name     : ADMIN");
-
-        gender.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        gender.setForeground(new java.awt.Color(0, 0, 0));
-        gender.setText("Gender        : \"\"");
-
-        tglLahir.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        tglLahir.setForeground(new java.awt.Color(0, 0, 0));
-        tglLahir.setText("Date of Birth : \"\"");
-
-        alamat.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        alamat.setForeground(new java.awt.Color(0, 0, 0));
-        alamat.setText("Address       : \"\"");
-
-        phoneNumber.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        phoneNumber.setForeground(new java.awt.Color(0, 0, 0));
-        phoneNumber.setText("Phone Number  : \"\"");
 
         saldo.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         saldo.setForeground(new java.awt.Color(0, 0, 0));
@@ -108,42 +88,29 @@ public class AdminListNewMember extends javax.swing.JPanel {
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(alamat)
-                            .addComponent(gender)
-                            .addComponent(noRek)
-                            .addComponent(saldo)
-                            .addComponent(phoneNumber)
-                            .addComponent(tglLahir)
-                            .addComponent(fullName)))
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(kartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                    .addComponent(noRek)
+                    .addComponent(saldo)
+                    .addComponent(fullName))
+                .addContainerGap(155, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(kartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(137, 137, 137))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(fullName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tglLahir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(gender)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(alamat)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(phoneNumber)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(noRek)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(saldo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(kartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -177,17 +144,13 @@ public class AdminListNewMember extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel alamat;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel fullName;
-    private javax.swing.JLabel gender;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jenisKartu;
     private javax.swing.JPanel kartu;
     private javax.swing.JLabel noRek;
-    private javax.swing.JLabel phoneNumber;
     private javax.swing.JLabel saldo;
-    private javax.swing.JLabel tglLahir;
     // End of variables declaration//GEN-END:variables
     
     public void setNewColorBG(int w1, int w2, int w3){
@@ -201,23 +164,7 @@ public class AdminListNewMember extends javax.swing.JPanel {
     public void setFullName(String fullname){
         this.fullName.setText(fullname);
     }
-    
-    public void setGender(String gender){
-        this.gender.setText(gender);
-    }
-    
-    public void setTglLahir(String tgl){
-        this.tglLahir.setText(tgl);
-    }
-    
-    public void setAlamat(String alamat){
-        this.alamat.setText(alamat);
-    }
-    
-    public void setNoHP(String noHP){
-        this.phoneNumber.setText(noHP);
-    }
-    
+
     public void setNoRek(String noRek){
         this.noRek.setText(noRek);
     }
