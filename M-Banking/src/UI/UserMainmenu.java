@@ -33,8 +33,7 @@ public class UserMainmenu extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         bg = new javax.swing.JPanel();
         greetings = new javax.swing.JLabel();
@@ -78,10 +77,8 @@ public class UserMainmenu extends javax.swing.JPanel {
         m_info.setBackground(new java.awt.Color(80, 76, 92));
         m_info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         m_info.setOpaque(false);
-        m_info.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        m_info.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 m_infoMouseClicked(evt);
             }
         });
@@ -151,10 +148,8 @@ public class UserMainmenu extends javax.swing.JPanel {
         m_transfer.setBackground(new java.awt.Color(80, 76, 92));
         m_transfer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         m_transfer.setOpaque(false);
-        m_transfer.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        m_transfer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 m_transferMouseClicked(evt);
             }
         });
@@ -225,10 +220,8 @@ public class UserMainmenu extends javax.swing.JPanel {
         logout.setBackground(new java.awt.Color(80, 76, 92));
         logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logout.setOpaque(false);
-        logout.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 logoutMouseClicked(evt);
             }
         });
@@ -319,10 +312,8 @@ public class UserMainmenu extends javax.swing.JPanel {
         profil.setBackground(new java.awt.Color(80, 76, 92));
         profil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         profil.setOpaque(false);
-        profil.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        profil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 profilMouseClicked(evt);
             }
         });
@@ -418,9 +409,9 @@ public class UserMainmenu extends javax.swing.JPanel {
                     .addComponent(m_transfer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(m_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(profil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(profil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(185, Short.MAX_VALUE))
         );
 

@@ -27,8 +27,7 @@ public class UserMerchandise extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -48,6 +47,11 @@ public class UserMerchandise extends javax.swing.JPanel
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/Back.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -199,7 +203,20 @@ public class UserMerchandise extends javax.swing.JPanel
                 .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    UserTransfer utf;
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        utf.u.getContent().removeAll();
+        utf.setVisible(true);
+        utf.setBounds(0,0, 500, 750);
+        utf.u.getContent().add(utf);
+        utf.u.getContent().revalidate();
+        utf.u.getContent().repaint();
+    }//GEN-LAST:event_jLabel1MouseClicked
+    public void pass(UserTransfer utf){
+        this.utf=utf;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

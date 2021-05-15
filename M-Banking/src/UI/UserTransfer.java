@@ -132,6 +132,11 @@ public class UserTransfer extends javax.swing.JPanel {
         transfer.setMaximumSize(new java.awt.Dimension(415, 120));
         transfer.setOpaque(false);
         transfer.setPreferredSize(new java.awt.Dimension(415, 120));
+        transfer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                transferMouseClicked(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -327,9 +332,14 @@ public class UserTransfer extends javax.swing.JPanel {
     
     UserHomepage u;
     private void exchangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exchangeMouseClicked
-        this.setVisible(false);
         u.getContent().removeAll();
         UserMerchandise uh = new UserMerchandise();
+        uh.pass(this);
+        uh.setVisible(true);
+        uh.setBounds(0,0, 500, 750);
+        u.getContent().add(uh);
+        u.getContent().revalidate();
+        u.getContent().repaint();
     }//GEN-LAST:event_exchangeMouseClicked
 
     private void daftarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarMouseClicked
@@ -343,6 +353,19 @@ public class UserTransfer extends javax.swing.JPanel {
         u.getContent().revalidate();
         u.getContent().repaint();
     }//GEN-LAST:event_daftarMouseClicked
+
+    private void transferMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transferMouseClicked
+        // TODO add your handling code here:
+        u.getContent().removeAll();
+        UTTransfer uh = new UTTransfer();
+        uh.pass(this);
+        uh.setVisible(true);
+        uh.setBounds(0,0, 500, 750);
+        u.getContent().add(uh);
+        u.getContent().revalidate();
+        u.getContent().repaint();
+    }//GEN-LAST:event_transferMouseClicked
+    
     public void getUser(UserHomepage u){
         this.u = u;
     }
