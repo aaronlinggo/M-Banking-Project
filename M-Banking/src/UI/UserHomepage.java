@@ -27,6 +27,7 @@ public class UserHomepage extends javax.swing.JFrame {
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         content.removeAll();
         UserMainmenu uh = new UserMainmenu();
+        uh.passUserHomepage(this);
         uh.getUser(this);
         uh.setVisible(true);
         uh.setBounds(0,0, 500, 750);
@@ -180,6 +181,7 @@ public class UserHomepage extends javax.swing.JFrame {
         profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/profile_nav_putih.png")));
         content.removeAll();
         UserMainmenu uh = new UserMainmenu();
+        uh.passUserHomepage(this);
         uh.getUser(this);
         uh.setVisible(true);
         uh.setBounds(0,0, 500, 750);
