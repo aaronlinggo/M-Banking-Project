@@ -24,7 +24,8 @@ public abstract class Member implements Serializable{
     protected ArrayList<String> inbox;
     protected String tanggalLahir;
     protected String gender;
-
+    protected ArrayList<Tagihan> myTagihan;
+    
     public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String nomorHP, String alamat, String pin, int point, String tanggalLahir, String gender) {
         this.limitTransfer = limitTransfer;
         this.aturLimit = limitTransfer;
@@ -43,6 +44,7 @@ public abstract class Member implements Serializable{
         this.inbox = new ArrayList<>();
         this.tanggalLahir = tanggalLahir;
         this.gender = gender;
+        this.myTagihan = new ArrayList<>();
     }
 
     public String getGender() {
