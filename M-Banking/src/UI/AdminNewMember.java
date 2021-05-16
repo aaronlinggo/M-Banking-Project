@@ -46,7 +46,6 @@ public class AdminNewMember extends javax.swing.JPanel {
      * Creates new form AdminNewMember
      */
     ArrayList<Member> requestMember;
-    ArrayList<AdminListNewMember> ALNM;
     int idx = -1;
     public AdminNewMember() {
         initComponents();
@@ -354,7 +353,6 @@ public class AdminNewMember extends javax.swing.JPanel {
     }//GEN-LAST:event_confirmMouseClicked
 
     public void showAllRequestMember(){
-        ListSelectionModel listSelectionModel;
         ArrayList<Member> requestMember = new ArrayList<>();
         ArrayList<AdminListNewMember> ALNM = new ArrayList<>();
         try {
