@@ -33,7 +33,6 @@ public class AdminMember1 extends javax.swing.JPanel {
      * Creates new form AdminDashboard
      */
     int total = 0;
-    ArrayList<panelMember_Admin> paAdmin = new ArrayList<>();
     public AdminMember1() {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
