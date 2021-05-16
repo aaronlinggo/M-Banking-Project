@@ -446,7 +446,7 @@ public class AdminNewMember extends javax.swing.JPanel {
             System.out.println("ClassNotFoundException is caught");
         }
         for (int j = 0; j < requestMember.size(); j++) {
-            ALNM.get(j).setNewColorBG(254,174,72);
+            ALNM.get(j).setNewColorBG(255,255,255);
         }
     }
     

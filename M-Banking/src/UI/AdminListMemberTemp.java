@@ -21,6 +21,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import javax.swing.JComponent;
 import javax.swing.JList;
@@ -63,10 +66,14 @@ public class AdminListMemberTemp extends javax.swing.JPanel {
 
         scroll = new javax.swing.JScrollPane();
         listnewMember = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        sort = new javax.swing.JPanel();
+        sortLbl = new javax.swing.JLabel();
+        addSaldo = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        addTagihan = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        deleteMember = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(250, 243, 243));
 
@@ -153,56 +160,110 @@ public class AdminListMemberTemp extends javax.swing.JPanel {
 
         scroll.setViewportView(listnewMember);
 
-        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
+        sort.setBackground(new java.awt.Color(255, 204, 51));
+        sort.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sort.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sortMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        sortLbl.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sortLbl.setForeground(new java.awt.Color(0, 0, 0));
+        sortLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/sort.png"))); // NOI18N
+        sortLbl.setText("Sort");
 
-        jPanel2.setBackground(new java.awt.Color(0, 255, 255));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        javax.swing.GroupLayout sortLayout = new javax.swing.GroupLayout(sort);
+        sort.setLayout(sortLayout);
+        sortLayout.setHorizontalGroup(
+            sortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sortLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(sortLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanel3.setBackground(new java.awt.Color(0, 255, 255));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        sortLayout.setVerticalGroup(
+            sortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sortLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(sortLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel4.setBackground(new java.awt.Color(0, 255, 255));
+        addSaldo.setBackground(new java.awt.Color(0, 255, 255));
+        addSaldo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        jLabel2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/add.png"))); // NOI18N
+        jLabel2.setText("Balance");
+
+        javax.swing.GroupLayout addSaldoLayout = new javax.swing.GroupLayout(addSaldo);
+        addSaldo.setLayout(addSaldoLayout);
+        addSaldoLayout.setHorizontalGroup(
+            addSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addSaldoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 41, Short.MAX_VALUE)
+        addSaldoLayout.setVerticalGroup(
+            addSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addSaldoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        addTagihan.setBackground(new java.awt.Color(51, 255, 51));
+        addTagihan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabel3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/bill.png"))); // NOI18N
+        jLabel3.setText("Bill");
+
+        javax.swing.GroupLayout addTagihanLayout = new javax.swing.GroupLayout(addTagihan);
+        addTagihan.setLayout(addTagihanLayout);
+        addTagihanLayout.setHorizontalGroup(
+            addTagihanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addTagihanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+        );
+        addTagihanLayout.setVerticalGroup(
+            addTagihanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addTagihanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        deleteMember.setBackground(new java.awt.Color(255, 102, 102));
+        deleteMember.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteMember.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMemberMouseClicked(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/trash.png"))); // NOI18N
+        jLabel4.setText("Delete");
+
+        javax.swing.GroupLayout deleteMemberLayout = new javax.swing.GroupLayout(deleteMember);
+        deleteMember.setLayout(deleteMemberLayout);
+        deleteMemberLayout.setHorizontalGroup(
+            deleteMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteMemberLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
+        );
+        deleteMemberLayout.setVerticalGroup(
+            deleteMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteMemberLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -211,29 +272,121 @@ public class AdminListMemberTemp extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(scroll)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addTagihan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
+                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addTagihan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(deleteMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(21, 21, 21))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void sortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sortMouseClicked
+        // TODO add your handling code here:
+        ArrayList<Member> Account = new ArrayList<>();
+        try {
+            FileInputStream file = new FileInputStream("Account.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            Account = (ArrayList<Member>) in.readObject();
+
+            in.close();
+            file.close();
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        System.out.println("abc");
+        Collections.sort(Account, new Comparator<Member>(){
+            @Override
+            public int compare(Member t1, Member t2) {
+                String mt1 = t1.getNama().toUpperCase();
+                String mt2 = t2.getNama().toUpperCase();
+                if (mt1.compareTo(mt2)<0){
+                    return -1;
+                }
+                return 0;
+            }
+        });
+        try {
+            FileOutputStream file = new FileOutputStream("Account.ser");
+            ObjectOutputStream out = new ObjectOutputStream(file);
+
+            out.writeObject(Account);
+
+            out.close();
+            file.close();
+
+            System.out.println("Object has been serialized");
+
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        
+        showAllRequestMember();
+    }//GEN-LAST:event_sortMouseClicked
+
+    private void deleteMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMemberMouseClicked
+        // TODO add your handling code here:
+        if (idx != -1){
+            ArrayList<Member> Account = new ArrayList<>();
+            try {
+                FileInputStream file = new FileInputStream("Account.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                Account = (ArrayList<Member>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            Account.remove(idx);
+            try {
+                FileOutputStream file = new FileOutputStream("Account.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            JOptionPane.showMessageDialog(this, "Berhasil delete");
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Pick a new member pls");
+        }
+        idx = -1;
+        showAllRequestMember();
+    }//GEN-LAST:event_deleteMemberMouseClicked
 
     public void showAllRequestMember(){
         ArrayList<Member> Account = new ArrayList<>();
@@ -332,11 +485,15 @@ public class AdminListMemberTemp extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel addSaldo;
+    private javax.swing.JPanel addTagihan;
+    private javax.swing.JPanel deleteMember;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel listnewMember;
     private javax.swing.JScrollPane scroll;
+    private javax.swing.JPanel sort;
+    private javax.swing.JLabel sortLbl;
     // End of variables declaration//GEN-END:variables
 }
