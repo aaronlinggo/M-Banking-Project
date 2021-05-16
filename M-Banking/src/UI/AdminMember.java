@@ -241,8 +241,11 @@ public class AdminMember extends javax.swing.JPanel {
         newMember.setBackground(new Color(250,243,243));
         member.setBackground(new Color(250,243,243));
         upgrade.setBackground(new Color(84,190,229));
-        
+        AdminRequestUpgrade ARU = new AdminRequestUpgrade();
+        ARU.setBounds(0, 0, 488, 616);
+        ARU.setVisible(true);
         container.removeAll();
+        container.add(ARU);
         container.revalidate();
         container.repaint();
     }//GEN-LAST:event_upgradeMouseClicked

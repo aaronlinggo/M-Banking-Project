@@ -12,12 +12,12 @@ import java.awt.Color;
  *
  * @author LINGGO
  */
-public class AdminListNewMember extends javax.swing.JPanel {
+public class AdminCardListNewMember extends javax.swing.JPanel {
 
     /**
      * Creates new form AdminListNewMember
      */
-    public AdminListNewMember() {
+    public AdminCardListNewMember() {
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
     }

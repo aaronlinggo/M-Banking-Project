@@ -41,14 +41,14 @@ import m.banking.Silver;
  *
  * @author LINGGO
  */
-public class AdminNewMember extends javax.swing.JPanel {
+public class AdminRequestUpgrade extends javax.swing.JPanel {
 
     /**
      * Creates new form AdminNewMember
      */
     ArrayList<Member> requestMember;
     int idx = -1;
-    public AdminNewMember() {
+    public AdminRequestUpgrade() {
         initComponents();
         showAllRequestMember();
     }
@@ -356,13 +356,13 @@ public class AdminNewMember extends javax.swing.JPanel {
     }//GEN-LAST:event_confirmMouseClicked
 
     public void showAllRequestMember(){
-        ArrayList<Member> requestMember = new ArrayList<>();
-        ArrayList<AdminCardListNewMember> ALNM = new ArrayList<>();
+        ArrayList<Member> Account = new ArrayList<>();
+        ArrayList<AdminCardListMemberUpgrade> ACLMU = new ArrayList<>();
         try {
-            FileInputStream file = new FileInputStream("requestMember.ser");
+            FileInputStream file = new FileInputStream("Account.ser");
             ObjectInputStream in = new ObjectInputStream(file);
 
-            requestMember = (ArrayList<Member>) in.readObject();
+            Account = (ArrayList<Member>) in.readObject();
 
             in.close();
             file.close();
@@ -374,62 +374,57 @@ public class AdminNewMember extends javax.swing.JPanel {
             System.out.println("ClassNotFoundException is caught");
         }
         listnewMember.removeAll();
-        if ((313+10)*requestMember.size() >= 542) {
-            listnewMember.setPreferredSize(new Dimension(470, (313+10)*requestMember.size()));
+        if ((205+10)*Account.size() >= 532) {
+            listnewMember.setPreferredSize(new Dimension(470, (205+10)*Account.size()));
         }
         else {
-            listnewMember.setPreferredSize(new Dimension(488, 542));
+            listnewMember.setPreferredSize(new Dimension(488, 532));
         }
-        for (int i = 0; i < requestMember.size(); i++) {
+        for (int i = 0; i < Account.size(); i++) {
             System.out.println(i);
-            ALNM.add(new AdminCardListNewMember());
-            ALNM.get(i).setName("ALNM"+i);
-            ALNM.get(i).setFullName("Full Name     : " + requestMember.get(i).getNama().toUpperCase());
-            System.out.println(requestMember.get(i).getTanggalLahir());
-            ALNM.get(i).setTglLahir("Date of Birth : " + requestMember.get(i).getTanggalLahir());
-            ALNM.get(i).setGender("Gender        : " + requestMember.get(i).getGender());
-            ALNM.get(i).setAlamat("Address       : " + requestMember.get(i).getAlamat());
-            ALNM.get(i).setNoHP("Phone Number  : " + requestMember.get(i).getNomorHP());
-            String tempnorek = String.valueOf(requestMember.get(i).getNoRekening()).substring(0,4) + "-" + String.valueOf(requestMember.get(i).getNoRekening()).substring(4,8);
-            ALNM.get(i).setNoRek("Card Number   : " + tempnorek);
-            String tempSaldo = Double.toString(requestMember.get(i).getRupiah());
+            ACLMU.add(new AdminCardListMemberUpgrade());
+            ACLMU.get(i).setName("ALNM"+i);
+            ACLMU.get(i).setFullName("Full Name     : " + Account.get(i).getNama().toUpperCase());
+            String tempnorek = String.valueOf(Account.get(i).getNoRekening()).substring(0,4) + "-" + String.valueOf(Account.get(i).getNoRekening()).substring(4,8);
+            ACLMU.get(i).setNoRek("Card Number   : " + tempnorek);
+            String tempSaldo = Double.toString(Account.get(i).getRupiah());
             System.out.println(tempSaldo);
-            ALNM.get(i).setSaldo("Balance       : " + priceWithoutDecimal(requestMember.get(i).getRupiah()));
+            ACLMU.get(i).setSaldo("Balance       : " + priceWithoutDecimal(Account.get(i).getRupiah()));
             String jenis = "";
-            if (requestMember.get(i) instanceof Silver){
+            if (Account.get(i) instanceof Silver){
                 jenis = "Silver";
-                ALNM.get(i).setNewColorKartu(229, 228, 226);
+                ACLMU.get(i).setNewColorKartu(229, 228, 226);
             }
-            else if (requestMember.get(i) instanceof Gold){
+            else if (Account.get(i) instanceof Gold){
                 jenis = "Gold";
-                ALNM.get(i).setNewColorKartu(255,215,0);
+                ACLMU.get(i).setNewColorKartu(255,215,0);
             }
-            else if (requestMember.get(i) instanceof Platinum){
+            else if (Account.get(i) instanceof Platinum){
                 jenis = "Platinum";
-                ALNM.get(i).setNewColorKartu(128,128,128);
+                ACLMU.get(i).setNewColorKartu(128,128,128);
             }
-            ALNM.get(i).setJenisKartu(jenis);
-            ALNM.get(i).setBounds(0, (313+10)*i, 470,313);
-            ALNM.get(i).setVisible(true);
-            ALNM.get(i).addMouseListener(new MouseAdapter() {
+            ACLMU.get(i).setJenisKartu(jenis);
+            ACLMU.get(i).setBounds(0, (205+10)*i, 470,205);
+            ACLMU.get(i).setVisible(true);
+            ACLMU.get(i).addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e){
                     System.out.println("klik");
                     System.out.println(e.getSource());
                     System.out.println(e.getY());
                     System.out.println(e.getComponent().getName());
-                    System.out.println(ALNM.indexOf(e.getComponent()));
-                    idx = ALNM.indexOf(e.getComponent());
-                    resetBGPanel(ALNM);
-                    ALNM.get(idx).setNewColorBG(84,190,229);
+                    System.out.println(ACLMU.indexOf(e.getComponent()));
+                    idx = ACLMU.indexOf(e.getComponent());
+                    resetBGPanel(ACLMU);
+                    ACLMU.get(idx).setNewColorBG(84,190,229);
                 }
             });
-            listnewMember.add(ALNM.get(i));
+            listnewMember.add(ACLMU.get(i));
         }
         listnewMember.revalidate();
         listnewMember.repaint();
     }
 
-    public void resetBGPanel(ArrayList<AdminCardListNewMember> ALNM){
+    public void resetBGPanel(ArrayList<AdminCardListMemberUpgrade> ACLMU){
         ArrayList<Member> requestMember = new ArrayList<>();
         try {
             FileInputStream file = new FileInputStream("requestMember.ser");
@@ -447,7 +442,7 @@ public class AdminNewMember extends javax.swing.JPanel {
             System.out.println("ClassNotFoundException is caught");
         }
         for (int j = 0; j < requestMember.size(); j++) {
-            ALNM.get(j).setNewColorBG(255,255,255);
+            ACLMU.get(j).setNewColorBG(255,255,255);
         }
     }
     
