@@ -43,14 +43,14 @@ import m.banking.Silver;
  *
  * @author LINGGO
  */
-public class AdminListMemberTemp extends javax.swing.JPanel {
+public class AdminListMember extends javax.swing.JPanel {
 
     /**
      * Creates new form AdminNewMember
      */
     ArrayList<Member> requestMember;
     int idx = -1;
-    public AdminListMemberTemp() {
+    public AdminListMember() {
         initComponents();
         showAllRequestMember();
     }
@@ -191,6 +191,11 @@ public class AdminListMemberTemp extends javax.swing.JPanel {
 
         addSaldo.setBackground(new java.awt.Color(0, 255, 255));
         addSaldo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addSaldo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addSaldoMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -388,6 +393,71 @@ public class AdminListMemberTemp extends javax.swing.JPanel {
         showAllRequestMember();
     }//GEN-LAST:event_deleteMemberMouseClicked
 
+    private void addSaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addSaldoMouseClicked
+        // TODO add your handling code here:
+        if (idx != -1){
+            String input = JOptionPane.showInputDialog(this, "Add Balance");
+            if (!isNumeric(input)){
+                addSaldoMouseClicked(evt);
+            }
+            else {
+                int saldo = Integer.parseInt(input);
+                if (saldo>=0){
+                    ArrayList<Member> Account = new ArrayList<>();
+                    try {
+                        FileInputStream file = new FileInputStream("Account.ser");
+                        ObjectInputStream in = new ObjectInputStream(file);
+
+                        Account = (ArrayList<Member>) in.readObject();
+
+                        in.close();
+                        file.close();
+                    }
+                    catch(IOException ex) {
+                        System.out.println("IOException is caught");
+                    }
+                    catch(ClassNotFoundException ex) {
+                        System.out.println("ClassNotFoundException is caught");
+                    }
+                    Account.get(idx).setRupiah(Account.get(idx).getRupiah()+saldo);
+                    JOptionPane.showMessageDialog(this, "Success add Balance");
+                    try {
+                        FileOutputStream file = new FileOutputStream("Account.ser");
+                        ObjectOutputStream out = new ObjectOutputStream(file);
+
+                        out.writeObject(Account);
+
+                        out.close();
+                        file.close();
+
+                        System.out.println("Object has been serialized");
+
+                    }
+                    catch(IOException ex) {
+                        System.out.println("IOException is caught");
+                    }
+                    showAllRequestMember();
+                }
+                else {
+                    addSaldoMouseClicked(evt);
+                }
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Pick a new member pls");
+        }
+    }//GEN-LAST:event_addSaldoMouseClicked
+
+    public boolean isNumeric(String str){
+        for (char c : str.toCharArray())
+        {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     public void showAllRequestMember(){
         ArrayList<Member> Account = new ArrayList<>();
         ArrayList<AdminCardListMember> ACLM = new ArrayList<>();

@@ -27,13 +27,13 @@ import javax.swing.SwingUtilities;
  *
  * @author LINGGO
  */
-public class AdminMember1 extends javax.swing.JPanel {
+public class AdminMember extends javax.swing.JPanel {
 
     /**
      * Creates new form AdminDashboard
      */
     int total = 0;
-    public AdminMember1() {
+    public AdminMember() {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
         newMember.setBackground(new Color(84,190,229));
@@ -227,7 +227,7 @@ public class AdminMember1 extends javax.swing.JPanel {
         newMember.setBackground(new Color(250,243,243));
         member.setBackground(new Color(84,190,229));
         upgrade.setBackground(new Color(250,243,243));
-        AdminListMemberTemp ALM = new AdminListMemberTemp();
+        AdminListMember ALM = new AdminListMember();
         ALM.setBounds(0, 0, 488,616);
         ALM.setVisible(true);
         container.removeAll();
