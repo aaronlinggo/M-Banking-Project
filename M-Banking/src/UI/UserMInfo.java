@@ -38,33 +38,33 @@ public class UserMInfo extends javax.swing.JPanel
     private void initComponents()
     {
 
-        jPanel1 = new RoundJPanel(25);
+        Back = new RoundJPanel(25);
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new RoundJPanel(25);
+        InfoSaldo = new RoundJPanel(25);
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jPanel3 = new RoundJPanel(25);
+        InfoKurs = new RoundJPanel(25);
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jPanel4 = new RoundJPanel(25);
+        MutasiRekening = new RoundJPanel(25);
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jPanel5 = new RoundJPanel(25);
+        InfoRewardBank = new RoundJPanel(25);
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(55, 53, 61));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.setOpaque(false);
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter()
+        Back.setBackground(new java.awt.Color(255, 255, 255));
+        Back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Back.setOpaque(false);
+        Back.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
             {
-                jPanel1MouseClicked(evt);
+                BackMouseClicked(evt);
             }
         });
 
@@ -77,18 +77,18 @@ public class UserMInfo extends javax.swing.JPanel
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout BackLayout = new javax.swing.GroupLayout(Back);
+        Back.setLayout(BackLayout);
+        BackLayout.setHorizontalGroup(
+            BackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        BackLayout.setVerticalGroup(
+            BackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -98,15 +98,15 @@ public class UserMInfo extends javax.swing.JPanel
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("M-Info");
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.setOpaque(false);
-        jPanel2.setPreferredSize(new java.awt.Dimension(186, 134));
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter()
+        InfoSaldo.setBackground(new java.awt.Color(255, 255, 255));
+        InfoSaldo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        InfoSaldo.setOpaque(false);
+        InfoSaldo.setPreferredSize(new java.awt.Dimension(186, 134));
+        InfoSaldo.addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseClicked(java.awt.event.MouseEvent evt)
             {
-                jPanel2MouseClicked(evt);
+                InfoSaldoMouseClicked(evt);
             }
         });
 
@@ -118,20 +118,20 @@ public class UserMInfo extends javax.swing.JPanel
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Saldo");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout InfoSaldoLayout = new javax.swing.GroupLayout(InfoSaldo);
+        InfoSaldo.setLayout(InfoSaldoLayout);
+        InfoSaldoLayout.setHorizontalGroup(
+            InfoSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoSaldoLayout.createSequentialGroup()
                 .addContainerGap(75, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(InfoSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel9))
                 .addGap(41, 41, 41))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        InfoSaldoLayout.setVerticalGroup(
+            InfoSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InfoSaldoLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -139,10 +139,17 @@ public class UserMInfo extends javax.swing.JPanel
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(186, 134));
+        InfoKurs.setBackground(new java.awt.Color(255, 255, 255));
+        InfoKurs.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        InfoKurs.setOpaque(false);
+        InfoKurs.setPreferredSize(new java.awt.Dimension(186, 134));
+        InfoKurs.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                InfoKursMouseClicked(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
@@ -152,20 +159,20 @@ public class UserMInfo extends javax.swing.JPanel
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Kurs");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout InfoKursLayout = new javax.swing.GroupLayout(InfoKurs);
+        InfoKurs.setLayout(InfoKursLayout);
+        InfoKursLayout.setHorizontalGroup(
+            InfoKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoKursLayout.createSequentialGroup()
                 .addContainerGap(76, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(InfoKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(jLabel10))
                 .addGap(54, 54, 54))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        InfoKursLayout.setVerticalGroup(
+            InfoKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InfoKursLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -173,10 +180,17 @@ public class UserMInfo extends javax.swing.JPanel
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.setOpaque(false);
-        jPanel4.setPreferredSize(new java.awt.Dimension(186, 134));
+        MutasiRekening.setBackground(new java.awt.Color(255, 255, 255));
+        MutasiRekening.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MutasiRekening.setOpaque(false);
+        MutasiRekening.setPreferredSize(new java.awt.Dimension(186, 134));
+        MutasiRekening.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                MutasiRekeningMouseClicked(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -186,20 +200,20 @@ public class UserMInfo extends javax.swing.JPanel
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Rekening");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout MutasiRekeningLayout = new javax.swing.GroupLayout(MutasiRekening);
+        MutasiRekening.setLayout(MutasiRekeningLayout);
+        MutasiRekeningLayout.setHorizontalGroup(
+            MutasiRekeningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MutasiRekeningLayout.createSequentialGroup()
                 .addContainerGap(68, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(MutasiRekeningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jLabel7))
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        MutasiRekeningLayout.setVerticalGroup(
+            MutasiRekeningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MutasiRekeningLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -207,9 +221,16 @@ public class UserMInfo extends javax.swing.JPanel
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel5.setOpaque(false);
+        InfoRewardBank.setBackground(new java.awt.Color(255, 255, 255));
+        InfoRewardBank.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        InfoRewardBank.setOpaque(false);
+        InfoRewardBank.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                InfoRewardBankMouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -223,21 +244,21 @@ public class UserMInfo extends javax.swing.JPanel
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Bank");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout InfoRewardBankLayout = new javax.swing.GroupLayout(InfoRewardBank);
+        InfoRewardBank.setLayout(InfoRewardBankLayout);
+        InfoRewardBankLayout.setHorizontalGroup(
+            InfoRewardBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoRewardBankLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(InfoRewardBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
                     .addComponent(jLabel4))
                 .addGap(27, 27, 27))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        InfoRewardBankLayout.setVerticalGroup(
+            InfoRewardBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InfoRewardBankLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -255,21 +276,21 @@ public class UserMInfo extends javax.swing.JPanel
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(InfoSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MutasiRekening, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(63, 63, 63)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(InfoRewardBank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(InfoKurs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(32, 32, 32))))
         );
         layout.setVerticalGroup(
@@ -277,22 +298,22 @@ public class UserMInfo extends javax.swing.JPanel
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(171, 171, 171)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
+                    .addComponent(InfoRewardBank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(InfoSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(InfoKurs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MutasiRekening, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(171, 171, 171))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel2MouseClicked
-    {//GEN-HEADEREND:event_jPanel2MouseClicked
+    private void InfoSaldoMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_InfoSaldoMouseClicked
+    {//GEN-HEADEREND:event_InfoSaldoMouseClicked
         UserInfoSaldo uis = new UserInfoSaldo();
         uis.passUserMInfo(this);
         umm.uh.getContent().removeAll();
@@ -301,7 +322,7 @@ public class UserMInfo extends javax.swing.JPanel
         umm.uh.getContent().add(uis);
         umm.uh.getContent().revalidate();
         umm.uh.getContent().repaint();
-    }//GEN-LAST:event_jPanel2MouseClicked
+    }//GEN-LAST:event_InfoSaldoMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel1MouseClicked
     {//GEN-HEADEREND:event_jLabel1MouseClicked
@@ -313,8 +334,8 @@ public class UserMInfo extends javax.swing.JPanel
         umm.uh.getContent().repaint();
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jPanel1MouseClicked
-    {//GEN-HEADEREND:event_jPanel1MouseClicked
+    private void BackMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_BackMouseClicked
+    {//GEN-HEADEREND:event_BackMouseClicked
         // TODO add your handling code here:
         umm.uh.getContent().removeAll();
         umm.setBounds(0,0,500,750);
@@ -322,10 +343,54 @@ public class UserMInfo extends javax.swing.JPanel
         umm.uh.getContent().add(umm);
         umm.uh.getContent().revalidate();
         umm.uh.getContent().repaint();
-    }//GEN-LAST:event_jPanel1MouseClicked
+    }//GEN-LAST:event_BackMouseClicked
+
+    private void InfoRewardBankMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_InfoRewardBankMouseClicked
+    {//GEN-HEADEREND:event_InfoRewardBankMouseClicked
+        // TODO add your handling code here:
+        UserInfoRewardBank uirb = new UserInfoRewardBank();
+        uirb.passUserMInfo(this);
+        umm.uh.getContent().removeAll();
+        uirb.setBounds(0,0,500,750);
+        uirb.setVisible(true);
+        umm.uh.getContent().add(uirb);
+        umm.uh.getContent().revalidate();
+        umm.uh.getContent().repaint();
+    }//GEN-LAST:event_InfoRewardBankMouseClicked
+
+    private void MutasiRekeningMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_MutasiRekeningMouseClicked
+    {//GEN-HEADEREND:event_MutasiRekeningMouseClicked
+        // TODO add your handling code here:
+        UserMutasiRekening umr = new UserMutasiRekening();
+        umr.passUserMInfo(this);
+        umm.uh.getContent().removeAll();
+        umr.setBounds(0,0,500,750);
+        umr.setVisible(true);
+        umm.uh.getContent().add(umr);
+        umm.uh.getContent().revalidate();
+        umm.uh.getContent().repaint();
+    }//GEN-LAST:event_MutasiRekeningMouseClicked
+
+    private void InfoKursMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_InfoKursMouseClicked
+    {//GEN-HEADEREND:event_InfoKursMouseClicked
+        // TODO add your handling code here:
+        UserInfoKurs uik = new UserInfoKurs();
+        uik.passUserMInfo(this);
+        umm.uh.getContent().removeAll();
+        uik.setBounds(0,0,500,750);
+        uik.setVisible(true);
+        umm.uh.getContent().add(uik);
+        umm.uh.getContent().revalidate();
+        umm.uh.getContent().repaint();
+    }//GEN-LAST:event_InfoKursMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Back;
+    private javax.swing.JPanel InfoKurs;
+    private javax.swing.JPanel InfoRewardBank;
+    private javax.swing.JPanel InfoSaldo;
+    private javax.swing.JPanel MutasiRekening;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -337,10 +402,5 @@ public class UserMInfo extends javax.swing.JPanel
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }
