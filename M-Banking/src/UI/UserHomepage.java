@@ -23,11 +23,26 @@ public class UserHomepage extends javax.swing.JFrame {
      * Creates new form AdminHomepage
      */
     Member active;
+    public UserHomepage(Member active) {
+        this.active = active;
+        initComponents();
+        this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        content.removeAll();
+        UserMainmenu uh = new UserMainmenu(this);
+        uh.passUserHomepage(this);
+        uh.getUser(this);
+        uh.setVisible(true);
+        uh.setBounds(0,0, 500, 750);
+        content.add(uh);
+        content.revalidate();
+        content.repaint();
+    }
+    
     public UserHomepage() {
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         content.removeAll();
-        UserMainmenu uh = new UserMainmenu();
+        UserMainmenu uh = new UserMainmenu(this);
         uh.passUserHomepage(this);
         uh.getUser(this);
         uh.setVisible(true);
@@ -183,7 +198,7 @@ public class UserHomepage extends javax.swing.JFrame {
         transfer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/trans_nav_putih.png")));
         profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/profile_nav_putih.png")));
         content.removeAll();
-        UserMainmenu uh = new UserMainmenu();
+        UserMainmenu uh = new UserMainmenu(this);
         uh.passUserHomepage(this);
         uh.getUser(this);
         uh.setVisible(true);

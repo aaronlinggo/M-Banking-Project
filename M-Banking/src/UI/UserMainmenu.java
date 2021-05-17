@@ -18,7 +18,8 @@ public class UserMainmenu extends javax.swing.JPanel {
      * Creates new form UserMainmenu
      */
     UserHomepage uh;
-    public UserMainmenu() {
+    public UserMainmenu(UserHomepage uh) {
+        this.uh=uh;
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
         this.greetings.setText("Hi, "+uh.active.getNama().toUpperCase());
