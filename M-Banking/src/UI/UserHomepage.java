@@ -11,6 +11,7 @@ import javax.accessibility.AccessibleContext;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
+import m.banking.Member;
 
 /**
  *
@@ -21,7 +22,7 @@ public class UserHomepage extends javax.swing.JFrame {
     /**
      * Creates new form AdminHomepage
      */
-    
+    Member active;
     public UserHomepage() {
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
@@ -35,7 +36,9 @@ public class UserHomepage extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
     }
-    
+    public void passmember(Member active){
+        this.active = active;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.

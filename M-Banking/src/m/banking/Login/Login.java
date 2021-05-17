@@ -361,7 +361,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         pin.setText("");
     }//GEN-LAST:event_pinFocusGained
-
+    Member active = null;
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
         System.out.println(norek.getText());
         System.out.println(pin.getPassword());
@@ -373,11 +373,28 @@ public class Login extends javax.swing.JFrame {
             Admin.setVisible(true);
             JOptionPane.showMessageDialog(this, "Success Login");
         }
-        else if (norek.getText().equals("tes") && new String(pin.getPassword()).equals("tes")) {
-            this.setVisible(false);
-            UserHomepage user = new UserHomepage();
-            user.setVisible(true);
-            JOptionPane.showMessageDialog(this, "Success Login");
+        else if (!norek.getText().equals("") && !new String(pin.getPassword()).equals("")) {
+            System.out.println("masuk else if");
+            System.out.println(Account.size());
+            for(Member acc : Account){
+                System.out.println("ngecek");
+                String norekA = String.valueOf(acc.getNoRekening());
+                String pinA = acc.getPin();
+                if(norek.getText().equals(norekA) && new String(pin.getPassword()).equals(pinA) ){
+                    active = acc;
+                    System.out.println("keganti");
+                }
+            }
+            if(active!=null){
+                System.out.println("masuk");
+                this.setVisible(false);
+                UserHomepage user = new UserHomepage();
+                user.setVisible(true);
+                JOptionPane.showMessageDialog(this, "Success Login");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "gagal Login");
+            }
         }
         else{
             JOptionPane.showMessageDialog(this, "gagal Login");

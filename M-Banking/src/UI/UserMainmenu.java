@@ -21,6 +21,7 @@ public class UserMainmenu extends javax.swing.JPanel {
     public UserMainmenu() {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
+        this.greetings.setText("Hi, "+uh.active.getNama().toUpperCase());
     }
     public void passUserHomepage(UserHomepage uh)
     {

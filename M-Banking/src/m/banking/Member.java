@@ -26,6 +26,7 @@ public abstract class Member implements Serializable{
     protected String tanggalLahir;
     protected String gender;
     protected ArrayList<Tagihan> myTagihan;
+    protected ArrayList<Integer> daftarrek; 
     
     public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String nomorHP, String alamat, String pin, int point, String tanggalLahir, String gender) {
         this.limitTransfer = limitTransfer;
@@ -46,6 +47,8 @@ public abstract class Member implements Serializable{
         this.tanggalLahir = tanggalLahir;
         this.gender = gender;
         this.myTagihan = new ArrayList<>();
+        this.daftarrek = new ArrayList<>();
+        
     }
 
     public int randomVA(){
