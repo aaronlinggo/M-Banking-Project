@@ -35,6 +35,7 @@ public class UTDaftar extends javax.swing.JPanel {
         backbtn = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(500, 750));
 
@@ -50,9 +51,19 @@ public class UTDaftar extends javax.swing.JPanel {
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 35)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Transfer");
+        jLabel1.setText("Daftar Rekening");
+
+        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField1.setText("Nomor Rekening 1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bgutamaLayout = new javax.swing.GroupLayout(bgutama);
         bgutama.setLayout(bgutamaLayout);
@@ -61,11 +72,13 @@ public class UTDaftar extends javax.swing.JPanel {
             .addGroup(bgutamaLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(bgutamaLayout.createSequentialGroup()
-                        .addComponent(backbtn)
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator1))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                    .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(bgutamaLayout.createSequentialGroup()
+                            .addComponent(backbtn)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
         bgutamaLayout.setVerticalGroup(
@@ -77,7 +90,9 @@ public class UTDaftar extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(645, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(540, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -101,6 +116,11 @@ public class UTDaftar extends javax.swing.JPanel {
         utf.u.getContent().revalidate();
         utf.u.getContent().repaint();
     }//GEN-LAST:event_backbtnMouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextField1ActionPerformed
     
     UserTransfer utf;
         
@@ -113,5 +133,6 @@ public class UTDaftar extends javax.swing.JPanel {
     private javax.swing.JPanel bgutama;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
