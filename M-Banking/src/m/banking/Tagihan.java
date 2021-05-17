@@ -43,7 +43,4 @@ public class Tagihan {
     public void setVirtualAccount(int virtualAccount) {
         this.virtualAccount = virtualAccount;
     }
-    
-    
-    
 }

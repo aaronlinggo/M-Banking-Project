@@ -4,6 +4,7 @@ package m.banking;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 
 public abstract class Member implements Serializable{
@@ -47,6 +48,34 @@ public abstract class Member implements Serializable{
         this.myTagihan = new ArrayList<>();
     }
 
+    public int randomVA(){
+        int va = 0;
+        do {
+            va = new Random().nextInt(99999999);
+            boolean cek = false;
+            for (int i = 0; i < myTagihan.size(); i++) {
+                if (va == myTagihan.get(i).getVirtualAccount()){
+                    cek = true;
+                }
+            }
+            if (!cek){
+                break;
+            }
+        }
+        while(true);
+        return va;
+    }
+    
+    public void tes(){
+        for (int i = 0; i < myTagihan.size(); i++) {
+            System.out.println(myTagihan.get(i).getNamaTagihan() + " - " + myTagihan.get(i).getJumlahTagihan() + " - " + myTagihan.get(i).getVirtualAccount());
+        }
+    }
+    
+    public void addTagihan(String nama, double total, int va){
+        this.myTagihan.add(new Tagihan(nama, total, va));
+    }
+    
     public String getGender() {
         return gender;
     }

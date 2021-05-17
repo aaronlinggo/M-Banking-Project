@@ -228,6 +228,11 @@ public class AdminListMember extends javax.swing.JPanel {
         addTagihan.setBackground(new java.awt.Color(51, 255, 51));
         addTagihan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addTagihan.setOpaque(false);
+        addTagihan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addTagihanMouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -460,6 +465,106 @@ public class AdminListMember extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Pick a new member pls");
         }
     }//GEN-LAST:event_addSaldoMouseClicked
+
+    private void addTagihanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addTagihanMouseClicked
+        // TODO add your handling code here:
+        if (idx != -1){
+            String namaMerchandise = JOptionPane.showInputDialog(this, "Name Tagihan");
+            String jumlahTagihan =  "";
+            boolean stop = false;
+            do {
+                jumlahTagihan = JOptionPane.showInputDialog(this, "Bill");
+                if (isNumeric(jumlahTagihan)){
+                    stop = true;
+                }
+            }
+            while (!stop);
+            
+//            ArrayList<Member> Account = new ArrayList<>();
+//            try {
+//                FileInputStream file = new FileInputStream("Account.ser");
+//                ObjectInputStream in = new ObjectInputStream(file);
+//
+//                Account = (ArrayList<Member>) in.readObject();
+//
+//                in.close();
+//                file.close();
+//            }
+//            catch(IOException ex) {
+//                System.out.println("IOException is caught");
+//            }
+//            catch(ClassNotFoundException ex) {
+//                System.out.println("ClassNotFoundException is caught");
+//            }
+            
+//            int va = Account.get(idx).randomVA();
+//            System.out.println(va);
+//            double temp = Double.parseDouble(jumlahTagihan);
+//            Account.get(idx).addTagihan(namaMerchandise, temp, va);
+            
+//            try {
+//                FileOutputStream file = new FileOutputStream("Account.ser");
+//                ObjectOutputStream out = new ObjectOutputStream(file);
+//
+//                out.writeObject(Account);
+//
+//                out.close();
+//                file.close();
+//
+//                System.out.println("Object has been serialized");
+//
+//            }
+//            catch(IOException ex) {
+//                System.out.println("IOException is caught111");
+//            }
+            //JOptionPane.showMessageDialog(this, "Success add a bill \""+ namaMerchandise + "\" - Virtual Account : " + va);
+            //showAllRequestMember();
+            
+            
+            
+            ArrayList<Member> Account = new ArrayList<>();
+            try {
+                FileInputStream file = new FileInputStream("Account.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                Account = (ArrayList<Member>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            int va = Account.get(idx).randomVA();
+            System.out.println(va);
+            double temp = Double.parseDouble(jumlahTagihan);
+            Account.get(idx).addTagihan(namaMerchandise, temp, va);
+            Account.get(idx).tes();
+            JOptionPane.showMessageDialog(this, "Success add a bill \""+ namaMerchandise + "\" - Virtual Account : " + va);
+            try {
+                FileOutputStream file = new FileOutputStream("Account.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            showAllRequestMember();
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Pick a new member pls");
+        }
+    }//GEN-LAST:event_addTagihanMouseClicked
 
     public boolean isNumeric(String str){
         for (char c : str.toCharArray())
