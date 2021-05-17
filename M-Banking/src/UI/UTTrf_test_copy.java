@@ -12,12 +12,12 @@ import m.banking.Login.Login;
  *
  * @author maxdr
  */
-public class UserTransfer extends javax.swing.JPanel {
+public class UTTrf_test_copy extends javax.swing.JPanel {
 
     /**
      * Creates new form UserMainmenu
      */
-    public UserTransfer() {
+    public UTTrf_test_copy() {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
     }
