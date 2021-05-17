@@ -5,11 +5,13 @@
  */
 package m.banking;
 
+import java.io.Serializable;
+
 /**
  *
  * @author LINGGO
  */
-public class Tagihan {
+public class Tagihan implements Serializable{
     private String namaTagihan;
     private double jumlahTagihan;
     private int virtualAccount;

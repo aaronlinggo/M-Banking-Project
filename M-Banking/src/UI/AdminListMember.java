@@ -479,49 +479,7 @@ public class AdminListMember extends javax.swing.JPanel {
                 }
             }
             while (!stop);
-            
-//            ArrayList<Member> Account = new ArrayList<>();
-//            try {
-//                FileInputStream file = new FileInputStream("Account.ser");
-//                ObjectInputStream in = new ObjectInputStream(file);
-//
-//                Account = (ArrayList<Member>) in.readObject();
-//
-//                in.close();
-//                file.close();
-//            }
-//            catch(IOException ex) {
-//                System.out.println("IOException is caught");
-//            }
-//            catch(ClassNotFoundException ex) {
-//                System.out.println("ClassNotFoundException is caught");
-//            }
-            
-//            int va = Account.get(idx).randomVA();
-//            System.out.println(va);
-//            double temp = Double.parseDouble(jumlahTagihan);
-//            Account.get(idx).addTagihan(namaMerchandise, temp, va);
-            
-//            try {
-//                FileOutputStream file = new FileOutputStream("Account.ser");
-//                ObjectOutputStream out = new ObjectOutputStream(file);
-//
-//                out.writeObject(Account);
-//
-//                out.close();
-//                file.close();
-//
-//                System.out.println("Object has been serialized");
-//
-//            }
-//            catch(IOException ex) {
-//                System.out.println("IOException is caught111");
-//            }
-            //JOptionPane.showMessageDialog(this, "Success add a bill \""+ namaMerchandise + "\" - Virtual Account : " + va);
-            //showAllRequestMember();
-            
-            
-            
+       
             ArrayList<Member> Account = new ArrayList<>();
             try {
                 FileInputStream file = new FileInputStream("Account.ser");
@@ -533,17 +491,19 @@ public class AdminListMember extends javax.swing.JPanel {
                 file.close();
             }
             catch(IOException ex) {
-                System.out.println("IOException is caught");
+                System.out.println("IOException is caught1");
             }
             catch(ClassNotFoundException ex) {
                 System.out.println("ClassNotFoundException is caught");
             }
+            
             int va = Account.get(idx).randomVA();
             System.out.println(va);
             double temp = Double.parseDouble(jumlahTagihan);
             Account.get(idx).addTagihan(namaMerchandise, temp, va);
             Account.get(idx).tes();
-            JOptionPane.showMessageDialog(this, "Success add a bill \""+ namaMerchandise + "\" - Virtual Account : " + va);
+            JOptionPane.showMessageDialog(this, "Success add a bill \""+ namaMerchandise + "\" - " + temp + " - Virtual Account : " + va);
+            System.out.println(Account.size());
             try {
                 FileOutputStream file = new FileOutputStream("Account.ser");
                 ObjectOutputStream out = new ObjectOutputStream(file);
@@ -557,13 +517,16 @@ public class AdminListMember extends javax.swing.JPanel {
 
             }
             catch(IOException ex) {
-                System.out.println("IOException is caught");
+                System.out.println("IOException is caught2");
+                System.out.println(ex);
             }
-            showAllRequestMember();
+            System.out.println(Account.size());
         }
         else {
             JOptionPane.showMessageDialog(this, "Pick a new member pls");
         }
+        idx = -1;
+        showAllRequestMember();
     }//GEN-LAST:event_addTagihanMouseClicked
 
     public boolean isNumeric(String str){
