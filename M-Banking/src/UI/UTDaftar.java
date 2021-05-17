@@ -52,21 +52,21 @@ public class UTDaftar extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Daftar Rekening");
+        jLabel1.setText("Transfer");
 
         javax.swing.GroupLayout bgutamaLayout = new javax.swing.GroupLayout(bgutama);
         bgutama.setLayout(bgutamaLayout);
         bgutamaLayout.setHorizontalGroup(
             bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgutamaLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(bgutamaLayout.createSequentialGroup()
                         .addComponent(backbtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         bgutamaLayout.setVerticalGroup(
             bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,9 +91,7 @@ public class UTDaftar extends javax.swing.JPanel {
             .addComponent(bgutama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-    
-    UserTransfer utf;
-    
+
     private void backbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backbtnMouseClicked
         // TODO add your handling code here:
         utf.u.getContent().removeAll();
@@ -104,6 +102,8 @@ public class UTDaftar extends javax.swing.JPanel {
         utf.u.getContent().repaint();
     }//GEN-LAST:event_backbtnMouseClicked
     
+    UserTransfer utf;
+        
     public void pass(UserTransfer utf){
         this.utf=utf;
     }
