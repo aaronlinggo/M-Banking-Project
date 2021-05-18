@@ -231,40 +231,40 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
     private void rejectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rejectMouseClicked
         // TODO add your handling code here:
         if (idx != -1){
-            ArrayList<Member> requestMember = new ArrayList<>();
-            try {
-                FileInputStream file = new FileInputStream("requestMember.ser");
-                ObjectInputStream in = new ObjectInputStream(file);
-
-                requestMember = (ArrayList<Member>) in.readObject();
-
-                in.close();
-                file.close();
-            }
-            catch(IOException ex) {
-                System.out.println("IOException is caught");
-            }
-            catch(ClassNotFoundException ex) {
-                System.out.println("ClassNotFoundException is caught");
-            }
-            requestMember.remove(idx);
-            String filename = "requestMember.ser";
-            try {
-                FileOutputStream file = new FileOutputStream(filename);
-                ObjectOutputStream out = new ObjectOutputStream(file);
-
-                out.writeObject(requestMember);
-
-                out.close();
-                file.close();
-
-                System.out.println("Object has been serialized");
-
-            }
-            catch(IOException ex) {
-                System.out.println("IOException is caught");
-            }
-            JOptionPane.showMessageDialog(this, "Berhasil delete");
+//            ArrayList<Member> requestMember = new ArrayList<>();
+//            try {
+//                FileInputStream file = new FileInputStream("requestMember.ser");
+//                ObjectInputStream in = new ObjectInputStream(file);
+//
+//                requestMember = (ArrayList<Member>) in.readObject();
+//
+//                in.close();
+//                file.close();
+//            }
+//            catch(IOException ex) {
+//                System.out.println("IOException is caught");
+//            }
+//            catch(ClassNotFoundException ex) {
+//                System.out.println("ClassNotFoundException is caught");
+//            }
+//            requestMember.remove(idx);
+//            String filename = "requestMember.ser";
+//            try {
+//                FileOutputStream file = new FileOutputStream(filename);
+//                ObjectOutputStream out = new ObjectOutputStream(file);
+//
+//                out.writeObject(requestMember);
+//
+//                out.close();
+//                file.close();
+//
+//                System.out.println("Object has been serialized");
+//
+//            }
+//            catch(IOException ex) {
+//                System.out.println("IOException is caught");
+//            }
+//            JOptionPane.showMessageDialog(this, "Berhasil delete");
         }
         else {
             JOptionPane.showMessageDialog(this, "Pick a new member pls");
@@ -276,77 +276,77 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
         // TODO add your handling code here:
         if (idx != -1){
-            ArrayList<Member> requestMember = new ArrayList<>();
-            ArrayList<Member> Account = new ArrayList<Member>();
-            try {
-                FileInputStream file = new FileInputStream("requestMember.ser");
-                ObjectInputStream in = new ObjectInputStream(file);
-
-                requestMember = (ArrayList<Member>) in.readObject();
-
-                in.close();
-                file.close();
-            }
-            catch(IOException ex) {
-                System.out.println("IOException is caught");
-            }
-            catch(ClassNotFoundException ex) {
-                System.out.println("ClassNotFoundException is caught");
-            }
-            
-            try {
-                FileInputStream file = new FileInputStream("Account.ser");
-                ObjectInputStream in = new ObjectInputStream(file);
-
-                Account = (ArrayList<Member>) in.readObject();
-
-                in.close();
-                file.close();
-            }
-            catch(IOException ex) {
-                System.out.println("IOException is caught");
-            }
-            catch(ClassNotFoundException ex) {
-                System.out.println("ClassNotFoundException is caught");
-            }
-            
-            Account.add(requestMember.get(idx));
-            requestMember.remove(idx);
-            
-            try {
-                FileOutputStream file = new FileOutputStream("requestMember.ser");
-                ObjectOutputStream out = new ObjectOutputStream(file);
-
-                out.writeObject(requestMember);
-
-                out.close();
-                file.close();
-
-                System.out.println("Object has been serialized");
-
-            }
-            catch(IOException ex) {
-                System.out.println("IOException is caught");
-            }
-            
-            String filename = "Account.ser";
-            try {
-                FileOutputStream file = new FileOutputStream(filename);
-                ObjectOutputStream out = new ObjectOutputStream(file);
-
-                out.writeObject(Account);
-
-                out.close();
-                file.close();
-
-                System.out.println("Object has been serialized");
-
-            }
-            catch(IOException ex) {
-                System.out.println("IOException is caught");
-            }
-            System.out.println(Account.size());
-            JOptionPane.showMessageDialog(this, "Berhasil confirm " + Account.get(Account.size()-1).getNama() + "!");
+//            ArrayList<Member> requestMember = new ArrayList<>();
+//            ArrayList<Member> Account = new ArrayList<Member>();
+//            try {
+//                FileInputStream file = new FileInputStream("requestMember.ser");
+//                ObjectInputStream in = new ObjectInputStream(file);
+//
+//                requestMember = (ArrayList<Member>) in.readObject();
+//
+//                in.close();
+//                file.close();
+//            }
+//            catch(IOException ex) {
+//                System.out.println("IOException is caught");
+//            }
+//            catch(ClassNotFoundException ex) {
+//                System.out.println("ClassNotFoundException is caught");
+//            }
+//            
+//            try {
+//                FileInputStream file = new FileInputStream("Account.ser");
+//                ObjectInputStream in = new ObjectInputStream(file);
+//
+//                Account = (ArrayList<Member>) in.readObject();
+//
+//                in.close();
+//                file.close();
+//            }
+//            catch(IOException ex) {
+//                System.out.println("IOException is caught");
+//            }
+//            catch(ClassNotFoundException ex) {
+//                System.out.println("ClassNotFoundException is caught");
+//            }
+//            
+//            Account.add(requestMember.get(idx));
+//            requestMember.remove(idx);
+//            
+//            try {
+//                FileOutputStream file = new FileOutputStream("requestMember.ser");
+//                ObjectOutputStream out = new ObjectOutputStream(file);
+//
+//                out.writeObject(requestMember);
+//
+//                out.close();
+//                file.close();
+//
+//                System.out.println("Object has been serialized");
+//
+//            }
+//            catch(IOException ex) {
+//                System.out.println("IOException is caught");
+//            }
+//            
+//            String filename = "Account.ser";
+//            try {
+//                FileOutputStream file = new FileOutputStream(filename);
+//                ObjectOutputStream out = new ObjectOutputStream(file);
+//
+//                out.writeObject(Account);
+//
+//                out.close();
+//                file.close();
+//
+//                System.out.println("Object has been serialized");
+//
+//            }
+//            catch(IOException ex) {
+//                System.out.println("IOException is caught");
+//            }
+//            System.out.println(Account.size());
+//            JOptionPane.showMessageDialog(this, "Berhasil confirm " + Account.get(Account.size()-1).getNama() + "!");
         }
         else {
             JOptionPane.showMessageDialog(this, "Pick a new member pls");
