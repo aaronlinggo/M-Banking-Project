@@ -6,9 +6,29 @@
 package UI;
 
 import RoundedField.RoundJPanel;
+import ScrollBar.MyScrollBarUI;
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JViewport;
+import javax.swing.ScrollPaneLayout;
+import javax.swing.SwingUtilities;
+import m.banking.Member;
+import m.banking.Merchandise;
 
 /**
  *
@@ -19,9 +39,11 @@ public class AdminGift extends javax.swing.JPanel {
     /**
      * Creates new form AdminDashboard
      */
+    int idx = -1;
     public AdminGift() {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
+        showAllMerchandise();
     }
 
     /**
@@ -42,14 +64,25 @@ public class AdminGift extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         title = new RoundJPanel(50);
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
+        scroll = new javax.swing.JScrollPane();
+        container = new javax.swing.JPanel();
+        nameMerchandise = new javax.swing.JTextField();
+        point = new javax.swing.JTextField();
+        jPanel1 = new RoundJPanel(25);
+        jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new RoundJPanel(25);
+        jLabel4 = new javax.swing.JLabel();
 
         content.setBackground(new java.awt.Color(250, 243, 243));
 
         add.setBackground(new java.awt.Color(102, 255, 51));
         add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add.setOpaque(false);
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -77,6 +110,11 @@ public class AdminGift extends javax.swing.JPanel {
         update.setBackground(new java.awt.Color(255, 153, 51));
         update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         update.setOpaque(false);
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -104,6 +142,11 @@ public class AdminGift extends javax.swing.JPanel {
         delete.setBackground(new java.awt.Color(255, 51, 51));
         delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         delete.setOpaque(false);
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -153,42 +196,183 @@ public class AdminGift extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setBorder(null);
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setLayout(new ScrollPaneLayout() {
+            @Override
+            public void layoutContainer(Container parent) {
+                JScrollPane scrollPane = (JScrollPane) parent;
+
+                Rectangle availR = scrollPane.getBounds();
+                availR.x = availR.y = 0;
+
+                Insets parentInsets = parent.getInsets();
+                availR.x = parentInsets.left;
+                availR.y = parentInsets.top;
+                availR.width -= parentInsets.left + parentInsets.right;
+                availR.height -= parentInsets.top + parentInsets.bottom;
+
+                Rectangle vsbR = new Rectangle();
+                vsbR.width = 12;
+                vsbR.height = availR.height;
+                vsbR.x = availR.x + availR.width - vsbR.width;
+                vsbR.y = availR.y;
+
+                if (viewport != null) {
+                    viewport.setBounds(availR);
+                }
+                if (vsb != null) {
+                    vsb.setVisible(true);
+                    vsb.setBounds(vsbR);
+                }
+            }
+        });
+        scroll.getVerticalScrollBar().setUI(new MyScrollBarUI());
+        MouseAdapter ma = new MouseAdapter() {
+
+            private Point origin;
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                origin = new Point(e.getPoint());
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                if (origin != null) {
+                    JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, container);
+                    if (viewPort != null) {
+                        int deltaX = origin.x - e.getX();
+                        int deltaY = origin.y - e.getY();
+
+                        Rectangle view = viewPort.getViewRect();
+                        view.x += deltaX;
+                        view.y += deltaY;
+
+                        container.scrollRectToVisible(view);
+                    }
+                }
+            }
+
+        };
+
+        container.addMouseListener(ma);
+        container.addMouseMotionListener(ma);
+
+        container.setBackground(new java.awt.Color(250, 243, 243));
+
+        javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
+        container.setLayout(containerLayout);
+        containerLayout.setHorizontalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 488, Short.MAX_VALUE)
+        );
+        containerLayout.setVerticalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 430, Short.MAX_VALUE)
+        );
+
+        scroll.setViewportView(container);
+
+        nameMerchandise.setBackground(new java.awt.Color(255, 255, 255));
+        nameMerchandise.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        nameMerchandise.setText("Input here");
+        nameMerchandise.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nameMerchandiseFocusGained(evt);
+            }
+        });
+
+        point.setBackground(new java.awt.Color(255, 255, 255));
+        point.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        point.setText("Input Here");
+        point.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pointFocusGained(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(84, 190, 229));
+        jPanel1.setOpaque(false);
+
+        jLabel6.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Point");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 485, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 549, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jScrollPane1.setViewportView(jPanel1);
+        jPanel2.setBackground(new java.awt.Color(84, 190, 229));
+        jPanel2.setOpaque(false);
+
+        jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Name Merchandise");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
             .addGroup(contentLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
                     .addGroup(contentLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(contentLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
+                        .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
+                        .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(contentLayout.createSequentialGroup()
+                                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(contentLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
+                                .addComponent(nameMerchandise, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(point, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addContainerGap())))
         );
         contentLayout.setVerticalGroup(
@@ -197,14 +381,21 @@ public class AdminGift extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1)
+                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameMerchandise, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(point, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(update, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -221,17 +412,315 @@ public class AdminGift extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
+        // TODO add your handling code here:
+        if ((!nameMerchandise.getText().equals("") && !nameMerchandise.getText().equals("Input Here")) && (!point.getText().equals("") && !point.getText().equals("Input Here"))){
+            if (isNumeric(point.getText())){
+                ArrayList<Merchandise> myMerchandise = new ArrayList<>();
+                try {
+                    FileInputStream file = new FileInputStream("Merchandise.ser");
+                    ObjectInputStream in = new ObjectInputStream(file);
+
+                    myMerchandise = (ArrayList<Merchandise>) in.readObject();
+
+                    in.close();
+                    file.close();
+                }
+                catch(IOException ex) {
+                    System.out.println("IOException is caught1");
+                }
+                catch(ClassNotFoundException ex) {
+                    System.out.println("ClassNotFoundException is caught");
+                }
+                
+                String tempNama = nameMerchandise.getText();
+                int tempPoint = Integer.parseInt(point.getText());
+                myMerchandise.add(new Merchandise(tempNama, tempPoint));
+                
+                try {
+                    FileOutputStream file = new FileOutputStream("Merchandise.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(file);
+
+                    out.writeObject(myMerchandise);
+
+                    out.close();
+                    file.close();
+
+                    System.out.println("Object has been serialized");
+
+                }
+                catch(IOException ex) {
+                    System.out.println("IOException is caught2");
+                    System.out.println(ex);
+                }
+                JOptionPane.showMessageDialog(this, "Success Add Merchandise " + tempNama + " - " + tempPoint);
+                nameMerchandise.setText("Input Here");
+                point.setText("Input Here");
+                showAllMerchandise();
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Point must be Numeric");
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Name Merchandise and Point can't empty");
+        }
+    }//GEN-LAST:event_addMouseClicked
+
+    public void showAllMerchandise(){
+        ArrayList<Merchandise> myMerchandise = new ArrayList<>();
+        try {
+            FileInputStream file = new FileInputStream("Merchandise.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            myMerchandise = (ArrayList<Merchandise>) in.readObject();
+
+            in.close();
+            file.close();
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught1");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        ArrayList<CardMerchandise> cardM = new ArrayList<>();
+        container.removeAll();
+        if ((155+10)*myMerchandise.size() >= 430){
+            container.setPreferredSize(new Dimension(470, (155+10)*myMerchandise.size()));
+        }
+        else {
+            container.setPreferredSize(new Dimension(485, 430));
+        }
+        
+        for (int i = 0; i < myMerchandise.size(); i++) {
+            cardM.add(new CardMerchandise());
+            cardM.get(i).setNamaMerchandise(myMerchandise.get(i).getNamaMerchandise());
+            String temp = String.valueOf(myMerchandise.get(i).getPoint());
+            cardM.get(i).setPoint(temp);
+            cardM.get(i).setBounds(0, (155+10)*i, 470,155);
+            cardM.get(i).setVisible(true);
+            cardM.get(i).addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e){
+                    System.out.println("klik");
+                    System.out.println(cardM.indexOf(e.getComponent()));
+                    idx = cardM.indexOf(e.getComponent());
+                    resetBGPanel(cardM);
+                    cardM.get(idx).setNewColorBG(84,190,229);
+                }
+            });
+            container.add(cardM.get(i));
+        }
+        container.revalidate();
+        container.repaint();
+    }
+    
+    public void resetBGPanel(ArrayList<CardMerchandise> cardM){
+        for (int j = 0; j < cardM.size(); j++) {
+            cardM.get(j).setNewColorBG(255,255,255);
+        }
+    }
+    
+    private void nameMerchandiseFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameMerchandiseFocusGained
+        // TODO add your handling code here:
+        nameMerchandise.setText("");
+    }//GEN-LAST:event_nameMerchandiseFocusGained
+
+    private void pointFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pointFocusGained
+        // TODO add your handling code here:
+        point.setText("");
+    }//GEN-LAST:event_pointFocusGained
+
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+        // TODO add your handling code here:
+        if (idx != -1){
+            if ((!nameMerchandise.getText().equals("") && !nameMerchandise.getText().equals("Input Here")) || (!point.getText().equals("") && !point.getText().equals("Input Here"))){
+                ArrayList<Merchandise> myMerchandise = new ArrayList<>();
+                try {
+                    FileInputStream file = new FileInputStream("Merchandise.ser");
+                    ObjectInputStream in = new ObjectInputStream(file);
+
+                    myMerchandise = (ArrayList<Merchandise>) in.readObject();
+
+                    in.close();
+                    file.close();
+                }
+                catch(IOException ex) {
+                    System.out.println("IOException is caught1");
+                }
+                catch(ClassNotFoundException ex) {
+                    System.out.println("ClassNotFoundException is caught");
+                }
+                
+                if ((!nameMerchandise.getText().equals("") && !nameMerchandise.getText().equals("Input Here")) && (!point.getText().equals("") && !point.getText().equals("Input Here"))){
+                    String tempNama = nameMerchandise.getText();
+                    int tempPoint = Integer.parseInt(point.getText());
+                    if (tempPoint >= 0){
+                        JOptionPane.showMessageDialog(this, "Update Success " + tempNama + " - " + tempPoint);
+                        myMerchandise.get(idx).setNamaMerchandise(tempNama);
+                        myMerchandise.get(idx).setPoint(tempPoint);
+
+                        try {
+                            FileOutputStream file = new FileOutputStream("Merchandise.ser");
+                            ObjectOutputStream out = new ObjectOutputStream(file);
+
+                            out.writeObject(myMerchandise);
+
+                            out.close();
+                            file.close();
+
+                            System.out.println("Object has been serialized");
+
+                        }
+                        catch(IOException ex) {
+                            System.out.println("IOException is caught2");
+                            System.out.println(ex);
+                        }
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(this, "Point must be >= 0");
+                    }
+                }
+                else if (!point.getText().equals("") && !point.getText().equals("Input Here")){
+                    if (isNumeric(point.getText())){
+                        int tempPoint = Integer.parseInt(point.getText());
+                        if (tempPoint >= 0){
+                            JOptionPane.showMessageDialog(this, "Update Success " + myMerchandise.get(idx).getNamaMerchandise() + " - " + tempPoint);
+                            myMerchandise.get(idx).setPoint(tempPoint);
+
+                            try {
+                                FileOutputStream file = new FileOutputStream("Merchandise.ser");
+                                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                                out.writeObject(myMerchandise);
+
+                                out.close();
+                                file.close();
+
+                                System.out.println("Object has been serialized");
+
+                            }
+                            catch(IOException ex) {
+                                System.out.println("IOException is caught2");
+                                System.out.println(ex);
+                            }
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(this, "Point must be >= 0");
+                        }
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(this, "Point must be Numeric");
+                    }
+                }
+                else if (!nameMerchandise.getText().equals("") && !nameMerchandise.getText().equals("Input Here")){
+                    String tempNama = nameMerchandise.getText();
+                    JOptionPane.showMessageDialog(this, "Update Success " + tempNama + " - " + myMerchandise.get(idx).getPoint());
+                    myMerchandise.get(idx).setNamaMerchandise(tempNama);
+
+                    try {
+                        FileOutputStream file = new FileOutputStream("Merchandise.ser");
+                        ObjectOutputStream out = new ObjectOutputStream(file);
+
+                        out.writeObject(myMerchandise);
+
+                        out.close();
+                        file.close();
+
+                        System.out.println("Object has been serialized");
+
+                    }
+                    catch(IOException ex) {
+                        System.out.println("IOException is caught2");
+                        System.out.println(ex);
+                    }
+                }
+
+                nameMerchandise.setText("Input Here");
+                point.setText("Input Here");
+                showAllMerchandise();
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Name Merchandise or Point can't empty");
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Pick a merchandise pls");
+        }
+        idx = -1;
+    }//GEN-LAST:event_updateMouseClicked
+
+    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
+        // TODO add your handling code here:
+        if (idx != -1){
+            ArrayList<Merchandise> myMerchandise = new ArrayList<>();
+            try {
+                FileInputStream file = new FileInputStream("Merchandise.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                myMerchandise = (ArrayList<Merchandise>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught1");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            myMerchandise.remove(idx);
+            try {
+                FileOutputStream file = new FileOutputStream("Merchandise.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(myMerchandise);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught2");
+                System.out.println(ex);
+            }
+            JOptionPane.showMessageDialog(this, "Delete Success");
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Pick a merchandise pls");
+        }
+        idx = -1;
+        showAllMerchandise();
+    }//GEN-LAST:event_deleteMouseClicked
+
+    public boolean isNumeric(String str){
+        for (char c : str.toCharArray())
+        {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel add;
+    private javax.swing.JPanel container;
     private javax.swing.JPanel content;
     private javax.swing.JPanel delete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField nameMerchandise;
+    private javax.swing.JTextField point;
+    private javax.swing.JScrollPane scroll;
     private javax.swing.JPanel title;
     private javax.swing.JPanel update;
     // End of variables declaration//GEN-END:variables

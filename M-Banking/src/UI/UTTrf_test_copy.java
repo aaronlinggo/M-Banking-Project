@@ -334,7 +334,7 @@ public class UTTrf_test_copy extends javax.swing.JPanel {
     private void exchangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exchangeMouseClicked
         u.getContent().removeAll();
         UserMerchandise uh = new UserMerchandise();
-        uh.pass(this);
+        //uh.pass(this);
         uh.setVisible(true);
         uh.setBounds(0,0, 500, 750);
         u.getContent().add(uh);
@@ -346,7 +346,7 @@ public class UTTrf_test_copy extends javax.swing.JPanel {
         // TODO add your handling code here:
         u.getContent().removeAll();
         UTDaftar uh = new UTDaftar();
-        uh.pass(this);
+        //uh.pass(this);
         uh.setVisible(true);
         uh.setBounds(0,0, 500, 750);
         u.getContent().add(uh);
@@ -358,7 +358,7 @@ public class UTTrf_test_copy extends javax.swing.JPanel {
         // TODO add your handling code here:
         u.getContent().removeAll();
         UTTransfer uh = new UTTransfer();
-        uh.pass(this);
+        //uh.pass(this);
         uh.setVisible(true);
         uh.setBounds(0,0, 500, 750);
         u.getContent().add(uh);

@@ -1,6 +1,8 @@
 package m.banking;
 
-public class Merchandise
+import java.io.Serializable;
+
+public class Merchandise implements Serializable
 {
     private String namaMerchandise;
     private int point;
