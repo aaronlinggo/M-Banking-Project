@@ -750,4 +750,8 @@ public class AdminDashboard extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+    
+    public void setDate(String txt){
+        date.setText(txt);
+    }
 }

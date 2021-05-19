@@ -366,7 +366,49 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
     private void changeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeMouseClicked
         // TODO add your handling code here:
         String filename = "date.ser";
-        
+        Date selectedDate = (Date) newDate.getValue();
+        int year = selectedDate.getYear()+1900;
+        int month  = selectedDate.getMonth()+1;
+        int date = selectedDate.getDate();
+        d1.setD1(new Date(year, month, date));
+        String bulan = "";
+        if (month == 1){
+            bulan = "Januari";
+        }
+        else if (month == 2){
+            bulan = "Februari";
+        }
+        else if (month == 3){
+            bulan = "Maret";
+        }
+        else if (month == 4){
+            bulan = "April";
+        }
+        else if (month == 5){
+            bulan = "Mei";
+        }
+        else if (month == 6){
+            bulan = "Juni";
+        }
+        else if (month == 7){
+            bulan = "Juli";
+        }
+        else if (month == 8){
+            bulan = "Agustus";
+        }
+        else if (month == 9){
+            bulan = "September";
+        }
+        else if (month == 10){
+            bulan = "Oktober";
+        }
+        else if (month == 11){
+            bulan = "November";
+        }
+        else if (month == 12){
+            bulan = "Desember";
+        }
+        ad.setDate(date + " " + bulan + " " + year);
         try
         {
             FileOutputStream file = new FileOutputStream(filename);
