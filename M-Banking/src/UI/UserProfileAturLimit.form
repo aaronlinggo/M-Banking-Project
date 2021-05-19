@@ -49,9 +49,9 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Component id="lblBack" min="-2" pref="77" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" pref="207" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -204,7 +204,7 @@
         <Component class="javax.swing.JLabel" name="lblBack">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/m/banking/Asset/icons8_back_40px.png"/>
+              <Image iconType="3" name="/m/banking/Asset/BackBlue.png"/>
             </Property>
           </Properties>
         </Component>
