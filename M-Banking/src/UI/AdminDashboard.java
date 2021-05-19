@@ -361,6 +361,11 @@ public class AdminDashboard extends javax.swing.JPanel {
     isi2.setBackground(new java.awt.Color(73, 79, 88));
     isi2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     isi2.setOpaque(false);
+    isi2.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            isi2MouseClicked(evt);
+        }
+    });
 
     jPanel5.setBackground(new java.awt.Color(255, 255, 255));
     jPanel5.setOpaque(false);
@@ -696,6 +701,18 @@ public class AdminDashboard extends javax.swing.JPanel {
         ah.getContent().revalidate();
         ah.getContent().repaint();
     }//GEN-LAST:event_isi1MouseClicked
+
+    private void isi2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_isi2MouseClicked
+        // TODO add your handling code here:
+        ah.getContent().removeAll();
+        AdminLog AL = new AdminLog();
+        AL.passDashboad(this);
+        AL.setVisible(true);
+        AL.setBounds(0,0, 512, 825);
+        ah.getContent().add(AL);
+        ah.getContent().revalidate();
+        ah.getContent().repaint();
+    }//GEN-LAST:event_isi2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
