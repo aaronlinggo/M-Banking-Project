@@ -47,7 +47,7 @@ public class UserProfileTagihan extends javax.swing.JPanel {
     public void bgHeader() {
         DefaultTableCellRenderer render1 = new DefaultTableCellRenderer();
         render1.setBackground(new Color(254,174,72));
-        render1.setForeground(new Color(255,255,255));
+        render1.setForeground(new Color(0,0,0));
         jTable1.getTableHeader().getColumnModel().getColumn(0).setHeaderRenderer(render1);
         jTable1.getTableHeader().getColumnModel().getColumn(1).setHeaderRenderer(render1);
         jTable1.getTableHeader().getColumnModel().getColumn(2).setHeaderRenderer(render1);
