@@ -5,7 +5,9 @@
  */
 package UI;
 
+import Image.ImagePanel;
 import java.awt.color.ICC_Profile;
+import javax.swing.JOptionPane;
 import m.banking.Captcha;
 
 public class UserProfileGantiPin extends javax.swing.JPanel {
@@ -56,6 +58,12 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(55, 53, 61));
 
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/BackBlue.png"))); // NOI18N
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -99,9 +107,11 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         panelCaptcha.setBackground(new java.awt.Color(204, 204, 204));
 
         lblIsiCaptcha.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
-        lblIsiCaptcha.setForeground(new java.awt.Color(0, 0, 0));
+        lblIsiCaptcha.setForeground(new java.awt.Color(102, 102, 102));
         lblIsiCaptcha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIsiCaptcha.setText("Captcha");
+
+        panelCaptcha = new ImagePanel("src/m/banking/Asset/bgCaptcha.png");
 
         javax.swing.GroupLayout panelCaptchaLayout = new javax.swing.GroupLayout(panelCaptcha);
         panelCaptcha.setLayout(panelCaptchaLayout);
@@ -176,14 +186,15 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(75, 75, 75)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3))
-                                    .addGap(18, 18, 18)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel3))
+                                        .addGap(18, 18, 18))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(75, 75, 75)
                                 .addComponent(jLabel4)))
@@ -263,6 +274,16 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
         // TODO add your handling code here:
+        if (!textCaptcha.equals(FieldCaptcha.getText())) {
+            //Captcha salah
+            JOptionPane.showMessageDialog(null, "Text pada captcha Salah");
+        } else if (!FieldPinBaru.equals(FieldConfirmPin.getText())) {
+            //Pin dan confirm salah
+            JOptionPane.showMessageDialog(null, "Pin Baru dan Confirm Tidak sama");
+        } else {
+            //berhasil
+            JOptionPane.showMessageDialog(null, "Pin berhasil diubah");
+        }
     }//GEN-LAST:event_SubmitActionPerformed
 
     private void panelRefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRefreshMouseClicked
@@ -278,6 +299,14 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         FieldConfirmPin.setText("");
         FieldCaptcha.setText("");
     }//GEN-LAST:event_ResetActionPerformed
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        // TODO add your handling code here:
+        up.uh.getContent().removeAll();
+        up.uh.getContent().add(up);
+        up.uh.getContent().revalidate();
+        up.uh.getContent().repaint();
+    }//GEN-LAST:event_backMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

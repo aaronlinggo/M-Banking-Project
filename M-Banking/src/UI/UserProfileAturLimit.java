@@ -107,6 +107,12 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
         });
 
         lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/BackBlue.png"))); // NOI18N
+        lblBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBackMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -192,6 +198,14 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Limit yang baru adalah : " + jSlider1.getValue());
     }//GEN-LAST:event_SubmitMouseClicked
+
+    private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
+        // TODO add your handling code here:
+        up.uh.getContent().removeAll();
+        up.uh.getContent().add(up);
+        up.uh.getContent().revalidate();
+        up.uh.getContent().repaint();
+    }//GEN-LAST:event_lblBackMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
