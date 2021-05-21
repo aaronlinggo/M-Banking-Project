@@ -100,6 +100,11 @@ public class UserProfile extends javax.swing.JPanel {
         btnGantiPin.setBackground(new java.awt.Color(254, 174, 72));
         btnGantiPin.setForeground(new java.awt.Color(0, 51, 255));
         btnGantiPin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGantiPin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGantiPinMouseClicked(evt);
+            }
+        });
 
         jLabel2.setForeground(new java.awt.Color(55, 53, 61));
         jLabel2.setText("GANTI PIN");
@@ -206,14 +211,13 @@ public class UserProfile extends javax.swing.JPanel {
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(gambarKartu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(JenisKartu1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, backgroundLayout.createSequentialGroup()
-                            .addComponent(btnGantiPin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(35, 35, 35)
-                            .addComponent(btnAturLimit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                            .addComponent(btnTagihan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addComponent(btnGantiPin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnAturLimit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTagihan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
@@ -268,6 +272,18 @@ public class UserProfile extends javax.swing.JPanel {
         uh.getContent().revalidate();
         uh.getContent().repaint();
     }//GEN-LAST:event_btnTagihanMouseClicked
+
+    private void btnGantiPinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGantiPinMouseClicked
+        // TODO add your handling code here:
+        uh.getContent().removeAll();
+        UserProfileGantiPin gp = new UserProfileGantiPin();
+        gp.passData(this);
+        gp.setVisible(true);
+        gp.setBounds(0,0, 500, 717);
+        uh.getContent().add(gp);
+        uh.getContent().revalidate();
+        uh.getContent().repaint();
+    }//GEN-LAST:event_btnGantiPinMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

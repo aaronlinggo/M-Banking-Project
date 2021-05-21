@@ -8,10 +8,6 @@ package UI;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author acxel
- */
 public class UserProfileAturLimit extends javax.swing.JPanel {
 
     /**
