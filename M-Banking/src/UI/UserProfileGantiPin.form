@@ -243,16 +243,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblIsiCaptcha" alignment="1" pref="355" max="32767" attributes="0"/>
+                  <Component id="lblIsiCaptcha" alignment="0" pref="355" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="34" max="32767" attributes="0"/>
-                      <Component id="lblIsiCaptcha" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="42" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="lblIsiCaptcha" alignment="0" pref="115" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -266,7 +262,7 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="jLabel6"/>
+                <Property name="text" type="java.lang.String" value="Captcha"/>
               </Properties>
             </Component>
           </SubComponents>

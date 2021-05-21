@@ -101,20 +101,17 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         lblIsiCaptcha.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
         lblIsiCaptcha.setForeground(new java.awt.Color(0, 0, 0));
         lblIsiCaptcha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIsiCaptcha.setText("jLabel6");
+        lblIsiCaptcha.setText("Captcha");
 
         javax.swing.GroupLayout panelCaptchaLayout = new javax.swing.GroupLayout(panelCaptcha);
         panelCaptcha.setLayout(panelCaptchaLayout);
         panelCaptchaLayout.setHorizontalGroup(
             panelCaptchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblIsiCaptcha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+            .addComponent(lblIsiCaptcha, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
         );
         panelCaptchaLayout.setVerticalGroup(
             panelCaptchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCaptchaLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addComponent(lblIsiCaptcha)
-                .addContainerGap(42, Short.MAX_VALUE))
+            .addComponent(lblIsiCaptcha, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
         );
 
         FieldCaptcha.setBackground(new java.awt.Color(255, 255, 255));
