@@ -207,6 +207,9 @@
               <Image iconType="3" name="/m/banking/Asset/BackBlue.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblBackMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
