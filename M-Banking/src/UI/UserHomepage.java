@@ -22,6 +22,8 @@ public class UserHomepage extends javax.swing.JFrame {
     /**
      * Creates new form AdminHomepage
      */
+    int mousepX;
+    int mousepY;
     Member active;
     public UserHomepage(Member active) {
         this.active = active;
@@ -76,6 +78,16 @@ public class UserHomepage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setOpaque(false);
@@ -247,6 +259,20 @@ public class UserHomepage extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_profileMouseClicked
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+        mousepX = evt.getX();
+        mousepY = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+        int koordinatX = evt.getXOnScreen();
+        int koordinatY = evt.getYOnScreen();
+        
+        this.setLocation(koordinatX-mousepX, koordinatY-mousepY);
+    }//GEN-LAST:event_formMouseDragged
 
     /**
      * @param args the command line arguments
