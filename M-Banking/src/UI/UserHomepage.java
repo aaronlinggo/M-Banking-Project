@@ -68,7 +68,7 @@ public class UserHomepage extends javax.swing.JFrame {
         jPanel1 = new RoundJPanel(140);
         notch = new javax.swing.JLabel();
         content = new RoundJPanel(75);
-        navbar_dashboard = new RoundJPanel(85, new java.awt.Color(80,76,92));
+        navbar_dashboard = new RoundJPanel(95, new java.awt.Color(80,76,92));
         home = new javax.swing.JLabel();
         transfer = new javax.swing.JLabel();
         profile = new javax.swing.JLabel();
@@ -86,6 +86,7 @@ public class UserHomepage extends javax.swing.JFrame {
         notch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/notch.png"))); // NOI18N
 
         content.setBackground(new java.awt.Color(55, 53, 61));
+        content.setOpaque(false);
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
