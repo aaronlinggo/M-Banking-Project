@@ -53,10 +53,10 @@ public class UserTransfer extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(500, 768));
         setPreferredSize(new java.awt.Dimension(500, 768));
 
-        bg.setBackground(new java.awt.Color(55, 53, 61));
+        bg.setBackground(new java.awt.Color(250, 243, 243));
         bg.setMaximumSize(new java.awt.Dimension(500, 768));
 
-        daftar.setBackground(new java.awt.Color(80, 76, 92));
+        daftar.setBackground(new java.awt.Color(87, 202, 247));
         daftar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         daftar.setOpaque(false);
         daftar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -70,7 +70,7 @@ public class UserTransfer extends javax.swing.JPanel {
         jLabel5.setText("Daftar");
 
         jLabel6.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Tambah List Transfer");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -122,7 +122,7 @@ public class UserTransfer extends javax.swing.JPanel {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        transfer.setBackground(new java.awt.Color(80, 76, 92));
+        transfer.setBackground(new java.awt.Color(249, 117, 218));
         transfer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         transfer.setMaximumSize(new java.awt.Dimension(415, 120));
         transfer.setOpaque(false);
@@ -138,7 +138,7 @@ public class UserTransfer extends javax.swing.JPanel {
         jLabel8.setText("Transfer");
 
         jLabel10.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Antar Rek, Virtual Acc,Inbox");
 
         logo.setBackground(new java.awt.Color(255, 255, 255));
@@ -190,7 +190,7 @@ public class UserTransfer extends javax.swing.JPanel {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        exchange.setBackground(new java.awt.Color(80, 76, 92));
+        exchange.setBackground(new java.awt.Color(93, 130, 228));
         exchange.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exchange.setOpaque(false);
         exchange.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -228,7 +228,7 @@ public class UserTransfer extends javax.swing.JPanel {
         jLabel12.setText("Exchange Points");
 
         jLabel11.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Dapatkan Piring Cantik");
 
         javax.swing.GroupLayout exchangeLayout = new javax.swing.GroupLayout(exchange);
