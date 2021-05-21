@@ -22,7 +22,7 @@ public class UserMainmenu extends javax.swing.JPanel {
         this.uh=uh;
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
-        this.greetings.setText("Hi, "+uh.active.getNama().toUpperCase());
+        this.greetings.setText(uh.active.getNama().toUpperCase());
     }
     public void passUserHomepage(UserHomepage uh)
     {
@@ -64,6 +64,7 @@ public class UserMainmenu extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        greetings1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(496, 768));
         setPreferredSize(new java.awt.Dimension(500, 768));
@@ -72,9 +73,9 @@ public class UserMainmenu extends javax.swing.JPanel {
         bg.setMaximumSize(new java.awt.Dimension(500, 768));
         bg.setPreferredSize(new java.awt.Dimension(500, 768));
 
-        greetings.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        greetings.setFont(new java.awt.Font("Courier New", 1, 28)); // NOI18N
         greetings.setForeground(new java.awt.Color(255, 255, 255));
-        greetings.setText("Hi, " );
+        greetings.setText("<User Name>");
 
         m_info.setBackground(new java.awt.Color(80, 76, 92));
         m_info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -375,38 +376,48 @@ public class UserMainmenu extends javax.swing.JPanel {
                 .addGap(31, 31, 31))
         );
 
+        greetings1.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        greetings1.setForeground(new java.awt.Color(204, 204, 204));
+        greetings1.setText("Hello, ");
+
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgLayout.createSequentialGroup()
-                        .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(greetings))
-                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(m_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(profil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(41, 41, 41)
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(m_transfer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                            .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(greetings1)
+                            .addComponent(greetings))))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(greetings1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(greetings)
+                        .addGap(70, 70, 70))
                     .addGroup(bgLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(greetings)))
-                .addGap(58, 58, 58)
+                        .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)))
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(m_transfer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(m_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -488,6 +499,7 @@ public class UserMainmenu extends javax.swing.JPanel {
     private javax.swing.JPanel bg;
     private javax.swing.JPanel boxlogo;
     private javax.swing.JLabel greetings;
+    private javax.swing.JLabel greetings1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
