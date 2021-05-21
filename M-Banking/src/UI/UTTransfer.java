@@ -8,7 +8,6 @@ package UI;
 import RoundedField.RoundJPanel;
 import java.awt.Color;
 import m.banking.Login.Login;
-
 /**
  *
  * @author maxdr
@@ -16,10 +15,12 @@ import m.banking.Login.Login;
 public class UTTransfer extends javax.swing.JPanel {
 
     /**
-     * Creates new form UTTransfer
+     * Creates new form UserMainmenu
      */
     public UTTransfer() {
         initComponents();
+        this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
+        this.setBounds(0, 0, 500, 750);
     }
 
     /**
@@ -45,15 +46,19 @@ public class UTTransfer extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jPanel3 = new RoundJPanel(35);
         jLabel4 = new javax.swing.JLabel();
-        va1 = new RoundJPanel(50);
+        inbox = new RoundJPanel(50);
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel4 = new RoundJPanel(35);
         jLabel11 = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(500, 768));
+        setPreferredSize(new java.awt.Dimension(500, 768));
+
         bgutama.setBackground(new java.awt.Color(55, 53, 61));
         bgutama.setMaximumSize(new java.awt.Dimension(500, 750));
         bgutama.setMinimumSize(new java.awt.Dimension(500, 750));
+        bgutama.setPreferredSize(new java.awt.Dimension(500, 750));
 
         backbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/Back.png"))); // NOI18N
         backbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -72,6 +77,7 @@ public class UTTransfer extends javax.swing.JPanel {
         antarrek.setBackground(new java.awt.Color(80, 76, 92));
         antarrek.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         antarrek.setOpaque(false);
+        antarrek.setPreferredSize(new java.awt.Dimension(260, 120));
         antarrek.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 antarrekMouseClicked(evt);
@@ -138,6 +144,7 @@ public class UTTransfer extends javax.swing.JPanel {
         va.setBackground(new java.awt.Color(80, 76, 92));
         va.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         va.setOpaque(false);
+        va.setPreferredSize(new java.awt.Dimension(260, 120));
         va.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 vaMouseClicked(evt);
@@ -186,7 +193,7 @@ public class UTTransfer extends javax.swing.JPanel {
                 .addGroup(vaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         vaLayout.setVerticalGroup(
             vaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,12 +208,13 @@ public class UTTransfer extends javax.swing.JPanel {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        va1.setBackground(new java.awt.Color(80, 76, 92));
-        va1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        va1.setOpaque(false);
-        va1.addMouseListener(new java.awt.event.MouseAdapter() {
+        inbox.setBackground(new java.awt.Color(80, 76, 92));
+        inbox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inbox.setOpaque(false);
+        inbox.setPreferredSize(new java.awt.Dimension(304, 120));
+        inbox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                va1MouseClicked(evt);
+                inboxMouseClicked(evt);
             }
         });
 
@@ -241,26 +249,26 @@ public class UTTransfer extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout va1Layout = new javax.swing.GroupLayout(va1);
-        va1.setLayout(va1Layout);
-        va1Layout.setHorizontalGroup(
-            va1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(va1Layout.createSequentialGroup()
+        javax.swing.GroupLayout inboxLayout = new javax.swing.GroupLayout(inbox);
+        inbox.setLayout(inboxLayout);
+        inboxLayout.setHorizontalGroup(
+            inboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inboxLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(va1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(inboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        va1Layout.setVerticalGroup(
-            va1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(va1Layout.createSequentialGroup()
+        inboxLayout.setVerticalGroup(
+            inboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inboxLayout.createSequentialGroup()
                 .addContainerGap(29, Short.MAX_VALUE)
-                .addGroup(va1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(inboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(va1Layout.createSequentialGroup()
+                    .addGroup(inboxLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel10)))
@@ -278,11 +286,11 @@ public class UTTransfer extends javax.swing.JPanel {
                         .addComponent(backbtn)
                         .addGap(75, 75, 75)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(antarrek, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
-                    .addComponent(antarrek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(va, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(va1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                    .addComponent(va, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                    .addComponent(inbox, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
         );
         bgutamaLayout.setVerticalGroup(
             bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,13 +301,13 @@ public class UTTransfer extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addGap(70, 70, 70)
                 .addComponent(antarrek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
                 .addComponent(va, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
-                .addComponent(va1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addComponent(inbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -310,7 +318,7 @@ public class UTTransfer extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgutama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bgutama, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     UserTransfer utf;
@@ -326,24 +334,28 @@ public class UTTransfer extends javax.swing.JPanel {
 
     private void antarrekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_antarrekMouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_antarrekMouseClicked
 
     private void vaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_vaMouseClicked
 
-    private void va1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_va1MouseClicked
+    private void inboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inboxMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_va1MouseClicked
+    }//GEN-LAST:event_inboxMouseClicked
+    
+   
     public void pass(UserTransfer utf){
         this.utf=utf;
     }
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel antarrek;
     private javax.swing.JLabel backbtn;
     private javax.swing.JPanel bgutama;
+    private javax.swing.JPanel inbox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -359,6 +371,5 @@ public class UTTransfer extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel va;
-    private javax.swing.JPanel va1;
     // End of variables declaration//GEN-END:variables
 }
