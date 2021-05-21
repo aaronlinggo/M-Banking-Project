@@ -58,6 +58,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(55, 53, 61));
 
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/BackBlue.png"))); // NOI18N
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
@@ -110,7 +111,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         lblIsiCaptcha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIsiCaptcha.setText("Captcha");
 
-        panelCaptcha = new ImagePanel("src/m/banking/Asset/bgCaptcha new1.png");
+        panelCaptcha = new ImagePanel("src/m/banking/Asset/bgCaptcha.png");
 
         javax.swing.GroupLayout panelCaptchaLayout = new javax.swing.GroupLayout(panelCaptcha);
         panelCaptcha.setLayout(panelCaptchaLayout);
