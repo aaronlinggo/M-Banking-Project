@@ -71,6 +71,11 @@ public class UTDaftar extends javax.swing.JPanel {
         submitbtn.setBackground(new java.awt.Color(51, 255, 0));
         submitbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         submitbtn.setOpaque(false);
+        submitbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                submitbtnMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -97,6 +102,11 @@ public class UTDaftar extends javax.swing.JPanel {
         cancelbtn.setBackground(new java.awt.Color(255, 51, 51));
         cancelbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cancelbtn.setOpaque(false);
+        cancelbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelbtnMouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -259,6 +269,20 @@ public class UTDaftar extends javax.swing.JPanel {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void submitbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitbtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submitbtnMouseClicked
+
+    private void cancelbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelbtnMouseClicked
+        // TODO add your handling code here:
+        utf.u.getContent().removeAll();
+        utf.setVisible(true);
+        utf.setBounds(0,0, 500, 750);
+        utf.u.getContent().add(utf);
+        utf.u.getContent().revalidate();
+        utf.u.getContent().repaint();
+    }//GEN-LAST:event_cancelbtnMouseClicked
     
     UserTransfer utf;
         
