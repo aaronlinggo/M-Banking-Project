@@ -9,11 +9,14 @@ import RoundedField.RoundJPanel;
 import ScrollBar.MyScrollBarUI;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.ScrollPaneLayout;
@@ -33,6 +36,13 @@ public class UserVirtualAccount extends javax.swing.JPanel {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
         this.setBounds(0, 0, 500, 750);
+    }
+    
+    public UserVirtualAccount(UTTransfer ut) {
+        initComponents();
+        this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
+        this.setBounds(0, 0, 500, 750);
+        showListBill(ut);
     }
 
     public void passData(UTTransfer ut){
@@ -449,6 +459,31 @@ public class UserVirtualAccount extends javax.swing.JPanel {
         ut.utf.u.getContent().repaint();
     }//GEN-LAST:event_backbtnMouseClicked
 
+    public void showListBill(UTTransfer ut){
+        listBill.removeAll();
+        if ((40+20)*ut.utf.u.active.sizeVA() >= 294) {
+            listBill.setPreferredSize(new Dimension(382, (40+20)*ut.utf.u.active.sizeVA()));
+        }
+        else {
+            listBill.setPreferredSize(new Dimension(382, 294));
+        }
+        ArrayList<CardBill> CB = new ArrayList<>();
+        for (int i = 0; i < ut.utf.u.active.sizeVA(); i++) {
+            CB.add(new CardBill());
+            CB.get(i).setInfo(ut.utf.u.active.getVA(i) + " - " + priceWithoutDecimal(ut.utf.u.active.getHargaTagihan(i)));
+            CB.get(i).setBounds(0, (40+20)*i, 369, 40);
+            CB.get(i).setVisible(true);
+            listBill.add(CB.get(i));
+        }
+        listBill.revalidate();
+        listBill.repaint();
+    }
+    
+    public String priceWithoutDecimal (Double price) {
+        DecimalFormat formatter = new DecimalFormat("###,###,###.##");
+        return formatter.format(price);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cancel;
     private javax.swing.JPanel OK;

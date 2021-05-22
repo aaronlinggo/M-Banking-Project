@@ -39,6 +39,7 @@ public class CardBill extends javax.swing.JPanel {
         border.setOpaque(false);
 
         detail.setBackground(new java.awt.Color(250, 243, 243));
+        detail.setOpaque(false);
         detail.setRequestFocusEnabled(false);
 
         info.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
@@ -91,6 +92,9 @@ public class CardBill extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setInfo(String txt){
+        this.info.setText(txt);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel border;
