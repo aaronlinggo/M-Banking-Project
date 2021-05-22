@@ -222,10 +222,10 @@ public class UserMainmenu extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel8.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Courier New", 1, 20)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("M-Transfer");
+        jLabel8.setText("Transactions");
 
         jLabel10.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -241,12 +241,16 @@ public class UserMainmenu extends javax.swing.JPanel {
         m_transfer.setLayout(m_transferLayout);
         m_transferLayout.setHorizontalGroup(
             m_transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(m_transferLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(boxlogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(m_transferLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(m_transferLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(boxlogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(m_transferLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         m_transferLayout.setVerticalGroup(

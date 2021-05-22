@@ -371,7 +371,13 @@ public class UTTransfer extends javax.swing.JPanel {
 
     private void antarrekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_antarrekMouseClicked
         // TODO add your handling code here:
-
+        utf.u.getContent().removeAll();
+        UserAntarRek UAR = new UserAntarRek();
+        UAR.passData(this);
+        UAR.setBounds(0,0, 500, 750);
+        utf.u.getContent().add(UAR);
+        utf.u.getContent().revalidate();
+        utf.u.getContent().repaint();
     }//GEN-LAST:event_antarrekMouseClicked
 
     private void vaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vaMouseClicked
@@ -387,6 +393,13 @@ public class UTTransfer extends javax.swing.JPanel {
 
     private void inboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inboxMouseClicked
         // TODO add your handling code here:
+        utf.u.getContent().removeAll();
+        UTInbox Uibx = new UTInbox();
+        Uibx.passData(this);
+        Uibx.setBounds(0,0, 500, 750);
+        utf.u.getContent().add(Uibx);
+        utf.u.getContent().revalidate();
+        utf.u.getContent().repaint();
     }//GEN-LAST:event_inboxMouseClicked
     
    
