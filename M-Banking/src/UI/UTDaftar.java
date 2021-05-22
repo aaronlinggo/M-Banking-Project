@@ -32,29 +32,21 @@ public class UTDaftar extends javax.swing.JPanel {
     private void initComponents() {
 
         bgutama = new javax.swing.JPanel();
-        backbtn = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        submitbtn = new RoundJPanel(35);
+        jLabel5 = new javax.swing.JLabel();
+        cancelbtn = new RoundJPanel(35);
+        jLabel4 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        backbtnpanel = new RoundJPanel(25)  ;
+        backbtn = new javax.swing.JLabel();
+        header = new RoundJPanel(25);
+        jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(500, 750));
 
-        bgutama.setBackground(new java.awt.Color(55, 53, 61));
-
-        backbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/Back.png"))); // NOI18N
-        backbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        backbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backbtnMouseClicked(evt);
-            }
-        });
-
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-
-        jLabel1.setFont(new java.awt.Font("Courier New", 1, 35)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Daftar Rekening");
+        bgutama.setBackground(new java.awt.Color(250, 243, 243));
 
         jTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jTextField1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
@@ -76,6 +68,123 @@ public class UTDaftar extends javax.swing.JPanel {
             }
         });
 
+        submitbtn.setBackground(new java.awt.Color(51, 255, 0));
+        submitbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submitbtn.setOpaque(false);
+
+        jLabel5.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Submit");
+
+        javax.swing.GroupLayout submitbtnLayout = new javax.swing.GroupLayout(submitbtn);
+        submitbtn.setLayout(submitbtnLayout);
+        submitbtnLayout.setHorizontalGroup(
+            submitbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(submitbtnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        submitbtnLayout.setVerticalGroup(
+            submitbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(submitbtnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        cancelbtn.setBackground(new java.awt.Color(255, 51, 51));
+        cancelbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelbtn.setOpaque(false);
+
+        jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Cancel");
+
+        javax.swing.GroupLayout cancelbtnLayout = new javax.swing.GroupLayout(cancelbtn);
+        cancelbtn.setLayout(cancelbtnLayout);
+        cancelbtnLayout.setHorizontalGroup(
+            cancelbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cancelbtnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        cancelbtnLayout.setVerticalGroup(
+            cancelbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cancelbtnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTextField3.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField3.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField3.setText("Nomor Rekening 3");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        backbtnpanel.setBackground(new java.awt.Color(255, 255, 255));
+        backbtnpanel.setOpaque(false);
+
+        backbtn.setBackground(new java.awt.Color(255, 255, 255));
+        backbtn.setForeground(new java.awt.Color(255, 255, 255));
+        backbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/Back.png"))); // NOI18N
+        backbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backbtnMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout backbtnpanelLayout = new javax.swing.GroupLayout(backbtnpanel);
+        backbtnpanel.setLayout(backbtnpanelLayout);
+        backbtnpanelLayout.setHorizontalGroup(
+            backbtnpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backbtnpanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(backbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        backbtnpanelLayout.setVerticalGroup(
+            backbtnpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backbtnpanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(backbtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        header.setBackground(new java.awt.Color(255, 255, 255));
+        header.setOpaque(false);
+
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 32)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Daftar Rekening");
+
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
+        );
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout bgutamaLayout = new javax.swing.GroupLayout(bgutama);
         bgutama.setLayout(bgutamaLayout);
         bgutamaLayout.setHorizontalGroup(
@@ -84,28 +193,36 @@ public class UTDaftar extends javax.swing.JPanel {
                 .addGap(46, 46, 46)
                 .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(bgutamaLayout.createSequentialGroup()
-                        .addComponent(backbtn)
+                        .addComponent(cancelbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(submitbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bgutamaLayout.createSequentialGroup()
+                        .addComponent(backbtnpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                        .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addComponent(jTextField2)
-                    .addComponent(jTextField1))
-                .addContainerGap(72, Short.MAX_VALUE))
+                    .addComponent(jTextField1)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         bgutamaLayout.setVerticalGroup(
             bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgutamaLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(backbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                    .addComponent(backbtnpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
+                .addGap(70, 70, 70)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(398, Short.MAX_VALUE))
+                .addGap(70, 70, 70)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cancelbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(submitbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -138,6 +255,10 @@ public class UTDaftar extends javax.swing.JPanel {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
     
     UserTransfer utf;
         
@@ -147,10 +268,16 @@ public class UTDaftar extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backbtn;
+    private javax.swing.JPanel backbtnpanel;
     private javax.swing.JPanel bgutama;
+    private javax.swing.JPanel cancelbtn;
+    private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JPanel submitbtn;
     // End of variables declaration//GEN-END:variables
 }
