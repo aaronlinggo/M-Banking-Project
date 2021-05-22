@@ -749,90 +749,100 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                                 if (!saldo.getText().equals("")){
                                     String tempPin = new String(pin.getPassword());
                                     if (!tempPin.equals("")){
-                                        String tempConfirmPin = new String(confirmPin.getPassword());
-                                        if (!tempConfirmPin.equals("")){
-                                            if (isNumeric(nomorHP.getText())){
-                                                if (isNumeric(saldo.getText())){
-                                                    int jumlahSaldo = Integer.parseInt(saldo.getText());
-                                                    if (jumlahSaldo >= 50000){
-                                                        if (isNumeric(tempPin)){
-                                                            if (isNumeric(tempConfirmPin)){
-                                                                if (tempPin.equals(tempConfirmPin)){
-                                                                    Date temp = (Date) tglLahir.getValue();
-                                                                    //String temp = (String) tglLahir.getValue();
-                                                                    System.out.println("- " + temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000));
-                                                                    String tempTgl = temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000);
-                                                                    //System.out.println(temp);
-                                                                    if (silverBtn.isSelected()){
-                                                                        if (maleBtn.isSelected()){
-                                                                            l.requestMember.add(new Silver(firstName.getText() + " " + lastName.getText(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
-                                                                        }
-                                                                        else if (femaleBtn.isSelected()){
-                                                                            l.requestMember.add(new Silver(firstName.getText() + " " + lastName.getText(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
-                                                                        }
-                                                                    }
-                                                                    else if (goldBtn.isSelected()){
-                                                                        if (maleBtn.isSelected()){
-                                                                            l.requestMember.add(new Gold(firstName.getText() + " " + lastName.getText(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
-                                                                        }
-                                                                        else if (femaleBtn.isSelected()){
-                                                                            l.requestMember.add(new Gold(firstName.getText() + " " + lastName.getText(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
-                                                                        }
-                                                                    }
-                                                                    else if (platinumBtn.isSelected()){
-                                                                        if (maleBtn.isSelected()){
-                                                                            l.requestMember.add(new Platinum(firstName.getText() + " " + lastName.getText(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
-                                                                        }
-                                                                        else if (femaleBtn.isSelected()){
-                                                                            l.requestMember.add(new Platinum(firstName.getText() + " " + lastName.getText(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
-                                                                        }
-                                                                    }
-                                                                    String filename = "requestMember.ser";
-                                                                    try {
-                                                                        FileOutputStream file = new FileOutputStream(filename);
-                                                                        ObjectOutputStream out = new ObjectOutputStream(file);
+                                        if (pin.getPassword().length == 6){
+                                            String tempConfirmPin = new String(confirmPin.getPassword());
+                                            if (!tempConfirmPin.equals("")){
+                                                if (confirmPin.getPassword().length == 6){
+                                                    if (isNumeric(nomorHP.getText())){
+                                                        if (isNumeric(saldo.getText())){
+                                                            int jumlahSaldo = Integer.parseInt(saldo.getText());
+                                                            if (jumlahSaldo >= 50000){
+                                                                if (isNumeric(tempPin)){
+                                                                    if (isNumeric(tempConfirmPin)){
+                                                                        if (tempPin.equals(tempConfirmPin)){
+                                                                            Date temp = (Date) tglLahir.getValue();
+                                                                            //String temp = (String) tglLahir.getValue();
+                                                                            System.out.println("- " + temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000));
+                                                                            String tempTgl = temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000);
+                                                                            //System.out.println(temp);
+                                                                            if (silverBtn.isSelected()){
+                                                                                if (maleBtn.isSelected()){
+                                                                                    l.requestMember.add(new Silver((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                                }
+                                                                                else if (femaleBtn.isSelected()){
+                                                                                    l.requestMember.add(new Silver((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
+                                                                                }
+                                                                            }
+                                                                            else if (goldBtn.isSelected()){
+                                                                                if (maleBtn.isSelected()){
+                                                                                    l.requestMember.add(new Gold((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                                }
+                                                                                else if (femaleBtn.isSelected()){
+                                                                                    l.requestMember.add(new Gold((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
+                                                                                }
+                                                                            }
+                                                                            else if (platinumBtn.isSelected()){
+                                                                                if (maleBtn.isSelected()){
+                                                                                    l.requestMember.add(new Platinum((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                                }
+                                                                                else if (femaleBtn.isSelected()){
+                                                                                    l.requestMember.add(new Platinum((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
+                                                                                }
+                                                                            }
+                                                                            String filename = "requestMember.ser";
+                                                                            try {
+                                                                                FileOutputStream file = new FileOutputStream(filename);
+                                                                                ObjectOutputStream out = new ObjectOutputStream(file);
 
-                                                                        out.writeObject(l.requestMember);
+                                                                                out.writeObject(l.requestMember);
 
-                                                                        out.close();
-                                                                        file.close();
+                                                                                out.close();
+                                                                                file.close();
 
-                                                                        System.out.println("Object has been serialized");
+                                                                                System.out.println("Object has been serialized");
 
+                                                                            }
+                                                                            catch(IOException ex) {
+                                                                                System.out.println("IOException is caught");
+                                                                            }
+                                                                            JOptionPane.showMessageDialog(this, "Berhasil membuat member.. tunggu konfirmasi dari admin");
+                                                                            this.setVisible(false);
+                                                                            l.setVisible(true);
+                                                                        }
+                                                                        else {
+                                                                            JOptionPane.showMessageDialog(this, "Confirm Pin tidak sesuai");
+                                                                        }
                                                                     }
-                                                                    catch(IOException ex) {
-                                                                        System.out.println("IOException is caught");
+                                                                    else {
+                                                                        JOptionPane.showMessageDialog(this, "Confirm Pin Harus digit");
                                                                     }
-                                                                    JOptionPane.showMessageDialog(this, "Berhasil membuat member.. tunggu konfirmasi dari admin");
-                                                                    this.setVisible(false);
-                                                                    l.setVisible(true);
                                                                 }
                                                                 else {
-                                                                    JOptionPane.showMessageDialog(this, "Confirm Pin tidak sesuai");
+                                                                    JOptionPane.showMessageDialog(this, "Pin Harus digit");
                                                                 }
                                                             }
                                                             else {
-                                                                JOptionPane.showMessageDialog(this, "Confirm Pin Harus digit");
+                                                                JOptionPane.showMessageDialog(this, "Saldo minimum 50000");
                                                             }
                                                         }
                                                         else {
-                                                            JOptionPane.showMessageDialog(this, "Pin Harus digit");
+                                                            JOptionPane.showMessageDialog(this, "Saldo Harus digit");
                                                         }
                                                     }
                                                     else {
-                                                        JOptionPane.showMessageDialog(this, "Saldo minimum 50000");
+                                                        JOptionPane.showMessageDialog(this, "Nomor HP Harus digit");
                                                     }
                                                 }
                                                 else {
-                                                    JOptionPane.showMessageDialog(this, "Saldo Harus digit");
+                                                    JOptionPane.showMessageDialog(this, "Confirm Pin harus 6 digit angka");
                                                 }
                                             }
                                             else {
-                                                JOptionPane.showMessageDialog(this, "Nomor HP Harus digit");
+                                                JOptionPane.showMessageDialog(this, "Confirm Pin harus diisi");
                                             }
                                         }
                                         else {
-                                            JOptionPane.showMessageDialog(this, "Confirm Pin harus diisi");
+                                            JOptionPane.showMessageDialog(this, "pin harus 6 digit angka");
                                         }
                                     }
                                     else {
