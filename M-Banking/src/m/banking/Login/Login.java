@@ -87,6 +87,7 @@ public class Login extends javax.swing.JFrame {
             file.close();
         }
         catch(IOException ex) {
+            System.out.println(ex);
             System.out.println("IOException is caught");
         }
         catch(ClassNotFoundException ex) {
@@ -103,6 +104,7 @@ public class Login extends javax.swing.JFrame {
             file.close();
         }
         catch(IOException ex) {
+            System.out.println(ex);
             System.out.println("IOException is caught");
         }
         catch(ClassNotFoundException ex) {
