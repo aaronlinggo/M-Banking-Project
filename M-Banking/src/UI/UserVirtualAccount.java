@@ -471,7 +471,7 @@ public class UserVirtualAccount extends javax.swing.JPanel {
         for (int i = 0; i < ut.utf.u.active.sizeVA(); i++) {
             CB.add(new CardBill());
             CB.get(i).setInfo(ut.utf.u.active.getVA(i) + " - " + priceWithoutDecimal(ut.utf.u.active.getHargaTagihan(i)));
-            CB.get(i).setBounds(0, (40+20)*i, 369, 40);
+            CB.get(i).setBounds(0, (40+20)*i, 369, 50);
             CB.get(i).setVisible(true);
             listBill.add(CB.get(i));
         }

@@ -97,7 +97,7 @@ public class UserHomepage extends javax.swing.JFrame {
 
         notch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/notch.png"))); // NOI18N
 
-        content.setBackground(new java.awt.Color(55, 53, 61));
+        content.setBackground(new java.awt.Color(250, 243, 243));
         content.setOpaque(false);
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);

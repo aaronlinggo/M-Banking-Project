@@ -68,6 +68,22 @@ public abstract class Member implements Serializable{
         while(true);
         return va;
     }
+
+    public ArrayList<Tagihan> getMyTagihan() {
+        return myTagihan;
+    }
+
+    public void setMyTagihan(ArrayList<Tagihan> myTagihan) {
+        this.myTagihan = myTagihan;
+    }
+
+    public ArrayList<Integer> getDaftarrek() {
+        return daftarrek;
+    }
+
+    public void setDaftarrek(ArrayList<Integer> daftarrek) {
+        this.daftarrek = daftarrek;
+    }
     
     public int sizeVA(){
         return myTagihan.size();
