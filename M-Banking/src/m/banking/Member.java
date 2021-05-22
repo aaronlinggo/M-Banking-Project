@@ -69,12 +69,6 @@ public abstract class Member implements Serializable{
         return va;
     }
     
-    public void tes(){
-        for (int i = 0; i < myTagihan.size(); i++) {
-            System.out.println(myTagihan.get(i).getNamaTagihan() + " - " + myTagihan.get(i).getJumlahTagihan() + " - " + myTagihan.get(i).getVirtualAccount());
-        }
-    }
-    
     public void addTagihan(String nama, double total, int va){
         this.myTagihan.add(new Tagihan(nama, total, va));
     }
