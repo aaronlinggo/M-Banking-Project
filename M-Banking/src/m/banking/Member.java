@@ -58,7 +58,7 @@ public abstract class Member implements Serializable{
             boolean cek = false;
             for (int i = 0; i < myTagihan.size(); i++) {
                 if (va == myTagihan.get(i).getVirtualAccount()){
-                    cek = true;
+                    cek =   true;
                 }
             }
             if (!cek){

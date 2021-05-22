@@ -40,7 +40,7 @@ public class Login extends javax.swing.JFrame {
     int noRek;
     public Login() {
         String filename = "date.ser";
-        
+
 //        try
 //        {
 //            FileOutputStream file = new FileOutputStream(filename);
