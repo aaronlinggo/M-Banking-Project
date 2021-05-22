@@ -7,7 +7,13 @@ package UI;
 
 import RoundedField.RoundJPanel;
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import m.banking.Login.Login;
+import m.banking.Member;
 
 /**
  *
@@ -284,9 +290,106 @@ public class UTDaftar extends javax.swing.JPanel {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
-
+    public boolean isNumeric(String str)
+    {
+        for (char c : str.toCharArray())
+        {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
     private void submitbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitbtnMouseClicked
         // TODO add your handling code here:
+        ArrayList<Member> Account = new ArrayList<>();
+        ArrayList<String> temp = new ArrayList<>();
+        try {
+            FileInputStream file = new FileInputStream("Account.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            Account = (ArrayList<Member>) in.readObject();
+
+            in.close();
+            file.close();
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        boolean slot1=false,slot2=false,slot3=false;// false =  ga kembar
+        boolean fill1=false,fill2=false,fill3=false;// cek terisi ga
+        if(!jTextField1.getText().equals("") && !jTextField1.getText().equals("Nomor Rekening 1")){
+            fill1=true;
+            int cek1 = Integer.parseInt(jTextField1.getText());
+            boolean nemu = false;
+            for(Integer i : utf.u.active.getDaftarrek()){
+                if(cek1== i){
+                    nemu = true;
+                }
+            }
+            if(!nemu){
+                utf.u.active.getDaftarrek().add(cek1);
+            }
+            else{
+                slot1=true;//berati kembar
+            }
+        }
+        if(!jTextField2.getText().equals("") && !jTextField2.getText().equals("Nomor Rekening 2")){
+            fill2=true;
+            int cek2 = Integer.parseInt(jTextField2.getText());
+            boolean nemu = false;
+            for(Integer i : utf.u.active.getDaftarrek()){
+                if(cek2== i){
+                    nemu = true;
+                }
+            }
+            if(!nemu){
+                utf.u.active.getDaftarrek().add(cek2);
+            }
+            else{
+                slot2=true;//berati kembar
+            }
+        }
+        if(!jTextField3.getText().equals("")&&!jTextField3.getText().equals("Nomor Rekening 3")){
+            fill3=true;
+            int cek3 = Integer.parseInt(jTextField3.getText());
+            boolean nemu = false;
+            for(Integer i : utf.u.active.getDaftarrek()){
+                if(cek3== i){
+                    nemu = true;
+                }
+            }
+            if(!nemu){
+                utf.u.active.getDaftarrek().add(cek3);
+            }
+            else{
+                slot3=true;//berati kembar
+            }
+        }
+        String msg="";
+        if(fill1){
+            if(isNumeric(jTextField1.getText())){
+                
+            }
+            if(slot1)msg+="\nNomor Rekening 1 Sudah Terdaftar";
+            else msg+="\nNomor Rekening 1 Berhasil Terdaftar";
+        }
+        if(fill2){
+            if(slot2)msg+="\nNomor Rekening 1 Sudah Terdaftar";
+            else msg+="\nNomor Rekening 2 Berhasil Terdaftar";
+        }
+        if(fill3){
+            if(slot3)msg+="\nNomor Rekening 1 Sudah Terdaftar";
+            else msg+="\nNomor Rekening 3 Berhasil Terdaftar";
+        }
+        if(!fill1&&!fill2&&!fill3){
+            JOptionPane.showMessageDialog(this, "Tidak Ada yang mau di Daftarkan");
+        }
+        else JOptionPane.showMessageDialog(this, "Status : "+ msg);
+        
     }//GEN-LAST:event_submitbtnMouseClicked
 
     private void cancelbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelbtnMouseClicked
