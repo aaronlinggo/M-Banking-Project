@@ -383,7 +383,7 @@ public class UTTransfer extends javax.swing.JPanel {
     private void vaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vaMouseClicked
         // TODO add your handling code here:
         utf.u.getContent().removeAll();
-        UserVirtualAccount UVA = new UserVirtualAccount();
+        UserVirtualAccount UVA = new UserVirtualAccount(this);
         UVA.passData(this);
         UVA.setBounds(0,0, 500, 750);
         utf.u.getContent().add(UVA);
