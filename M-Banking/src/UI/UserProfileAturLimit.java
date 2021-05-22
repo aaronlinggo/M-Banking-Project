@@ -20,7 +20,8 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
     
     public UserProfileAturLimit() {
         initComponents();
-        jSlider1.setBackground(Color.cyan);
+        Color co = new Color(0,255,255);
+        jSlider1.setBackground(co);
         jSlider1.setOpaque(true);
         jSlider1.setMaximum(maxi);
         jSlider1.setValue(maxi);
@@ -52,20 +53,20 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
         Submit = new javax.swing.JButton();
         lblBack = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(55, 53, 61));
+        jPanel1.setBackground(new java.awt.Color(250, 243, 243));
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(93, 130, 228));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("ATUR LIMIT");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(249, 117, 218));
         jLabel3.setText("CURRENT USAGE : XXXXXXXX");
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(103, 91, 232));
         jLabel4.setText("CURRENT LIMIT : XXXXXXXX");
 
-        lblMin.setForeground(new java.awt.Color(255, 255, 255));
+        lblMin.setForeground(new java.awt.Color(103, 91, 232));
         lblMin.setText("Min :   ");
 
         jSlider1.setBackground(new java.awt.Color(255, 255, 255));
@@ -92,13 +93,14 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
         });
 
         lblLimit.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        lblLimit.setForeground(new java.awt.Color(255, 255, 255));
+        lblLimit.setForeground(new java.awt.Color(249, 117, 218));
         lblLimit.setText("jLabel6");
 
-        lblMax.setForeground(new java.awt.Color(255, 255, 255));
+        lblMax.setForeground(new java.awt.Color(87, 202, 247));
         lblMax.setText("Max :");
 
-        Submit.setBackground(new java.awt.Color(204, 204, 255));
+        Submit.setBackground(new java.awt.Color(0, 255, 255));
+        Submit.setForeground(new java.awt.Color(0, 0, 0));
         Submit.setText("Submit");
         Submit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -29,7 +29,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="3d" green="35" red="37" type="rgb"/>
+          <Color blue="f3" green="f3" red="fa" type="rgb"/>
         </Property>
       </Properties>
 
@@ -114,7 +114,7 @@
               <Font name="Courier New" size="24" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="e4" green="82" red="5d" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="ATUR LIMIT"/>
@@ -123,7 +123,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="da" green="75" red="f9" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="CURRENT USAGE : XXXXXXXX"/>
           </Properties>
@@ -131,7 +131,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="e8" green="5b" red="67" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="CURRENT LIMIT : XXXXXXXX"/>
           </Properties>
@@ -139,7 +139,7 @@
         <Component class="javax.swing.JLabel" name="lblMin">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="e8" green="5b" red="67" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Min :   "/>
           </Properties>
@@ -177,7 +177,7 @@
               <Font name="Courier New" size="24" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="da" green="75" red="f9" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel6"/>
           </Properties>
@@ -185,7 +185,7 @@
         <Component class="javax.swing.JLabel" name="lblMax">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="f7" green="ca" red="57" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Max :"/>
           </Properties>
@@ -193,7 +193,10 @@
         <Component class="javax.swing.JButton" name="Submit">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="cc" type="rgb"/>
+              <Color blue="ff" green="ff" red="0" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Submit"/>
           </Properties>
