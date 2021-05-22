@@ -5,7 +5,10 @@
  */
 package UI;
 
+import Image.ImagePanel;
 import RoundedField.RoundJPanel;
+import m.banking.Gold;
+import m.banking.Silver;
 
 /**
  *
@@ -19,8 +22,18 @@ public class UserProfile extends javax.swing.JPanel {
     
     UserHomepage uh;
     
-    public UserProfile() {
+    public UserProfile(UserHomepage uh) {
+        this.uh = uh;
         initComponents();
+        if(uh.active instanceof Silver) {
+            lblJenisKartu.setText("SILVER");
+        } else if (uh.active instanceof Gold) {
+            lblJenisKartu.setText("GOLD");
+        } else {
+            lblJenisKartu.setText("PLATINUM");
+        }
+        String tempIsiKartu = String.valueOf(uh.active.getNoRekening()).substring(0,4) + " " + String.valueOf(uh.active.getNoRekening()).substring(4,8);
+        lblNomorKartu.setText(tempIsiKartu);
     }
     
     public void passData(UserHomepage uh) {
@@ -37,7 +50,7 @@ public class UserProfile extends javax.swing.JPanel {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
-        JenisKartu1 = new javax.swing.JLabel();
+        lblJenisKartu = new javax.swing.JLabel();
         btnGantiPin = new RoundJPanel(35);
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -49,15 +62,23 @@ public class UserProfile extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new RoundJPanel(35);
         jLabel7 = new javax.swing.JLabel();
-        gambarKartu = new javax.swing.JPanel();
+        String temp = "";
+        if(uh.active instanceof Silver) {
+            temp =  "src/m/banking/Asset/silver.png";
+        } else if (uh.active instanceof Gold) {
+            temp =  "src/m/banking/Asset/gold.png";
+        } else {
+            temp =  "src/m/banking/Asset/platinum.png";
+        }
+        gambarKartu = new ImagePanel(temp);
         lblNomorKartu = new javax.swing.JLabel();
 
         background.setBackground(new java.awt.Color(250, 243, 243));
 
-        JenisKartu1.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
-        JenisKartu1.setForeground(new java.awt.Color(0, 0, 0));
-        JenisKartu1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        JenisKartu1.setText("GOLD");
+        lblJenisKartu.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
+        lblJenisKartu.setForeground(new java.awt.Color(0, 0, 0));
+        lblJenisKartu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblJenisKartu.setText("JENIS");
 
         btnGantiPin.setBackground(new java.awt.Color(103, 91, 232));
         btnGantiPin.setForeground(new java.awt.Color(0, 51, 255));
@@ -169,7 +190,7 @@ public class UserProfile extends javax.swing.JPanel {
         btnTagihanLayout.setVerticalGroup(
             btnTagihanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnTagihanLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
@@ -201,11 +222,12 @@ public class UserProfile extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        gambarKartu.setBackground(new java.awt.Color(153, 153, 153));
+        gambarKartu.setBackground(new java.awt.Color(250, 243, 243));
         gambarKartu.setPreferredSize(new java.awt.Dimension(410, 257));
 
-        lblNomorKartu.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        lblNomorKartu.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         lblNomorKartu.setForeground(new java.awt.Color(0, 0, 0));
+        lblNomorKartu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNomorKartu.setText("NOMOR");
 
         javax.swing.GroupLayout gambarKartuLayout = new javax.swing.GroupLayout(gambarKartu);
@@ -213,16 +235,16 @@ public class UserProfile extends javax.swing.JPanel {
         gambarKartuLayout.setHorizontalGroup(
             gambarKartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gambarKartuLayout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addComponent(lblNomorKartu)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblNomorKartu, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                .addContainerGap())
         );
         gambarKartuLayout.setVerticalGroup(
             gambarKartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gambarKartuLayout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(lblNomorKartu)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblNomorKartu, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
@@ -236,7 +258,7 @@ public class UserProfile extends javax.swing.JPanel {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addGap(35, 35, 35)
                         .addComponent(btnGantiPin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAturLimit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -246,7 +268,7 @@ public class UserProfile extends javax.swing.JPanel {
                         .addGap(45, 45, 45)
                         .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(gambarKartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JenisKartu1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblJenisKartu, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
@@ -255,15 +277,15 @@ public class UserProfile extends javax.swing.JPanel {
                 .addGap(10, 10, 10)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(JenisKartu1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblJenisKartu, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gambarKartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(124, 124, 124)
+                .addGap(160, 160, 160)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnTagihan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGantiPin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAturLimit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -274,14 +296,14 @@ public class UserProfile extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAturLimitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAturLimitMouseClicked
         // TODO add your handling code here:
         uh.getContent().removeAll();
-        UserProfileAturLimit ul = new UserProfileAturLimit();
+        UserProfileAturLimit ul = new UserProfileAturLimit(this);
         ul.passData(this);
         ul.setVisible(true);
         ul.setBounds(0,0, 500, 717);
@@ -293,11 +315,11 @@ public class UserProfile extends javax.swing.JPanel {
     private void btnTagihanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTagihanMouseClicked
         // TODO add your handling code here:
         uh.getContent().removeAll();
-        UserProfileTagihan ta = new UserProfileTagihan();
-        ta.passData(this);
-        ta.setVisible(true);
-        ta.setBounds(0,0, 500, 717);
-        uh.getContent().add(ta);
+        UserProfileTagihan upta = new UserProfileTagihan();
+        upta.passData(this);
+        upta.setVisible(true);
+        upta.setBounds(0,0, 500, 717);
+        uh.getContent().add(upta);
         uh.getContent().revalidate();
         uh.getContent().repaint();
     }//GEN-LAST:event_btnTagihanMouseClicked
@@ -316,7 +338,6 @@ public class UserProfile extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JenisKartu1;
     private javax.swing.JPanel background;
     private javax.swing.JPanel btnAturLimit;
     private javax.swing.JPanel btnGantiPin;
@@ -330,6 +351,7 @@ public class UserProfile extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblJenisKartu;
     private javax.swing.JLabel lblNomorKartu;
     // End of variables declaration//GEN-END:variables
 }

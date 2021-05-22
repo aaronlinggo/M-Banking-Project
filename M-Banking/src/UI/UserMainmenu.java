@@ -567,7 +567,7 @@ public class UserMainmenu extends javax.swing.JPanel {
         u.getTransfer().setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/trans_nav_putih.png")));
         u.getProfile().setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/profile_nav_biru.png")));
         u.getContent().removeAll();
-        UserProfile uh = new UserProfile();
+        UserProfile uh = new UserProfile(u);
         //uh.getUser(this);
         uh.setVisible(true);
         uh.setBounds(0,0, 500, 750);

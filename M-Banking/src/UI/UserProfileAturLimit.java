@@ -18,14 +18,18 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
     
     int maxi = 7000000;
     
-    public UserProfileAturLimit() {
+    public UserProfileAturLimit(UserProfile up) {
+        this.up = up;
+        
         initComponents();
         Color co = new Color(0,255,255);
         jSlider1.setBackground(co);
         jSlider1.setOpaque(true);
-        jSlider1.setMaximum(maxi);
-        jSlider1.setValue(maxi);
+        jSlider1.setMaximum(up.uh.active.getLimitTransfer());
+        jSlider1.setValue(up.uh.active.getAturLimit());
         lblMin.setText("Min : " + jSlider1.getMinimum());
+        this.lblCurrentLimit.setText("CURRENT LIMIT : " + up.uh.active.getAturLimit());
+        this.lblCurrentUsage.setText("CURRENT USAGE : " + up.uh.active.getCurrentUsage());
         lblMax.setText("Max : " + jSlider1.getMaximum());
     }
     
@@ -44,8 +48,8 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblCurrentUsage = new javax.swing.JLabel();
+        lblCurrentLimit = new javax.swing.JLabel();
         lblMin = new javax.swing.JLabel();
         jSlider1 = new javax.swing.JSlider();
         lblLimit = new javax.swing.JLabel();
@@ -61,13 +65,13 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("ATUR LIMIT");
 
-        jLabel3.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(249, 117, 218));
-        jLabel3.setText("CURRENT USAGE : XXXXXXXX");
+        lblCurrentUsage.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
+        lblCurrentUsage.setForeground(new java.awt.Color(249, 117, 218));
+        lblCurrentUsage.setText("CURRENT USAGE : XXXXXXXX");
 
-        jLabel4.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(103, 91, 232));
-        jLabel4.setText("CURRENT LIMIT : XXXXXXXX");
+        lblCurrentLimit.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
+        lblCurrentLimit.setForeground(new java.awt.Color(103, 91, 232));
+        lblCurrentLimit.setText("CURRENT LIMIT : XXXXXXXX");
 
         lblMin.setForeground(new java.awt.Color(103, 91, 232));
         lblMin.setText("Min :   ");
@@ -118,6 +122,7 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
         });
 
         panelBack.setBackground(new java.awt.Color(255, 255, 255));
+        panelBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelBackMouseClicked(evt);
@@ -157,9 +162,17 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblMin, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(lblLimit)
+                        .addGap(74, 74, 74)
+                        .addComponent(lblMax, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -171,20 +184,12 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
                                 .addComponent(Submit))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(17, 17, 17)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(15, 15, 15)))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblMin, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(lblLimit)
-                        .addGap(74, 74, 74)
-                        .addComponent(lblMax, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblCurrentLimit, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblCurrentUsage, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,9 +202,9 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
                         .addGap(31, 31, 31)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblCurrentLimit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblCurrentUsage, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
@@ -236,6 +241,8 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
     private void SubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitMouseClicked
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Limit yang baru adalah : " + jSlider1.getValue());
+        up.uh.active.setAturLimit(jSlider1.getValue());
+        this.lblCurrentLimit.setText("CURRENT LIMIT : " + up.uh.active.getAturLimit());
     }//GEN-LAST:event_SubmitMouseClicked
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
@@ -262,11 +269,11 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Submit;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JLabel lblBack;
+    private javax.swing.JLabel lblCurrentLimit;
+    private javax.swing.JLabel lblCurrentUsage;
     private javax.swing.JLabel lblLimit;
     private javax.swing.JLabel lblMax;
     private javax.swing.JLabel lblMin;
