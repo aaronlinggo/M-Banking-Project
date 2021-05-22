@@ -501,7 +501,7 @@ public class AdminListMember extends javax.swing.JPanel {
             System.out.println(va);
             double temp = Double.parseDouble(jumlahTagihan);
             Account.get(idx).addTagihan(namaMerchandise, temp, va);
-            JOptionPane.showMessageDialog(this, "Success add a bill \""+ namaMerchandise + "\" - " + temp + " - Virtual Account : " + va);
+            JOptionPane.showMessageDialog(this, "Success add a bill \""+ namaMerchandise + "\" - " + priceWithoutDecimal(temp)+ " - Virtual Account : " + va);
             System.out.println(Account.size());
             try {
                 FileOutputStream file = new FileOutputStream("Account.ser");

@@ -17,10 +17,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.ScrollPaneLayout;
 import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import m.banking.Login.Login;
 /**
  *
@@ -63,11 +66,11 @@ public class UserVirtualAccount extends javax.swing.JPanel {
         back = new RoundJPanel(25);
         backbtn = new javax.swing.JLabel();
         detail = new RoundJPanel(35);
-        jTextField1 = new javax.swing.JTextField();
+        input = new javax.swing.JTextField();
         jPanel4 = new RoundJPanel(35);
         jPanel5 = new RoundJPanel(35);
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        total = new javax.swing.JLabel();
         Cancel = new RoundJPanel(35);
         jLabel4 = new javax.swing.JLabel();
         OK = new RoundJPanel(35);
@@ -142,11 +145,58 @@ public class UserVirtualAccount extends javax.swing.JPanel {
         detail.setBackground(new java.awt.Color(219, 219, 229));
         detail.setOpaque(false);
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setText("No. Virtual Account");
-        jTextField1.setBorder(null);
+        input.setBackground(new java.awt.Color(255, 255, 255));
+        input.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        input.setForeground(new java.awt.Color(0, 0, 0));
+        input.setText("No. Virtual Account");
+        input.setBorder(null);
+        input.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                inputFocusGained(evt);
+            }
+        });
+        DocumentListener dl = new DocumentListener() {
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateFieldState();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateFieldState();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateFieldState();
+            }
+
+            protected void updateFieldState() {
+                if (isNumeric(input.getText())){
+                    int digit = Integer.parseInt(input.getText());
+                    int idx = -1;
+                    for (int i = 0; i < ut.utf.u.active.getMyTagihan().size(); i++) {
+                        if (digit == ut.utf.u.active.getMyTagihan().get(i).getVirtualAccount()){
+                            idx = i;
+                            break;
+                        }
+                    }
+                    if (idx != -1){
+                        String temp = priceWithoutDecimal(ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan());
+                        total.setText(temp);
+                    }
+                    else {
+                        total.setText("0.00");
+                    }
+                }
+                else {
+                    total.setText("0.00");
+                }
+            }
+        };
+
+        input.getDocument().addDocumentListener(dl);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setOpaque(false);
@@ -176,10 +226,10 @@ public class UserVirtualAccount extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("0.00");
+        total.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        total.setForeground(new java.awt.Color(0, 0, 0));
+        total.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        total.setText("0.00");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -188,7 +238,7 @@ public class UserVirtualAccount extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -196,7 +246,7 @@ public class UserVirtualAccount extends javax.swing.JPanel {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -229,6 +279,11 @@ public class UserVirtualAccount extends javax.swing.JPanel {
         OK.setBackground(new java.awt.Color(51, 255, 51));
         OK.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         OK.setOpaque(false);
+        OK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OKMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -263,15 +318,15 @@ public class UserVirtualAccount extends javax.swing.JPanel {
                         .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(OK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField1)
+                    .addComponent(input)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         detailLayout.setVerticalGroup(
             detailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detailLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -306,6 +361,7 @@ public class UserVirtualAccount extends javax.swing.JPanel {
         container.setBackground(new java.awt.Color(219, 219, 229));
         container.setOpaque(false);
 
+        scroll.setBorder(null);
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scroll.setLayout(new ScrollPaneLayout() {
             @Override
@@ -382,7 +438,7 @@ public class UserVirtualAccount extends javax.swing.JPanel {
         );
         listBillLayout.setVerticalGroup(
             listBillLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 294, Short.MAX_VALUE)
+            .addGap(0, 297, Short.MAX_VALUE)
         );
 
         scroll.setViewportView(listBill);
@@ -400,7 +456,7 @@ public class UserVirtualAccount extends javax.swing.JPanel {
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                .addComponent(scroll)
                 .addContainerGap())
         );
 
@@ -412,14 +468,13 @@ public class UserVirtualAccount extends javax.swing.JPanel {
                 .addGap(43, 43, 43)
                 .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(bgutamaLayout.createSequentialGroup()
-                            .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 323, Short.MAX_VALUE))
-                        .addComponent(detail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgutamaLayout.createSequentialGroup()
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(detail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         bgutamaLayout.setVerticalGroup(
             bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -459,6 +514,47 @@ public class UserVirtualAccount extends javax.swing.JPanel {
         ut.utf.u.getContent().repaint();
     }//GEN-LAST:event_backbtnMouseClicked
 
+    private void inputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputFocusGained
+        // TODO add your handling code here:
+        this.input.setText("");
+    }//GEN-LAST:event_inputFocusGained
+
+    private void OKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OKMouseClicked
+        // TODO add your handling code here:
+        if (!input.getText().equals("") && !input.getText().equals("No. Virtual Account")){
+            if (isNumeric(input.getText())){
+                int temp = Integer.parseInt(input.getText());
+                int idx = -1;
+                for (int i = 0; i < ut.utf.u.active.getMyTagihan().size(); i++) {
+                    if (temp == ut.utf.u.active.getMyTagihan().get(i).getVirtualAccount()){
+                        idx = i;
+                        break;
+                    }
+                }
+                if (idx != -1){
+                    if (ut.utf.u.active.getRupiah()-ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan() >= 50000){
+                        ut.utf.u.active.setRupiah(ut.utf.u.active.getRupiah()-ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan());
+                        JOptionPane.showMessageDialog(this, "Success Paid " + priceWithoutDecimal(ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan()) + " - Virtual Account " + ut.utf.u.active.getMyTagihan().get(idx).getVirtualAccount());
+                        ut.utf.u.active.getMyTagihan().remove(idx);
+                        showListBill(ut);
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(this, "Your Balance not enough");
+                    }
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Virtual Account not found");
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Virtual Account must be Numeric");
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Virtual Account not found");
+        }
+    }//GEN-LAST:event_OKMouseClicked
+
     public void showListBill(UTTransfer ut){
         listBill.removeAll();
         if ((40+20)*ut.utf.u.active.sizeVA() >= 294) {
@@ -470,8 +566,8 @@ public class UserVirtualAccount extends javax.swing.JPanel {
         ArrayList<CardBill> CB = new ArrayList<>();
         for (int i = 0; i < ut.utf.u.active.sizeVA(); i++) {
             CB.add(new CardBill());
-            CB.get(i).setInfo(ut.utf.u.active.getVA(i) + " - " + priceWithoutDecimal(ut.utf.u.active.getHargaTagihan(i)));
-            CB.get(i).setBounds(0, (40+20)*i, 369, 50);
+            CB.get(i).setInfo(ut.utf.u.active.getVA(i) + " - Rp. " + priceWithoutDecimal(ut.utf.u.active.getHargaTagihan(i)));
+            CB.get(i).setBounds(0, (40+20)*i, 369, 53);
             CB.get(i).setVisible(true);
             listBill.add(CB.get(i));
         }
@@ -484,6 +580,16 @@ public class UserVirtualAccount extends javax.swing.JPanel {
         return formatter.format(price);
     }
     
+    public boolean isNumeric(String str){
+        for (char c : str.toCharArray())
+        {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cancel;
     private javax.swing.JPanel OK;
@@ -492,18 +598,18 @@ public class UserVirtualAccount extends javax.swing.JPanel {
     private javax.swing.JPanel bgutama;
     private javax.swing.JPanel container;
     private javax.swing.JPanel detail;
+    private javax.swing.JTextField input;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel listBill;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JPanel title;
+    private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
 }
