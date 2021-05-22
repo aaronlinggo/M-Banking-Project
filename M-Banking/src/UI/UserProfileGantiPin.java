@@ -174,6 +174,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         });
 
         panelBack.setBackground(new java.awt.Color(255, 255, 255));
+        panelBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelBackMouseClicked(evt);
@@ -307,7 +308,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         if (!textCaptcha.equals(FieldCaptcha.getText())) {
             //Captcha salah
             JOptionPane.showMessageDialog(null, "Text pada captcha Salah");
-        } else if (!FieldPinBaru.equals(FieldConfirmPin.getText())) {
+        } else if (!FieldPinBaru.getText().equals(FieldConfirmPin.getText())) {
             //Pin dan confirm salah
             JOptionPane.showMessageDialog(null, "Pin Baru dan Confirm Tidak sama");
         } else {
