@@ -372,7 +372,7 @@ public class UTTransfer extends javax.swing.JPanel {
     private void antarrekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_antarrekMouseClicked
         // TODO add your handling code here:
         utf.u.getContent().removeAll();
-        UserAntarRek UAR = new UserAntarRek();
+        UserAntarRek UAR = new UserAntarRek(this);
         UAR.passData(this);
         UAR.setBounds(0,0, 500, 750);
         utf.u.getContent().add(UAR);
