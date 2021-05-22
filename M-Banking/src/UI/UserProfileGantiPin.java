@@ -38,7 +38,6 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        back = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -54,26 +53,20 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         Submit = new javax.swing.JButton();
         Reset = new javax.swing.JButton();
+        panelBack = new javax.swing.JPanel();
+        lblBack = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(250, 243, 243));
 
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/BackBlue.png"))); // NOI18N
-        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMouseClicked(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(93, 130, 228));
         jLabel1.setText("GANTI PIN");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(103, 91, 232));
         jLabel2.setText("PIN LAMA");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(87, 202, 247));
         jLabel3.setText("PIN BARU");
 
@@ -95,7 +88,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(249, 117, 218));
         jLabel4.setText("CONFIRM PIN");
 
@@ -103,7 +96,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         FieldConfirmPin.setForeground(new java.awt.Color(0, 0, 0));
         FieldConfirmPin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(249, 117, 218)));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(93, 130, 228));
         jLabel5.setText("CAPTCHA");
 
@@ -159,6 +152,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         );
 
         Submit.setBackground(new java.awt.Color(249, 117, 218));
+        Submit.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         Submit.setForeground(new java.awt.Color(0, 0, 0));
         Submit.setText("Submit");
         Submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -169,6 +163,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         });
 
         Reset.setBackground(new java.awt.Color(87, 202, 247));
+        Reset.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         Reset.setForeground(new java.awt.Color(0, 0, 0));
         Reset.setText("Reset");
         Reset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -178,36 +173,43 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
             }
         });
 
+        panelBack.setBackground(new java.awt.Color(255, 255, 255));
+        panelBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelBackMouseClicked(evt);
+            }
+        });
+
+        lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/Back.png"))); // NOI18N
+        lblBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBackMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBackLayout = new javax.swing.GroupLayout(panelBack);
+        panelBack.setLayout(panelBackLayout);
+        panelBackLayout.setHorizontalGroup(
+            panelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBackLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelBackLayout.setVerticalGroup(
+            panelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBackLayout.createSequentialGroup()
+                .addComponent(lblBack, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 7, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(back)
-                        .addGap(109, 109, 109)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(71, 71, 71)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3))
-                                        .addGap(18, 18, 18))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(jLabel4)))
-                        .addGap(47, 47, 47)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(FieldPinBaru, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                            .addComponent(FieldPinLama, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(FieldConfirmPin)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(Reset)
@@ -215,29 +217,54 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
                             .addComponent(Submit))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addGap(71, 71, 71)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(FieldCaptcha)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(panelRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(panelCaptcha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(74, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(FieldCaptcha)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(panelRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(panelCaptcha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)))
+                            .addComponent(jLabel4))
+                        .addGap(53, 53, 53)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(FieldPinBaru, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                            .addComponent(FieldPinLama, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(FieldConfirmPin)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(panelBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(jLabel1)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(back))
-                .addGap(29, 29, 29)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(panelBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(34, 34, 34)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(FieldPinLama, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(FieldPinBaru))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FieldPinBaru, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FieldConfirmPin, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,7 +281,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Submit)
                     .addComponent(Reset))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -305,13 +332,21 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         FieldCaptcha.setText("");
     }//GEN-LAST:event_ResetActionPerformed
 
-    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+    private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
         // TODO add your handling code here:
         up.uh.getContent().removeAll();
         up.uh.getContent().add(up);
         up.uh.getContent().revalidate();
         up.uh.getContent().repaint();
-    }//GEN-LAST:event_backMouseClicked
+    }//GEN-LAST:event_lblBackMouseClicked
+
+    private void panelBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBackMouseClicked
+        // TODO add your handling code here:
+        up.uh.getContent().removeAll();
+        up.uh.getContent().add(up);
+        up.uh.getContent().revalidate();
+        up.uh.getContent().repaint();
+    }//GEN-LAST:event_panelBackMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -321,7 +356,6 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
     private javax.swing.JPasswordField FieldPinLama;
     private javax.swing.JButton Reset;
     private javax.swing.JButton Submit;
-    private javax.swing.JLabel back;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -329,7 +363,9 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblBack;
     private javax.swing.JLabel lblIsiCaptcha;
+    private javax.swing.JPanel panelBack;
     private javax.swing.JPanel panelCaptcha;
     private javax.swing.JPanel panelRefresh;
     // End of variables declaration//GEN-END:variables
