@@ -327,7 +327,7 @@ public class UserProfile extends javax.swing.JPanel {
     private void btnGantiPinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGantiPinMouseClicked
         // TODO add your handling code here:
         uh.getContent().removeAll();
-        UserProfileGantiPin gp = new UserProfileGantiPin();
+        UserProfileGantiPin gp = new UserProfileGantiPin(this);
         gp.passData(this);
         gp.setVisible(true);
         gp.setBounds(0,0, 500, 717);

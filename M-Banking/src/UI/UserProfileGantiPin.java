@@ -18,7 +18,8 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
     /**
      * Creates new form UserProfileGantiPin
      */
-    public UserProfileGantiPin() {
+    public UserProfileGantiPin(UserProfile up) {
+        this.up = up;
         initComponents();
         textCaptcha = c.isiCaptcha();
         lblIsiCaptcha.setText(textCaptcha);
@@ -26,6 +27,24 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
     
     public void passData(UserProfile up) {
         this.up = up;
+    }
+    
+    public boolean isNumeric(String str) {
+        for (char c : str.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public void ResetSubmit() {
+        FieldPinLama.setText("");
+        FieldPinBaru.setText("");
+        FieldConfirmPin.setText("");
+        textCaptcha = c.isiCaptcha();
+        lblIsiCaptcha.setText(textCaptcha);
+        FieldCaptcha.setText("");
     }
 
     /**
@@ -305,15 +324,27 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
         // TODO add your handling code here:
-        if (!textCaptcha.equals(FieldCaptcha.getText())) {
+        if(!up.uh.active.getPin().equals(FieldPinLama.getText())) {
+            //Pin Lama tidak sama dengan yang lama
+            JOptionPane.showMessageDialog(null, "PIN tidak sama dengan PIN yang lama");
+            ResetSubmit();
+        } else if(!isNumeric(FieldPinBaru.getText()) || FieldPinBaru.getText().length()!=6) {
+            //Pin Baru tidak numerik dan Pin Baru tdk 6 digit
+            JOptionPane.showMessageDialog(null, "Format PIN baru tidak 6 digit atau ada yang mengandung karakter");
+            ResetSubmit();
+        } else if (!textCaptcha.equals(FieldCaptcha.getText())) {
             //Captcha salah
             JOptionPane.showMessageDialog(null, "Text pada captcha Salah");
+            ResetSubmit();
         } else if (!FieldPinBaru.getText().equals(FieldConfirmPin.getText())) {
             //Pin dan confirm salah
-            JOptionPane.showMessageDialog(null, "Pin Baru dan Confirm Tidak sama");
+            JOptionPane.showMessageDialog(null, "PIN Baru dan Confirm PIN Tidak sama");
+            ResetSubmit();
         } else {
             //berhasil
-            JOptionPane.showMessageDialog(null, "Pin berhasil diubah");
+            JOptionPane.showMessageDialog(null, "PIN berhasil diubah");
+            up.uh.active.setPin(FieldPinBaru.getText());
+            ResetSubmit();
         }
     }//GEN-LAST:event_SubmitActionPerformed
 

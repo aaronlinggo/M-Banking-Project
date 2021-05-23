@@ -110,6 +110,7 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
         Submit.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         Submit.setForeground(new java.awt.Color(0, 0, 0));
         Submit.setText("Submit");
+        Submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Submit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SubmitMouseClicked(evt);
