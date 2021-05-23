@@ -253,6 +253,11 @@ public class UserVirtualAccount extends javax.swing.JPanel {
         Cancel.setBackground(new java.awt.Color(255, 51, 102));
         Cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Cancel.setOpaque(false);
+        Cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CancelMouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -537,6 +542,7 @@ public class UserVirtualAccount extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "Success Paid " + priceWithoutDecimal(ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan()) + " - Virtual Account " + ut.utf.u.active.getMyTagihan().get(idx).getVirtualAccount());
                         ut.utf.u.active.getMyTagihan().remove(idx);
                         showListBill(ut);
+                        this.input.setText("No. Virtual Account");
                     }
                     else {
                         JOptionPane.showMessageDialog(this, "Your Balance not enough");
@@ -554,6 +560,11 @@ public class UserVirtualAccount extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Virtual Account not found");
         }
     }//GEN-LAST:event_OKMouseClicked
+
+    private void CancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelMouseClicked
+        // TODO add your handling code here:
+        this.input.setText("No. Virtual Account");
+    }//GEN-LAST:event_CancelMouseClicked
 
     public void showListBill(UTTransfer ut){
         listBill.removeAll();

@@ -66,7 +66,7 @@ public class UserMainmenu extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        date = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new RoundJPanel(35);
         lastActivityIcon = new javax.swing.JLabel();
@@ -436,9 +436,55 @@ public class UserMainmenu extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel2.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Monday, 16 Sep");
+        date.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
+        date.setForeground(new java.awt.Color(51, 51, 51));
+        date.setText("Monday, 16 Sep");
+        String temp = "";
+        if (uh.d1.getD1().getDay() == 0) temp = "Sunday";
+        else if (uh.d1.getD1().getDay() == 1) temp = "Monday";
+        else if (uh.d1.getD1().getDay() == 2) temp = "Tuesday";
+        else if (uh.d1.getD1().getDay() == 3) temp = "Wednesday";
+        else if (uh.d1.getD1().getDay() == 4) temp = "Thursday";
+        else if (uh.d1.getD1().getDay() == 5) temp = "Friday";
+        else if (uh.d1.getD1().getDay() == 6) temp = "Saturday";
+        String bulan = "";
+        if (uh.d1.getD1().getMonth() == 1){
+            bulan = "Januari";
+        }
+        else if (uh.d1.getD1().getMonth() == 2){
+            bulan = "Februari";
+        }
+        else if (uh.d1.getD1().getMonth() == 3){
+            bulan = "Maret";
+        }
+        else if (uh.d1.getD1().getMonth() == 4){
+            bulan = "April";
+        }
+        else if (uh.d1.getD1().getMonth() == 5){
+            bulan = "Mei";
+        }
+        else if (uh.d1.getD1().getMonth() == 6){
+            bulan = "Juni";
+        }
+        else if (uh.d1.getD1().getMonth() == 7){
+            bulan = "Juli";
+        }
+        else if (uh.d1.getD1().getMonth() == 8){
+            bulan = "Agustus";
+        }
+        else if (uh.d1.getD1().getMonth() == 9){
+            bulan = "September";
+        }
+        else if (uh.d1.getD1().getMonth() == 10){
+            bulan = "Oktober";
+        }
+        else if (uh.d1.getD1().getMonth() == 11){
+            bulan = "November";
+        }
+        else if (uh.d1.getD1().getMonth() == 12){
+            bulan = "Desember";
+        }
+        date.setText(temp + ", " + uh.d1.getD1().getDate() + " " + bulan);
 
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -498,9 +544,9 @@ public class UserMainmenu extends javax.swing.JPanel {
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(greetings1)
                             .addComponent(greetings)))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
@@ -514,7 +560,7 @@ public class UserMainmenu extends javax.swing.JPanel {
                         .addComponent(greetings))
                     .addComponent(Logo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -594,6 +640,7 @@ public class UserMainmenu extends javax.swing.JPanel {
     private javax.swing.JPanel Logo;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel boxlogo;
+    private javax.swing.JLabel date;
     private javax.swing.JLabel greetings;
     private javax.swing.JLabel greetings1;
     private javax.swing.JLabel jLabel1;
@@ -607,7 +654,6 @@ public class UserMainmenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
