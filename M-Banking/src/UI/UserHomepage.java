@@ -11,6 +11,7 @@ import javax.accessibility.AccessibleContext;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
+import m.banking.DateBankRut;
 import m.banking.Member;
 
 /**
@@ -25,7 +26,9 @@ public class UserHomepage extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
     Member active;
-    public UserHomepage(Member active) {
+    DateBankRut d1;
+    public UserHomepage(Member active, DateBankRut d1) {
+        this.d1 = d1;
         this.active = active;
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
@@ -55,6 +58,10 @@ public class UserHomepage extends javax.swing.JFrame {
     }
     public void passmember(Member active){
         this.active = active;
+    }
+    
+    public void passDateBankrut(DateBankRut d1){
+        this.d1 = d1;
     }
     
     /**

@@ -62,9 +62,9 @@
                               <Component id="greetings" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="jLabel2" min="-2" pref="160" max="-2" attributes="0"/>
                       <Component id="jPanel1" max="32767" attributes="0"/>
                       <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="date" alignment="0" min="-2" pref="338" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
@@ -83,7 +83,7 @@
                       <Component id="Logo" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="date" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -733,7 +733,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="date">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="16" style="1"/>
@@ -743,6 +743,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Monday, 16 Sep"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="String temp = &quot;&quot;;&#xa;if (uh.d1.getD1().getDay() == 0) temp = &quot;Sunday&quot;;&#xa;else if (uh.d1.getD1().getDay() == 1) temp = &quot;Monday&quot;;&#xa;else if (uh.d1.getD1().getDay() == 2) temp = &quot;Tuesday&quot;;&#xa;else if (uh.d1.getD1().getDay() == 3) temp = &quot;Wednesday&quot;;&#xa;else if (uh.d1.getD1().getDay() == 4) temp = &quot;Thursday&quot;;&#xa;else if (uh.d1.getD1().getDay() == 5) temp = &quot;Friday&quot;;&#xa;else if (uh.d1.getD1().getDay() == 6) temp = &quot;Saturday&quot;;&#xa;String bulan = &quot;&quot;;&#xa;if (uh.d1.getD1().getMonth() == 1){&#xa;    bulan = &quot;Januari&quot;;&#xa;}&#xa;else if (uh.d1.getD1().getMonth() == 2){&#xa;    bulan = &quot;Februari&quot;;&#xa;}&#xa;else if (uh.d1.getD1().getMonth() == 3){&#xa;    bulan = &quot;Maret&quot;;&#xa;}&#xa;else if (uh.d1.getD1().getMonth() == 4){&#xa;    bulan = &quot;April&quot;;&#xa;}&#xa;else if (uh.d1.getD1().getMonth() == 5){&#xa;    bulan = &quot;Mei&quot;;&#xa;}&#xa;else if (uh.d1.getD1().getMonth() == 6){&#xa;    bulan = &quot;Juni&quot;;&#xa;}&#xa;else if (uh.d1.getD1().getMonth() == 7){&#xa;    bulan = &quot;Juli&quot;;&#xa;}&#xa;else if (uh.d1.getD1().getMonth() == 8){&#xa;    bulan = &quot;Agustus&quot;;&#xa;}&#xa;else if (uh.d1.getD1().getMonth() == 9){&#xa;    bulan = &quot;September&quot;;&#xa;}&#xa;else if (uh.d1.getD1().getMonth() == 10){&#xa;    bulan = &quot;Oktober&quot;;&#xa;}&#xa;else if (uh.d1.getD1().getMonth() == 11){&#xa;    bulan = &quot;November&quot;;&#xa;}&#xa;else if (uh.d1.getD1().getMonth() == 12){&#xa;    bulan = &quot;Desember&quot;;&#xa;}&#xa;date.setText(temp + &quot;, &quot; + uh.d1.getD1().getDate() + &quot; &quot; + bulan);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>

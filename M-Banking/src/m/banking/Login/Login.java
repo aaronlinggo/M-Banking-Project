@@ -390,8 +390,9 @@ public class Login extends javax.swing.JFrame {
             if(active!=null){
                 System.out.println("masuk");
                 this.setVisible(false);
-                UserHomepage user = new UserHomepage(active);
+                UserHomepage user = new UserHomepage(active, d1);
                 user.passmember(active);
+                user.passDateBankrut(d1);
                 user.setVisible(true);
                 JOptionPane.showMessageDialog(this, "Success Login");
             }
