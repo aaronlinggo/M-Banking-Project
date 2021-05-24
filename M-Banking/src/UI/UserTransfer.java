@@ -328,7 +328,7 @@ public class UserTransfer extends javax.swing.JPanel {
     UserHomepage u;
     private void exchangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exchangeMouseClicked
         u.getContent().removeAll();
-        UserMerchandise uh = new UserMerchandise();
+        UserMerchandise uh = new UserMerchandise(this);
         uh.pass(this);
         uh.setVisible(true);
         uh.setBounds(0,0, 500, 750);
