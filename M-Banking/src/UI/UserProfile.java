@@ -265,6 +265,11 @@ public class UserProfile extends javax.swing.JPanel {
         detailUser.setBackground(new java.awt.Color(93, 130, 228));
         detailUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         detailUser.setOpaque(false);
+        detailUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                detailUserMouseClicked(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -427,6 +432,18 @@ public class UserProfile extends javax.swing.JPanel {
         uh.getContent().revalidate();
         uh.getContent().repaint();
     }//GEN-LAST:event_btnGantiPinMouseClicked
+
+    private void detailUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailUserMouseClicked
+        // TODO add your handling code here:
+        uh.getContent().removeAll();
+        UserProfileDetailUser du = new UserProfileDetailUser(this);
+        du.passData(this);
+        du.setVisible(true);
+        du.setBounds(0,0, 500, 717);
+        uh.getContent().add(du);
+        uh.getContent().revalidate();
+        uh.getContent().repaint();
+    }//GEN-LAST:event_detailUserMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
