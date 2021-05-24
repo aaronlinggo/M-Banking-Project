@@ -23,7 +23,7 @@ public class UserInfoSaldo extends javax.swing.JPanel
     public UserInfoSaldo(UserMInfo umi)
     {
         initComponents();
-        this.BalRupiah.setText("Balance Rupiah : " + priceWithoutDecimal(umi.umm.uh.active.getRupiah()));this.BalRupiah.setText("Balance Rupiah : " + priceWithoutDecimal(umi.umm.uh.active.getRupiah()));
+        this.BalRupiah.setText("Balance Rupiah : " + priceWithoutDecimal(umi.umm.uh.active.getRupiah()));
         this.BalEuro.setText("Balance Euro   : " + priceWithoutDecimal(umi.umm.uh.active.getEuro()));
         this.BalUSD.setText("Balance USD    : " + priceWithoutDecimal(umi.umm.uh.active.getUsd()));
     }
