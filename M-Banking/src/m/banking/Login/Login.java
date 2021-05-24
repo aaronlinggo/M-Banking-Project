@@ -37,7 +37,7 @@ public class Login extends javax.swing.JFrame {
     public ArrayList<Member> Account = new ArrayList<Member>();
     //Date d2 = new Date(2021, 1, 1);
     public DateBankRut d1 = null;
-    int noRek;
+    String noRek = "";
     public Login() {
         String filename = "date.ser";
 
@@ -426,19 +426,21 @@ public class Login extends javax.swing.JFrame {
     private void rekBaruBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rekBaruBtnMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        noRek = new Random().nextInt(99999999);
+        int noRek1 = new Random().nextInt(99999999);
+        int noRek2 = new Random().nextInt(99999999);
         do{
-            if (noRek >= 10000000){
+            if (noRek1 >= 10000000 && noRek2 >= 10000000){
+                noRek = String.valueOf(noRek1) + String.valueOf(noRek2);
                 boolean cek = false;
                 for (int i = 0; i < requestMember.size(); i++){
-                    if (noRek == requestMember.get(i).getNoRekening()){
+                    if (noRek.equals(requestMember.get(i).getNoRekening())){
                         cek = true;
                         break;
                     }
                 }
                 if (!cek){
                     for (int i = 0; i < Account.size(); i++){
-                        if (noRek == Account.get(i).getNoRekening()){
+                        if (noRek.equals(Account.get(i).getNoRekening())){
                             cek = true;
                             break;
                         }
@@ -448,11 +450,13 @@ public class Login extends javax.swing.JFrame {
                     break;
                 }
                 else {
-                    noRek = new Random().nextInt(99999999);
+                    noRek1 = new Random().nextInt(99999999);
+                    noRek2 = new Random().nextInt(99999999);
                 }
             }
             else {
-                noRek = new Random().nextInt(99999999);
+                noRek1 = new Random().nextInt(99999999);
+                noRek2 = new Random().nextInt(99999999);
             }
         }
         while(true);

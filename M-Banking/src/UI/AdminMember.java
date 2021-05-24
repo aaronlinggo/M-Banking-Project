@@ -37,8 +37,9 @@ public class AdminMember extends javax.swing.JPanel {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
         newMember.setBackground(new Color(84,190,229));
-        member.setBackground(new Color(250,243,243));
-        upgrade.setBackground(new Color(250,243,243));
+        member.setBackground(new Color(255,255,255));
+        upgrade.setBackground(new Color(255,255,255));
+        banned.setBackground(new Color(255,255,255));
         AdminNewMember ADM = new AdminNewMember();
         ADM.setBounds(0, 0, 488,616);
         ADM.setVisible(true);
@@ -58,71 +59,60 @@ public class AdminMember extends javax.swing.JPanel {
     private void initComponents() {
 
         content = new javax.swing.JPanel();
-        newMember = new RoundJPanel(35);
-        jLabel6 = new javax.swing.JLabel();
-        member = new RoundJPanel(35);
-        jLabel5 = new javax.swing.JLabel();
+        container = new javax.swing.JPanel();
+        jPanel1 = new RoundJPanel(25);
+        banned = new RoundJPanel(35);
+        jLabel2 = new javax.swing.JLabel();
         upgrade = new RoundJPanel(35);
         jLabel1 = new javax.swing.JLabel();
-        container = new javax.swing.JPanel();
+        member = new RoundJPanel(35);
+        jLabel5 = new javax.swing.JLabel();
+        newMember = new RoundJPanel(35);
+        jLabel6 = new javax.swing.JLabel();
 
         content.setBackground(new java.awt.Color(250, 243, 243));
 
-        newMember.setBackground(new java.awt.Color(250, 243, 243));
-        newMember.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        newMember.setOpaque(false);
-        newMember.addMouseListener(new java.awt.event.MouseAdapter() {
+        container.setBackground(new java.awt.Color(250, 243, 243));
+
+        javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
+        container.setLayout(containerLayout);
+        containerLayout.setHorizontalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 496, Short.MAX_VALUE)
+        );
+        containerLayout.setVerticalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 613, Short.MAX_VALUE)
+        );
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setOpaque(false);
+
+        banned.setBackground(new java.awt.Color(255, 255, 255));
+        banned.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        banned.setOpaque(false);
+        banned.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                newMemberMouseClicked(evt);
+                bannedMouseClicked(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("New Member");
+        jLabel2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Banned");
 
-        javax.swing.GroupLayout newMemberLayout = new javax.swing.GroupLayout(newMember);
-        newMember.setLayout(newMemberLayout);
-        newMemberLayout.setHorizontalGroup(
-            newMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+        javax.swing.GroupLayout bannedLayout = new javax.swing.GroupLayout(banned);
+        banned.setLayout(bannedLayout);
+        bannedLayout.setHorizontalGroup(
+            bannedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
         );
-        newMemberLayout.setVerticalGroup(
-            newMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newMemberLayout.createSequentialGroup()
+        bannedLayout.setVerticalGroup(
+            bannedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bannedLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        member.setBackground(new java.awt.Color(250, 243, 243));
-        member.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        member.setOpaque(false);
-        member.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                memberMouseClicked(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Member");
-
-        javax.swing.GroupLayout memberLayout = new javax.swing.GroupLayout(member);
-        member.setLayout(memberLayout);
-        memberLayout.setHorizontalGroup(
-            memberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(memberLayout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        memberLayout.setVerticalGroup(
-            memberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, memberLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -144,7 +134,7 @@ public class AdminMember extends javax.swing.JPanel {
         upgrade.setLayout(upgradeLayout);
         upgradeLayout.setHorizontalGroup(
             upgradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
         );
         upgradeLayout.setVerticalGroup(
             upgradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,17 +144,87 @@ public class AdminMember extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        container.setBackground(new java.awt.Color(250, 243, 243));
+        member.setBackground(new java.awt.Color(250, 243, 243));
+        member.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        member.setOpaque(false);
+        member.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                memberMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
-        container.setLayout(containerLayout);
-        containerLayout.setHorizontalGroup(
-            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jLabel5.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Member");
+
+        javax.swing.GroupLayout memberLayout = new javax.swing.GroupLayout(member);
+        member.setLayout(memberLayout);
+        memberLayout.setHorizontalGroup(
+            memberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
         );
-        containerLayout.setVerticalGroup(
-            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 616, Short.MAX_VALUE)
+        memberLayout.setVerticalGroup(
+            memberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, memberLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        newMember.setBackground(new java.awt.Color(250, 243, 243));
+        newMember.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        newMember.setOpaque(false);
+        newMember.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newMemberMouseClicked(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("New Member");
+
+        javax.swing.GroupLayout newMemberLayout = new javax.swing.GroupLayout(newMember);
+        newMember.setLayout(newMemberLayout);
+        newMemberLayout.setHorizontalGroup(
+            newMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+        );
+        newMemberLayout.setVerticalGroup(
+            newMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(newMemberLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(newMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(member, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(upgrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(banned, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(newMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(member, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(upgrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(banned, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
@@ -176,22 +236,16 @@ public class AdminMember extends javax.swing.JPanel {
                 .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(contentLayout.createSequentialGroup()
-                        .addComponent(newMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(member, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(upgrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(newMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(member, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(upgrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -211,8 +265,9 @@ public class AdminMember extends javax.swing.JPanel {
     private void newMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newMemberMouseClicked
         // TODO add your handling code here:
         newMember.setBackground(new Color(84,190,229));
-        member.setBackground(new Color(250,243,243));
-        upgrade.setBackground(new Color(250,243,243));
+        member.setBackground(new Color(255,255,255));
+        upgrade.setBackground(new Color(255,255,255));
+        banned.setBackground(new Color(255,255,255));
         AdminNewMember ADM = new AdminNewMember();
         ADM.setBounds(0, 0, 488,616);
         ADM.setVisible(true);
@@ -224,9 +279,10 @@ public class AdminMember extends javax.swing.JPanel {
 
     private void memberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_memberMouseClicked
         // TODO add your handling code here:
-        newMember.setBackground(new Color(250,243,243));
+        newMember.setBackground(new Color(255,255,255));
         member.setBackground(new Color(84,190,229));
-        upgrade.setBackground(new Color(250,243,243));
+        upgrade.setBackground(new Color(255,255,255));
+        banned.setBackground(new Color(255,255,255));
         AdminListMember ALM = new AdminListMember();
         ALM.setBounds(0, 0, 488,616);
         ALM.setVisible(true);
@@ -238,9 +294,10 @@ public class AdminMember extends javax.swing.JPanel {
 
     private void upgradeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_upgradeMouseClicked
         // TODO add your handling code here:
-        newMember.setBackground(new Color(250,243,243));
-        member.setBackground(new Color(250,243,243));
+        newMember.setBackground(new Color(255,255,255));
+        member.setBackground(new Color(255,255,255));
         upgrade.setBackground(new Color(84,190,229));
+        banned.setBackground(new Color(255,255,255));
         AdminRequestUpgrade ARU = new AdminRequestUpgrade();
         ARU.setBounds(0, 0, 488, 616);
         ARU.setVisible(true);
@@ -250,13 +307,27 @@ public class AdminMember extends javax.swing.JPanel {
         container.repaint();
     }//GEN-LAST:event_upgradeMouseClicked
 
+    private void bannedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bannedMouseClicked
+        // TODO add your handling code here:
+        newMember.setBackground(new Color(255,255,255));
+        member.setBackground(new Color(255,255,255));
+        upgrade.setBackground(new Color(255,255,255));
+        banned.setBackground(new Color(84,190,229));
+        container.removeAll();
+        container.revalidate();
+        container.repaint();
+    }//GEN-LAST:event_bannedMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel banned;
     private javax.swing.JPanel container;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel member;
     private javax.swing.JPanel newMember;
     private javax.swing.JPanel upgrade;

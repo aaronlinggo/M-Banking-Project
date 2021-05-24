@@ -7,6 +7,7 @@ package UI;
 
 import Image.ImagePanel;
 import RoundedField.RoundJPanel;
+import java.awt.Color;
 import m.banking.Gold;
 import m.banking.Silver;
 
@@ -27,13 +28,19 @@ public class UserProfile extends javax.swing.JPanel {
         initComponents();
         if(uh.active instanceof Silver) {
             lblJenisKartu.setText("SILVER");
+            bgJenisKartu.setBackground(new Color(229, 228, 226));
         } else if (uh.active instanceof Gold) {
             lblJenisKartu.setText("GOLD");
+            bgJenisKartu.setBackground(new Color(255,215,0));
         } else {
             lblJenisKartu.setText("PLATINUM");
+            bgJenisKartu.setBackground(new Color(128,128,128));
         }
-        String tempIsiKartu = String.valueOf(uh.active.getNoRekening()).substring(0,4) + " " + String.valueOf(uh.active.getNoRekening()).substring(4,8);
+        
+        String tempIsiKartu = uh.active.getNoRekening().substring(0,4) + " " + uh.active.getNoRekening().substring(4,8) + " " + uh.active.getNoRekening().substring(8,12) + " " + uh.active.getNoRekening().substring(12,16);
+        String tempNamaMember = uh.active.getNama();
         lblNomorKartu.setText(tempIsiKartu);
+        lblNamaMember.setText(tempNamaMember.toUpperCase());
     }
     
     public void passData(UserHomepage uh) {
@@ -50,7 +57,6 @@ public class UserProfile extends javax.swing.JPanel {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
-        lblJenisKartu = new javax.swing.JLabel();
         btnGantiPin = new RoundJPanel(35);
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -72,13 +78,15 @@ public class UserProfile extends javax.swing.JPanel {
         }
         gambarKartu = new ImagePanel(temp);
         lblNomorKartu = new javax.swing.JLabel();
+        lblNamaMember = new javax.swing.JLabel();
+        detailUser = new RoundJPanel(25);
+        jLabel8 = new javax.swing.JLabel();
+        bgJenisKartu = new RoundJPanel(25);
+        lblJenisKartu = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        lblJenisKartu1 = new javax.swing.JLabel();
 
         background.setBackground(new java.awt.Color(250, 243, 243));
-
-        lblJenisKartu.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
-        lblJenisKartu.setForeground(new java.awt.Color(0, 0, 0));
-        lblJenisKartu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblJenisKartu.setText("JENIS");
 
         btnGantiPin.setBackground(new java.awt.Color(103, 91, 232));
         btnGantiPin.setForeground(new java.awt.Color(0, 51, 255));
@@ -90,10 +98,10 @@ public class UserProfile extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(55, 53, 61));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("GANTI PIN");
+        jLabel2.setText("Change Pin");
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/password1.png"))); // NOI18N
@@ -106,7 +114,7 @@ public class UserProfile extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(btnGantiPinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         btnGantiPinLayout.setVerticalGroup(
@@ -116,7 +124,7 @@ public class UserProfile extends javax.swing.JPanel {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnAturLimit.setBackground(new java.awt.Color(87, 202, 247));
@@ -129,10 +137,10 @@ public class UserProfile extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(55, 53, 61));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("ATUR LIMIT");
+        jLabel3.setText("Set Limit");
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/speedometer.png"))); // NOI18N
@@ -151,7 +159,7 @@ public class UserProfile extends javax.swing.JPanel {
         btnAturLimitLayout.setVerticalGroup(
             btnAturLimitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAturLimitLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
@@ -168,10 +176,10 @@ public class UserProfile extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(55, 53, 61));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("TAGIHAN");
+        jLabel4.setText("List Bill");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/Note.png"))); // NOI18N
@@ -227,23 +235,98 @@ public class UserProfile extends javax.swing.JPanel {
 
         lblNomorKartu.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         lblNomorKartu.setForeground(new java.awt.Color(0, 0, 0));
-        lblNomorKartu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNomorKartu.setText("NOMOR");
+
+        lblNamaMember.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        lblNamaMember.setForeground(new java.awt.Color(0, 0, 0));
+        lblNamaMember.setText("Nama");
 
         javax.swing.GroupLayout gambarKartuLayout = new javax.swing.GroupLayout(gambarKartu);
         gambarKartu.setLayout(gambarKartuLayout);
         gambarKartuLayout.setHorizontalGroup(
             gambarKartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gambarKartuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNomorKartu, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(21, 21, 21)
+                .addGroup(gambarKartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNamaMember, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNomorKartu, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         gambarKartuLayout.setVerticalGroup(
             gambarKartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(gambarKartuLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gambarKartuLayout.createSequentialGroup()
+                .addContainerGap(152, Short.MAX_VALUE)
+                .addComponent(lblNomorKartu, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNamaMember, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
+
+        detailUser.setBackground(new java.awt.Color(93, 130, 228));
+        detailUser.setOpaque(false);
+
+        jLabel8.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Detail User");
+
+        javax.swing.GroupLayout detailUserLayout = new javax.swing.GroupLayout(detailUser);
+        detailUser.setLayout(detailUserLayout);
+        detailUserLayout.setHorizontalGroup(
+            detailUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        detailUserLayout.setVerticalGroup(
+            detailUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detailUserLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblNomorKartu, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        bgJenisKartu.setOpaque(false);
+
+        lblJenisKartu.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        lblJenisKartu.setForeground(new java.awt.Color(0, 0, 0));
+        lblJenisKartu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblJenisKartu.setText("JENIS");
+
+        javax.swing.GroupLayout bgJenisKartuLayout = new javax.swing.GroupLayout(bgJenisKartu);
+        bgJenisKartu.setLayout(bgJenisKartuLayout);
+        bgJenisKartuLayout.setHorizontalGroup(
+            bgJenisKartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgJenisKartuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblJenisKartu, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        bgJenisKartuLayout.setVerticalGroup(
+            bgJenisKartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgJenisKartuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblJenisKartu, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        lblJenisKartu1.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        lblJenisKartu1.setForeground(new java.awt.Color(0, 0, 0));
+        lblJenisKartu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblJenisKartu1.setText("Upgrade");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblJenisKartu1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblJenisKartu1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -256,19 +339,21 @@ public class UserProfile extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
             .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(backgroundLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
                         .addComponent(btnGantiPin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAturLimit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnTagihan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(backgroundLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gambarKartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblJenisKartu, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(gambarKartu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(detailUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(backgroundLayout.createSequentialGroup()
+                            .addComponent(bgJenisKartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
@@ -277,15 +362,19 @@ public class UserProfile extends javax.swing.JPanel {
                 .addGap(10, 10, 10)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lblJenisKartu, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bgJenisKartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gambarKartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(160, 160, 160)
+                .addGap(18, 18, 18)
+                .addComponent(detailUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnTagihan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGantiPin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAturLimit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addComponent(btnAturLimit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -339,9 +428,11 @@ public class UserProfile extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
+    private javax.swing.JPanel bgJenisKartu;
     private javax.swing.JPanel btnAturLimit;
     private javax.swing.JPanel btnGantiPin;
     private javax.swing.JPanel btnTagihan;
+    private javax.swing.JPanel detailUser;
     private javax.swing.JPanel gambarKartu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -350,8 +441,12 @@ public class UserProfile extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblJenisKartu;
+    private javax.swing.JLabel lblJenisKartu1;
+    private javax.swing.JLabel lblNamaMember;
     private javax.swing.JLabel lblNomorKartu;
     // End of variables declaration//GEN-END:variables
 }

@@ -52,7 +52,8 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
     CalendarFrame cf;
     public newAccount(Login l) {
         this.l = l;
-        System.out.println(String.valueOf(l.noRek).substring(0,4) + "-" + String.valueOf(l.noRek).substring(4,8));
+        System.out.println(l.noRek);
+        System.out.println(l.noRek.substring(0,4) + "-" + l.noRek.substring(4,8) + "-" + l.noRek.substring(8,12) + "-" + l.noRek.substring(12,16));
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
     }
@@ -367,7 +368,7 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("XXXX-XXXX");
-        jLabel12.setText(String.valueOf(l.noRek).substring(0,4) + "-" + String.valueOf(l.noRek).substring(4,8));
+        jLabel12.setText(l.noRek.substring(0,4) + "-" + l.noRek.substring(4,8) + "-" + l.noRek.substring(8,12) + "-" + l.noRek.substring(12,16));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);

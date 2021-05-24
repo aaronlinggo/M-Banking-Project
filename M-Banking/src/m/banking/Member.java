@@ -15,7 +15,7 @@ public abstract class Member implements Serializable{
     protected int biayaAdmin;
     protected String nama;
     protected double rupiah;
-    protected int noRekening;
+    protected String noRekening;
     protected String nomorHP;
     protected String alamat;
     protected String pin;
@@ -28,7 +28,7 @@ public abstract class Member implements Serializable{
     protected ArrayList<Tagihan> myTagihan;
     protected ArrayList<Integer> daftarrek; 
     
-    public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, int noRekening, String nomorHP, String alamat, String pin, int point, String tanggalLahir, String gender) {
+    public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, String noRekening, String nomorHP, String alamat, String pin, int point, String tanggalLahir, String gender) {
         this.limitTransfer = limitTransfer;
         this.aturLimit = limitTransfer;
         this.currentUsage = currentUsage;
@@ -194,11 +194,11 @@ public abstract class Member implements Serializable{
         this.usd = usd;
     }
 
-    public int getNoRekening() {
+    public String getNoRekening() {
         return noRekening;
     }
 
-    public void setNoRekening(int noRekening) {
+    public void setNoRekening(String noRekening) {
         this.noRekening = noRekening;
     }
 

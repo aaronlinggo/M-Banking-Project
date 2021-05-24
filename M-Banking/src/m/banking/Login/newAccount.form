@@ -769,7 +769,7 @@
                                 <Property name="text" type="java.lang.String" value="XXXX-XXXX"/>
                               </Properties>
                               <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel12.setText(String.valueOf(l.noRek).substring(0,4) + &quot;-&quot; + String.valueOf(l.noRek).substring(4,8));"/>
+                                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel12.setText(l.noRek.substring(0,4) + &quot;-&quot; + l.noRek.substring(4,8) + &quot;-&quot; + l.noRek.substring(8,12) + &quot;-&quot; + l.noRek.substring(12,16));"/>
                               </AuxValues>
                             </Component>
                           </SubComponents>

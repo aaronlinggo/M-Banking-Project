@@ -308,13 +308,13 @@ public class AdminListMember extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(addSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(addTagihan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(sort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deleteMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(21, 21, 21))
+                    .addComponent(deleteMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -568,7 +568,7 @@ public class AdminListMember extends javax.swing.JPanel {
             ACLM.add(new AdminCardListMember());
             ACLM.get(i).setName("ALNM"+i);
             ACLM.get(i).setFullName("Full Name     : " + Account.get(i).getNama().toUpperCase());
-            String tempnorek = String.valueOf(Account.get(i).getNoRekening()).substring(0,4) + "-" + String.valueOf(Account.get(i).getNoRekening()).substring(4,8);
+            String tempnorek = Account.get(i).getNoRekening().substring(0,4) + "-" + Account.get(i).getNoRekening().substring(4,8) + "-" + Account.get(i).getNoRekening().substring(8,12) + "-" + Account.get(i).getNoRekening().substring(12,16);
             ACLM.get(i).setNoRek("Card Number   : " + tempnorek);
             String tempSaldo = Double.toString(Account.get(i).getRupiah());
             System.out.println(tempSaldo);
