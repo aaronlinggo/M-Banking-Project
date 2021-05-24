@@ -300,6 +300,7 @@ public class UTDaftar extends javax.swing.JPanel {
         }
         return true;
     }
+    
     private void submitbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitbtnMouseClicked
         // TODO add your handling code here:
         ArrayList<Member> Account = new ArrayList<>();
@@ -319,77 +320,91 @@ public class UTDaftar extends javax.swing.JPanel {
         catch(ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException is caught");
         }
+        String msg="";
         boolean slot1=false,slot2=false,slot3=false;// false =  ga kembar
         boolean fill1=false,fill2=false,fill3=false;// cek terisi ga
         if(!jTextField1.getText().equals("") && !jTextField1.getText().equals("Nomor Rekening 1")){
             fill1=true;
-            int cek1 = Integer.parseInt(jTextField1.getText());
-            boolean nemu = false;
-            for(Integer i : utf.u.active.getDaftarrek()){
-                if(cek1== i){
-                    nemu = true;
+            if(isNumeric(jTextField1.getText())){
+                int cek1 = Integer.parseInt(jTextField1.getText());
+                boolean exist = false;
+                for(Member cari: Account){
+                    if(cari.getNoRekening() == cek1){
+                        exist = true;
+                        System.out.println("ada di list");
+                    }
+                }
+                if(exist){
+                    boolean nemu = false;
+                    for(Integer i : utf.u.active.getDaftarrek()){
+                        if(cek1== i){
+                            nemu = true;
+                        }
+                    }
+                    if(!nemu){
+                        utf.u.active.getDaftarrek().add(cek1);
+                        msg+="\nNomor Rekening 1 Berhasil Terdaftar";
+                    }
+                    else{
+                        msg+="\nNomor Rekening 1 Sudah Terdaftar";      //berati kembar
+                    }
+                }
+                else{       //ga nemu masal
+                    System.out.println("Ga nemu masal");
                 }
             }
-            if(!nemu){
-                utf.u.active.getDaftarrek().add(cek1);
-            }
             else{
-                slot1=true;//berati kembar
+                msg +="\nGagal! Nomor Rekening 1 mengandung Huruf";
             }
         }
         if(!jTextField2.getText().equals("") && !jTextField2.getText().equals("Nomor Rekening 2")){
             fill2=true;
-            int cek2 = Integer.parseInt(jTextField2.getText());
-            boolean nemu = false;
-            for(Integer i : utf.u.active.getDaftarrek()){
-                if(cek2== i){
-                    nemu = true;
+            if(isNumeric(jTextField2.getText())){
+                int cek2 = Integer.parseInt(jTextField2.getText());
+                boolean nemu = false;
+                for(Integer i : utf.u.active.getDaftarrek()){
+                    if(cek2== i){
+                        nemu = true;
+                    }
+                }
+                if(!nemu){
+                    utf.u.active.getDaftarrek().add(cek2);
+                    msg+="\nNomor Rekening 2 Berhasil Terdaftar";
+                }
+                else{
+                    msg+="\nNomor Rekening 2 Sudah Terdaftar";//berati kembar
                 }
             }
-            if(!nemu){
-                utf.u.active.getDaftarrek().add(cek2);
-            }
             else{
-                slot2=true;//berati kembar
+                msg +="\nGagal! Nomor Rekening 2 mengandung Huruf";
             }
         }
         if(!jTextField3.getText().equals("")&&!jTextField3.getText().equals("Nomor Rekening 3")){
             fill3=true;
-            int cek3 = Integer.parseInt(jTextField3.getText());
-            boolean nemu = false;
-            for(Integer i : utf.u.active.getDaftarrek()){
-                if(cek3== i){
-                    nemu = true;
+            if(isNumeric(jTextField3.getText())){
+                int cek3 = Integer.parseInt(jTextField3.getText());
+                boolean nemu = false;
+                for(Integer i : utf.u.active.getDaftarrek()){
+                    if(cek3== i){
+                        nemu = true;
+                    }
+                }
+                if(!nemu){
+                    utf.u.active.getDaftarrek().add(cek3);
+                    msg+="\nNomor Rekening 3 Berhasil Terdaftar";
+                }
+                else{
+                    msg+="\nNomor Rekening 3 Sudah Terdaftar";//berati kembar
                 }
             }
-            if(!nemu){
-                utf.u.active.getDaftarrek().add(cek3);
-            }
             else{
-                slot3=true;//berati kembar
+                msg +="\nGagal! Nomor Rekening 3 mengandung Huruf";
             }
-        }
-        String msg="";
-        if(fill1){
-            if(isNumeric(jTextField1.getText())){
-                
-            }
-            if(slot1)msg+="\nNomor Rekening 1 Sudah Terdaftar";
-            else msg+="\nNomor Rekening 1 Berhasil Terdaftar";
-        }
-        if(fill2){
-            if(slot2)msg+="\nNomor Rekening 1 Sudah Terdaftar";
-            else msg+="\nNomor Rekening 2 Berhasil Terdaftar";
-        }
-        if(fill3){
-            if(slot3)msg+="\nNomor Rekening 1 Sudah Terdaftar";
-            else msg+="\nNomor Rekening 3 Berhasil Terdaftar";
         }
         if(!fill1&&!fill2&&!fill3){
             JOptionPane.showMessageDialog(this, "Tidak Ada yang mau di Daftarkan");
         }
         else JOptionPane.showMessageDialog(this, "Status : "+ msg);
-        
     }//GEN-LAST:event_submitbtnMouseClicked
 
     private void cancelbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelbtnMouseClicked
