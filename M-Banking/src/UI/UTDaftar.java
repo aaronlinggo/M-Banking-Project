@@ -329,7 +329,7 @@ public class UTDaftar extends javax.swing.JPanel {
                 int cek1 = Integer.parseInt(jTextField1.getText());
                 boolean exist = false;
                 for(Member cari: Account){
-                    if(cari.getNoRekening() == cek1){
+                    if(cari.getNoRekening().equals(jTextField1.getText())){
                         exist = true;
                         System.out.println("ada di list");
                     }
