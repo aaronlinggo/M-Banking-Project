@@ -2,16 +2,18 @@ package m.banking;
 
 public class Kurs {
     protected String nama;
-    protected int kurs,kursLama;
+    protected int kursBeliAwal;
+    protected int kursBeli,kursBeliLama,kursJual;
     protected double persen;
     protected int min;
 
     public Kurs(String nama,int min) {
         this.nama = nama;
         this.min = min;
-        kurs = (int) (Math.random()*2000)+min;
-        kursLama = kurs;
-        persen = (kurs-kursLama)*100/(kursLama*1.0);
+        kursBeli = kursBeliAwal;
+        kursJual = kursBeli + 30;
+        kursBeliLama = kursBeli;
+        persen = (kursBeli-kursBeliLama)*100/(kursBeliLama*1.0);
         persen = Math.round(persen*100.0)/100.0;
     }
 
@@ -23,22 +25,40 @@ public class Kurs {
         this.nama = nama;
     }
 
-    public int getKurs() {
-        return kurs;
+    public int getKursBeliAwal() {
+        return kursBeliAwal;
     }
 
-    public void setKurs(int kurs) {
-        this.kurs = kurs;
+    public void setKursBeliAwal(int kursBeliAwal) {
+        this.kursBeliAwal = kursBeliAwal;
     }
 
-    public int getKursLama() {
-        return kursLama;
+
+    public int getKursBeli() {
+        return kursBeli;
     }
 
-    public void setKursLama(int kursLama) {
-        this.kursLama = kursLama;
+    public void setKursBeli(int kursBeli) {
+        this.kursBeli = kursBeli;
     }
 
+    public int getKursBeliLama() {
+        return kursBeliLama;
+    }
+
+    public void setKursBeliLama(int kursBeliLama) {
+        this.kursBeliLama = kursBeliLama;
+    }
+
+    public int getKursJual() {
+        return kursJual;
+    }
+
+    public void setKursJual(int kursJual) {
+        this.kursJual = kursJual;
+    }
+
+    
     public double getPersen() {
         return persen;
     }
@@ -56,9 +76,10 @@ public class Kurs {
     }
 
     public void gantiHari() {
-        kursLama = kurs;
-        kurs = (int) (Math.random()*2000)+min;
-        persen = (kurs-kursLama)*100/(kursLama*1.0);
+        kursBeliLama = kursBeli;
+        kursBeli = (int) (Math.random()*2000) + min;
+        persen = (kursBeli-kursBeliLama)*100/(kursBeliLama*1.0);
         persen = Math.round(persen*100.0)/100.0;
     }
+    
 }
