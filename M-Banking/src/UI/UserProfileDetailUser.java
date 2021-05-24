@@ -60,6 +60,7 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(250, 243, 243));
 
         panelBack.setBackground(new java.awt.Color(255, 255, 255));
+        panelBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelBackMouseClicked(evt);
@@ -84,13 +85,14 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
                 .addComponent(jLabel1))
         );
 
-        lblJudul.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblJudul.setFont(new java.awt.Font("Courier New", 1, 28)); // NOI18N
         lblJudul.setForeground(new java.awt.Color(103, 91, 232));
         lblJudul.setText("DETAIL USER");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        jLabel3.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("DETAIL USER");
 
@@ -99,30 +101,45 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
         jLabel4.setText("EDIT");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jLabel5.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(87, 202, 247));
-        jLabel5.setText("NAMA LENGKAP");
+        jLabel5.setText("FULL NAME");
 
+        lblNama.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        lblNama.setForeground(new java.awt.Color(153, 153, 153));
         lblNama.setText("isi Nama");
 
+        jLabel8.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(87, 202, 247));
-        jLabel8.setText("ALAMAT");
+        jLabel8.setText("ADDRESS");
 
+        jLabel9.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(87, 202, 247));
-        jLabel9.setText("TANGGAL LAHIR");
+        jLabel9.setText("BIRTH DATE");
 
+        jLabel10.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(87, 202, 247));
         jLabel10.setText("GENDER");
 
+        jLabel11.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(87, 202, 247));
-        jLabel11.setText("NOMOR HP");
+        jLabel11.setText("PHONE NUMBER");
 
+        lblAlamat.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        lblAlamat.setForeground(new java.awt.Color(153, 153, 153));
         lblAlamat.setText("isi Alamat");
 
+        lblTanggalLahir.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        lblTanggalLahir.setForeground(new java.awt.Color(153, 153, 153));
         lblTanggalLahir.setText("isi Tanggal Lahir");
 
+        lblGender.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        lblGender.setForeground(new java.awt.Color(153, 153, 153));
         lblGender.setText("isi Gender");
 
-        lblNoHp.setText("jLabel6");
+        lblNoHp.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        lblNoHp.setForeground(new java.awt.Color(153, 153, 153));
+        lblNoHp.setText("isi Nomor HP");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -136,7 +153,7 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(28, 28, 28))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -194,12 +211,12 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(panelBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
+                        .addGap(85, 85, 85)
                         .addComponent(lblJudul))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,11 +226,11 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
                         .addGap(22, 22, 22)
                         .addComponent(panelBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(30, 30, 30)
                         .addComponent(lblJudul)))
                 .addGap(26, 26, 26)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

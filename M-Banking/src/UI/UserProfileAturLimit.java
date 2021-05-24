@@ -60,10 +60,10 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(250, 243, 243));
 
-        jLabel2.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Courier New", 1, 28)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(93, 130, 228));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("ATUR LIMIT");
+        jLabel2.setText("SET LIMIT");
 
         lblCurrentUsage.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         lblCurrentUsage.setForeground(new java.awt.Color(249, 117, 218));

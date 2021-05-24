@@ -77,7 +77,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(250, 243, 243));
 
-        jLabel1.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(93, 130, 228));
         jLabel1.setText("GANTI PIN");
 
@@ -260,7 +260,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(panelBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
+                        .addGap(82, 82, 82)
                         .addComponent(jLabel1)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
