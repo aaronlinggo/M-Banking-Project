@@ -5,6 +5,13 @@
  */
 package UI;
 
+import RoundedField.RoundJPanel;
+import javax.accessibility.AccessibleContext;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.event.EventListenerList;
+import javax.swing.plaf.ComponentUI;
+
 /**
  *
  * @author jonat
@@ -15,6 +22,7 @@ public class ProductList extends javax.swing.JPanel
     /**
      * Creates new form ProductList
      */
+    int jumlah = 0;
     public ProductList()
     {
         initComponents();
@@ -32,123 +40,343 @@ public class ProductList extends javax.swing.JPanel
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        minus = new RoundJPanel(25);
+        jLabel5 = new javax.swing.JLabel();
+        angka = new RoundJPanel(25);
+        JumlahTukar = new javax.swing.JLabel();
+        plus = new RoundJPanel(25);
+        tambah = new javax.swing.JLabel();
+        NamaProduct = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
+        setBackground(new java.awt.Color(255, 243, 243));
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(394, 80));
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(40, 40));
+        minus.setBackground(new java.awt.Color(255, 255, 255));
+        minus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        minus.setOpaque(false);
+        minus.setPreferredSize(new java.awt.Dimension(50, 50));
+        minus.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                minusMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/blue_minus.png"))); // NOI18N
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jPanel3.setPreferredSize(new java.awt.Dimension(40, 40));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        jLabel2.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Piring Cantik");
-
-        jPanel4.setPreferredSize(new java.awt.Dimension(40, 40));
-
-        jLabel3.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel3.setText("0");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel3)
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout minusLayout = new javax.swing.GroupLayout(minus);
+        minus.setLayout(minusLayout);
+        minusLayout.setHorizontalGroup(
+            minusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(minusLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        minusLayout.setVerticalGroup(
+            minusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(minusLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        angka.setOpaque(false);
+        angka.setPreferredSize(new java.awt.Dimension(52, 52));
+
+        JumlahTukar.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        JumlahTukar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        JumlahTukar.setText("0");
+
+        javax.swing.GroupLayout angkaLayout = new javax.swing.GroupLayout(angka);
+        angka.setLayout(angkaLayout);
+        angkaLayout.setHorizontalGroup(
+            angkaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(angkaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JumlahTukar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        angkaLayout.setVerticalGroup(
+            angkaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(angkaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JumlahTukar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        plus.setBackground(new java.awt.Color(255, 255, 255));
+        plus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        plus.setOpaque(false);
+        plus.setPreferredSize(new java.awt.Dimension(50, 50));
+        plus.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                plusMouseClicked(evt);
+            }
+        });
+
+        tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/blue_plus.png"))); // NOI18N
+        tambah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout plusLayout = new javax.swing.GroupLayout(plus);
+        plus.setLayout(plusLayout);
+        plusLayout.setHorizontalGroup(
+            plusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plusLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tambah)
+                .addContainerGap())
+        );
+        plusLayout.setVerticalGroup(
+            plusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plusLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        NamaProduct.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        NamaProduct.setForeground(new java.awt.Color(0, 0, 0));
+        NamaProduct.setText("Piring Cantik");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(NamaProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(minus, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(angka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(20, 20, 20)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(plus, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NamaProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(minus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addComponent(plus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(angka, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void plusMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_plusMouseClicked
+    {//GEN-HEADEREND:event_plusMouseClicked
+        // TODO add your handling code here:
+        if(jumlah+1 <=9)
+        {
+            jumlah++;
+        }
+        JumlahTukar.setText(jumlah +"");
+    }//GEN-LAST:event_plusMouseClicked
+    
+    private void minusMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_minusMouseClicked
+    {//GEN-HEADEREND:event_minusMouseClicked
+        // TODO add your handling code here:
+        if(jumlah-1 >= 0)
+        {
+            jumlah--;
+        }
+        JumlahTukar.setText(jumlah +"");
+    }//GEN-LAST:event_minusMouseClicked
 
+    public int getJumlah()
+    {
+        return jumlah;
+    }
+
+    public void setJumlah(int jumlah)
+    {
+        this.jumlah = jumlah;
+    }
+
+    public JLabel getJumlahTukar()
+    {
+        return JumlahTukar;
+    }
+
+    public void setJumlahTukar(JLabel JumlahTukar)
+    {
+        this.JumlahTukar = JumlahTukar;
+    }
+
+    public JPanel getAngka()
+    {
+        return angka;
+    }
+
+    public void setAngka(JPanel angka)
+    {
+        this.angka = angka;
+    }
+
+    public JLabel getjLabel1()
+    {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1)
+    {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2()
+    {
+        return NamaProduct;
+    }
+
+    public void setjLabel2(JLabel jLabel2)
+    {
+        this.NamaProduct = jLabel2;
+    }
+
+    public JLabel getjLabel5()
+    {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5)
+    {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getNamaProduct()
+    {
+        return NamaProduct;
+    }
+
+    public void setNamaProduct(JLabel NamaProduct)
+    {
+        this.NamaProduct = NamaProduct;
+    }
+
+    public JPanel getjPanel1()
+    {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1)
+    {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getMinus()
+    {
+        return minus;
+    }
+
+    public void setMinus(JPanel minus)
+    {
+        this.minus = minus;
+    }
+
+    public JPanel getPlus()
+    {
+        return plus;
+    }
+
+    public void setPlus(JPanel plus)
+    {
+        this.plus = plus;
+    }
+
+    public JLabel getTambah()
+    {
+        return tambah;
+    }
+
+    public void setTambah(JLabel tambah)
+    {
+        this.tambah = tambah;
+    }
+
+    public ComponentUI getUi()
+    {
+        return ui;
+    }
+
+    public void setUi(ComponentUI ui)
+    {
+        this.ui = ui;
+    }
+
+    public EventListenerList getListenerList()
+    {
+        return listenerList;
+    }
+
+    public void setListenerList(EventListenerList listenerList)
+    {
+        this.listenerList = listenerList;
+    }
+
+    public AccessibleContext getAccessibleContext()
+    {
+        return accessibleContext;
+    }
+
+    public void setAccessibleContext(AccessibleContext accessibleContext)
+    {
+        this.accessibleContext = accessibleContext;
+    }
+
+    int point = 0;
+
+    public int getPoint()
+    {
+        return point;
+    }
+
+    public void setPoint(int point)
+    {
+        this.point = point;
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JumlahTukar;
+    private javax.swing.JLabel NamaProduct;
+    private javax.swing.JPanel angka;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel minus;
+    private javax.swing.JPanel plus;
+    private javax.swing.JLabel tambah;
     // End of variables declaration//GEN-END:variables
 }
