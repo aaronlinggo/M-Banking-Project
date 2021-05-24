@@ -2,7 +2,7 @@ package m.banking;
 
 public class Kurs {
     protected String nama;
-    protected int kursBeliAwal, kursJualAwal;
+    protected int kursBeliAwal;
     protected int kursBeli,kursBeliLama,kursJual;
     protected double persen;
     protected int min;
@@ -10,8 +10,6 @@ public class Kurs {
     public Kurs(String nama,int min) {
         this.nama = nama;
         this.min = min;
-        kursBeliAwal = min + 1320;
-        kursJualAwal = kursBeliAwal+30;
         kursBeli = kursBeliAwal;
         kursJual = kursBeli + 30;
         kursBeliLama = kursBeli;
@@ -35,13 +33,6 @@ public class Kurs {
         this.kursBeliAwal = kursBeliAwal;
     }
 
-    public int getKursJualAwal() {
-        return kursJualAwal;
-    }
-
-    public void setKursJualAwal(int kursJualAwal) {
-        this.kursJualAwal = kursJualAwal;
-    }
 
     public int getKursBeli() {
         return kursBeli;
@@ -91,8 +82,4 @@ public class Kurs {
         persen = Math.round(persen*100.0)/100.0;
     }
     
-    public void SaveKurs() {
-       kursBeliAwal = kursBeli;
-       kursJualAwal = kursJual;
-    }
 }
