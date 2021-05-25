@@ -75,6 +75,8 @@ public class AdminListMember extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         deleteMember = new RoundJPanel(25);
         jLabel4 = new javax.swing.JLabel();
+        banned = new RoundJPanel(25);
+        bannnedLbl = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(250, 243, 243));
 
@@ -182,7 +184,7 @@ public class AdminListMember extends javax.swing.JPanel {
             sortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sortLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(sortLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(sortLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                 .addGap(4, 4, 4))
         );
         sortLayout.setVerticalGroup(
@@ -289,32 +291,69 @@ public class AdminListMember extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        banned.setBackground(new java.awt.Color(255, 51, 102));
+        banned.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        banned.setOpaque(false);
+        banned.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bannedMouseClicked(evt);
+            }
+        });
+
+        bannnedLbl.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        bannnedLbl.setForeground(new java.awt.Color(0, 0, 0));
+        bannnedLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bannnedLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/sort.png"))); // NOI18N
+        bannnedLbl.setText("Banned");
+
+        javax.swing.GroupLayout bannedLayout = new javax.swing.GroupLayout(banned);
+        banned.setLayout(bannedLayout);
+        bannedLayout.setHorizontalGroup(
+            bannedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bannedLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bannnedLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(4, 4, 4))
+        );
+        bannedLayout.setVerticalGroup(
+            bannedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bannedLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bannnedLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(scroll)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addTagihan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(banned, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addTagihan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addTagihan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(sort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deleteMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(addSaldo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addTagihan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(deleteMember, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(banned, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(56, 56, 56))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -528,6 +567,88 @@ public class AdminListMember extends javax.swing.JPanel {
         showAllRequestMember();
     }//GEN-LAST:event_addTagihanMouseClicked
 
+    private void bannedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bannedMouseClicked
+        // TODO add your handling code here:
+        if (idx != -1){
+            ArrayList<Member> Account = new ArrayList<>();
+            try {
+                FileInputStream file = new FileInputStream("Account.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                Account = (ArrayList<Member>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught1");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            
+            ArrayList<Member> banned = new ArrayList<>();
+            try {
+                FileInputStream file = new FileInputStream("BannedAccount.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                banned = (ArrayList<Member>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            
+            banned.add(Account.get(idx));
+            Account.remove(idx);
+            
+            try {
+                FileOutputStream file = new FileOutputStream("Account.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught2");
+                System.out.println(ex);
+            }
+            
+            try {
+                FileOutputStream file = new FileOutputStream("BannedAccount.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(banned);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            
+            JOptionPane.showMessageDialog(this, "Berhasil Blokir Member " + banned.get(banned.size()-1).getNama());
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Pick a new member pls");
+        }
+        idx = -1;
+        showAllRequestMember();
+    }//GEN-LAST:event_bannedMouseClicked
+
     public boolean isNumeric(String str){
         for (char c : str.toCharArray())
         {
@@ -557,11 +678,11 @@ public class AdminListMember extends javax.swing.JPanel {
             System.out.println("ClassNotFoundException is caught");
         }
         listnewMember.removeAll();
-        if ((205+10)*Account.size() >= 532) {
+        if ((205+10)*Account.size() >= 460) {
             listnewMember.setPreferredSize(new Dimension(470, (205+10)*Account.size()));
         }
         else {
-            listnewMember.setPreferredSize(new Dimension(488, 532));
+            listnewMember.setPreferredSize(new Dimension(488, 460));
         }
         for (int i = 0; i < Account.size(); i++) {
             System.out.println(i);
@@ -637,6 +758,8 @@ public class AdminListMember extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addSaldo;
     private javax.swing.JPanel addTagihan;
+    private javax.swing.JPanel banned;
+    private javax.swing.JLabel bannnedLbl;
     private javax.swing.JPanel deleteMember;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -313,7 +313,11 @@ public class AdminMember extends javax.swing.JPanel {
         member.setBackground(new Color(255,255,255));
         upgrade.setBackground(new Color(255,255,255));
         banned.setBackground(new Color(84,190,229));
+        AdminBannedMember ABM = new AdminBannedMember();
+        ABM.setBounds(0,0,488,616);
+        ABM.setVisible(true);
         container.removeAll();
+        container.add(ABM);
         container.revalidate();
         container.repaint();
     }//GEN-LAST:event_bannedMouseClicked
