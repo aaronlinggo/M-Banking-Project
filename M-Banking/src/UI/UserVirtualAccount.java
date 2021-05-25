@@ -15,6 +15,11 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -24,6 +29,7 @@ import javax.swing.ScrollPaneLayout;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import m.banking.Log;
 import m.banking.Login.Login;
 /**
  *
@@ -540,6 +546,43 @@ public class UserVirtualAccount extends javax.swing.JPanel {
                     if (ut.utf.u.active.getRupiah()-ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan() >= 50000){
                         ut.utf.u.active.setRupiah(ut.utf.u.active.getRupiah()-ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan());
                         JOptionPane.showMessageDialog(this, "Success Paid " + priceWithoutDecimal(ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan()) + " - Virtual Account " + ut.utf.u.active.getMyTagihan().get(idx).getVirtualAccount());
+                        ArrayList<Log> logAdmin = new ArrayList<>();
+                        try {
+                            FileInputStream file = new FileInputStream("logAdmin.ser");
+                            ObjectInputStream in = new ObjectInputStream(file);
+
+                            logAdmin = (ArrayList<Log>) in.readObject();
+
+                            in.close();
+                            file.close();
+                        }
+                        catch(IOException ex) {
+                            System.out.println("IOException is caught");
+                        }
+                        catch(ClassNotFoundException ex) {
+                            System.out.println("ClassNotFoundException is caught");
+                        }
+                        //<No>. <Date> <Nama> <Activity>
+                        String date = ut.utf.u.d1.getD1().getDate() + "/" + ut.utf.u.d1.getD1().getMonth() + "/" + ut.utf.u.d1.getD1().getYear();
+                        logAdmin.add(0, new Log(date + "-" + ut.utf.u.active.getNoRekening() + " paid Virtual Account " + ut.utf.u.active.getMyTagihan().get(idx).getVirtualAccount()));
+                        System.out.println(date);
+                        System.out.println(logAdmin.get(0).getLog());
+                        try {
+                            FileOutputStream file = new FileOutputStream("logAdmin.ser");
+                            ObjectOutputStream out = new ObjectOutputStream(file);
+
+                            out.writeObject(logAdmin);
+
+                            out.close();
+                            file.close();
+
+                            System.out.println("Object has been serialized");
+
+                        }
+                        catch(IOException ex) {
+                            System.out.println("IOException is caught2");
+                            System.out.println(ex);
+                        }
                         ut.utf.u.active.getMyTagihan().remove(idx);
                         showListBill(ut);
                         this.input.setText("No. Virtual Account");
