@@ -44,7 +44,7 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
         lblJudul = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblEdit = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lblNama = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -96,10 +96,15 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("DETAIL USER");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/editBlue.png"))); // NOI18N
-        jLabel4.setText("EDIT");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEdit.setForeground(new java.awt.Color(0, 0, 255));
+        lblEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/editBlue.png"))); // NOI18N
+        lblEdit.setText("EDIT");
+        lblEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEditMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(87, 202, 247));
@@ -154,7 +159,7 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
+                        .addComponent(lblEdit)
                         .addGap(28, 28, 28))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +181,7 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(lblEdit))
                 .addGap(40, 40, 40)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -253,13 +258,24 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
         up.uh.getContent().repaint();
     }//GEN-LAST:event_panelBackMouseClicked
 
+    private void lblEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditMouseClicked
+        // TODO add your handling code here:
+        up.uh.getContent().removeAll();
+        UserProfileDetailUserEdit eu = new UserProfileDetailUserEdit(this);
+        eu.passData(this);
+        eu.setVisible(true);
+        eu.setBounds(0,0, 500, 717);
+        up.uh.getContent().add(eu);
+        up.uh.getContent().revalidate();
+        up.uh.getContent().repaint();
+    }//GEN-LAST:event_lblEditMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -267,6 +283,7 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblAlamat;
+    private javax.swing.JLabel lblEdit;
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblJudul;
     private javax.swing.JLabel lblNama;
