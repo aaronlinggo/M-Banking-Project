@@ -34,6 +34,8 @@ public class UserProfile extends javax.swing.JPanel {
             bgJenisKartu.setBackground(new Color(255,215,0));
         } else {
             lblJenisKartu.setText("PLATINUM");
+            lblNamaMember.setForeground(Color.WHITE);
+            lblNomorKartu.setForeground(Color.WHITE);
             bgJenisKartu.setBackground(new Color(128,128,128));
         }
         
@@ -412,7 +414,7 @@ public class UserProfile extends javax.swing.JPanel {
     private void btnTagihanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTagihanMouseClicked
         // TODO add your handling code here:
         uh.getContent().removeAll();
-        UserProfileTagihan upta = new UserProfileTagihan();
+        UserProfileTagihan upta = new UserProfileTagihan(this);
         upta.passData(this);
         upta.setVisible(true);
         upta.setBounds(0,0, 500, 717);
