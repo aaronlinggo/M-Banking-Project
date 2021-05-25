@@ -8,6 +8,7 @@ package UI;
 import Image.ImagePanel;
 import RoundedField.RoundJPanel;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import m.banking.Gold;
 import m.banking.Silver;
 
@@ -29,14 +30,17 @@ public class UserProfile extends javax.swing.JPanel {
         if(uh.active instanceof Silver) {
             lblJenisKartu.setText("SILVER");
             bgJenisKartu.setBackground(new Color(229, 228, 226));
+            upgrade.setText("Upgrade");
         } else if (uh.active instanceof Gold) {
             lblJenisKartu.setText("GOLD");
             bgJenisKartu.setBackground(new Color(255,215,0));
+            upgrade.setText("Upgrade");
         } else {
             lblJenisKartu.setText("PLATINUM");
             lblNamaMember.setForeground(Color.WHITE);
             lblNomorKartu.setForeground(Color.WHITE);
             bgJenisKartu.setBackground(new Color(128,128,128));
+            upgrade.setText("Maximum");
         }
         
         String tempIsiKartu = uh.active.getNoRekening().substring(0,4) + " " + uh.active.getNoRekening().substring(4,8) + " " + uh.active.getNoRekening().substring(8,12) + " " + uh.active.getNoRekening().substring(12,16);
@@ -85,7 +89,7 @@ public class UserProfile extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         bgJenisKartu = new RoundJPanel(25);
         lblJenisKartu = new javax.swing.JLabel();
-        upgradeBtn = new javax.swing.JPanel();
+        upgradeBtn = new RoundJPanel(25);
         upgrade = new javax.swing.JLabel();
 
         background.setBackground(new java.awt.Color(250, 243, 243));
@@ -221,7 +225,7 @@ public class UserProfile extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -305,7 +309,7 @@ public class UserProfile extends javax.swing.JPanel {
             bgJenisKartuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgJenisKartuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblJenisKartu, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblJenisKartu, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                 .addContainerGap())
         );
         bgJenisKartuLayout.setVerticalGroup(
@@ -316,7 +320,14 @@ public class UserProfile extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        upgradeBtn.setBackground(new java.awt.Color(87, 202, 247));
         upgradeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        upgradeBtn.setOpaque(false);
+        upgradeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                upgradeBtnMouseClicked(evt);
+            }
+        });
 
         upgrade.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         upgrade.setForeground(new java.awt.Color(0, 0, 0));
@@ -329,7 +340,7 @@ public class UserProfile extends javax.swing.JPanel {
             upgradeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(upgradeBtnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(upgrade, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(upgrade, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                 .addContainerGap())
         );
         upgradeBtnLayout.setVerticalGroup(
@@ -344,27 +355,23 @@ public class UserProfile extends javax.swing.JPanel {
         background.setLayout(backgroundLayout);
         backgroundLayout.setHorizontalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addComponent(bgJenisKartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(upgradeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(backgroundLayout.createSequentialGroup()
                         .addComponent(btnGantiPin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAturLimit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnTagihan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(gambarKartu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(detailUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addComponent(bgJenisKartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                            .addComponent(upgradeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addComponent(gambarKartu, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                    .addComponent(detailUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,6 +453,29 @@ public class UserProfile extends javax.swing.JPanel {
         uh.getContent().revalidate();
         uh.getContent().repaint();
     }//GEN-LAST:event_detailUserMouseClicked
+
+    private void upgradeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_upgradeBtnMouseClicked
+        // TODO add your handling code here:
+        if(uh.active instanceof Silver) {
+            uh.getContent().removeAll();
+            UserRequestUpgrade URU = new UserRequestUpgrade(this);
+            URU.setBounds(0,0, 500, 717);
+            URU.setVisible(true);
+            uh.getContent().add(URU);
+            uh.getContent().revalidate();
+            uh.getContent().repaint();
+        } else if (uh.active instanceof Gold) {
+            uh.getContent().removeAll();
+            UserRequestUpgrade URU = new UserRequestUpgrade(this);
+            URU.setBounds(0,0, 500, 717);
+            URU.setVisible(true);
+            uh.getContent().add(URU);
+            uh.getContent().revalidate();
+            uh.getContent().repaint();
+        } else {
+            JOptionPane.showMessageDialog(this, "Cannot Upgrade Card");
+        }
+    }//GEN-LAST:event_upgradeBtnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
