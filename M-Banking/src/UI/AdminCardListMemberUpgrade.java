@@ -7,6 +7,11 @@ package UI;
 
 import RoundedField.RoundJPanel;
 import java.awt.Color;
+import javax.accessibility.AccessibleContext;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.event.EventListenerList;
+import javax.swing.plaf.ComponentUI;
 
 /**
  *
@@ -38,6 +43,8 @@ public class AdminCardListMemberUpgrade extends javax.swing.JPanel {
         noRek = new javax.swing.JLabel();
         kartu = new RoundJPanel(20);
         jenisKartu = new javax.swing.JLabel();
+        bgrequest = new RoundJPanel(20);
+        requestKartuUpgrade = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setOpaque(false);
@@ -83,6 +90,30 @@ public class AdminCardListMemberUpgrade extends javax.swing.JPanel {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
+        bgrequest.setOpaque(false);
+
+        requestKartuUpgrade.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        requestKartuUpgrade.setForeground(new java.awt.Color(0, 0, 0));
+        requestKartuUpgrade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        requestKartuUpgrade.setText("Gold");
+
+        javax.swing.GroupLayout bgrequestLayout = new javax.swing.GroupLayout(bgrequest);
+        bgrequest.setLayout(bgrequestLayout);
+        bgrequestLayout.setHorizontalGroup(
+            bgrequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgrequestLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(requestKartuUpgrade, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        bgrequestLayout.setVerticalGroup(
+            bgrequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgrequestLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(requestKartuUpgrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
@@ -91,13 +122,13 @@ public class AdminCardListMemberUpgrade extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(noRek)
-                    .addComponent(saldo)
-                    .addComponent(fullName))
-                .addContainerGap(155, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(kartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(137, 137, 137))
+                    .addComponent(fullName)
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addComponent(kartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bgrequest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(saldo))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,9 +139,11 @@ public class AdminCardListMemberUpgrade extends javax.swing.JPanel {
                 .addComponent(noRek)
                 .addGap(18, 18, 18)
                 .addComponent(saldo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(kartu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bgrequest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(kartu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -145,11 +178,13 @@ public class AdminCardListMemberUpgrade extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
+    private javax.swing.JPanel bgrequest;
     private javax.swing.JLabel fullName;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jenisKartu;
     private javax.swing.JPanel kartu;
     private javax.swing.JLabel noRek;
+    private javax.swing.JLabel requestKartuUpgrade;
     private javax.swing.JLabel saldo;
     // End of variables declaration//GEN-END:variables
     
@@ -159,6 +194,102 @@ public class AdminCardListMemberUpgrade extends javax.swing.JPanel {
     
     public void setNewColorKartu(int w1, int w2, int w3){
         this.kartu.setBackground(new Color(w1, w2, w3));
+    }
+
+    public JPanel getBg() {
+        return bg;
+    }
+
+    public void setBg(JPanel bg) {
+        this.bg = bg;
+    }
+
+    public JPanel getBgrequest() {
+        return bgrequest;
+    }
+
+    public void setBgrequest(JPanel bgrequest) {
+        this.bgrequest = bgrequest;
+    }
+
+    public JLabel getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(JLabel fullName) {
+        this.fullName = fullName;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JLabel getJenisKartu() {
+        return jenisKartu;
+    }
+
+    public void setJenisKartu(JLabel jenisKartu) {
+        this.jenisKartu = jenisKartu;
+    }
+
+    public JPanel getKartu() {
+        return kartu;
+    }
+
+    public void setKartu(JPanel kartu) {
+        this.kartu = kartu;
+    }
+
+    public JLabel getNoRek() {
+        return noRek;
+    }
+
+    public void setNoRek(JLabel noRek) {
+        this.noRek = noRek;
+    }
+
+    public JLabel getRequestKartuUpgrade() {
+        return requestKartuUpgrade;
+    }
+
+    public void setRequestKartuUpgrade(JLabel requestKartuUpgrade) {
+        this.requestKartuUpgrade = requestKartuUpgrade;
+    }
+
+    public JLabel getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(JLabel saldo) {
+        this.saldo = saldo;
+    }
+
+    public ComponentUI getUi() {
+        return ui;
+    }
+
+    public void setUi(ComponentUI ui) {
+        this.ui = ui;
+    }
+
+    public EventListenerList getListenerList() {
+        return listenerList;
+    }
+
+    public void setListenerList(EventListenerList listenerList) {
+        this.listenerList = listenerList;
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        return accessibleContext;
+    }
+
+    public void setAccessibleContext(AccessibleContext accessibleContext) {
+        this.accessibleContext = accessibleContext;
     }
     
     public void setFullName(String fullname){

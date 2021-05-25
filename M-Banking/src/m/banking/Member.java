@@ -26,7 +26,9 @@ public abstract class Member implements Serializable{
     protected String tanggalLahir;
     protected String gender;
     protected ArrayList<Tagihan> myTagihan;
-    protected ArrayList<Integer> daftarrek; 
+    protected ArrayList<Integer> daftarrek;
+    protected int upgrade;
+    protected boolean cekUpgrade;
     
     public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, String noRekening, String nomorHP, String alamat, String pin, int point, String tanggalLahir, String gender) {
         this.limitTransfer = limitTransfer;
@@ -48,7 +50,8 @@ public abstract class Member implements Serializable{
         this.gender = gender;
         this.myTagihan = new ArrayList<>();
         this.daftarrek = new ArrayList<>();
-        
+        this.upgrade = 0;
+        this.cekUpgrade = false;
     }
 
     public int randomVA(){
@@ -69,6 +72,24 @@ public abstract class Member implements Serializable{
         return va;
     }
 
+    public int getUpgrade() {
+        return upgrade;
+    }
+
+    public boolean isCekUpgrade() {
+        return cekUpgrade;
+    }
+
+    public void setCekUpgrade(boolean cekUpgrade) {
+        this.cekUpgrade = cekUpgrade;
+    }
+
+    
+    
+    public void setUpgrade(int upgrade) {
+        this.upgrade = upgrade;
+    }
+    
     public ArrayList<Tagihan> getMyTagihan() {
         return myTagihan;
     }

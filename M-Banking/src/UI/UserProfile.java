@@ -457,23 +457,33 @@ public class UserProfile extends javax.swing.JPanel {
     private void upgradeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_upgradeBtnMouseClicked
         // TODO add your handling code here:
         if(uh.active instanceof Silver) {
-            uh.getContent().removeAll();
-            UserRequestUpgrade URU = new UserRequestUpgrade(this);
-            URU.setBounds(0,0, 500, 717);
-            URU.setVisible(true);
-            uh.getContent().add(URU);
-            uh.getContent().revalidate();
-            uh.getContent().repaint();
+            if (!uh.active.isCekUpgrade()){
+                uh.getContent().removeAll();
+                UserRequestUpgrade_1 URU = new UserRequestUpgrade_1(this);
+                URU.setBounds(0,0, 500, 717);
+                URU.setVisible(true);
+                uh.getContent().add(URU);
+                uh.getContent().revalidate();
+                uh.getContent().repaint();
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Your last request Upgrade is pending");
+            }
         } else if (uh.active instanceof Gold) {
-            uh.getContent().removeAll();
-            UserRequestUpgrade URU = new UserRequestUpgrade(this);
-            URU.setBounds(0,0, 500, 717);
-            URU.setVisible(true);
-            uh.getContent().add(URU);
-            uh.getContent().revalidate();
-            uh.getContent().repaint();
+            if (!uh.active.isCekUpgrade()){
+                uh.getContent().removeAll();
+                UserRequestUpgrade_2 URU = new UserRequestUpgrade_2(this);
+                URU.setBounds(0,0, 500, 717);
+                URU.setVisible(true);
+                uh.getContent().add(URU);
+                uh.getContent().revalidate();
+                uh.getContent().repaint();
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Your last request Upgrade is pending");
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Cannot Upgrade Card");
+            JOptionPane.showMessageDialog(this, "Your Card has been completely upgraded");
         }
     }//GEN-LAST:event_upgradeBtnMouseClicked
 

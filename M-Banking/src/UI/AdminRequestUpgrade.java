@@ -46,7 +46,6 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
     /**
      * Creates new form AdminNewMember
      */
-    ArrayList<Member> requestMember;
     int idx = -1;
     public AdminRequestUpgrade() {
         initComponents();
@@ -231,43 +230,90 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
     private void rejectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rejectMouseClicked
         // TODO add your handling code here:
         if (idx != -1){
-//            ArrayList<Member> requestMember = new ArrayList<>();
-//            try {
-//                FileInputStream file = new FileInputStream("requestMember.ser");
-//                ObjectInputStream in = new ObjectInputStream(file);
-//
-//                requestMember = (ArrayList<Member>) in.readObject();
-//
-//                in.close();
-//                file.close();
-//            }
-//            catch(IOException ex) {
-//                System.out.println("IOException is caught");
-//            }
-//            catch(ClassNotFoundException ex) {
-//                System.out.println("ClassNotFoundException is caught");
-//            }
-//            requestMember.remove(idx);
-//            String filename = "requestMember.ser";
-//            try {
-//                FileOutputStream file = new FileOutputStream(filename);
-//                ObjectOutputStream out = new ObjectOutputStream(file);
-//
-//                out.writeObject(requestMember);
-//
-//                out.close();
-//                file.close();
-//
-//                System.out.println("Object has been serialized");
-//
-//            }
-//            catch(IOException ex) {
-//                System.out.println("IOException is caught");
-//            }
-//            JOptionPane.showMessageDialog(this, "Berhasil delete");
+            ArrayList<Member> requestUpgrade = new ArrayList<>();
+            ArrayList<Member> Account = new ArrayList<Member>();
+            try {
+                FileInputStream file = new FileInputStream("requestUpgrade.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                requestUpgrade = (ArrayList<Member>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            
+            try {
+                FileInputStream file = new FileInputStream("Account.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                Account = (ArrayList<Member>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            for (int i = 0; i < Account.size(); i++) {
+                if (requestUpgrade.get(idx).getNoRekening().equals(Account.get(i).getNoRekening())){
+                    if (Account.get(i) instanceof Silver){
+                        Account.get(i).setUpgrade(0);
+                    }
+                    else if (Account.get(i) instanceof Gold){
+                        Account.get(i).setUpgrade(1);
+                    }
+                    Account.get(i).setCekUpgrade(false);
+                    break;
+                }
+            }
+            requestUpgrade.remove(idx);
+            
+            try {
+                FileOutputStream file = new FileOutputStream("requestUpgrade.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(requestUpgrade);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            
+            String filename = "Account.ser";
+            try {
+                FileOutputStream file = new FileOutputStream(filename);
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            System.out.println(Account.size());
+            JOptionPane.showMessageDialog(this, "Reject Upgrade Card Member " + Account.get(Account.size()-1).getNama() + "!");
         }
         else {
-            JOptionPane.showMessageDialog(this, "Pick a new member pls");
+            JOptionPane.showMessageDialog(this, "Pick a member pls");
         }
         idx = -1;
         showAllRequestMember();
@@ -276,88 +322,118 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
         // TODO add your handling code here:
         if (idx != -1){
-//            ArrayList<Member> requestMember = new ArrayList<>();
-//            ArrayList<Member> Account = new ArrayList<Member>();
-//            try {
-//                FileInputStream file = new FileInputStream("requestMember.ser");
-//                ObjectInputStream in = new ObjectInputStream(file);
-//
-//                requestMember = (ArrayList<Member>) in.readObject();
-//
-//                in.close();
-//                file.close();
-//            }
-//            catch(IOException ex) {
-//                System.out.println("IOException is caught");
-//            }
-//            catch(ClassNotFoundException ex) {
-//                System.out.println("ClassNotFoundException is caught");
-//            }
-//            
-//            try {
-//                FileInputStream file = new FileInputStream("Account.ser");
-//                ObjectInputStream in = new ObjectInputStream(file);
-//
-//                Account = (ArrayList<Member>) in.readObject();
-//
-//                in.close();
-//                file.close();
-//            }
-//            catch(IOException ex) {
-//                System.out.println("IOException is caught");
-//            }
-//            catch(ClassNotFoundException ex) {
-//                System.out.println("ClassNotFoundException is caught");
-//            }
-//            
-//            Account.add(requestMember.get(idx));
-//            requestMember.remove(idx);
-//            
-//            try {
-//                FileOutputStream file = new FileOutputStream("requestMember.ser");
-//                ObjectOutputStream out = new ObjectOutputStream(file);
-//
-//                out.writeObject(requestMember);
-//
-//                out.close();
-//                file.close();
-//
-//                System.out.println("Object has been serialized");
-//
-//            }
-//            catch(IOException ex) {
-//                System.out.println("IOException is caught");
-//            }
-//            
-//            String filename = "Account.ser";
-//            try {
-//                FileOutputStream file = new FileOutputStream(filename);
-//                ObjectOutputStream out = new ObjectOutputStream(file);
-//
-//                out.writeObject(Account);
-//
-//                out.close();
-//                file.close();
-//
-//                System.out.println("Object has been serialized");
-//
-//            }
-//            catch(IOException ex) {
-//                System.out.println("IOException is caught");
-//            }
-//            System.out.println(Account.size());
-//            JOptionPane.showMessageDialog(this, "Berhasil confirm " + Account.get(Account.size()-1).getNama() + "!");
+            ArrayList<Member> requestUpgrade = new ArrayList<>();
+            ArrayList<Member> Account = new ArrayList<Member>();
+            try {
+                FileInputStream file = new FileInputStream("requestUpgrade.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                requestUpgrade = (ArrayList<Member>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            
+            try {
+                FileInputStream file = new FileInputStream("Account.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                Account = (ArrayList<Member>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            for (int i = 0; i < Account.size(); i++) {
+                if (requestUpgrade.get(idx).getNoRekening().equals(Account.get(i).getNoRekening())){
+                    ArrayList<Member> temp = (ArrayList<Member>) Account.clone();
+                    if (requestUpgrade.get(idx).getUpgrade() == 1){
+                        Account.set(i, new Gold(Account.get(i).getNama(), Account.get(i).getRupiah(), Account.get(i).getNoRekening(), Account.get(i).getNomorHP(), Account.get(i).getAlamat(), Account.get(i).getPin(), Account.get(i).getTanggalLahir(), Account.get(i).getGender()));
+                    }
+                    else if (requestUpgrade.get(idx).getUpgrade() == 2){
+                        Account.set(i, new Platinum(Account.get(i).getNama(), Account.get(i).getRupiah(), Account.get(i).getNoRekening(), Account.get(i).getNomorHP(), Account.get(i).getAlamat(), Account.get(i).getPin(), Account.get(i).getTanggalLahir(), Account.get(i).getGender()));
+                    }
+                    Account.get(i).setMyTagihan(temp.get(i).getMyTagihan());
+                    Account.get(i).setDaftarrek(temp.get(i).getDaftarrek());
+                    Account.get(i).setInbox(temp.get(i).getInbox());
+                    Account.get(i).setCekUpgrade(false);
+                    break;
+                }
+            }
+            requestUpgrade.remove(idx);
+            
+            try {
+                FileOutputStream file = new FileOutputStream("requestUpgrade.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(requestUpgrade);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            
+            String filename = "Account.ser";
+            try {
+                FileOutputStream file = new FileOutputStream(filename);
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            System.out.println(Account.size());
+            JOptionPane.showMessageDialog(this, "Berhasil confirm Member " + Account.get(Account.size()-1).getNama() + "!");
         }
         else {
-            JOptionPane.showMessageDialog(this, "Pick a new member pls");
+            JOptionPane.showMessageDialog(this, "Pick a member pls");
         }
         idx = -1;
         showAllRequestMember();
     }//GEN-LAST:event_confirmMouseClicked
 
     public void showAllRequestMember(){
-        ArrayList<Member> Account = new ArrayList<>();
+        ArrayList<Member> requestUpgrade = new ArrayList<>();
         ArrayList<AdminCardListMemberUpgrade> ACLMU = new ArrayList<>();
+        try {
+            FileInputStream file = new FileInputStream("requestUpgrade.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            requestUpgrade = (ArrayList<Member>) in.readObject();
+
+            in.close();
+            file.close();
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        ArrayList<Member> Account = new ArrayList<>();
         try {
             FileInputStream file = new FileInputStream("Account.ser");
             ObjectInputStream in = new ObjectInputStream(file);
@@ -374,37 +450,51 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
             System.out.println("ClassNotFoundException is caught");
         }
         listnewMember.removeAll();
-        if ((205+10)*Account.size() >= 532) {
-            listnewMember.setPreferredSize(new Dimension(470, (205+10)*Account.size()));
+        if ((205+10)*requestUpgrade.size() >= 532) {
+            listnewMember.setPreferredSize(new Dimension(470, (205+10)*requestUpgrade.size()));
         }
         else {
             listnewMember.setPreferredSize(new Dimension(488, 532));
         }
-        for (int i = 0; i < Account.size(); i++) {
+        for (int i = 0; i < requestUpgrade.size(); i++) {
             System.out.println(i);
             ACLMU.add(new AdminCardListMemberUpgrade());
             ACLMU.get(i).setName("ALNM"+i);
-            ACLMU.get(i).setFullName("Full Name     : " + Account.get(i).getNama().toUpperCase());
-            String tempnorek = String.valueOf(Account.get(i).getNoRekening()).substring(0,4) + "-" + String.valueOf(Account.get(i).getNoRekening()).substring(4,8);
+            ACLMU.get(i).setFullName("Full Name     : " + requestUpgrade.get(i).getNama().toUpperCase());
+            String tempnorek = requestUpgrade.get(i).getNoRekening().substring(0,4) + "-" + requestUpgrade.get(i).getNoRekening().substring(4,8) + "-" + requestUpgrade.get(i).getNoRekening().substring(8,12) + "-" + requestUpgrade.get(i).getNoRekening().substring(12,16);
             ACLMU.get(i).setNoRek("Card Number   : " + tempnorek);
-            String tempSaldo = Double.toString(Account.get(i).getRupiah());
+            String tempSaldo = Double.toString(requestUpgrade.get(i).getRupiah());
             System.out.println(tempSaldo);
-            ACLMU.get(i).setSaldo("Balance       : " + priceWithoutDecimal(Account.get(i).getRupiah()));
+            for (int j = 0; j < Account.size(); j++) {
+                if (requestUpgrade.get(i).getNoRekening().equals(Account.get(j).getNoRekening())){
+                    ACLMU.get(i).setSaldo("Balance       : " + priceWithoutDecimal(Account.get(j).getRupiah()));
+                }
+            }
             String jenis = "";
-            if (Account.get(i) instanceof Silver){
+            if (requestUpgrade.get(i) instanceof Silver){
                 jenis = "Silver";
                 ACLMU.get(i).setNewColorKartu(229, 228, 226);
             }
-            else if (Account.get(i) instanceof Gold){
+            else if (requestUpgrade.get(i) instanceof Gold){
                 jenis = "Gold";
                 ACLMU.get(i).setNewColorKartu(255,215,0);
             }
-            else if (Account.get(i) instanceof Platinum){
+            else if (requestUpgrade.get(i) instanceof Platinum){
                 jenis = "Platinum";
                 ACLMU.get(i).setNewColorKartu(128,128,128);
             }
+            
+            if (requestUpgrade.get(i).getUpgrade() == 1){
+                ACLMU.get(i).getRequestKartuUpgrade().setText("Gold");
+                ACLMU.get(i).getBgrequest().setBackground(new Color(255,215,0));
+            }
+            else if (requestUpgrade.get(i).getUpgrade() == 2){
+                ACLMU.get(i).getRequestKartuUpgrade().setText("Platinum");
+                ACLMU.get(i).getBgrequest().setBackground(new Color(128,128,128));
+            }
+            
             ACLMU.get(i).setJenisKartu(jenis);
-            ACLMU.get(i).setBounds(0, (205+10)*i, 470,205);
+            ACLMU.get(i).setBounds(0, (205+10)*i, 480,205);
             ACLMU.get(i).setVisible(true);
             ACLMU.get(i).addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e){
@@ -425,12 +515,12 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
     }
 
     public void resetBGPanel(ArrayList<AdminCardListMemberUpgrade> ACLMU){
-        ArrayList<Member> requestMember = new ArrayList<>();
+        ArrayList<Member> requestUpgrade = new ArrayList<>();
         try {
-            FileInputStream file = new FileInputStream("requestMember.ser");
+            FileInputStream file = new FileInputStream("requestUpgrade.ser");
             ObjectInputStream in = new ObjectInputStream(file);
 
-            requestMember = (ArrayList<Member>) in.readObject();
+            requestUpgrade = (ArrayList<Member>) in.readObject();
 
             in.close();
             file.close();
@@ -441,7 +531,7 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
         catch(ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException is caught");
         }
-        for (int j = 0; j < requestMember.size(); j++) {
+        for (int j = 0; j < requestUpgrade.size(); j++) {
             ACLMU.get(j).setNewColorBG(255,255,255);
         }
     }

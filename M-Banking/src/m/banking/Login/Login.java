@@ -110,6 +110,24 @@ public class Login extends javax.swing.JFrame {
         catch(ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException is caught");
         }
+        
+        ArrayList<Member> requestUpgrade = new ArrayList<>();
+        try {
+            FileInputStream file = new FileInputStream("requestUpgrade.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            requestUpgrade = (ArrayList<Member>) in.readObject();
+
+            in.close();
+            file.close();
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        System.out.println(requestUpgrade.size());
         System.out.println("Size rm " + requestMember.size());
         System.out.println("Size A " + Account.size());
         initComponents();
