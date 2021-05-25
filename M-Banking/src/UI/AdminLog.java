@@ -7,7 +7,15 @@ package UI;
 
 import Calendar.CalendarFrame;
 import RoundedField.RoundJPanel;
+import ScrollBar.MyScrollBarUI;
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.FileInputStream;
@@ -16,9 +24,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JViewport;
+import javax.swing.ScrollPaneLayout;
+import javax.swing.SwingUtilities;
 import m.banking.DateBankRut;
+import m.banking.Log;
 import m.banking.Login.Login;
 
 /**
@@ -35,41 +49,8 @@ public class AdminLog extends javax.swing.JPanel{
     CalendarFrame cf;
     AdminDashboard ad;
     public AdminLog() {
-        String filename = "date.ser";
-        try {
-            FileInputStream file = new FileInputStream(filename);
-            ObjectInputStream in = new ObjectInputStream(file);
-
-            d1 = (DateBankRut) in.readObject();
-
-            in.close();
-            file.close();
-            //System.out.println(d1.getD1().getDate() + " - " + d1.getD1().getMonth() + " - " + d1.getD1().getYear());
-        }
-        catch(IOException ex) {
-            System.out.println("IOException is caught");
-        }
-        catch(ClassNotFoundException ex) {
-            System.out.println("ClassNotFoundException is caught");
-        }
-        
-        try {
-            FileInputStream file = new FileInputStream(filename);
-            ObjectInputStream in = new ObjectInputStream(file);
-
-            d2 = (DateBankRut) in.readObject();
-
-            in.close();
-            file.close();
-            System.out.println(d2.getD1().getDate() + " - " + d2.getD1().getMonth() + " - " + d2.getD1().getYear());
-        }
-        catch(IOException ex) {
-            System.out.println("IOException is caught");
-        }
-        catch(ClassNotFoundException ex) {
-            System.out.println("ClassNotFoundException is caught");
-        }
         initComponents();
+        showAllLog();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
     }
     
@@ -90,7 +71,8 @@ public class AdminLog extends javax.swing.JPanel{
         back = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scroll = new javax.swing.JScrollPane();
+        listLog = new javax.swing.JPanel();
 
         jPanel1.setBackground(new java.awt.Color(250, 243, 243));
 
@@ -108,6 +90,87 @@ public class AdminLog extends javax.swing.JPanel{
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
 
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setLayout(new ScrollPaneLayout() {
+            @Override
+            public void layoutContainer(Container parent) {
+                JScrollPane scrollPane = (JScrollPane) parent;
+
+                Rectangle availR = scrollPane.getBounds();
+                availR.x = availR.y = 0;
+
+                Insets parentInsets = parent.getInsets();
+                availR.x = parentInsets.left;
+                availR.y = parentInsets.top;
+                availR.width -= parentInsets.left + parentInsets.right;
+                availR.height -= parentInsets.top + parentInsets.bottom;
+
+                Rectangle vsbR = new Rectangle();
+                vsbR.width = 12;
+                vsbR.height = availR.height;
+                vsbR.x = availR.x + availR.width - vsbR.width;
+                vsbR.y = availR.y;
+
+                if (viewport != null) {
+                    viewport.setBounds(availR);
+                }
+                if (vsb != null) {
+                    vsb.setVisible(true);
+                    vsb.setBounds(vsbR);
+                }
+            }
+        });
+        scroll.getVerticalScrollBar().setUI(new MyScrollBarUI());
+        MouseAdapter ma = new MouseAdapter() {
+
+            private Point origin;
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                origin = new Point(e.getPoint());
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                if (origin != null) {
+                    JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, listLog);
+                    if (viewPort != null) {
+                        int deltaX = origin.x - e.getX();
+                        int deltaY = origin.y - e.getY();
+
+                        Rectangle view = viewPort.getViewRect();
+                        view.x += deltaX;
+                        view.y += deltaY;
+
+                        listLog.scrollRectToVisible(view);
+                    }
+                }
+            }
+
+        };
+
+        listLog.addMouseListener(ma);
+        listLog.addMouseMotionListener(ma);
+
+        listLog.setBackground(new java.awt.Color(250, 243, 243));
+
+        javax.swing.GroupLayout listLogLayout = new javax.swing.GroupLayout(listLog);
+        listLog.setLayout(listLogLayout);
+        listLogLayout.setHorizontalGroup(
+            listLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 497, Short.MAX_VALUE)
+        );
+        listLogLayout.setVerticalGroup(
+            listLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 696, Short.MAX_VALUE)
+        );
+
+        scroll.setViewportView(listLog);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -124,10 +187,10 @@ public class AdminLog extends javax.swing.JPanel{
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 29, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                        .addComponent(scroll)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -140,7 +203,7 @@ public class AdminLog extends javax.swing.JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+                .addComponent(scroll)
                 .addContainerGap())
         );
 
@@ -166,11 +229,48 @@ public class AdminLog extends javax.swing.JPanel{
         ad.ah.getContent().repaint();
     }//GEN-LAST:event_backMouseClicked
 
+    public void showAllLog(){
+        ArrayList<Log> logAdmin = new ArrayList<>();
+        try {
+            FileInputStream file = new FileInputStream("logAdmin.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            logAdmin = (ArrayList<Log>) in.readObject();
+
+            in.close();
+            file.close();
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        listLog.removeAll();
+        if ((51+10)*logAdmin.size() >= 696){
+            listLog.setPreferredSize(new Dimension(497, (51+10)*logAdmin.size()));
+        }
+        else {
+            listLog.setPreferredSize(new Dimension(497, 696));
+        }
+        ArrayList<AdminCardLog> ACL = new ArrayList<>();
+        for (int i = 0; i < logAdmin.size(); i++) {
+            ACL.add(new AdminCardLog());
+            ACL.get(i).getDetail().setText(i + ". " + logAdmin.get(i).getLog());
+            ACL.get(i).setBounds(0, (51+10)*i, 480, 51);
+            ACL.get(i).setVisible(true);
+            listLog.add(ACL.get(i));
+        }
+        listLog.revalidate();
+        listLog.repaint();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel listLog;
+    private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }

@@ -58,14 +58,16 @@ public abstract class Member implements Serializable{
         int va = 0;
         do {
             va = new Random().nextInt(99999999);
-            boolean cek = false;
-            for (int i = 0; i < myTagihan.size(); i++) {
-                if (va == myTagihan.get(i).getVirtualAccount()){
-                    cek =   true;
+            if (va >= 10000000){
+                boolean cek = false;
+                for (int i = 0; i < myTagihan.size(); i++) {
+                    if (va == myTagihan.get(i).getVirtualAccount()){
+                        cek =   true;
+                    }
                 }
-            }
-            if (!cek){
-                break;
+                if (!cek){
+                    break;
+                }
             }
         }
         while(true);

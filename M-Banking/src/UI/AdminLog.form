@@ -51,11 +51,11 @@
                                   <Component id="jSeparator1" min="-2" pref="451" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          <Component id="scroll" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -73,7 +73,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="19" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="699" max="32767" attributes="0"/>
+                  <Component id="scroll" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -111,9 +111,37 @@
             </Property>
           </Properties>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+        <Container class="javax.swing.JScrollPane" name="scroll">
+          <Properties>
+            <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="scroll.setLayout(new ScrollPaneLayout() {&#xa;      @Override&#xa;      public void layoutContainer(Container parent) {&#xa;        JScrollPane scrollPane = (JScrollPane) parent;&#xa;&#xa;        Rectangle availR = scrollPane.getBounds();&#xa;        availR.x = availR.y = 0;&#xa;&#xa;        Insets parentInsets = parent.getInsets();&#xa;        availR.x = parentInsets.left;&#xa;        availR.y = parentInsets.top;&#xa;        availR.width -= parentInsets.left + parentInsets.right;&#xa;        availR.height -= parentInsets.top + parentInsets.bottom;&#xa;&#xa;        Rectangle vsbR = new Rectangle();&#xa;        vsbR.width = 12;&#xa;        vsbR.height = availR.height;&#xa;        vsbR.x = availR.x + availR.width - vsbR.width;&#xa;        vsbR.y = availR.y;&#xa;&#xa;        if (viewport != null) {&#xa;          viewport.setBounds(availR);&#xa;        }&#xa;        if (vsb != null) {&#xa;          vsb.setVisible(true);&#xa;          vsb.setBounds(vsbR);&#xa;        }&#xa;      }&#xa;    });&#xa;    scroll.getVerticalScrollBar().setUI(new MyScrollBarUI());&#xa;MouseAdapter ma = new MouseAdapter() {&#xa;&#xa;private Point origin;&#xa;&#xa;@Override&#xa;public void mousePressed(MouseEvent e) {&#xa;    origin = new Point(e.getPoint());&#xa;}&#xa;&#xa;@Override&#xa;public void mouseReleased(MouseEvent e) {&#xa;}&#xa;&#xa;@Override&#xa;public void mouseDragged(MouseEvent e) {&#xa;    if (origin != null) {&#xa;        JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, listLog);&#xa;        if (viewPort != null) {&#xa;            int deltaX = origin.x - e.getX();&#xa;            int deltaY = origin.y - e.getY();&#xa;&#xa;            Rectangle view = viewPort.getViewRect();&#xa;            view.x += deltaX;&#xa;            view.y += deltaY;&#xa;&#xa;            listLog.scrollRectToVisible(view);&#xa;        }&#xa;    }&#xa;}&#xa;&#xa;};&#xa;&#xa;listLog.addMouseListener(ma);&#xa;listLog.addMouseMotionListener(ma);"/>
+          </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="listLog">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f3" green="f3" red="fa" type="rgb"/>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="497" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="696" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>
