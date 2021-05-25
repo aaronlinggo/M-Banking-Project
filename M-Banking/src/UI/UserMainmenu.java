@@ -7,6 +7,9 @@ package UI;
 
 import RoundedField.RoundJPanel;
 import java.awt.Color;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import m.banking.Login.Login;
 /**
  *
@@ -588,6 +591,21 @@ public class UserMainmenu extends javax.swing.JPanel {
         Login l = new Login();
         l.setVisible(true);
         u.setVisible(false);
+        try {
+            FileOutputStream file = new FileOutputStream("Account.ser");
+            ObjectOutputStream out = new ObjectOutputStream(file);
+
+            out.writeObject(u.Account);
+
+            out.close();
+            file.close();
+
+            System.out.println("Object has been serialized");
+
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
     }//GEN-LAST:event_logoutMouseClicked
     public void getUser(UserHomepage u){
         this.u = u;

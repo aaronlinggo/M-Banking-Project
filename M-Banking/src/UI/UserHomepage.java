@@ -7,6 +7,7 @@ package UI;
 
 import RoundedField.RoundJPanel;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,7 +28,9 @@ public class UserHomepage extends javax.swing.JFrame {
     int mousepY;
     Member active;
     DateBankRut d1;
-    public UserHomepage(Member active, DateBankRut d1) {
+    ArrayList<Member> Account;
+    public UserHomepage(Member active, DateBankRut d1, ArrayList<Member> Account) {
+        this.Account = Account;
         this.d1 = d1;
         this.active = active;
         initComponents();
