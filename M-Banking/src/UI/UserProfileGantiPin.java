@@ -6,7 +6,11 @@
 package UI;
 
 import Image.ImagePanel;
+import RoundedField.RoundJPanel;
 import java.awt.color.ICC_Profile;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 import m.banking.Captcha;
 
@@ -57,7 +61,6 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         FieldPinLama = new javax.swing.JPasswordField();
@@ -74,20 +77,18 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         Reset = new javax.swing.JButton();
         panelBack = new javax.swing.JPanel();
         lblBack = new javax.swing.JLabel();
+        jPanel2 = new RoundJPanel(35);
+        jLabel7 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(250, 243, 243));
 
-        jLabel1.setFont(new java.awt.Font("Courier New", 1, 28)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(93, 130, 228));
-        jLabel1.setText("GANTI PIN");
-
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(103, 91, 232));
-        jLabel2.setText("PIN LAMA");
+        jLabel2.setText("OLD PIN");
 
         jLabel3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(87, 202, 247));
-        jLabel3.setText("PIN BARU");
+        jLabel3.setText("NEW PIN");
 
         FieldPinLama.setBackground(new java.awt.Color(255, 255, 255));
         FieldPinLama.setForeground(new java.awt.Color(0, 0, 0));
@@ -222,6 +223,31 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
             .addComponent(lblBack, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setOpaque(false);
+
+        jLabel7.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Ganti PIN");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -260,22 +286,18 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(panelBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel1)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(panelBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGap(27, 27, 27)))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(FieldPinLama, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -299,7 +321,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Submit)
                     .addComponent(Reset))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -326,25 +348,40 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(!up.uh.active.getPin().equals(FieldPinLama.getText())) {
             //Pin Lama tidak sama dengan yang lama
-            JOptionPane.showMessageDialog(null, "PIN tidak sama dengan PIN yang lama");
+            JOptionPane.showMessageDialog(null, "Old Pin did not match");
             ResetSubmit();
         } else if(!isNumeric(FieldPinBaru.getText()) || FieldPinBaru.getText().length()!=6) {
             //Pin Baru tidak numerik dan Pin Baru tdk 6 digit
-            JOptionPane.showMessageDialog(null, "Format PIN baru tidak 6 digit atau ada yang mengandung karakter");
+            JOptionPane.showMessageDialog(null, "PIN must 6 digit and character from PIN must number");
             ResetSubmit();
         } else if (!textCaptcha.equals(FieldCaptcha.getText())) {
             //Captcha salah
-            JOptionPane.showMessageDialog(null, "Text pada captcha Salah");
+            JOptionPane.showMessageDialog(null, "Captcha did not match");
             ResetSubmit();
         } else if (!FieldPinBaru.getText().equals(FieldConfirmPin.getText())) {
             //Pin dan confirm salah
-            JOptionPane.showMessageDialog(null, "PIN Baru dan Confirm PIN Tidak sama");
+            JOptionPane.showMessageDialog(null, "New PIN and Confirm PIN did not match");
             ResetSubmit();
         } else {
             //berhasil
             JOptionPane.showMessageDialog(null, "PIN berhasil diubah");
             up.uh.active.setPin(FieldPinBaru.getText());
             ResetSubmit();
+            try {
+                FileOutputStream file = new FileOutputStream("Account.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(up.uh.Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
         }
     }//GEN-LAST:event_SubmitActionPerformed
 
@@ -386,13 +423,14 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
     private javax.swing.JPasswordField FieldPinLama;
     private javax.swing.JButton Reset;
     private javax.swing.JButton Submit;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblBack;
     private javax.swing.JLabel lblIsiCaptcha;
     private javax.swing.JPanel panelBack;
