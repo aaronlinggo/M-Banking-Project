@@ -7,21 +7,29 @@ package UI;
 
 import RoundedField.RoundJPanel;
 import ScrollBar.MyScrollBarUI;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
+import java.awt.PopupMenu;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.ScrollPaneLayout;
 import javax.swing.SwingUtilities;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 import m.banking.Merchandise;
 
 /**
@@ -56,11 +64,11 @@ public class UserMerchandise extends javax.swing.JPanel
         BackButton = new javax.swing.JLabel();
         PointUserPanel = new RoundJPanel(25);
         PointUser = new javax.swing.JLabel();
-        jPanel3 = new RoundJPanel(25);
-        jLabel4 = new javax.swing.JLabel();
-        jPanel4 = new RoundJPanel(25);
+        Total = new RoundJPanel(25);
+        TotalPoint = new javax.swing.JLabel();
+        Reset = new RoundJPanel(25);
         jLabel5 = new javax.swing.JLabel();
-        jPanel5 =  new RoundJPanel(25);
+        Submit =  new RoundJPanel(25);
         jLabel6 = new javax.swing.JLabel();
         Judul = new RoundJPanel(25);
         jLabel2 = new javax.swing.JLabel();
@@ -70,6 +78,7 @@ public class UserMerchandise extends javax.swing.JPanel
         setBackground(new java.awt.Color(250, 243, 243));
 
         Back.setBackground(new java.awt.Color(255, 255, 255));
+        Back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Back.setOpaque(false);
 
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/Back.png"))); // NOI18N
@@ -122,73 +131,89 @@ public class UserMerchandise extends javax.swing.JPanel
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setOpaque(false);
+        Total.setBackground(new java.awt.Color(255, 255, 255));
+        Total.setOpaque(false);
 
-        jLabel4.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Total : 0");
+        TotalPoint.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        TotalPoint.setForeground(new java.awt.Color(0, 0, 0));
+        TotalPoint.setText("Total : 0");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout TotalLayout = new javax.swing.GroupLayout(Total);
+        Total.setLayout(TotalLayout);
+        TotalLayout.setHorizontalGroup(
+            TotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TotalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TotalPoint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        TotalLayout.setVerticalGroup(
+            TotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TotalLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TotalPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setOpaque(false);
+        Reset.setBackground(new java.awt.Color(255, 51, 51));
+        Reset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Reset.setOpaque(false);
+        Reset.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                ResetMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Back");
+        jLabel5.setText("Reset");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout ResetLayout = new javax.swing.GroupLayout(Reset);
+        Reset.setLayout(ResetLayout);
+        ResetLayout.setHorizontalGroup(
+            ResetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ResetLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        ResetLayout.setVerticalGroup(
+            ResetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ResetLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setOpaque(false);
+        Submit.setBackground(new java.awt.Color(51, 255, 51));
+        Submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Submit.setOpaque(false);
+        Submit.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                SubmitMouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Submit");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout SubmitLayout = new javax.swing.GroupLayout(Submit);
+        Submit.setLayout(SubmitLayout);
+        SubmitLayout.setHorizontalGroup(
+            SubmitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SubmitLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        SubmitLayout.setVerticalGroup(
+            SubmitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SubmitLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -250,10 +275,10 @@ public class UserMerchandise extends javax.swing.JPanel
                         .addComponent(Judul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(PointUserPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Reset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Submit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(54, 54, 54))
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
@@ -272,11 +297,11 @@ public class UserMerchandise extends javax.swing.JPanel
                 .addGap(18, 18, 18)
                 .addComponent(scroll)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Reset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(35, 35, 35))
         );
 
@@ -366,13 +391,36 @@ public class UserMerchandise extends javax.swing.JPanel
         utf.u.getContent().revalidate();
         utf.u.getContent().repaint();
     }//GEN-LAST:event_BackButtonMouseClicked
+
+    private void ResetMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_ResetMouseClicked
+    {//GEN-HEADEREND:event_ResetMouseClicked
+        // TODO add your handling code here:
+        ShowAllMerchandiseList();
+    }//GEN-LAST:event_ResetMouseClicked
+
+    private void SubmitMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_SubmitMouseClicked
+    {//GEN-HEADEREND:event_SubmitMouseClicked
+        // TODO add your handling code here:
+        if(utf.u.active.getPoint() - total < 0)
+        {
+            JOptionPane.showMessageDialog(this,"Maaf, Point yang Anda Kurang.");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this,"Berhasil Menukar Point dengan Merchandise");
+        }
+           
+    }//GEN-LAST:event_SubmitMouseClicked
     public void pass(UserTransfer utf)
     {
         this.utf=utf;
     }
     
+    int JumlahMerchandise = 0;
+    
     public void ShowAllMerchandiseList()
     {
+        JumlahMerchandise = 0;
         ArrayList<Merchandise> myMerchandise = new ArrayList<>();
         try 
         {
@@ -408,14 +456,71 @@ public class UserMerchandise extends javax.swing.JPanel
         {
             pl.add(new ProductList());
             pl.get(i).getNamaProduct().setText(myMerchandise.get(i).getNamaMerchandise());
+            pl.get(i).getPointProductList().setText("Point : " + String.valueOf(myMerchandise.get(i).getPoint()));
             pl.get(i).setBounds(0, (95+10)*i, 450,100);
             pl.get(i).setVisible(true);
+            pl.get(i).getMinus().addMouseListener(new MouseAdapter()
+            {
+                public void mouseClicked(MouseEvent e)
+                {
+                    SetTotal(pl);
+                }
+            });
+            pl.get(i).getPlus().addMouseListener(new MouseAdapter()
+            {
+                public void mouseClicked(MouseEvent e)
+                {
+                    SetTotal(pl);
+                }
+            });
+//            pl.get(i).getMinus().addAncestorListener(new EventHandler(pl));
+//            pl.get(i).getPlus().addAncestorListener(new EventHandler(pl));
             pl.get(i).setPoint(myMerchandise.get(i).getPoint());
             IsiKonten.add(pl.get(i));
+            JumlahMerchandise++;
         }
         IsiKonten.revalidate();
         IsiKonten.repaint();
+        System.out.println("jumlah merchandise : " + JumlahMerchandise);
     }
+    
+    class EventHandler implements AncestorListener
+    {
+        ArrayList<ProductList> pl;
+        public EventHandler (ArrayList<ProductList> pl)
+        {
+            this.pl = pl;
+        }
+        @Override
+        public void ancestorAdded(AncestorEvent event) 
+        {
+            SetTotal(pl);
+        }
+
+        @Override
+        public void ancestorMoved(AncestorEvent event) 
+        {
+            SetTotal(pl);
+        }
+
+        @Override
+        public void ancestorRemoved(AncestorEvent event) 
+        {
+            SetTotal(pl);
+        }
+    }
+    
+    int total = 0;
+    public void SetTotal(ArrayList<ProductList> pl)
+    {
+        total = 0;
+        for (int i = 0; i < pl.size(); i++)
+        {
+            total += (pl.get(i).getJumlah()*pl.get(i).getPoint());
+        }
+        this.TotalPoint.setText("Total : " + total);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Back;
     private javax.swing.JLabel BackButton;
@@ -423,13 +528,13 @@ public class UserMerchandise extends javax.swing.JPanel
     private javax.swing.JPanel Judul;
     private javax.swing.JLabel PointUser;
     private javax.swing.JPanel PointUserPanel;
+    private javax.swing.JPanel Reset;
+    private javax.swing.JPanel Submit;
+    private javax.swing.JPanel Total;
+    private javax.swing.JLabel TotalPoint;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,37 +35,42 @@ public class ProductList extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new RoundJPanel(25);
         minus = new RoundJPanel(25);
-        jLabel5 = new javax.swing.JLabel();
+        kurang = new javax.swing.JLabel();
         angka = new RoundJPanel(25);
         JumlahTukar = new javax.swing.JLabel();
         plus = new RoundJPanel(25);
         tambah = new javax.swing.JLabel();
         NamaProduct = new javax.swing.JLabel();
+        PointProductList = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
         setBackground(new java.awt.Color(255, 243, 243));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(394, 80));
 
         minus.setBackground(new java.awt.Color(255, 255, 255));
         minus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         minus.setOpaque(false);
         minus.setPreferredSize(new java.awt.Dimension(50, 50));
-        minus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        minus.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 minusMouseClicked(evt);
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/blue_minus.png"))); // NOI18N
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        kurang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/blue_minus.png"))); // NOI18N
+        kurang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout minusLayout = new javax.swing.GroupLayout(minus);
         minus.setLayout(minusLayout);
@@ -73,14 +78,14 @@ public class ProductList extends javax.swing.JPanel
             minusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(minusLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
+                .addComponent(kurang)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         minusLayout.setVerticalGroup(
             minusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(minusLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                .addComponent(kurang, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -109,8 +114,10 @@ public class ProductList extends javax.swing.JPanel
         plus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         plus.setOpaque(false);
         plus.setPreferredSize(new java.awt.Dimension(50, 50));
-        plus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        plus.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 plusMouseClicked(evt);
             }
         });
@@ -139,16 +146,22 @@ public class ProductList extends javax.swing.JPanel
         NamaProduct.setForeground(new java.awt.Color(0, 0, 0));
         NamaProduct.setText("Piring Cantik");
 
+        PointProductList.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        PointProductList.setForeground(new java.awt.Color(0, 0, 0));
+        PointProductList.setText("point : 0");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(NamaProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NamaProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                    .addComponent(PointProductList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(minus, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
                 .addComponent(angka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(plus, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,12 +170,17 @@ public class ProductList extends javax.swing.JPanel
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(minus, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .addComponent(plus, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .addComponent(NamaProduct, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(angka, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(minus, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(plus, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(angka, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(NamaProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PointProductList)))
                 .addContainerGap())
         );
 
@@ -170,7 +188,7 @@ public class ProductList extends javax.swing.JPanel
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,23 +199,27 @@ public class ProductList extends javax.swing.JPanel
     private void plusMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_plusMouseClicked
     {//GEN-HEADEREND:event_plusMouseClicked
         // TODO add your handling code here:
-        if(jumlah+1 <=9)
+        if(jumlah + 1 <=9)
         {
             jumlah++;
         }
         JumlahTukar.setText(jumlah +"");
+        a++;
+        System.out.println(a);
     }//GEN-LAST:event_plusMouseClicked
-    
+
     private void minusMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_minusMouseClicked
     {//GEN-HEADEREND:event_minusMouseClicked
         // TODO add your handling code here:
-        if(jumlah-1 >= 0)
+        if(jumlah - 1 >= 0)
         {
             jumlah--;
         }
         JumlahTukar.setText(jumlah +"");
+        a--;
+        System.out.println(a);
     }//GEN-LAST:event_minusMouseClicked
-
+    int a = 0;    
     public int getJumlah()
     {
         return jumlah;
@@ -250,12 +272,12 @@ public class ProductList extends javax.swing.JPanel
 
     public JLabel getjLabel5()
     {
-        return jLabel5;
+        return kurang;
     }
 
     public void setjLabel5(JLabel jLabel5)
     {
-        this.jLabel5 = jLabel5;
+        this.kurang = jLabel5;
     }
 
     public JLabel getNamaProduct()
@@ -349,16 +371,37 @@ public class ProductList extends javax.swing.JPanel
     {
         this.point = point;
     }
+
+    public int getA()
+    {
+        return a;
+    }
+
+    public void setA(int a)
+    {
+        this.a = a;
+    }
+
+    public JLabel getPointProductList()
+    {
+        return PointProductList;
+    }
+
+    public void setPointProductList(JLabel PointProductList)
+    {
+        this.PointProductList = PointProductList;
+    }
     
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JumlahTukar;
     private javax.swing.JLabel NamaProduct;
+    private javax.swing.JLabel PointProductList;
     private javax.swing.JPanel angka;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel kurang;
     private javax.swing.JPanel minus;
     private javax.swing.JPanel plus;
     private javax.swing.JLabel tambah;
