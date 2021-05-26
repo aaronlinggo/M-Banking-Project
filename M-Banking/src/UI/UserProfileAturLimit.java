@@ -20,7 +20,6 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
     
     UserProfile up;
     
-    int maxi = 7000000;
     
     public UserProfileAturLimit(UserProfile up) {
         this.up = up;
@@ -80,6 +79,8 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
         jSlider1.setBackground(new java.awt.Color(255, 255, 255));
         jSlider1.setForeground(new java.awt.Color(60, 63, 65));
         jSlider1.setMajorTickSpacing(1000000);
+        jSlider1.setMaximum(2000000);
+        jSlider1.setMinimum(1000000);
         jSlider1.setMinorTickSpacing(1000000);
         jSlider1.setPaintTicks(true);
         jSlider1.setSnapToTicks(true);
@@ -172,7 +173,7 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Atur Limit");
+        jLabel2.setText("Set Limit");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -284,7 +285,7 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
 
     private void SubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Limit yang baru adalah : " + jSlider1.getValue());
+        JOptionPane.showMessageDialog(null, "The new limit is : " + jSlider1.getValue());
         up.uh.active.setAturLimit(jSlider1.getValue());
         this.lblCurrentLimit.setText("CURRENT LIMIT : " + up.uh.active.getAturLimit());
         try {

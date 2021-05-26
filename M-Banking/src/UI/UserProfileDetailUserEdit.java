@@ -272,15 +272,15 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(!isNumeric(FieldNoHp.getText()) || FieldNoHp.getText().length()!=12) {
             //No Hp harus numerik dan min 12 digit
-            JOptionPane.showMessageDialog(null, "No Hp harus numerik dan minimum 12 digit");
+            JOptionPane.showMessageDialog(null, "Phonenumber must 12 digit and character from Phone number must number");
             isiField();
         } else if (FieldNama.getText().equals(du.up.uh.active.getNama()) && FieldAlamat.getText().equals(du.up.uh.active.getAlamat()) && FieldNoHp.getText().equals(du.up.uh.active.getNomorHP())) {           
             //Data masih sama
-            JOptionPane.showMessageDialog(null, "Data tidak ada yang diubah");
+            JOptionPane.showMessageDialog(null, "The data did not change");
             isiField();
         } else {
             //berhasil
-            JOptionPane.showMessageDialog(null, "Data berhasil diubah");
+            JOptionPane.showMessageDialog(null, "The data has changed");
             du.up.uh.active.setNama(FieldNama.getText());
             du.up.uh.active.setAlamat(FieldAlamat.getText());
             du.up.uh.active.setNomorHP(FieldNoHp.getText());

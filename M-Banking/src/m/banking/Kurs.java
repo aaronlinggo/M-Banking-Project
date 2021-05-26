@@ -1,6 +1,8 @@
 package m.banking;
 
-public class Kurs {
+import java.io.Serializable;
+
+public class Kurs implements Serializable {
     protected String nama;
     protected int kursBeli,kursBeliLama,kursJual;
     protected double persen;

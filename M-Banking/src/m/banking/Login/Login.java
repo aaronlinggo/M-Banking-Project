@@ -22,6 +22,9 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import m.banking.DateBankRut;
+import m.banking.Dollar;
+import m.banking.Euro;
+import m.banking.Kurs;
 import m.banking.MBanking;
 import m.banking.Member;
 
@@ -36,9 +39,12 @@ public class Login extends javax.swing.JFrame {
     public ArrayList<Member> requestMember = new ArrayList<Member>();
     public ArrayList<Member> Account = new ArrayList<Member>();
     //Date d2 = new Date(2021, 1, 1);
+    int dollar = 14230;
+    int euro = 15618;
     public DateBankRut d1 = null;
     String noRek = "";
     public Login() {
+        
         String filename = "date.ser";
 
 //        try
@@ -47,6 +53,28 @@ public class Login extends javax.swing.JFrame {
 //            ObjectOutputStream out = new ObjectOutputStream(file);
 //
 //            out.writeObject(d1);
+//
+//            out.close();
+//            file.close();
+//
+//            System.out.println("Object has been serialized");
+//
+//        }
+//
+//        catch(IOException ex)
+//        {
+//            System.out.println("IOException is caught");
+//        }
+
+        ArrayList<Kurs> listKurs = new ArrayList<Kurs>();
+//        //listKurs.add(new Dollar(dollar));
+//        //listKurs.add(new Euro(euro));
+//        try
+//        {
+//            FileOutputStream file = new FileOutputStream("Kurs.ser");
+//            ObjectOutputStream out = new ObjectOutputStream(file);
+//
+//            out.writeObject(listKurs);
 //
 //            out.close();
 //            file.close();
@@ -127,6 +155,26 @@ public class Login extends javax.swing.JFrame {
         catch(ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException is caught");
         }
+      
+        
+        try {
+            FileInputStream file = new FileInputStream("Kurs.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            listKurs = (ArrayList<Kurs>) in.readObject();
+
+            in.close();
+            file.close();
+            System.out.println("Dollar : " + listKurs.get(0).getKursBeli());
+            System.out.println("Euro : " + listKurs.get(1).getKursBeli());
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        
         System.out.println(requestUpgrade.size());
         System.out.println("Size rm " + requestMember.size());
         System.out.println("Size A " + Account.size());

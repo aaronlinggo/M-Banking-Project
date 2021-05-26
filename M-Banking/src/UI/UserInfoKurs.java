@@ -6,7 +6,12 @@
 package UI;
 
 import RoundedField.RoundJPanel;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import m.banking.Kurs;
 
 /**
  *
@@ -18,11 +23,33 @@ public class UserInfoKurs extends javax.swing.JPanel
     /**
      * Creates new form UserMInfo
      */
+    
+    ArrayList<Kurs> listKurs = new ArrayList<Kurs>();
     UserMInfo umi;
     public UserInfoKurs()
     {
+        try {
+            FileInputStream file = new FileInputStream("Kurs.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            listKurs = (ArrayList<Kurs>) in.readObject();
+
+            in.close();
+            file.close();
+            System.out.println("Dollar : " + listKurs.get(0).getKursBeli());
+            System.out.println("Euro : " + listKurs.get(1).getKursBeli());
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
         initComponents();
+        
     }
+    
+    
     
     public void passUserMInfo(UserMInfo umi)
     {

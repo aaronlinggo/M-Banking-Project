@@ -84,11 +84,11 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(103, 91, 232));
-        jLabel2.setText("PIN LAMA");
+        jLabel2.setText("OLD PIN");
 
         jLabel3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(87, 202, 247));
-        jLabel3.setText("PIN BARU");
+        jLabel3.setText("NEW PIN");
 
         FieldPinLama.setBackground(new java.awt.Color(255, 255, 255));
         FieldPinLama.setForeground(new java.awt.Color(0, 0, 0));
@@ -348,19 +348,19 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(!up.uh.active.getPin().equals(FieldPinLama.getText())) {
             //Pin Lama tidak sama dengan yang lama
-            JOptionPane.showMessageDialog(null, "PIN tidak sama dengan PIN yang lama");
+            JOptionPane.showMessageDialog(null, "Old Pin did not match");
             ResetSubmit();
         } else if(!isNumeric(FieldPinBaru.getText()) || FieldPinBaru.getText().length()!=6) {
             //Pin Baru tidak numerik dan Pin Baru tdk 6 digit
-            JOptionPane.showMessageDialog(null, "Format PIN baru tidak 6 digit atau ada yang mengandung karakter");
+            JOptionPane.showMessageDialog(null, "PIN must 6 digit and character from PIN must number");
             ResetSubmit();
         } else if (!textCaptcha.equals(FieldCaptcha.getText())) {
             //Captcha salah
-            JOptionPane.showMessageDialog(null, "Text pada captcha Salah");
+            JOptionPane.showMessageDialog(null, "Captcha did not match");
             ResetSubmit();
         } else if (!FieldPinBaru.getText().equals(FieldConfirmPin.getText())) {
             //Pin dan confirm salah
-            JOptionPane.showMessageDialog(null, "PIN Baru dan Confirm PIN Tidak sama");
+            JOptionPane.showMessageDialog(null, "New PIN and Confirm PIN did not match");
             ResetSubmit();
         } else {
             //berhasil
