@@ -766,7 +766,9 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                                                                             System.out.println("- " + temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000));
                                                                             String tempTgl = temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000);
                                                                             //System.out.println(temp);
-                                                                            if (l.d1.getD1().getYear()-18 >= ((temp.getYear()-100)+2000)){
+                                                                            System.out.println((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)));
+                                                                            if ((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)) >= 18){
+                                                                                System.out.println((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)));
                                                                                 System.out.println(l.d1.getD1().getYear()-18);
                                                                                 System.out.println(((temp.getYear()-100)+2000));
                                                                                 if (silverBtn.isSelected()){
