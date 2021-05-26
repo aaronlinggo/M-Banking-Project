@@ -546,6 +546,8 @@ public class UserVirtualAccount extends javax.swing.JPanel {
                     if (ut.utf.u.active.getRupiah()-ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan() >= 50000){
                         ut.utf.u.active.setRupiah(ut.utf.u.active.getRupiah()-ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan());
                         JOptionPane.showMessageDialog(this, "Success Paid " + priceWithoutDecimal(ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan()) + " - Virtual Account " + ut.utf.u.active.getMyTagihan().get(idx).getVirtualAccount());
+                        //inbox
+                        ut.utf.u.active.getInbox().add("Berhasil Membayar Tagihan "+ut.utf.u.active.getMyTagihan().get(idx).getNamaTagihan() + " Sebesar Rp."+ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan());
                         ArrayList<Log> logAdmin = new ArrayList<>();
                         try {
                             FileInputStream file = new FileInputStream("logAdmin.ser");
