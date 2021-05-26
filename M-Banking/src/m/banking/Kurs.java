@@ -12,8 +12,7 @@ public class Kurs {
         this.kursBeli = kursBeliAwal;
         kursJual = kursBeli + 30;
         kursBeliLama = kursBeli;
-        persen = (kursBeli-kursBeliLama)*100/(kursBeliLama*1.0);
-        persen = Math.round(persen*100.0)/100.0;
+        persen = 0;
     }
 
     public String getNama() {
@@ -68,6 +67,7 @@ public class Kurs {
     public void gantiHari() {
         kursBeliLama = kursBeli;
         kursBeli = (int) (Math.random()*2000) + min;
+        kursJual = kursBeli + 30;
         persen = (kursBeli-kursBeliLama)*100/(kursBeliLama*1.0);
         persen = Math.round(persen*100.0)/100.0;
     }
