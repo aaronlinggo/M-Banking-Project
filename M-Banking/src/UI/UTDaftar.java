@@ -326,7 +326,7 @@ public class UTDaftar extends javax.swing.JPanel {
         if(!jTextField1.getText().equals("") && !jTextField1.getText().equals("Nomor Rekening 1")){
             fill1=true;
             if(isNumeric(jTextField1.getText())){
-                int cek1 = Integer.parseInt(jTextField1.getText());
+                String cek1 = jTextField1.getText();
                 boolean exist = false;
                 for(Member cari: Account){
                     if(cari.getNoRekening().equals(jTextField1.getText())){
@@ -336,8 +336,8 @@ public class UTDaftar extends javax.swing.JPanel {
                 }
                 if(exist){
                     boolean nemu = false;
-                    for(Integer i : utf.u.active.getDaftarrek()){
-                        if(cek1== i){
+                    for(String i : utf.u.active.getDaftarrek()){
+                        if(cek1.equals(i)){
                             nemu = true;
                         }
                     }
@@ -351,6 +351,7 @@ public class UTDaftar extends javax.swing.JPanel {
                 }
                 else{       //ga nemu masal
                     System.out.println("Ga nemu masal");
+                    msg +="\nNomor Rekening 1 Tidak Ditemukan!";
                 }
             }
             else{
@@ -360,19 +361,32 @@ public class UTDaftar extends javax.swing.JPanel {
         if(!jTextField2.getText().equals("") && !jTextField2.getText().equals("Nomor Rekening 2")){
             fill2=true;
             if(isNumeric(jTextField2.getText())){
-                int cek2 = Integer.parseInt(jTextField2.getText());
-                boolean nemu = false;
-                for(Integer i : utf.u.active.getDaftarrek()){
-                    if(cek2== i){
-                        nemu = true;
+                String cek2 = jTextField2.getText();
+                boolean exist = false;
+                for(Member cari: Account){
+                    if(cari.getNoRekening().equals(jTextField2.getText())){
+                        exist = true;
+                        System.out.println("ada di list");
                     }
                 }
-                if(!nemu){
-                    utf.u.active.getDaftarrek().add(cek2);
-                    msg+="\nNomor Rekening 2 Berhasil Terdaftar";
+                if(exist){
+                    boolean nemu = false;
+                    for(String i : utf.u.active.getDaftarrek()){
+                        if(cek2.equals(i)){
+                            nemu = true;
+                        }
+                    }
+                    if(!nemu){
+                        utf.u.active.getDaftarrek().add(cek2);
+                        msg+="\nNomor Rekening 2 Berhasil Terdaftar";
+                    }
+                    else{
+                        msg+="\nNomor Rekening 2 Sudah Terdaftar";      //berati kembar
+                    }
                 }
-                else{
-                    msg+="\nNomor Rekening 2 Sudah Terdaftar";//berati kembar
+                else{       //ga nemu masal
+                    System.out.println("Ga nemu masal");
+                    msg +="\nNomor Rekening 2 Tidak Ditemukan!";
                 }
             }
             else{
@@ -382,19 +396,33 @@ public class UTDaftar extends javax.swing.JPanel {
         if(!jTextField3.getText().equals("")&&!jTextField3.getText().equals("Nomor Rekening 3")){
             fill3=true;
             if(isNumeric(jTextField3.getText())){
-                int cek3 = Integer.parseInt(jTextField3.getText());
-                boolean nemu = false;
-                for(Integer i : utf.u.active.getDaftarrek()){
-                    if(cek3== i){
-                        nemu = true;
+                String cek3 = jTextField3.getText();
+                boolean exist = false;
+                for(Member cari: Account){
+                    if(cari.getNoRekening().equals(jTextField3.getText())){
+                        exist = true;
+                        System.out.println("ada di list");
                     }
                 }
-                if(!nemu){
-                    utf.u.active.getDaftarrek().add(cek3);
-                    msg+="\nNomor Rekening 3 Berhasil Terdaftar";
+                if(exist){
+                    boolean nemu = false;
+                    for(String i : utf.u.active.getDaftarrek()){
+                        if(cek3.equals(i)){
+                            nemu = true;
+                        }
+                    }
+                    if(!nemu){
+                        utf.u.active.getDaftarrek().add(cek3);
+                        msg+="\nNomor Rekening 3 Berhasil Terdaftar";
+                    }
+                    else{
+                        msg+="\nNomor Rekening 3 Sudah Terdaftar";      //berati kembar
+                        System.out.println("Kembar");
+                    }
                 }
-                else{
-                    msg+="\nNomor Rekening 3 Sudah Terdaftar";//berati kembar
+                else{       //ga nemu masal
+                    System.out.println("Ga nemu masal");
+                    msg +="\nNomor Rekening 3 Tidak Ditemukan!";
                 }
             }
             else{
@@ -405,6 +433,9 @@ public class UTDaftar extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Tidak Ada yang mau di Daftarkan");
         }
         else JOptionPane.showMessageDialog(this, "Status : "+ msg);
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
     }//GEN-LAST:event_submitbtnMouseClicked
 
     private void cancelbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelbtnMouseClicked

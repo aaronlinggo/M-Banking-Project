@@ -26,7 +26,7 @@ public abstract class Member implements Serializable{
     protected String tanggalLahir;
     protected String gender;
     protected ArrayList<Tagihan> myTagihan;
-    protected ArrayList<Integer> daftarrek;
+    protected ArrayList<String> daftarrek;
     protected int upgrade;
     protected boolean cekUpgrade;
     
@@ -100,11 +100,11 @@ public abstract class Member implements Serializable{
         this.myTagihan = myTagihan;
     }
 
-    public ArrayList<Integer> getDaftarrek() {
+    public ArrayList<String> getDaftarrek() {
         return daftarrek;
     }
 
-    public void setDaftarrek(ArrayList<Integer> daftarrek) {
+    public void setDaftarrek(ArrayList<String> daftarrek) {
         this.daftarrek = daftarrek;
     }
     
