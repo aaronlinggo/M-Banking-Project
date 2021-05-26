@@ -8,8 +8,10 @@ package UI;
 import RoundedField.RoundJPanel;
 import java.awt.Color;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import m.banking.Login.Login;
@@ -320,7 +322,6 @@ public class UTDaftar extends javax.swing.JPanel {
             System.out.println("ClassNotFoundException is caught");
         }
         String msg="";
-        boolean slot1=false,slot2=false,slot3=false;// false =  ga kembar
         boolean fill1=false,fill2=false,fill3=false;// cek terisi ga
         if(!jTextField1.getText().equals("") && !jTextField1.getText().equals("Nomor Rekening 1")){
             fill1=true;
@@ -432,9 +433,21 @@ public class UTDaftar extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Tidak Ada yang mau di Daftarkan");
         }
         else JOptionPane.showMessageDialog(this, "Status : "+ msg);
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
+        jTextField1.setText("Nomor Rekening 1");
+        jTextField2.setText("Nomor Rekening 2");
+        jTextField3.setText("Nomor Rekening 3");
+        
+        try {
+            FileOutputStream file = new FileOutputStream("Account.ser");
+            ObjectOutputStream out = new ObjectOutputStream(file);
+            out.writeObject(utf.u.Account);
+            out.close();
+            file.close();
+            System.out.println("Object has been serialized");
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
     }//GEN-LAST:event_submitbtnMouseClicked
 
     private void cancelbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelbtnMouseClicked
