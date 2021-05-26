@@ -766,49 +766,58 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                                                                             System.out.println("- " + temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000));
                                                                             String tempTgl = temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000);
                                                                             //System.out.println(temp);
-                                                                            if (silverBtn.isSelected()){
-                                                                                if (maleBtn.isSelected()){
-                                                                                    l.requestMember.add(new Silver((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                            System.out.println((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)));
+                                                                            if ((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)) >= 18){
+                                                                                System.out.println((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)));
+                                                                                System.out.println(l.d1.getD1().getYear()-18);
+                                                                                System.out.println(((temp.getYear()-100)+2000));
+                                                                                if (silverBtn.isSelected()){
+                                                                                    if (maleBtn.isSelected()){
+                                                                                        l.requestMember.add(new Silver((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                                    }
+                                                                                    else if (femaleBtn.isSelected()){
+                                                                                        l.requestMember.add(new Silver((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
+                                                                                    }
                                                                                 }
-                                                                                else if (femaleBtn.isSelected()){
-                                                                                    l.requestMember.add(new Silver((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
+                                                                                else if (goldBtn.isSelected()){
+                                                                                    if (maleBtn.isSelected()){
+                                                                                        l.requestMember.add(new Gold((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                                    }
+                                                                                    else if (femaleBtn.isSelected()){
+                                                                                        l.requestMember.add(new Gold((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
+                                                                                    }
                                                                                 }
-                                                                            }
-                                                                            else if (goldBtn.isSelected()){
-                                                                                if (maleBtn.isSelected()){
-                                                                                    l.requestMember.add(new Gold((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                                else if (platinumBtn.isSelected()){
+                                                                                    if (maleBtn.isSelected()){
+                                                                                        l.requestMember.add(new Platinum((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                                    }
+                                                                                    else if (femaleBtn.isSelected()){
+                                                                                        l.requestMember.add(new Platinum((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
+                                                                                    }
                                                                                 }
-                                                                                else if (femaleBtn.isSelected()){
-                                                                                    l.requestMember.add(new Gold((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
-                                                                                }
-                                                                            }
-                                                                            else if (platinumBtn.isSelected()){
-                                                                                if (maleBtn.isSelected()){
-                                                                                    l.requestMember.add(new Platinum((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
-                                                                                }
-                                                                                else if (femaleBtn.isSelected()){
-                                                                                    l.requestMember.add(new Platinum((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
-                                                                                }
-                                                                            }
-                                                                            String filename = "requestMember.ser";
-                                                                            try {
-                                                                                FileOutputStream file = new FileOutputStream(filename);
-                                                                                ObjectOutputStream out = new ObjectOutputStream(file);
+                                                                                String filename = "requestMember.ser";
+                                                                                try {
+                                                                                    FileOutputStream file = new FileOutputStream(filename);
+                                                                                    ObjectOutputStream out = new ObjectOutputStream(file);
 
-                                                                                out.writeObject(l.requestMember);
+                                                                                    out.writeObject(l.requestMember);
 
-                                                                                out.close();
-                                                                                file.close();
+                                                                                    out.close();
+                                                                                    file.close();
 
-                                                                                System.out.println("Object has been serialized");
+                                                                                    System.out.println("Object has been serialized");
 
+                                                                                }
+                                                                                catch(IOException ex) {
+                                                                                    System.out.println("IOException is caught");
+                                                                                }
+                                                                                JOptionPane.showMessageDialog(this, "Berhasil membuat member.. tunggu konfirmasi dari admin");
+                                                                                this.setVisible(false);
+                                                                                l.setVisible(true);
                                                                             }
-                                                                            catch(IOException ex) {
-                                                                                System.out.println("IOException is caught");
+                                                                            else {
+                                                                                JOptionPane.showMessageDialog(this, "Umur minimal 18 tahun");
                                                                             }
-                                                                            JOptionPane.showMessageDialog(this, "Berhasil membuat member.. tunggu konfirmasi dari admin");
-                                                                            this.setVisible(false);
-                                                                            l.setVisible(true);
                                                                         }
                                                                         else {
                                                                             JOptionPane.showMessageDialog(this, "Confirm Pin tidak sesuai");
