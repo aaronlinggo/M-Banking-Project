@@ -272,7 +272,7 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(!isNumeric(FieldNoHp.getText()) || FieldNoHp.getText().length()!=12) {
             //No Hp harus numerik dan min 12 digit
-            JOptionPane.showMessageDialog(null, "Phonenumber must 12 digit and character from Phone number must number");
+            JOptionPane.showMessageDialog(null, "Phone number must 12 digit and character from Phone number must number");
             isiField();
         } else if (FieldNama.getText().equals(du.up.uh.active.getNama()) && FieldAlamat.getText().equals(du.up.uh.active.getAlamat()) && FieldNoHp.getText().equals(du.up.uh.active.getNomorHP())) {           
             //Data masih sama
