@@ -304,7 +304,6 @@ public class UTDaftar extends javax.swing.JPanel {
     private void submitbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitbtnMouseClicked
         // TODO add your handling code here:
         ArrayList<Member> Account = new ArrayList<>();
-        ArrayList<String> temp = new ArrayList<>();
         try {
             FileInputStream file = new FileInputStream("Account.ser");
             ObjectInputStream in = new ObjectInputStream(file);
