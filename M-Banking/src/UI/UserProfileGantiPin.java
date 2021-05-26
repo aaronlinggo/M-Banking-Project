@@ -8,6 +8,9 @@ package UI;
 import Image.ImagePanel;
 import RoundedField.RoundJPanel;
 import java.awt.color.ICC_Profile;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 import m.banking.Captcha;
 
@@ -364,6 +367,21 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "PIN berhasil diubah");
             up.uh.active.setPin(FieldPinBaru.getText());
             ResetSubmit();
+            try {
+                FileOutputStream file = new FileOutputStream("Account.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(up.uh.Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
         }
     }//GEN-LAST:event_SubmitActionPerformed
 

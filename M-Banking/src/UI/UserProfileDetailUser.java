@@ -20,6 +20,10 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
     public UserProfileDetailUser(UserProfile up) {
         initComponents();
         this.up = up;
+        isiData();
+    }
+    
+    public void isiData() {
         lblNama.setText(up.uh.active.getNama());
         lblAlamat.setText(up.uh.active.getAlamat());
         lblGender.setText(up.uh.active.getGender());
@@ -291,6 +295,7 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
         up.uh.getContent().add(eu);
         up.uh.getContent().revalidate();
         up.uh.getContent().repaint();
+        
     }//GEN-LAST:event_lblEditMouseClicked
 
 

@@ -6,6 +6,10 @@
 package UI;
 
 import RoundedField.RoundJPanel;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,15 +24,27 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
     public UserProfileDetailUserEdit(UserProfileDetailUser du) {
         this.du = du;
         initComponents();
-        FieldNama.setText(du.up.uh.active.getNama());
-        FieldAlamat.setText(du.up.uh.active.getAlamat());
-        FieldTanggalLahir.setText(du.up.uh.active.getTanggalLahir());
-        //FieldGender.setText(du.up.uh.active.getGender());
-        FieldNoHp.setText(du.up.uh.active.getNomorHP());
+        isiField();
     }
+    
     
     public void passData(UserProfileDetailUser du) {
         this.du = du;
+    }
+    
+    public void isiField() {
+        FieldNama.setText(du.up.uh.active.getNama());
+        FieldAlamat.setText(du.up.uh.active.getAlamat());
+        FieldNoHp.setText(du.up.uh.active.getNomorHP());
+    }
+    
+    public boolean isNumeric(String str) {
+        for (char c : str.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -46,17 +62,10 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         FieldNama = new javax.swing.JTextField();
         FieldAlamat = new javax.swing.JTextField();
-        FieldTanggalLahir = new javax.swing.JTextField();
         FieldNoHp = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        MaleRadioBtn = new javax.swing.JRadioButton();
-        FemaleRadioBtn = new javax.swing.JRadioButton();
         btnCancel = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
         jPanel4 = new RoundJPanel(35);
@@ -79,14 +88,6 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(87, 202, 247));
         jLabel8.setText("ADDRESS");
 
-        jLabel9.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(87, 202, 247));
-        jLabel9.setText("BIRTH DATE");
-
-        jLabel10.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(87, 202, 247));
-        jLabel10.setText("GENDER");
-
         jLabel11.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(87, 202, 247));
         jLabel11.setText("PHONE NUMBER");
@@ -102,14 +103,6 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
             }
         });
 
-        FieldTanggalLahir.setBackground(new java.awt.Color(255, 255, 255));
-        FieldTanggalLahir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        FieldTanggalLahir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldTanggalLahirActionPerformed(evt);
-            }
-        });
-
         FieldNoHp.setBackground(new java.awt.Color(255, 255, 255));
         FieldNoHp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         FieldNoHp.addActionListener(new java.awt.event.ActionListener() {
@@ -118,36 +111,6 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/calendarSmall.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(10, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addContainerGap())
-        );
-
-        MaleRadioBtn.setBackground(new java.awt.Color(255, 255, 255));
-        MaleRadioBtn.setForeground(new java.awt.Color(0, 0, 0));
-        MaleRadioBtn.setText("Male");
-
-        FemaleRadioBtn.setBackground(new java.awt.Color(255, 255, 255));
-        FemaleRadioBtn.setForeground(new java.awt.Color(0, 0, 0));
-        FemaleRadioBtn.setText("Female");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -155,23 +118,13 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(MaleRadioBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(FemaleRadioBtn))
                     .addComponent(jLabel11)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(FieldTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(FieldNoHp, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(FieldNoHp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(FieldNama, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(FieldAlamat, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(181, Short.MAX_VALUE))
@@ -191,23 +144,11 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FieldAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(FieldTanggalLahir))
-                .addGap(12, 12, 12)
-                .addComponent(jLabel10)
-                .addGap(7, 7, 7)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MaleRadioBtn)
-                    .addComponent(FemaleRadioBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(FieldNoHp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         btnCancel.setBackground(new java.awt.Color(103, 91, 232));
@@ -227,6 +168,11 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
         btnSubmit.setBackground(new java.awt.Color(0, 255, 255));
         btnSubmit.setText("Submit");
         btnSubmit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSubmit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSubmitMouseClicked(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setOpaque(false);
@@ -287,7 +233,7 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
                     .addComponent(btnSubmit))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -306,17 +252,9 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void FieldTanggalLahirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldTanggalLahirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FieldTanggalLahirActionPerformed
-
     private void FieldNoHpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldNoHpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldNoHpActionPerformed
-
-    private void FieldAlamatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldAlamatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FieldAlamatActionPerformed
 
     private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
         // TODO add your handling code here:
@@ -326,27 +264,64 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
         du.up.uh.getContent().repaint();
     }//GEN-LAST:event_btnCancelMouseClicked
 
+    private void FieldAlamatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldAlamatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FieldAlamatActionPerformed
+
+    private void btnSubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseClicked
+        // TODO add your handling code here:
+        if(!isNumeric(FieldNoHp.getText()) || FieldNoHp.getText().length()!=12) {
+            //No Hp harus numerik dan min 12 digit
+            JOptionPane.showMessageDialog(null, "No Hp harus numerik dan minimum 12 digit");
+            isiField();
+        } else if (FieldNama.getText().equals(du.up.uh.active.getNama()) && FieldAlamat.getText().equals(du.up.uh.active.getAlamat()) && FieldNoHp.getText().equals(du.up.uh.active.getNomorHP())) {           
+            //Data masih sama
+            JOptionPane.showMessageDialog(null, "Data tidak ada yang diubah");
+            isiField();
+        } else {
+            //berhasil
+            JOptionPane.showMessageDialog(null, "Data berhasil diubah");
+            du.up.uh.active.setNama(FieldNama.getText());
+            du.up.uh.active.setAlamat(FieldAlamat.getText());
+            du.up.uh.active.setNomorHP(FieldNoHp.getText());
+            try {
+                FileOutputStream file = new FileOutputStream("Account.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(du.up.uh.Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            isiField();
+        }   
+        du.up.uh.getContent().removeAll();
+        du.isiData();
+        du.up.uh.getContent().add(du);
+        du.up.uh.getContent().revalidate();
+        du.up.uh.getContent().repaint();
+    }//GEN-LAST:event_btnSubmitMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton FemaleRadioBtn;
     private javax.swing.JTextField FieldAlamat;
     private javax.swing.JTextField FieldNama;
     private javax.swing.JTextField FieldNoHp;
-    private javax.swing.JTextField FieldTanggalLahir;
-    private javax.swing.JRadioButton MaleRadioBtn;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSubmit;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
