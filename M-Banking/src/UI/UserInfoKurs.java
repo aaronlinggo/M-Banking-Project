@@ -6,6 +6,8 @@
 package UI;
 
 import RoundedField.RoundJPanel;
+import RoundedField.RoundJTextField;
+import java.awt.Color;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -26,8 +28,7 @@ public class UserInfoKurs extends javax.swing.JPanel
     
     ArrayList<Kurs> listKurs = new ArrayList<Kurs>();
     UserMInfo umi;
-    public UserInfoKurs()
-    {
+    public UserInfoKurs() {
         try {
             FileInputStream file = new FileInputStream("Kurs.ser");
             ObjectInputStream in = new ObjectInputStream(file);
@@ -45,8 +46,33 @@ public class UserInfoKurs extends javax.swing.JPanel
         catch(ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException is caught");
         }
-        initComponents();
         
+        initComponents();
+        isiKomponen();
+        
+    }
+    
+    public void isiKomponen() {
+        Color green = new Color(0,102,51);
+        Color red = new Color(153,0,0);
+        lblKursBeliUSD.setText(listKurs.get(0).getKursBeli() + "");
+        lblKursJualUSD.setText(listKurs.get(0).getKursJual() + "");
+        lblPersenUSD.setText("+" + listKurs.get(0).getPersen() + "%");
+        if(listKurs.get(0).getPersen() >= 0) {
+            lblPersenUSD.setForeground(green);
+        } 
+        else {
+            lblPersenUSD.setForeground(red);
+        }
+        lblKursBeliEuro.setText(listKurs.get(1).getKursBeli() + "");
+        lblKursJualEuro.setText(listKurs.get(1).getKursJual() + "");
+        lblPersenEuro.setText("+" + listKurs.get(1).getPersen()+"%");
+        if(listKurs.get(1).getPersen() >= 0) {
+            lblPersenEuro.setForeground(green);
+        } 
+        else {
+            lblPersenEuro.setForeground(red);
+        }
     }
     
     
@@ -62,32 +88,63 @@ public class UserInfoKurs extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         Back = new RoundJPanel(25);
         jLabel1 = new javax.swing.JLabel();
         Judul = new RoundJPanel(25);
         jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new RoundJPanel(25);
+        jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new RoundJPanel(25);
+        jLabel5 = new javax.swing.JLabel();
+        lblKursBeliUSD = new javax.swing.JLabel();
+        jPanel3 = new RoundJPanel(25);
+        jLabel4 = new javax.swing.JLabel();
+        lblKursJualUSD = new javax.swing.JLabel();
+        jPanel4 = new RoundJPanel(25);
+        jLabel16 = new javax.swing.JLabel();
+        lblPersenEuro = new javax.swing.JLabel();
+        jPanel5 = new RoundJPanel(25);
+        FieldAmountUSD = new RoundJTextField(25);
+        jLabel14 = new javax.swing.JLabel();
+        btnBuyUSD = new RoundJPanel(25);
+        jLabel18 = new javax.swing.JLabel();
+        btnSellUSD = new RoundJPanel(25);
+        jLabel19 = new javax.swing.JLabel();
+        jPanel9 = new RoundJPanel(25);
+        jLabel9 = new javax.swing.JLabel();
+        lblKursJualEuro = new javax.swing.JLabel();
+        jPanel8 = new RoundJPanel(25);
+        jLabel8 = new javax.swing.JLabel();
+        jPanel10 = new RoundJPanel(25);
+        jLabel11 = new javax.swing.JLabel();
+        lblKursBeliEuro = new javax.swing.JLabel();
+        jPanel11 = new RoundJPanel(25);
+        jLabel13 = new javax.swing.JLabel();
+        lblPersenUSD = new javax.swing.JLabel();
+        jPanel12 = new RoundJPanel(25);
+        FieldAmountEuro = new RoundJTextField(25);
+        jLabel20 = new javax.swing.JLabel();
+        btnSellEuro = new RoundJPanel(25);
+        jLabel22 = new javax.swing.JLabel();
+        btnBuyEuro = new RoundJPanel(25);
+        jLabel21 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(250, 243, 243));
 
         Back.setBackground(new java.awt.Color(255, 255, 255));
         Back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Back.setOpaque(false);
-        Back.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        Back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackMouseClicked(evt);
             }
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/Back.png"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
         });
@@ -122,9 +179,8 @@ public class UserInfoKurs extends javax.swing.JPanel
         JudulLayout.setHorizontalGroup(
             JudulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JudulLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         JudulLayout.setVerticalGroup(
             JudulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,16 +190,449 @@ public class UserInfoKurs extends javax.swing.JPanel
                 .addContainerGap())
         );
 
+        jPanel1.setBackground(new java.awt.Color(103, 91, 232));
+        jPanel1.setOpaque(false);
+
+        jLabel3.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("$ USD");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+        );
+
+        jPanel2.setBackground(new java.awt.Color(87, 202, 247));
+        jPanel2.setOpaque(false);
+
+        jLabel5.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("BUY CURRENCY");
+
+        lblKursBeliUSD.setForeground(new java.awt.Color(0, 0, 0));
+        lblKursBeliUSD.setText("14000");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(lblKursBeliUSD))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel5)))
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(lblKursBeliUSD)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(87, 202, 247));
+        jPanel3.setOpaque(false);
+
+        jLabel4.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("SELL CURRENCY");
+
+        lblKursJualUSD.setForeground(new java.awt.Color(0, 0, 0));
+        lblKursJualUSD.setText("14000");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(lblKursJualUSD))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(lblKursJualUSD)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel4.setBackground(new java.awt.Color(255, 153, 255));
+        jPanel4.setOpaque(false);
+
+        jLabel16.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("PERCENTAGE");
+
+        lblPersenEuro.setForeground(new java.awt.Color(0, 102, 51));
+        lblPersenEuro.setText("jLabel15");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblPersenEuro, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(lblPersenEuro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+
+        jPanel5.setBackground(new java.awt.Color(93, 130, 228));
+        jPanel5.setOpaque(false);
+
+        FieldAmountUSD.setBackground(new java.awt.Color(255, 255, 252));
+        FieldAmountUSD.setForeground(new java.awt.Color(0, 0, 0));
+        FieldAmountUSD.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        FieldAmountUSD.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        FieldAmountUSD.setOpaque(false);
+
+        jLabel14.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("AMOUNT");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(0, 19, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18)
+                .addComponent(FieldAmountUSD, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FieldAmountUSD, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(jLabel14)))
+        );
+
+        btnBuyUSD.setBackground(new java.awt.Color(87, 202, 247));
+        btnBuyUSD.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuyUSD.setOpaque(false);
+        btnBuyUSD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuyUSDMouseClicked(evt);
+            }
+        });
+
+        jLabel18.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("BUY");
+
+        javax.swing.GroupLayout btnBuyUSDLayout = new javax.swing.GroupLayout(btnBuyUSD);
+        btnBuyUSD.setLayout(btnBuyUSDLayout);
+        btnBuyUSDLayout.setHorizontalGroup(
+            btnBuyUSDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        btnBuyUSDLayout.setVerticalGroup(
+            btnBuyUSDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+        );
+
+        btnSellUSD.setBackground(new java.awt.Color(255, 153, 255));
+        btnSellUSD.setOpaque(false);
+        btnSellUSD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSellUSDMouseClicked(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("SELL");
+        jLabel19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout btnSellUSDLayout = new javax.swing.GroupLayout(btnSellUSD);
+        btnSellUSD.setLayout(btnSellUSDLayout);
+        btnSellUSDLayout.setHorizontalGroup(
+            btnSellUSDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+        );
+        btnSellUSDLayout.setVerticalGroup(
+            btnSellUSDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+        );
+
+        jPanel9.setBackground(new java.awt.Color(87, 202, 247));
+        jPanel9.setOpaque(false);
+
+        jLabel9.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("SELL CURRENCY");
+
+        lblKursJualEuro.setForeground(new java.awt.Color(0, 0, 0));
+        lblKursJualEuro.setText("jLabel6");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(lblKursJualEuro))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel9)))
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addComponent(lblKursJualEuro)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel8.setBackground(new java.awt.Color(103, 91, 232));
+        jPanel8.setOpaque(false);
+
+        jLabel8.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("€ EURO");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+        );
+
+        jPanel10.setBackground(new java.awt.Color(87, 202, 247));
+        jPanel10.setOpaque(false);
+
+        jLabel11.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("BUY CURRENCY");
+
+        lblKursBeliEuro.setForeground(new java.awt.Color(0, 0, 0));
+        lblKursBeliEuro.setText("jLabel6");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(lblKursBeliEuro))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel11)))
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addGap(18, 18, 18)
+                .addComponent(lblKursBeliEuro)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel11.setBackground(new java.awt.Color(255, 153, 255));
+        jPanel11.setOpaque(false);
+
+        jLabel13.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("PERCENTAGE");
+
+        lblPersenUSD.setForeground(new java.awt.Color(153, 0, 0));
+        lblPersenUSD.setText("-0.52%");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblPersenUSD, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(lblPersenUSD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel12.setBackground(new java.awt.Color(93, 130, 228));
+        jPanel12.setOpaque(false);
+
+        FieldAmountEuro.setBackground(new java.awt.Color(255, 255, 255));
+        FieldAmountEuro.setForeground(new java.awt.Color(0, 0, 0));
+        FieldAmountEuro.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        FieldAmountEuro.setOpaque(false);
+
+        jLabel20.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("AMOUNT");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jLabel20)
+                .addGap(18, 18, 18)
+                .addComponent(FieldAmountEuro, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FieldAmountEuro, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(jLabel20)))
+        );
+
+        btnSellEuro.setBackground(new java.awt.Color(255, 153, 255));
+        btnSellEuro.setOpaque(false);
+        btnSellEuro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSellEuroMouseClicked(evt);
+            }
+        });
+
+        jLabel22.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("SELL");
+        jLabel22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout btnSellEuroLayout = new javax.swing.GroupLayout(btnSellEuro);
+        btnSellEuro.setLayout(btnSellEuroLayout);
+        btnSellEuroLayout.setHorizontalGroup(
+            btnSellEuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+        );
+        btnSellEuroLayout.setVerticalGroup(
+            btnSellEuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+        );
+
+        btnBuyEuro.setBackground(new java.awt.Color(87, 202, 247));
+        btnBuyEuro.setOpaque(false);
+        btnBuyEuro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuyEuroMouseClicked(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("BUY");
+        jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout btnBuyEuroLayout = new javax.swing.GroupLayout(btnBuyEuro);
+        btnBuyEuro.setLayout(btnBuyEuroLayout);
+        btnBuyEuroLayout.setHorizontalGroup(
+            btnBuyEuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+        );
+        btnBuyEuroLayout.setVerticalGroup(
+            btnBuyEuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Judul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Judul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(btnBuyEuro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSellEuro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(btnBuyUSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(29, 29, 29)
+                                    .addComponent(btnSellUSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +641,33 @@ public class UserInfoKurs extends javax.swing.JPanel
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Judul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(682, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuyUSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSellUSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuyEuro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSellEuro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -177,11 +692,129 @@ public class UserInfoKurs extends javax.swing.JPanel
         umi.umm.uh.getContent().repaint();
     }//GEN-LAST:event_BackMouseClicked
 
+    private void btnBuyUSDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuyUSDMouseClicked
+        // TODO add your handling code here:
+        int letakTitik = FieldAmountUSD.getText().indexOf(".");
+        double amountUSD;
+        if(letakTitik == 0) {
+            amountUSD = Double.parseDouble(FieldAmountUSD.getText().substring(0,letakTitik)) + Double.parseDouble(FieldAmountUSD.getText().substring(letakTitik,FieldAmountUSD.getText().length())) * 0.1;
+        }
+        else {
+            amountUSD = Double.parseDouble(FieldAmountUSD.getText());
+        }
+        
+        if((umi.umm.uh.active.getRupiah() - amountUSD * listKurs.get(0).getKursJual()) >= 50000) {
+            //berhasil belum menambah saldo
+            JOptionPane.showMessageDialog(null, "You have bought $" + amountUSD);
+        }
+        else {
+            //saldo tidak cukup
+            JOptionPane.showMessageDialog(null, "You don't have enough Rupiah to buy it");
+        }
+    }//GEN-LAST:event_btnBuyUSDMouseClicked
+
+    private void btnSellUSDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSellUSDMouseClicked
+        // TODO add your handling code here:
+        int letakTitik = FieldAmountUSD.getText().indexOf(".");
+        double amountUSD;
+        if(letakTitik == 0) {
+            amountUSD = Double.parseDouble(FieldAmountUSD.getText().substring(0,letakTitik)) + Double.parseDouble(FieldAmountUSD.getText().substring(letakTitik,FieldAmountUSD.getText().length())) * 0.1;
+        }
+        else {
+            amountUSD = Double.parseDouble(FieldAmountUSD.getText());
+        }
+        if(umi.umm.uh.active.getUsd() >= amountUSD) {
+            //berhasil belum menambah saldo
+            JOptionPane.showMessageDialog(null, "You have sold $" + amountUSD);
+        }
+        else {
+            //saldo tidak cukup
+            JOptionPane.showMessageDialog(null, "You don't have enough Dollar to sell it");
+        }
+    }//GEN-LAST:event_btnSellUSDMouseClicked
+
+    private void btnSellEuroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSellEuroMouseClicked
+        // TODO add your handling code here:
+        int letakTitik = FieldAmountEuro.getText().indexOf(".");
+        double amountEuro;
+        if(letakTitik == 0) {
+            amountEuro = Double.parseDouble(FieldAmountEuro.getText().substring(0,letakTitik)) + Double.parseDouble(FieldAmountEuro.getText().substring(letakTitik,FieldAmountEuro.getText().length())) * 0.1;
+        }
+        else {
+            amountEuro = Double.parseDouble(FieldAmountEuro.getText());
+        }
+        if(umi.umm.uh.active.getUsd() >= amountEuro) {
+            //berhasil belum menambah saldo
+            JOptionPane.showMessageDialog(null, "You have sold €" + amountEuro);
+        }
+        else {
+            //saldo tidak cukup
+            JOptionPane.showMessageDialog(null, "You don't have enough Euro to sell it");
+        }
+    }//GEN-LAST:event_btnSellEuroMouseClicked
+
+    private void btnBuyEuroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuyEuroMouseClicked
+        // TODO add your handling code here:
+        //tinggal tambah ke inbox , poin bertambah , pindah saldo
+        int letakTitik = FieldAmountEuro.getText().indexOf(".");
+        double amountEuro;
+        if(letakTitik==0) {
+            amountEuro = Double.parseDouble(FieldAmountEuro.getText().substring(0,letakTitik)) + Double.parseDouble(FieldAmountEuro.getText().substring(letakTitik,FieldAmountEuro.getText().length())) * 0.1;
+        }
+        else {
+            amountEuro = Double.parseDouble(FieldAmountEuro.getText());
+        }
+        if((umi.umm.uh.active.getRupiah() - amountEuro * listKurs.get(1).getKursJual()) >= 50000) {
+            //berhasil belum menambah saldo
+            JOptionPane.showMessageDialog(null, "You have bought €" + amountEuro);
+        }
+        else {
+            //saldo tidak cukup
+            JOptionPane.showMessageDialog(null, "You don't have enough money to buy it");
+        }
+    }//GEN-LAST:event_btnBuyEuroMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Back;
+    private javax.swing.JTextField FieldAmountEuro;
+    private javax.swing.JTextField FieldAmountUSD;
     private javax.swing.JPanel Judul;
+    private javax.swing.JPanel btnBuyEuro;
+    private javax.swing.JPanel btnBuyUSD;
+    private javax.swing.JPanel btnSellEuro;
+    private javax.swing.JPanel btnSellUSD;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lblKursBeliEuro;
+    private javax.swing.JLabel lblKursBeliUSD;
+    private javax.swing.JLabel lblKursJualEuro;
+    private javax.swing.JLabel lblKursJualUSD;
+    private javax.swing.JLabel lblPersenEuro;
+    private javax.swing.JLabel lblPersenUSD;
     // End of variables declaration//GEN-END:variables
 }
