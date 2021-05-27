@@ -8,11 +8,15 @@ package UI;
 import Image.ImagePanel;
 import RoundedField.RoundJPanel;
 import java.awt.color.ICC_Profile;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import m.banking.Captcha;
+import m.banking.Log;
 
 public class UserProfileGantiPin extends javax.swing.JPanel {
 
@@ -381,6 +385,44 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
             }
             catch(IOException ex) {
                 System.out.println("IOException is caught");
+            }
+            
+            ArrayList<Log> logAdmin = new ArrayList<>();
+            try {
+                FileInputStream file = new FileInputStream("logAdmin.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                logAdmin = (ArrayList<Log>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            //<No>. <Date> <Nama> <Activity>
+            String date = up.uh.d1.getD1().getDate() + "/" + up.uh.d1.getD1().getMonth() + "/" + up.uh.d1.getD1().getYear();
+            logAdmin.add(0, new Log(date + "-" + up.uh.active.getNoRekening() + " Changed A Pin"));
+            System.out.println(date);
+            System.out.println(logAdmin.get(0).getLog());
+            try {
+                FileOutputStream file = new FileOutputStream("logAdmin.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(logAdmin);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught2");
+                System.out.println(ex);
             }
         }
     }//GEN-LAST:event_SubmitActionPerformed

@@ -19,8 +19,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import javax.swing.JOptionPane;
@@ -30,6 +32,7 @@ import javax.swing.ScrollPaneLayout;
 import javax.swing.SwingUtilities;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
+import m.banking.Log;
 import m.banking.Merchandise;
 
 /**
@@ -408,6 +411,43 @@ public class UserMerchandise extends javax.swing.JPanel
         else
         {
             JOptionPane.showMessageDialog(this,"Berhasil Menukar Point dengan Merchandise");
+            ArrayList<Log> logAdmin = new ArrayList<>();
+            try {
+                FileInputStream file = new FileInputStream("logAdmin.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                logAdmin = (ArrayList<Log>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            //<No>. <Date> <Nama> <Activity>
+            String date = utf.u.d1.getD1().getDate() + "/" + utf.u.d1.getD1().getMonth() + "/" + utf.u.d1.getD1().getYear();
+            logAdmin.add(0, new Log(date + "-" + utf.u.active.getNoRekening() + " Success exchange point"));
+            System.out.println(date);
+            System.out.println(logAdmin.get(0).getLog());
+            try {
+                FileOutputStream file = new FileOutputStream("logAdmin.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(logAdmin);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught2");
+                System.out.println(ex);
+            }
         }
            
     }//GEN-LAST:event_SubmitMouseClicked

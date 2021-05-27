@@ -30,6 +30,7 @@ import javax.swing.ScrollPaneLayout;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import m.banking.Log;
 import m.banking.Member;
 
 /**
@@ -340,7 +341,9 @@ public class UserRequestUpgrade_2 extends javax.swing.JPanel {
 
     private void OKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OKMouseClicked
         // TODO add your handling code here:
+        boolean cek = false;
         if (platinumBtn.isSelected()){
+            cek = true;
             up.uh.active.setCekUpgrade(true);
             up.uh.active.setUpgrade(2);
             JOptionPane.showMessageDialog(this, "Your request upgrade sent to Admin.. Waiting Confirm from Admin");
@@ -384,6 +387,45 @@ public class UserRequestUpgrade_2 extends javax.swing.JPanel {
         }
         else if (!platinumBtn.isSelected()){
             JOptionPane.showMessageDialog(this, "Choose a card pls");
+        }
+        if (cek){
+            ArrayList<Log> logAdmin = new ArrayList<>();
+            try {
+                FileInputStream file = new FileInputStream("logAdmin.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                logAdmin = (ArrayList<Log>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            //<No>. <Date> <Nama> <Activity>
+            String date = up.uh.d1.getD1().getDate() + "/" + up.uh.d1.getD1().getMonth() + "/" + up.uh.d1.getD1().getYear();
+            logAdmin.add(0, new Log(date + "-" + up.uh.active.getNoRekening() + " sent a request Upgrade Card "));
+            System.out.println(date);
+            System.out.println(logAdmin.get(0).getLog());
+            try {
+                FileOutputStream file = new FileOutputStream("logAdmin.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(logAdmin);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught2");
+                System.out.println(ex);
+            }
         }
     }//GEN-LAST:event_OKMouseClicked
 
