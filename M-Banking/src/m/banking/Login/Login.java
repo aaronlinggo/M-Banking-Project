@@ -39,8 +39,8 @@ public class Login extends javax.swing.JFrame {
     public ArrayList<Member> requestMember = new ArrayList<Member>();
     public ArrayList<Member> Account = new ArrayList<Member>();
     //Date d2 = new Date(2021, 1, 1);
-    int dollar = 14230;
-    int euro = 15618;
+    //int dollar = 14230;
+    //int euro = 15618;
     public DateBankRut d1 = null;
     String noRek = "";
     public Login() {

@@ -284,7 +284,9 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
         // TODO add your handling code here:
-        lblLimit.setText(jSlider1.getValue()+"");
+        if(jSlider1.getValue()%1000000==0) {
+            lblLimit.setText(jSlider1.getValue()+"");
+        }
     }//GEN-LAST:event_jSlider1StateChanged
 
     private void SubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitMouseClicked
