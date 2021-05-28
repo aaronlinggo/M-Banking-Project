@@ -381,7 +381,15 @@ public class UserAntarRek extends javax.swing.JPanel {
                 if(tf_amount >= 10000){
                     if(saya.getRupiah() > tf_amount+50000){
                         if(saya.getCurrentUsage() +(int)tf_amount < saya.getLimitTransfer()){
-                            System.out.println("kriteria tf terpenuhi");
+                            //saya
+                            saya.setRupiah(saya.getRupiah()-tf_amount);
+                            double poin = tf_amount*0.1;
+                            saya.setPoint(saya.getPoint() + (int)poin);
+                            saya.getInbox().add("Transfered "+tf_amount+ " to "+target.getNama()+"\nReceived "+(int)poin+" Points");
+                            //target
+                            target.setRupiah(target.getRupiah()+tf_amount);
+                            //add inbox target ???
+                            msg+="\nSuccesfully Transfered "+tf_amount+ " to "+target.getNama();
                         }
                         else{
                             msg+="\nDaily Transfer Limit Has been Reached!";

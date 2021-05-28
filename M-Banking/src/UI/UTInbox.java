@@ -47,10 +47,8 @@ public class UTInbox extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         backbtnpanel = new RoundJPanel(25)  ;
         backbtn = new javax.swing.JLabel();
-        container = new RoundJPanel(25);
         scroll = new javax.swing.JScrollPane();
-        mail = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        maillist = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(500, 750));
 
@@ -111,10 +109,47 @@ public class UTInbox extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        container.setBackground(new java.awt.Color(219, 219, 229));
-        container.setOpaque(false);
+        maillist.setBackground(new java.awt.Color(255, 255, 255));
 
-        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        javax.swing.GroupLayout maillistLayout = new javax.swing.GroupLayout(maillist);
+        maillist.setLayout(maillistLayout);
+        maillistLayout.setHorizontalGroup(
+            maillistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 409, Short.MAX_VALUE)
+        );
+        maillistLayout.setVerticalGroup(
+            maillistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 572, Short.MAX_VALUE)
+        );
+
+        scroll.setViewportView(maillist);
+
+        javax.swing.GroupLayout bgutamaLayout = new javax.swing.GroupLayout(bgutama);
+        bgutama.setLayout(bgutamaLayout);
+        bgutamaLayout.setHorizontalGroup(
+            bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgutamaLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(scroll)
+                    .addGroup(bgutamaLayout.createSequentialGroup()
+                        .addComponent(backbtnpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+        bgutamaLayout.setVerticalGroup(
+            bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgutamaLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(backbtnpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
         scroll.setLayout(new ScrollPaneLayout() {
             @Override
             public void layoutContainer(Container parent) {
@@ -161,7 +196,7 @@ public class UTInbox extends javax.swing.JPanel {
             @Override
             public void mouseDragged(MouseEvent e) {
                 if (origin != null) {
-                    JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, mail);
+                    JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, maillist);
                     if (viewPort != null) {
                         int deltaX = origin.x - e.getX();
                         int deltaY = origin.y - e.getY();
@@ -170,83 +205,15 @@ public class UTInbox extends javax.swing.JPanel {
                         view.x += deltaX;
                         view.y += deltaY;
 
-                        mail.scrollRectToVisible(view);
+                        maillist.scrollRectToVisible(view);
                     }
                 }
             }
 
         };
 
-        mail.addMouseListener(ma);
-        mail.addMouseMotionListener(ma);
-
-        mail.setBackground(new java.awt.Color(250, 243, 243));
-
-        jLabel2.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Inbox is Empty");
-
-        javax.swing.GroupLayout mailLayout = new javax.swing.GroupLayout(mail);
-        mail.setLayout(mailLayout);
-        mailLayout.setHorizontalGroup(
-            mailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mailLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        mailLayout.setVerticalGroup(
-            mailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mailLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(481, Short.MAX_VALUE))
-        );
-
-        scroll.setViewportView(mail);
-
-        javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
-        container.setLayout(containerLayout);
-        containerLayout.setHorizontalGroup(
-            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(containerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        containerLayout.setVerticalGroup(
-            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(containerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scroll)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout bgutamaLayout = new javax.swing.GroupLayout(bgutama);
-        bgutama.setLayout(bgutamaLayout);
-        bgutamaLayout.setHorizontalGroup(
-            bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgutamaLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(bgutamaLayout.createSequentialGroup()
-                        .addComponent(backbtnpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap(45, Short.MAX_VALUE))
-        );
-        bgutamaLayout.setVerticalGroup(
-            bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgutamaLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(backbtnpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
+        maillist.addMouseListener(ma);
+        maillist.addMouseMotionListener(ma);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -280,11 +247,9 @@ public class UTInbox extends javax.swing.JPanel {
     private javax.swing.JLabel backbtn;
     private javax.swing.JPanel backbtnpanel;
     private javax.swing.JPanel bgutama;
-    private javax.swing.JPanel container;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel mail;
+    private javax.swing.JPanel maillist;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }
