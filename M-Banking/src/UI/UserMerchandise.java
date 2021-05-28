@@ -76,7 +76,7 @@ public class UserMerchandise extends javax.swing.JPanel
         Judul = new RoundJPanel(25);
         jLabel2 = new javax.swing.JLabel();
         scroll = new javax.swing.JScrollPane();
-        IsiKonten = new javax.swing.JPanel();
+        IsiKonten = new RoundJPanel(25);
 
         setBackground(new java.awt.Color(250, 243, 243));
 
@@ -249,8 +249,10 @@ public class UserMerchandise extends javax.swing.JPanel
 
         scroll.setBorder(null);
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setOpaque(false);
 
         IsiKonten.setBackground(new java.awt.Color(250, 243, 243));
+        IsiKonten.setOpaque(false);
 
         javax.swing.GroupLayout IsiKontenLayout = new javax.swing.GroupLayout(IsiKonten);
         IsiKonten.setLayout(IsiKontenLayout);
