@@ -816,11 +816,11 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                                                                                 l.setVisible(true);
                                                                             }
                                                                             else {
-                                                                                JOptionPane.showMessageDialog(this, "Umur minimal 18 tahun");
+                                                                                JOptionPane.showMessageDialog(this, "Minimum Age 18 years");
                                                                             }
                                                                         }
                                                                         else {
-                                                                            JOptionPane.showMessageDialog(this, "Confirm Pin tidak sesuai");
+                                                                            JOptionPane.showMessageDialog(this, "Confirm Pin doesn't match");
                                                                         }
                                                                     }
                                                                     else {
