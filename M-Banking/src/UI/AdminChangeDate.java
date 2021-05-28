@@ -16,10 +16,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import m.banking.DateBankRut;
 import m.banking.Login.Login;
+import m.banking.Member;
 
 /**
  *
@@ -370,70 +372,138 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
         int year = selectedDate.getYear()+1900;
         int month  = selectedDate.getMonth()+1;
         int date = selectedDate.getDate();
-        d1.setD1(new Date(year, month, date));
-        String bulan = "";
-        if (month == 1){
-            bulan = "Januari";
+        boolean cek = false;
+        int rangeYear = 0;
+        if (year >= d2.getD1().getYear()){
+            if (year == d2.getD1().getYear()){
+                if (month >= d2.getD1().getMonth()){
+                    if (month == d2.getD1().getMonth()){
+                        if (date >= d2.getD1().getDate()){
+                            cek = true;
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(this, "Date must not be below the previous date");
+                        }
+                    }
+                    else {
+                        cek = true;
+                    }
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Date must not be below the previous date");
+                }
+            }
+            else {
+                rangeYear = year - d2.getD1().getYear();
+                cek = true;
+            }
         }
-        else if (month == 2){
-            bulan = "Februari";
+        else {
+            JOptionPane.showMessageDialog(this, "Date must not be below the previous date");
         }
-        else if (month == 3){
-            bulan = "Maret";
-        }
-        else if (month == 4){
-            bulan = "April";
-        }
-        else if (month == 5){
-            bulan = "Mei";
-        }
-        else if (month == 6){
-            bulan = "Juni";
-        }
-        else if (month == 7){
-            bulan = "Juli";
-        }
-        else if (month == 8){
-            bulan = "Agustus";
-        }
-        else if (month == 9){
-            bulan = "September";
-        }
-        else if (month == 10){
-            bulan = "Oktober";
-        }
-        else if (month == 11){
-            bulan = "November";
-        }
-        else if (month == 12){
-            bulan = "Desember";
-        }
-        ad.setDate(date + " " + bulan + " " + year);
-        try
-        {
-            FileOutputStream file = new FileOutputStream(filename);
-            ObjectOutputStream out = new ObjectOutputStream(file);
+        if (cek){
+            d1.setD1(new Date(year, month, date));
+            String bulan = "";
+            if (month == 1){
+                bulan = "Januari";
+            }
+            else if (month == 2){
+                bulan = "Februari";
+            }
+            else if (month == 3){
+                bulan = "Maret";
+            }
+            else if (month == 4){
+                bulan = "April";
+            }
+            else if (month == 5){
+                bulan = "Mei";
+            }
+            else if (month == 6){
+                bulan = "Juni";
+            }
+            else if (month == 7){
+                bulan = "Juli";
+            }
+            else if (month == 8){
+                bulan = "Agustus";
+            }
+            else if (month == 9){
+                bulan = "September";
+            }
+            else if (month == 10){
+                bulan = "Oktober";
+            }
+            else if (month == 11){
+                bulan = "November";
+            }
+            else if (month == 12){
+                bulan = "Desember";
+            }
+            ad.setDate(date + " " + bulan + " " + year);
+            try
+            {
+                FileOutputStream file = new FileOutputStream(filename);
+                ObjectOutputStream out = new ObjectOutputStream(file);
 
-            out.writeObject(d1);
+                out.writeObject(d1);
 
-            out.close();
-            file.close();
+                out.close();
+                file.close();
 
-            System.out.println("Object has been serialized");
+                System.out.println("Object has been serialized");
 
+            }
+
+            catch(IOException ex)
+            {
+                System.out.println("IOException is caught");
+            }
+            JOptionPane.showMessageDialog(this, "Success Change Date");
+            ad.ah.getContent().removeAll();
+            ad.setVisible(true);
+            ad.setBounds(0,0, 500, 717);
+            ad.ah.getContent().add(ad);
+            ad.ah.getContent().revalidate();
+            ad.ah.getContent().repaint();
+            if (rangeYear != 0){
+                ArrayList<Member> Account = new ArrayList<>();
+                try {
+                    FileInputStream file = new FileInputStream("Account.ser");
+                    ObjectInputStream in = new ObjectInputStream(file);
+
+                    Account = (ArrayList<Member>) in.readObject();
+
+                    in.close();
+                    file.close();
+                }
+                catch(IOException ex) {
+                    System.out.println("IOException is caught");
+                }
+                catch(ClassNotFoundException ex) {
+                    System.out.println("ClassNotFoundException is caught");
+                }
+                for (int i = 0; i < Account.size(); i++) {
+                    Account.get(i).setRupiah(Account.get(i).getRupiah() + ((Account.get(i).getRupiah()*Account.get(i).getBunga())/100));
+                    //masukin ke inbox
+                }
+                try {
+                    FileOutputStream file = new FileOutputStream("Account.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(file);
+
+                    out.writeObject(Account);
+
+                    out.close();
+                    file.close();
+
+                    System.out.println("Object has been serialized");
+
+                }
+                catch(IOException ex) {
+                    System.out.println("IOException is caught");
+                }
+            }
         }
-
-        catch(IOException ex)
-        {
-            System.out.println("IOException is caught");
-        }
-        JOptionPane.showMessageDialog(this, "Success Change Date");
-        ad.ah.getContent().removeAll();
-        ad.setVisible(true);
-        ad.setBounds(0,0, 500, 717);
-        ad.ah.getContent().add(ad);
-        ad.ah.getContent().revalidate();
-        ad.ah.getContent().repaint();
     }//GEN-LAST:event_changeMouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
