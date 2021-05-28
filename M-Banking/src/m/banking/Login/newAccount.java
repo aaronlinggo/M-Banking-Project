@@ -360,7 +360,7 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         jLabel11.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Saldo");
+        jLabel11.setText("Balance");
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -816,75 +816,75 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                                                                                 l.setVisible(true);
                                                                             }
                                                                             else {
-                                                                                JOptionPane.showMessageDialog(this, "Umur minimal 18 tahun");
+                                                                                JOptionPane.showMessageDialog(this, "Minimum Age 18 years");
                                                                             }
                                                                         }
                                                                         else {
-                                                                            JOptionPane.showMessageDialog(this, "Confirm Pin tidak sesuai");
+                                                                            JOptionPane.showMessageDialog(this, "Confirm Pin doesn't match");
                                                                         }
                                                                     }
                                                                     else {
-                                                                        JOptionPane.showMessageDialog(this, "Confirm Pin Harus digit");
+                                                                        JOptionPane.showMessageDialog(this, "Confirm pin must be numeric");
                                                                     }
                                                                 }
                                                                 else {
-                                                                    JOptionPane.showMessageDialog(this, "Pin Harus digit");
+                                                                    JOptionPane.showMessageDialog(this, "Pin must be numeric");
                                                                 }
                                                             }
                                                             else {
-                                                                JOptionPane.showMessageDialog(this, "Saldo minimum 50000");
+                                                                JOptionPane.showMessageDialog(this, "Minimum balance 50000");
                                                             }
                                                         }
                                                         else {
-                                                            JOptionPane.showMessageDialog(this, "Saldo Harus digit");
+                                                            JOptionPane.showMessageDialog(this, "Balance must be numeric");
                                                         }
                                                     }
                                                     else {
-                                                        JOptionPane.showMessageDialog(this, "Nomor HP Harus digit");
+                                                        JOptionPane.showMessageDialog(this, "Phone Number must be numeric");
                                                     }
                                                 }
                                                 else {
-                                                    JOptionPane.showMessageDialog(this, "Confirm Pin harus 6 digit angka");
+                                                    JOptionPane.showMessageDialog(this, "Confirm pin must be 6 digit number");
                                                 }
                                             }
                                             else {
-                                                JOptionPane.showMessageDialog(this, "Confirm Pin harus diisi");
+                                                JOptionPane.showMessageDialog(this, "Confirm pin must be filled");
                                             }
                                         }
                                         else {
-                                            JOptionPane.showMessageDialog(this, "pin harus 6 digit angka");
+                                            JOptionPane.showMessageDialog(this, "Pin must be 6 digit number");
                                         }
                                     }
                                     else {
-                                        JOptionPane.showMessageDialog(this, "Pin harus diisi");
+                                        JOptionPane.showMessageDialog(this, "Pin must be filled");
                                     }
                                 }
                                 else {
-                                    JOptionPane.showMessageDialog(this, "Saldo harus diisi");
+                                    JOptionPane.showMessageDialog(this, "Balance must be filled");
                                 }
                             }
                             else {
-                                JOptionPane.showMessageDialog(this, "Jenis Kartu harus diisi");
+                                JOptionPane.showMessageDialog(this, "Card type must be filled");
                             }
                         }
                         else {
-                            JOptionPane.showMessageDialog(this, "Nomor HP harus diisi");
+                            JOptionPane.showMessageDialog(this, "Phone Number must be filled");
                         }
                     }
                     else {
-                        JOptionPane.showMessageDialog(this, "Address harus diisi");
+                        JOptionPane.showMessageDialog(this, "Adress must be filled");
                     }
                 }
                 else {
-                    JOptionPane.showMessageDialog(this, "Gender harus diisi");
+                    JOptionPane.showMessageDialog(this, "Gender must be filled");
                 }
             }
             else {
-                JOptionPane.showMessageDialog(this, "Last Name harus diisi");
+                JOptionPane.showMessageDialog(this, "Last Name must be filled");
             }
         }
         else {
-            JOptionPane.showMessageDialog(this, "First Name harus diisi");
+            JOptionPane.showMessageDialog(this, "First Name must be filled");
         }
     }//GEN-LAST:event_CreateMouseClicked
  
