@@ -15,14 +15,17 @@ import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.ScrollPaneLayout;
 import javax.swing.SwingUtilities;
+import m.banking.Log;
 import m.banking.Login.Login;
 import m.banking.Member;
 /**
@@ -390,6 +393,42 @@ public class UserAntarRek extends javax.swing.JPanel {
                             target.setRupiah(target.getRupiah()+tf_amount);
                             //add inbox target ???
                             msg+="\nSuccesfully Transfered "+tf_amount+ " to "+target.getNama();
+                            
+                            ArrayList<Log> logAdmin = new ArrayList<>();
+                            try {
+                                FileInputStream file = new FileInputStream("logAdmin.ser");
+                                ObjectInputStream in = new ObjectInputStream(file);
+
+                                logAdmin = (ArrayList<Log>) in.readObject();
+
+                                in.close();
+                                file.close();
+                            }
+                            catch(IOException ex) {
+                                System.out.println("IOException is caught");
+                            }
+                            catch(ClassNotFoundException ex) {
+                                System.out.println("ClassNotFoundException is caught");
+                            }
+                            //<No>. <Date> <Nama> <Activity>
+                            String date = ut.utf.u.d1.getD1().getDate() + "/" + ut.utf.u.d1.getD1().getMonth() + "/" + ut.utf.u.d1.getD1().getYear();
+                            logAdmin.add(0, new Log(date + "-" + ut.utf.u.active.getNoRekening() + " Success transfer " + tf_amount + " to " + target.getNoRekening()));
+                            try {
+                                FileOutputStream file = new FileOutputStream("logAdmin.ser");
+                                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                                out.writeObject(logAdmin);
+
+                                out.close();
+                                file.close();
+
+                                System.out.println("Object has been serialized");
+
+                            }
+                            catch(IOException ex) {
+                                System.out.println("IOException is caught2");
+                                System.out.println(ex);
+                            }
                         }
                         else{
                             msg+="\nDaily Transfer Limit Has been Reached!";
