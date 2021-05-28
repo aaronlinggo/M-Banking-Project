@@ -17,10 +17,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import m.banking.Kurs;
 
-/**
- *
- * @author jonat
- */
+
 public class UserInfoKurs extends javax.swing.JPanel
 {
 
@@ -59,20 +56,22 @@ public class UserInfoKurs extends javax.swing.JPanel
         Color red = new Color(153,0,0);
         lblKursBeliUSD.setText(listKurs.get(0).getKursBeli() + "");
         lblKursJualUSD.setText(listKurs.get(0).getKursJual() + "");
-        lblPersenUSD.setText("+" + listKurs.get(0).getPersen() + "%");
         if(listKurs.get(0).getPersen() >= 0) {
+            lblPersenUSD.setText("+" + listKurs.get(0).getPersen() + "%");
             lblPersenUSD.setForeground(green);
         } 
         else {
+            lblPersenUSD.setText(listKurs.get(0).getPersen() + "%");
             lblPersenUSD.setForeground(red);
         }
         lblKursBeliEuro.setText(listKurs.get(1).getKursBeli() + "");
         lblKursJualEuro.setText(listKurs.get(1).getKursJual() + "");
-        lblPersenEuro.setText("+" + listKurs.get(1).getPersen()+"%");
         if(listKurs.get(1).getPersen() >= 0) {
+            lblPersenEuro.setText("+" + listKurs.get(1).getPersen()+"%");
             lblPersenEuro.setForeground(green);
         } 
         else {
+            lblPersenEuro.setText(listKurs.get(1).getPersen()+"%");
             lblPersenEuro.setForeground(red);
         }
     }

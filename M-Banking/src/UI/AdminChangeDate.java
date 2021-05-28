@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import m.banking.DateBankRut;
+import m.banking.Kurs;
 import m.banking.Login.Login;
 import m.banking.Member;
 
@@ -36,6 +37,7 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
     DateBankRut d2 = null;
     CalendarFrame cf;
     AdminDashboard ad;
+    ArrayList<Kurs> listKurs = new ArrayList<Kurs>();
     public AdminChangeDate() {
         String filename = "date.ser";
         try {
@@ -64,6 +66,24 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
             in.close();
             file.close();
             System.out.println(d2.getD1().getDate() + " - " + d2.getD1().getMonth() + " - " + d2.getD1().getYear());
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        
+        try {
+            FileInputStream file = new FileInputStream("Kurs.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            listKurs = (ArrayList<Kurs>) in.readObject();
+
+            in.close();
+            file.close();
+            System.out.println("Dollar : " + listKurs.get(0).getKursBeli());
+            System.out.println("Euro : " + listKurs.get(1).getKursBeli());
         }
         catch(IOException ex) {
             System.out.println("IOException is caught");
@@ -472,7 +492,32 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
             {
                 System.out.println("IOException is caught");
             }
+            
+            for (int i = 0; i < listKurs.size(); i++) {
+                listKurs.get(i).gantiHari();
+            }
+            
+            try
+            {
+                FileOutputStream file = new FileOutputStream("Kurs.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(listKurs);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+
+            catch(IOException ex)
+            {
+                System.out.println("IOException is caught");
+            }
+            
             JOptionPane.showMessageDialog(this, "Success Change Date");
+          
             ad.ah.getContent().removeAll();
             ad.setVisible(true);
             ad.setBounds(0,0, 500, 717);
