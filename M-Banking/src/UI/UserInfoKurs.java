@@ -805,7 +805,6 @@ public class UserInfoKurs extends javax.swing.JPanel
 
     private void btnBuyEuroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuyEuroMouseClicked
         // TODO add your handling code here:
-        //tinggal tambah ke inbox , poin bertambah , pindah saldo
         int letakTitik = FieldAmountEuro.getText().indexOf(".");
         double amountEuro;
         if(letakTitik==0) {
