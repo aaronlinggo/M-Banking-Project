@@ -374,6 +374,7 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
         int date = selectedDate.getDate();
         boolean cek = false;
         int rangeYear = 0;
+        int rangeBulan = 0;
         if (year >= d2.getD1().getYear()){
             if (year == d2.getD1().getYear()){
                 if (month >= d2.getD1().getMonth()){
@@ -386,6 +387,7 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                         }
                     }
                     else {
+                        rangeBulan = month - d2.getD1().getMonth();
                         cek = true;
                     }
                 }
@@ -394,6 +396,17 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                 }
             }
             else {
+                if (month >= d2.getD1().getMonth()){
+                    if (month == d2.getD1().getMonth()){
+                        rangeBulan = 12;
+                    }
+                    else {
+                        rangeBulan = month - d2.getD1().getMonth();
+                    }
+                }
+                else {
+                    rangeBulan = 12 + (d2.getD1().getMonth() - month);
+                }
                 rangeYear = year - d2.getD1().getYear();
                 cek = true;
             }
@@ -485,7 +498,11 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                 }
                 for (int i = 0; i < Account.size(); i++) {
                     Account.get(i).setRupiah(Account.get(i).getRupiah() + ((Account.get(i).getRupiah()*Account.get(i).getBunga())/100));
-                    //masukin ke inbox
+                    if (rangeBulan != 0){
+                        int temp = Account.get(i).getBiayaAdmin()*rangeBulan;
+                        Account.get(i).setRupiah(Account.get(i).getRupiah() - temp);
+                    }
+                    //masukin ke inbox -> Bunga sama biaya admin
                 }
                 try {
                     FileOutputStream file = new FileOutputStream("Account.ser");

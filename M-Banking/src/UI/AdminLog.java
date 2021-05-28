@@ -279,8 +279,8 @@ public class AdminLog extends javax.swing.JPanel{
             System.out.println("ClassNotFoundException is caught");
         }
         listLog.removeAll();
-        if ((70+10)*logAdmin.size() >= 696){
-            listLog.setPreferredSize(new Dimension(497, (70+10)*logAdmin.size()));
+        if ((70)*logAdmin.size() >= 696){
+            listLog.setPreferredSize(new Dimension(497, (70)*logAdmin.size()));
         }
         else {
             listLog.setPreferredSize(new Dimension(497, 696));
@@ -289,7 +289,7 @@ public class AdminLog extends javax.swing.JPanel{
         for (int i = 0; i < logAdmin.size(); i++) {
             ACL.add(new AdminCardLog());
             ACL.get(i).getDetail().setText(logAdmin.get(i).getLog());
-            ACL.get(i).setBounds(0, (70+10)*i, 505, 70);
+            ACL.get(i).setBounds(0, (70)*i, 505, 70);
             ACL.get(i).setVisible(true);
             listLog.add(ACL.get(i));
         }
