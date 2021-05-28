@@ -9,8 +9,10 @@ import RoundedField.RoundJPanel;
 import RoundedField.RoundJTextField;
 import java.awt.Color;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import m.banking.Kurs;
@@ -704,7 +706,23 @@ public class UserInfoKurs extends javax.swing.JPanel
         }
         
         if((umi.umm.uh.active.getRupiah() - amountUSD * listKurs.get(0).getKursJual()) >= 50000) {
-            //berhasil belum menambah saldo
+            //berhasil
+            umi.umm.uh.active.setUsd(umi.umm.uh.active.getUsd() + amountUSD);
+            try {
+                FileOutputStream file = new FileOutputStream("Account.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(umi.umm.uh.Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
             JOptionPane.showMessageDialog(null, "You have bought $" + amountUSD);
         }
         else {
@@ -724,7 +742,23 @@ public class UserInfoKurs extends javax.swing.JPanel
             amountUSD = Double.parseDouble(FieldAmountUSD.getText());
         }
         if(umi.umm.uh.active.getUsd() >= amountUSD) {
-            //berhasil belum menambah saldo
+            //berhasil
+            umi.umm.uh.active.setUsd(umi.umm.uh.active.getUsd() - amountUSD);
+            try {
+                FileOutputStream file = new FileOutputStream("Account.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(umi.umm.uh.Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
             JOptionPane.showMessageDialog(null, "You have sold $" + amountUSD);
         }
         else {
@@ -744,7 +778,23 @@ public class UserInfoKurs extends javax.swing.JPanel
             amountEuro = Double.parseDouble(FieldAmountEuro.getText());
         }
         if(umi.umm.uh.active.getUsd() >= amountEuro) {
-            //berhasil belum menambah saldo
+            //berhasil
+            umi.umm.uh.active.setEuro(umi.umm.uh.active.getEuro() - amountEuro);
+            try {
+                FileOutputStream file = new FileOutputStream("Account.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(umi.umm.uh.Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
             JOptionPane.showMessageDialog(null, "You have sold €" + amountEuro);
         }
         else {
@@ -765,7 +815,23 @@ public class UserInfoKurs extends javax.swing.JPanel
             amountEuro = Double.parseDouble(FieldAmountEuro.getText());
         }
         if((umi.umm.uh.active.getRupiah() - amountEuro * listKurs.get(1).getKursJual()) >= 50000) {
-            //berhasil belum menambah saldo
+            //berhasil
+            umi.umm.uh.active.setEuro(umi.umm.uh.active.getEuro() + amountEuro);
+            try {
+                FileOutputStream file = new FileOutputStream("Account.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(umi.umm.uh.Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
             JOptionPane.showMessageDialog(null, "You have bought €" + amountEuro);
         }
         else {
