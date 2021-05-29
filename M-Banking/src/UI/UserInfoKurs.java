@@ -699,6 +699,7 @@ public class UserInfoKurs extends javax.swing.JPanel
         if((umi.umm.uh.active.getRupiah() - amountUSD * listKurs.get(0).getKursJual()) >= 50000) {
             //berhasil
             umi.umm.uh.active.setUsd(umi.umm.uh.active.getUsd() + amountUSD);
+            umi.umm.uh.active.setRupiah(umi.umm.uh.active.getRupiah() - amountUSD * listKurs.get(0).getKursJual());
             try {
                 FileOutputStream file = new FileOutputStream("Account.ser");
                 ObjectOutputStream out = new ObjectOutputStream(file);
@@ -729,6 +730,7 @@ public class UserInfoKurs extends javax.swing.JPanel
         if(umi.umm.uh.active.getUsd() >= amountUSD) {
             //berhasil
             umi.umm.uh.active.setUsd(umi.umm.uh.active.getUsd() - amountUSD);
+            umi.umm.uh.active.setRupiah(umi.umm.uh.active.getRupiah() + amountUSD * listKurs.get(0).getKursBeli());
             try {
                 FileOutputStream file = new FileOutputStream("Account.ser");
                 ObjectOutputStream out = new ObjectOutputStream(file);
@@ -756,9 +758,10 @@ public class UserInfoKurs extends javax.swing.JPanel
     private void btnSellEuroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSellEuroMouseClicked
         // TODO add your handling code here:
         double amountEuro = Double.parseDouble(FieldAmountEuro.getText());
-        if(umi.umm.uh.active.getUsd() >= amountEuro) {
+        if(umi.umm.uh.active.getEuro() >= amountEuro) {
             //berhasil
             umi.umm.uh.active.setEuro(umi.umm.uh.active.getEuro() - amountEuro);
+            umi.umm.uh.active.setRupiah(umi.umm.uh.active.getRupiah() - amountEuro * listKurs.get(1).getKursJual());
             try {
                 FileOutputStream file = new FileOutputStream("Account.ser");
                 ObjectOutputStream out = new ObjectOutputStream(file);
@@ -789,6 +792,7 @@ public class UserInfoKurs extends javax.swing.JPanel
         if((umi.umm.uh.active.getRupiah() - amountEuro * listKurs.get(1).getKursJual()) >= 50000) {
             //berhasil
             umi.umm.uh.active.setEuro(umi.umm.uh.active.getEuro() + amountEuro);
+            umi.umm.uh.active.setRupiah(umi.umm.uh.active.getRupiah() + amountEuro * listKurs.get(1).getKursBeli());
             try {
                 FileOutputStream file = new FileOutputStream("Account.ser");
                 ObjectOutputStream out = new ObjectOutputStream(file);
