@@ -562,11 +562,58 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                     }
                     //masukin ke inbox -> Bunga sama biaya admin
                 }
+                
+                ArrayList<Member> banned = new ArrayList<>();
+                try {
+                    FileInputStream file = new FileInputStream("BannedAccount.ser");
+                    ObjectInputStream in = new ObjectInputStream(file);
+
+                    banned = (ArrayList<Member>) in.readObject();
+
+                    in.close();
+                    file.close();
+                }
+                catch(IOException ex) {
+                    System.out.println("IOException is caught");
+                }
+                catch(ClassNotFoundException ex) {
+                    System.out.println("ClassNotFoundException is caught");
+                }
+                
+                boolean keluar = false;
+                while (keluar){
+                    keluar = false;
+                    for (int i = 0; i < Account.size(); i++) {
+                        if (Account.get(i).getRupiah()<=0){
+                            banned.add(Account.get(i));
+                            Account.remove(i);
+                            keluar = true;
+                            break;
+                        }
+                    }
+                };
+                
                 try {
                     FileOutputStream file = new FileOutputStream("Account.ser");
                     ObjectOutputStream out = new ObjectOutputStream(file);
 
                     out.writeObject(Account);
+
+                    out.close();
+                    file.close();
+
+                    System.out.println("Object has been serialized");
+
+                }
+                catch(IOException ex) {
+                    System.out.println("IOException is caught");
+                }
+                
+                try {
+                    FileOutputStream file = new FileOutputStream("BannedAccount.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(file);
+
+                    out.writeObject(banned);
 
                     out.close();
                     file.close();
