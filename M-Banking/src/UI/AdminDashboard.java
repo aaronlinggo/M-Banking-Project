@@ -24,6 +24,7 @@ import javax.swing.JViewport;
 import javax.swing.ScrollPaneLayout;
 import javax.swing.SwingUtilities;
 import m.banking.DateBankRut;
+import m.banking.Kurs;
 import m.banking.Login.Login;
 import m.banking.Member;
 
@@ -39,6 +40,7 @@ public class AdminDashboard extends javax.swing.JPanel {
     AdminHomepage ah;
     Login l;
     DateBankRut d1;
+    ArrayList<Kurs> listKurs = new ArrayList<>();
     public AdminDashboard() {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
@@ -52,6 +54,23 @@ public class AdminDashboard extends javax.swing.JPanel {
             in.close();
             file.close();
             System.out.println(d1.getD1().getDate() + " - " + d1.getD1().getMonth() + " - " + d1.getD1().getYear());
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        try {
+            FileInputStream file = new FileInputStream("Kurs.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            listKurs = (ArrayList<Kurs>) in.readObject();
+
+            in.close();
+            file.close();
+            System.out.println("Dollar : " + listKurs.get(0).getKursBeli());
+            System.out.println("Euro : " + listKurs.get(1).getKursBeli());
         }
         catch(IOException ex) {
             System.out.println("IOException is caught");
@@ -97,6 +116,26 @@ public class AdminDashboard extends javax.swing.JPanel {
             bulan = "Desember";
         }
         date.setText(d1.getD1().getDate() + " " + bulan + " " + d1.getD1().getYear());
+        Color green = new Color(0,102,51);
+        Color red = new Color(153,0,0);
+        lblKursBeliUSD.setText(listKurs.get(0).getKursBeli()+"");
+        if(listKurs.get(0).getPersen() >= 0) {
+            lblPersenUSD.setText("+" + listKurs.get(0).getPersen() + "%");
+            lblPersenUSD.setForeground(green);
+        } 
+        else {
+            lblPersenUSD.setText(listKurs.get(0).getPersen() + "%");
+            lblPersenUSD.setForeground(red);
+        }
+        lblKursBeliEuro.setText(listKurs.get(1).getKursBeli()+"");
+        if(listKurs.get(1).getPersen() >= 0) {
+            lblPersenEuro.setText("+" + listKurs.get(1).getPersen()+"%");
+            lblPersenEuro.setForeground(green);
+        } 
+        else {
+            lblPersenEuro.setText(listKurs.get(1).getPersen()+"%");
+            lblPersenEuro.setForeground(red);
+        }
     }
     
     public void getAdmin(AdminHomepage ah){
@@ -153,6 +192,13 @@ public class AdminDashboard extends javax.swing.JPanel {
         jPanel7 = new RoundJPanel(35);
         jPanel8 = new RoundJPanel(25);
         jLabel1 = new javax.swing.JLabel();
+        jPanel12 = new RoundJPanel(25);
+        jLabel17 = new javax.swing.JLabel();
+        lblKursBeliUSD = new javax.swing.JLabel();
+        lblPersenUSD = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        lblKursBeliEuro = new javax.swing.JLabel();
+        lblPersenEuro = new javax.swing.JLabel();
 
         jScrollPane2.setBorder(null);
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -627,6 +673,7 @@ public class AdminDashboard extends javax.swing.JPanel {
 
     jPanel2.setBackground(new java.awt.Color(84, 190, 229));
     jPanel2.setOpaque(false);
+    jPanel2.setPreferredSize(new java.awt.Dimension(224, 116));
 
     jPanel9.setBackground(new java.awt.Color(255, 255, 255));
     jPanel9.setOpaque(false);
@@ -644,10 +691,7 @@ public class AdminDashboard extends javax.swing.JPanel {
     );
     jPanel9Layout.setVerticalGroup(
         jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel9Layout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addContainerGap())
+        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
     );
 
     date.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
@@ -662,7 +706,7 @@ public class AdminDashboard extends javax.swing.JPanel {
         .addGroup(jPanel2Layout.createSequentialGroup()
             .addGap(41, 41, 41)
             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(45, Short.MAX_VALUE))
+            .addContainerGap(39, Short.MAX_VALUE))
         .addGroup(jPanel2Layout.createSequentialGroup()
             .addContainerGap()
             .addComponent(date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -673,13 +717,14 @@ public class AdminDashboard extends javax.swing.JPanel {
         .addGroup(jPanel2Layout.createSequentialGroup()
             .addContainerGap()
             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(18, 18, 18)
+            .addGap(24, 24, 24)
             .addComponent(date)
-            .addContainerGap(40, Short.MAX_VALUE))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
     jPanel7.setBackground(new java.awt.Color(254, 174, 72));
     jPanel7.setOpaque(false);
+    jPanel7.setPreferredSize(new java.awt.Dimension(224, 116));
 
     jPanel8.setBackground(new java.awt.Color(255, 255, 255));
     jPanel8.setOpaque(false);
@@ -697,9 +742,70 @@ public class AdminDashboard extends javax.swing.JPanel {
     );
     jPanel8Layout.setVerticalGroup(
         jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel8Layout.createSequentialGroup()
+        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+    );
+
+    jPanel12.setBackground(new java.awt.Color(250, 223, 116));
+    jPanel12.setOpaque(false);
+
+    jLabel17.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+    jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+    jLabel17.setText("USD");
+
+    lblKursBeliUSD.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+    lblKursBeliUSD.setForeground(new java.awt.Color(0, 0, 0));
+    lblKursBeliUSD.setText("14000");
+
+    lblPersenUSD.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+    lblPersenUSD.setForeground(new java.awt.Color(0, 0, 0));
+    lblPersenUSD.setText("+3.82%");
+
+    jLabel18.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+    jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+    jLabel18.setText("EURO");
+
+    lblKursBeliEuro.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+    lblKursBeliEuro.setForeground(new java.awt.Color(0, 0, 0));
+    lblKursBeliEuro.setText("14000");
+
+    lblPersenEuro.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
+    lblPersenEuro.setForeground(new java.awt.Color(0, 0, 0));
+    lblPersenEuro.setText("+3.82%");
+
+    javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+    jPanel12.setLayout(jPanel12Layout);
+    jPanel12Layout.setHorizontalGroup(
+        jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel12Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jLabel1)
+            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel12Layout.createSequentialGroup()
+                    .addComponent(jLabel17)
+                    .addGap(31, 31, 31)
+                    .addComponent(lblKursBeliUSD))
+                .addGroup(jPanel12Layout.createSequentialGroup()
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblKursBeliEuro)))
+            .addGap(27, 27, 27)
+            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(lblPersenUSD)
+                .addComponent(lblPersenEuro))
+            .addContainerGap(16, Short.MAX_VALUE))
+    );
+    jPanel12Layout.setVerticalGroup(
+        jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel12Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel17)
+                .addComponent(lblKursBeliUSD)
+                .addComponent(lblPersenUSD))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel18)
+                .addComponent(lblKursBeliEuro)
+                .addComponent(lblPersenEuro))
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
@@ -710,14 +816,20 @@ public class AdminDashboard extends javax.swing.JPanel {
         .addGroup(jPanel7Layout.createSequentialGroup()
             .addGap(73, 73, 73)
             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(90, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE))
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+            .addContainerGap(21, Short.MAX_VALUE)
+            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(14, 14, 14))
     );
     jPanel7Layout.setVerticalGroup(
         jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel7Layout.createSequentialGroup()
-            .addContainerGap()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(13, 13, 13))
     );
 
     javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
@@ -726,7 +838,7 @@ public class AdminDashboard extends javax.swing.JPanel {
         contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         .addGroup(contentLayout.createSequentialGroup()
-            .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(contentLayout.createSequentialGroup()
                     .addGap(43, 43, 43)
                     .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -737,11 +849,11 @@ public class AdminDashboard extends javax.swing.JPanel {
                 .addGroup(contentLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(contentLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGap(0, 21, Short.MAX_VALUE))
     );
     contentLayout.setVerticalGroup(
@@ -758,10 +870,10 @@ public class AdminDashboard extends javax.swing.JPanel {
             .addGap(32, 32, 32)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGap(8, 8, 8)
+            .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
@@ -827,6 +939,8 @@ public class AdminDashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -838,6 +952,7 @@ public class AdminDashboard extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -848,6 +963,10 @@ public class AdminDashboard extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblKursBeliEuro;
+    private javax.swing.JLabel lblKursBeliUSD;
+    private javax.swing.JLabel lblPersenEuro;
+    private javax.swing.JLabel lblPersenUSD;
     private javax.swing.JLabel name;
     private javax.swing.JLabel point;
     // End of variables declaration//GEN-END:variables
