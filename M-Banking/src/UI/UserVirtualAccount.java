@@ -31,6 +31,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import m.banking.Log;
 import m.banking.Login.Login;
+import m.banking.Member;
 /**
  *
  * @author maxdr
@@ -542,14 +543,18 @@ public class UserVirtualAccount extends javax.swing.JPanel {
                         break;
                     }
                 }
+                Member saya = ut.utf.u.active;
                 if (idx != -1){
-                    if (ut.utf.u.active.getRupiah()-ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan() >= 50000){
-                        ut.utf.u.active.setRupiah(ut.utf.u.active.getRupiah()-ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan());
-                        JOptionPane.showMessageDialog(this, "Success Paid " + priceWithoutDecimal(ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan()) + " - Virtual Account " + ut.utf.u.active.getMyTagihan().get(idx).getVirtualAccount());
+                    if (saya.getRupiah()-saya.getMyTagihan().get(idx).getJumlahTagihan() >= 50000){
+                        saya.setRupiah(saya.getRupiah()-saya.getMyTagihan().get(idx).getJumlahTagihan());
+                        JOptionPane.showMessageDialog(this, "Successfully Paid " + priceWithoutDecimal(saya.getMyTagihan().get(idx).getJumlahTagihan()) + " - Virtual Account " + saya.getMyTagihan().get(idx).getVirtualAccount());
                         //inbox
-                        double poin = ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan()*0.1;
-                        ut.utf.u.active.getInbox().add("Berhasil Membayar Tagihan "+ut.utf.u.active.getMyTagihan().get(idx).getNamaTagihan() + " Sebesar Rp."+ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan()+"\nReceived "+ (int)poin + " from "+ut.utf.u.active.getMyTagihan().get(idx).getNamaTagihan()+ " Virtual Account Payment" );
-                        ut.utf.u.active.setPoint(ut.utf.u.active.getPoint() + (int)poin);
+                        double poin = saya.getMyTagihan().get(idx).getJumlahTagihan()*0.1;
+                        saya.getInbox().add("Succesfully Paid "+saya.getMyTagihan().get(idx).getNamaTagihan() + " Rp."+saya.getMyTagihan().get(idx).getJumlahTagihan()+"\nReceived "+ (int)poin + " from "+saya.getMyTagihan().get(idx).getNamaTagihan()+ " Virtual Account Payment" );
+                        saya.setPoint(saya.getPoint() + (int)poin);
+                        //mutasi
+                        saya.getMutasi().add("Paid "+saya.getMyTagihan().get(idx).getNamaTagihan() + " For Rp."+saya.getMyTagihan().get(idx).getJumlahTagihan());
+                        //logAdmin
                         ArrayList<Log> logAdmin = new ArrayList<>();
                         try {
                             FileInputStream file = new FileInputStream("logAdmin.ser");

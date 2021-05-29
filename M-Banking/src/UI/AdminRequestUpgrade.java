@@ -267,15 +267,18 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
                 if (requestUpgrade.get(idx).getNoRekening().equals(Account.get(i).getNoRekening())){
                     if (Account.get(i) instanceof Silver){
                         Account.get(i).setUpgrade(0);
+                        Account.get(i).getInbox().add("Upgrade Request to Gold has been Rejected");
                     }
                     else if (Account.get(i) instanceof Gold){
                         Account.get(i).setUpgrade(1);
+                        Account.get(i).getInbox().add("Upgrade Request to Platinum has been Rejected");
                     }
                     Account.get(i).setCekUpgrade(false);
                     break;
                 }
             }
             requestUpgrade.remove(idx);
+            
             
             try {
                 FileOutputStream file = new FileOutputStream("requestUpgrade.ser");

@@ -397,23 +397,25 @@ public class UserAntarRek extends javax.swing.JPanel {
                 if(tf_amount >= 10000){
                     if(saya.getRupiah() > tf_amount+50000){
                         if(saya.getCurrentUsage() +(int)tf_amount < saya.getLimitTransfer()){
+                            //date get
+                            String date = ut.utf.u.d1.getD1().getDate() + "/" + ut.utf.u.d1.getD1().getMonth() + "/" + ut.utf.u.d1.getD1().getYear();
                             //saya
                             saya.setRupiah(saya.getRupiah()-tf_amount);
                             double poin = tf_amount*0.1;
                             saya.setPoint(saya.getPoint() + (int)poin);
-                            saya.getInbox().add("Transfered "+tf_amount+ " to "+target.getNama()+"\nReceived "+(int)poin+" Points");
+                            saya.getInbox().add("Transfered Rp."+tf_amount+ " to "+target.getNoRekening()+"\nReceived "+(int)poin+" Points");
+                            saya.getMutasi().add("Transfered Rp."+tf_amount+ " to "+target.getNoRekening()+" on "+date);
                             //target
                             target.setRupiah(target.getRupiah()+tf_amount);
-                            //add inbox target ???
+                            target.getInbox().add("Received Rp."+tf_amount +"From "+saya.getNoRekening());
+                            target.getMutasi().add("Received Rp."+tf_amount +"From "+saya.getNoRekening()+ " on "+date);
+                            //msg
                             msg+="\nSuccesfully Transfered "+tf_amount+ " to "+target.getNama();
-                            
                             ArrayList<Log> logAdmin = new ArrayList<>();
                             try {
                                 FileInputStream file = new FileInputStream("logAdmin.ser");
                                 ObjectInputStream in = new ObjectInputStream(file);
-
                                 logAdmin = (ArrayList<Log>) in.readObject();
-
                                 in.close();
                                 file.close();
                             }
@@ -424,8 +426,8 @@ public class UserAntarRek extends javax.swing.JPanel {
                                 System.out.println("ClassNotFoundException is caught");
                             }
                             //<No>. <Date> <Nama> <Activity>
-                            String date = ut.utf.u.d1.getD1().getDate() + "/" + ut.utf.u.d1.getD1().getMonth() + "/" + ut.utf.u.d1.getD1().getYear();
-                            logAdmin.add(0, new Log(date + "-" + ut.utf.u.active.getNoRekening() + " Success transfer " + tf_amount + " to " + target.getNoRekening()));
+                            
+                            logAdmin.add(0, new Log(date + "-" + saya.getNoRekening() + " Success transfer " + tf_amount + " to " + target.getNoRekening()));
                             try {
                                 FileOutputStream file = new FileOutputStream("logAdmin.ser");
                                 ObjectOutputStream out = new ObjectOutputStream(file);
