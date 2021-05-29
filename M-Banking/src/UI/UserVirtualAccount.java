@@ -547,7 +547,9 @@ public class UserVirtualAccount extends javax.swing.JPanel {
                         ut.utf.u.active.setRupiah(ut.utf.u.active.getRupiah()-ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan());
                         JOptionPane.showMessageDialog(this, "Success Paid " + priceWithoutDecimal(ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan()) + " - Virtual Account " + ut.utf.u.active.getMyTagihan().get(idx).getVirtualAccount());
                         //inbox
-                        ut.utf.u.active.getInbox().add("Berhasil Membayar Tagihan "+ut.utf.u.active.getMyTagihan().get(idx).getNamaTagihan() + " Sebesar Rp."+ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan());
+                        double poin = ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan()*0.1;
+                        ut.utf.u.active.getInbox().add("Berhasil Membayar Tagihan "+ut.utf.u.active.getMyTagihan().get(idx).getNamaTagihan() + " Sebesar Rp."+ut.utf.u.active.getMyTagihan().get(idx).getJumlahTagihan()+"\nReceived "+ (int)poin + " from "+ut.utf.u.active.getMyTagihan().get(idx).getNamaTagihan()+ " Virtual Account Payment" );
+                        ut.utf.u.active.setPoint(ut.utf.u.active.getPoint() + (int)poin);
                         ArrayList<Log> logAdmin = new ArrayList<>();
                         try {
                             FileInputStream file = new FileInputStream("logAdmin.ser");
