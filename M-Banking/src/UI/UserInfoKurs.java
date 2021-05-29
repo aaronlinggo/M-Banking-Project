@@ -695,15 +695,7 @@ public class UserInfoKurs extends javax.swing.JPanel
 
     private void btnBuyUSDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuyUSDMouseClicked
         // TODO add your handling code here:
-        int letakTitik = FieldAmountUSD.getText().indexOf(".");
-        double amountUSD;
-        if(letakTitik == 0) {
-            amountUSD = Double.parseDouble(FieldAmountUSD.getText().substring(0,letakTitik)) + Double.parseDouble(FieldAmountUSD.getText().substring(letakTitik,FieldAmountUSD.getText().length())) * 0.1;
-        }
-        else {
-            amountUSD = Double.parseDouble(FieldAmountUSD.getText());
-        }
-        
+        double amountUSD = Double.parseDouble(FieldAmountUSD.getText());
         if((umi.umm.uh.active.getRupiah() - amountUSD * listKurs.get(0).getKursJual()) >= 50000) {
             //berhasil
             umi.umm.uh.active.setUsd(umi.umm.uh.active.getUsd() + amountUSD);
@@ -728,18 +720,12 @@ public class UserInfoKurs extends javax.swing.JPanel
             //saldo tidak cukup
             JOptionPane.showMessageDialog(null, "You don't have enough Rupiah to buy it");
         }
+        FieldAmountUSD.setText("");
     }//GEN-LAST:event_btnBuyUSDMouseClicked
 
     private void btnSellUSDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSellUSDMouseClicked
         // TODO add your handling code here:
-        int letakTitik = FieldAmountUSD.getText().indexOf(".");
-        double amountUSD;
-        if(letakTitik == 0) {
-            amountUSD = Double.parseDouble(FieldAmountUSD.getText().substring(0,letakTitik)) + Double.parseDouble(FieldAmountUSD.getText().substring(letakTitik,FieldAmountUSD.getText().length())) * 0.1;
-        }
-        else {
-            amountUSD = Double.parseDouble(FieldAmountUSD.getText());
-        }
+        double amountUSD = Double.parseDouble(FieldAmountUSD.getText());
         if(umi.umm.uh.active.getUsd() >= amountUSD) {
             //berhasil
             umi.umm.uh.active.setUsd(umi.umm.uh.active.getUsd() - amountUSD);
@@ -764,18 +750,12 @@ public class UserInfoKurs extends javax.swing.JPanel
             //saldo tidak cukup
             JOptionPane.showMessageDialog(null, "You don't have enough Dollar to sell it");
         }
+        FieldAmountUSD.setText("");
     }//GEN-LAST:event_btnSellUSDMouseClicked
 
     private void btnSellEuroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSellEuroMouseClicked
         // TODO add your handling code here:
-        int letakTitik = FieldAmountEuro.getText().indexOf(".");
-        double amountEuro;
-        if(letakTitik == 0) {
-            amountEuro = Double.parseDouble(FieldAmountEuro.getText().substring(0,letakTitik)) + Double.parseDouble(FieldAmountEuro.getText().substring(letakTitik,FieldAmountEuro.getText().length())) * 0.1;
-        }
-        else {
-            amountEuro = Double.parseDouble(FieldAmountEuro.getText());
-        }
+        double amountEuro = Double.parseDouble(FieldAmountEuro.getText());
         if(umi.umm.uh.active.getUsd() >= amountEuro) {
             //berhasil
             umi.umm.uh.active.setEuro(umi.umm.uh.active.getEuro() - amountEuro);
@@ -800,18 +780,12 @@ public class UserInfoKurs extends javax.swing.JPanel
             //saldo tidak cukup
             JOptionPane.showMessageDialog(null, "You don't have enough Euro to sell it");
         }
+        FieldAmountEuro.setText("");
     }//GEN-LAST:event_btnSellEuroMouseClicked
 
     private void btnBuyEuroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuyEuroMouseClicked
         // TODO add your handling code here:
-        int letakTitik = FieldAmountEuro.getText().indexOf(".");
-        double amountEuro;
-        if(letakTitik==0) {
-            amountEuro = Double.parseDouble(FieldAmountEuro.getText().substring(0,letakTitik)) + Double.parseDouble(FieldAmountEuro.getText().substring(letakTitik,FieldAmountEuro.getText().length())) * 0.1;
-        }
-        else {
-            amountEuro = Double.parseDouble(FieldAmountEuro.getText());
-        }
+        double amountEuro = Double.parseDouble(FieldAmountEuro.getText());
         if((umi.umm.uh.active.getRupiah() - amountEuro * listKurs.get(1).getKursJual()) >= 50000) {
             //berhasil
             umi.umm.uh.active.setEuro(umi.umm.uh.active.getEuro() + amountEuro);
@@ -836,6 +810,7 @@ public class UserInfoKurs extends javax.swing.JPanel
             //saldo tidak cukup
             JOptionPane.showMessageDialog(null, "You don't have enough money to buy it");
         }
+        FieldAmountEuro.setText("");
     }//GEN-LAST:event_btnBuyEuroMouseClicked
 
 
