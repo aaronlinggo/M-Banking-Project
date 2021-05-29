@@ -43,6 +43,19 @@ public class UserAntarRek extends javax.swing.JPanel {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
         this.setBounds(0, 0, 500, 750);
+        if(!jComboBox1.getSelectedItem().toString().equals("")){
+            String chosen = jComboBox1.getSelectedItem().toString(); //dapet norek
+            String display ="";
+            for(Member cari: ut.utf.u.Account){
+            if(cari.getNoRekening().equals(chosen)){
+                display = cari.getNama();
+            }
+        }
+        nama.setText(display);
+        }
+        else{
+            nama.setText("");
+        }
         
     }
 
@@ -450,7 +463,17 @@ public class UserAntarRek extends javax.swing.JPanel {
             msg+="\nPlease Input Transfer Amount";
         }
         JOptionPane.showMessageDialog(this,  msg);
-        
+        try {
+            FileOutputStream file = new FileOutputStream("Account.ser");
+            ObjectOutputStream out = new ObjectOutputStream(file);
+            out.writeObject(ut.utf.u.Account);
+            out.close();
+            file.close();
+            System.out.println("Object has been serialized");
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
     }//GEN-LAST:event_OKMouseClicked
 
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained

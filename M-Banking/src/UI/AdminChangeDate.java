@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -385,6 +386,11 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
         cf.setVisible(true);
     }//GEN-LAST:event_pickADateMouseClicked
 
+    public String priceWithoutDecimal (Double price) {
+        DecimalFormat formatter = new DecimalFormat("###,###,###.##");
+        return formatter.format(price);
+    }
+    
     private void changeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeMouseClicked
         // TODO add your handling code here:
         String filename = "date.ser";
@@ -542,7 +548,14 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                     System.out.println("ClassNotFoundException is caught");
                 }
                 for (int i = 0; i < Account.size(); i++) {
-                    Account.get(i).setRupiah(Account.get(i).getRupiah() + ((Account.get(i).getRupiah()*Account.get(i).getBunga())/100));
+                    double biaya =  ((Account.get(i).getRupiah()*Account.get(i).getBunga())/100);
+                    Account.get(i).setRupiah(Account.get(i).getRupiah() + biaya);
+                    //inbox
+                    Account.get(i).getInbox().add("You have been Charged Rp. "+priceWithoutDecimal(biaya) + " For Admin Fees");
+                    Account.get(i).getInbox().add("You have Received Rp. "+priceWithoutDecimal((double)Account.get(i).getBunga()) + " From Bank Interest");
+                    //mutasi
+                    Account.get(i).getMutasi().add("Charged Rp. "+priceWithoutDecimal(biaya) + " For Admin Fees");
+                    Account.get(i).getMutasi().add("Received Rp. "+priceWithoutDecimal((double)Account.get(i).getBunga()) + " From Interest");
                     if (rangeBulan != 0){
                         int temp = Account.get(i).getBiayaAdmin()*rangeBulan;
                         Account.get(i).setRupiah(Account.get(i).getRupiah() - temp);
