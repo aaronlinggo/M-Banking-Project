@@ -29,7 +29,7 @@ public abstract class Member implements Serializable{
     protected ArrayList<String> daftarrek;
     protected int upgrade;
     protected boolean cekUpgrade;
-    
+    protected ArrayList<String> RewardBank;
     public Member(int limitTransfer, int currentUsage, int bunga, int biayaAdmin, String nama, double rupiah, String noRekening, String nomorHP, String alamat, String pin, int point, String tanggalLahir, String gender) {
         this.limitTransfer = limitTransfer;
         this.aturLimit = limitTransfer;
@@ -52,8 +52,19 @@ public abstract class Member implements Serializable{
         this.daftarrek = new ArrayList<>();
         this.upgrade = 0;
         this.cekUpgrade = false;
+        this.RewardBank = new ArrayList<>();
     }
 
+    public ArrayList<String> getRewardBank()
+    {
+        return RewardBank;
+    }
+
+    public void setRewardBank(ArrayList<String> RewardBank)
+    {
+        this.RewardBank = RewardBank;
+    }
+    
     public int randomVA(){
         int va = 0;
         do {

@@ -505,7 +505,7 @@ public class UserMInfo extends javax.swing.JPanel
     private void InfoRewardBankMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_InfoRewardBankMouseClicked
     {//GEN-HEADEREND:event_InfoRewardBankMouseClicked
         // TODO add your handling code here:
-        UserInfoRewardBank uirb = new UserInfoRewardBank();
+        UserRewardBank uirb = new UserRewardBank(this);
         uirb.passUserMInfo(this);
         umm.uh.getContent().removeAll();
         uirb.setBounds(0,0,500,750);
