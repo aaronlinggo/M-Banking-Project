@@ -33,6 +33,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 import m.banking.Log;
+import m.banking.Member;
 import m.banking.Merchandise;
 
 /**
@@ -41,7 +42,8 @@ import m.banking.Merchandise;
  */
 public class UserMerchandise extends javax.swing.JPanel
 {
-
+    
+    ArrayList<ProductList> pl;
     /**
      * Creates new form UserMerchandise
      */
@@ -406,49 +408,87 @@ public class UserMerchandise extends javax.swing.JPanel
     private void SubmitMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_SubmitMouseClicked
     {//GEN-HEADEREND:event_SubmitMouseClicked
         // TODO add your handling code here:
-        if(utf.u.active.getPoint() - total < 0)
+        if(total != 0)
         {
-            JOptionPane.showMessageDialog(this,"Maaf, Point yang Anda Kurang.");
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(this,"Berhasil Menukar Point dengan Merchandise");
-            ArrayList<Log> logAdmin = new ArrayList<>();
-            try {
-                FileInputStream file = new FileInputStream("logAdmin.ser");
-                ObjectInputStream in = new ObjectInputStream(file);
-
-                logAdmin = (ArrayList<Log>) in.readObject();
-
-                in.close();
-                file.close();
+            if(utf.u.active.getPoint() - total < 0)
+            {
+                JOptionPane.showMessageDialog(this,"Maaf, Point yang Anda Kurang.");
             }
-            catch(IOException ex) {
-                System.out.println("IOException is caught");
-            }
-            catch(ClassNotFoundException ex) {
-                System.out.println("ClassNotFoundException is caught");
-            }
-            //<No>. <Date> <Nama> <Activity>
-            String date = utf.u.d1.getD1().getDate() + "/" + utf.u.d1.getD1().getMonth() + "/" + utf.u.d1.getD1().getYear();
-            logAdmin.add(0, new Log(date + "-" + utf.u.active.getNoRekening() + " Success exchange point"));
-            System.out.println(date);
-            System.out.println(logAdmin.get(0).getLog());
-            try {
-                FileOutputStream file = new FileOutputStream("logAdmin.ser");
-                ObjectOutputStream out = new ObjectOutputStream(file);
+            else
+            {
+                utf.u.active.setPoint(utf.u.active.getPoint() - total);
+                this.PointUser.setText("Point : " + utf.u.active.getPoint());
+                for (int i = 0; i < pl.size(); i++)
+                {
+                    if (!pl.get(i).getJumlahTukar().equals("0"))
+                    {
+                        utf.u.active.getRewardBank().add("Berhasil menukar " + pl.get(i).getJumlahTukar() + " " + pl.get(i).getNamaProduct());
+                        System.out.println("s");
+                    }
+                }
+                System.out.println(utf.u.active.getRewardBank().size());
+                JOptionPane.showMessageDialog(this,"Berhasil Menukar Point dengan Merchandise");
+                ArrayList<Log> logAdmin = new ArrayList<>();
+                try 
+                {
+                    FileInputStream file = new FileInputStream("logAdmin.ser");
+                    ObjectInputStream in = new ObjectInputStream(file);
 
-                out.writeObject(logAdmin);
+                    logAdmin = (ArrayList<Log>) in.readObject();
 
-                out.close();
-                file.close();
+                    in.close();
+                    file.close();
+                }
+                catch(IOException ex) 
+                {
+                    System.out.println("IOException is caught");
+                }
+                catch(ClassNotFoundException ex) 
+                {
+                    System.out.println("ClassNotFoundException is caught");
+                }
+                //<No>. <Date> <Nama> <Activity>
+                String date = utf.u.d1.getD1().getDate() + "/" + utf.u.d1.getD1().getMonth() + "/" + utf.u.d1.getD1().getYear();
+                logAdmin.add(0, new Log(date + "-" + utf.u.active.getNoRekening() + " Success exchange point"));
+                System.out.println(date);
+                System.out.println(logAdmin.get(0).getLog());
+                try 
+                {
+                    FileOutputStream file = new FileOutputStream("logAdmin.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(file);
 
-                System.out.println("Object has been serialized");
+                    out.writeObject(logAdmin);
 
-            }
-            catch(IOException ex) {
-                System.out.println("IOException is caught2");
-                System.out.println(ex);
+                    out.close();
+                    file.close();
+
+                    System.out.println("Object has been serialized");
+
+                }
+                catch(IOException ex) 
+                {
+                    System.out.println("IOException is caught2");
+                    System.out.println(ex);
+                }
+                
+                
+                try 
+                {
+                    FileOutputStream file = new FileOutputStream("Account.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(file);
+
+                    out.writeObject(utf.u.Account);
+
+                    out.close();
+                    file.close();
+
+                    System.out.println("Object has been serialized");
+
+                }
+                catch(IOException ex) 
+                {
+                    System.out.println("IOException is caught");
+                }
             }
         }
            
@@ -456,6 +496,11 @@ public class UserMerchandise extends javax.swing.JPanel
     public void pass(UserTransfer utf)
     {
         this.utf=utf;
+    }
+    
+    public void AddReward(Member m)
+    {
+        
     }
     
     int JumlahMerchandise = 0;
@@ -482,7 +527,7 @@ public class UserMerchandise extends javax.swing.JPanel
         {
             System.out.println("ClassNotFoundException is caught");
         }
-        ArrayList<ProductList> pl = new ArrayList<>();
+        pl = new ArrayList<>();
         
         IsiKonten.removeAll();
         if ((95+10)*myMerchandise.size() >= 442)

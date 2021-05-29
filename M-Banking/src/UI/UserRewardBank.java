@@ -8,11 +8,13 @@ package UI;
 import RoundedField.RoundJPanel;
 import ScrollBar.MyScrollBarUI;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
@@ -23,16 +25,18 @@ import javax.swing.SwingUtilities;
  *
  * @author jonat
  */
-public class UserInfoRewardBank extends javax.swing.JPanel
+public class UserRewardBank extends javax.swing.JPanel
 {
 
     /**
      * Creates new form UserMInfo
      */
     UserMInfo umi;
-    public UserInfoRewardBank()
+    public UserRewardBank(UserMInfo umi)
     {
+        this.umi = umi;
         initComponents();
+        ShowRewardBank();
     }
     
     public void passUserMInfo(UserMInfo umi)
@@ -54,7 +58,7 @@ public class UserInfoRewardBank extends javax.swing.JPanel
         Judul = new RoundJPanel(25);
         jLabel2 = new javax.swing.JLabel();
         scroll = new javax.swing.JScrollPane();
-        IsiInfoRewardBank = new javax.swing.JPanel();
+        IsiRewardBank = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(250, 243, 243));
 
@@ -125,20 +129,20 @@ public class UserInfoRewardBank extends javax.swing.JPanel
         scroll.setBorder(null);
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        IsiInfoRewardBank.setBackground(new java.awt.Color(255, 255, 255));
+        IsiRewardBank.setBackground(new java.awt.Color(250, 243, 243));
 
-        javax.swing.GroupLayout IsiInfoRewardBankLayout = new javax.swing.GroupLayout(IsiInfoRewardBank);
-        IsiInfoRewardBank.setLayout(IsiInfoRewardBankLayout);
-        IsiInfoRewardBankLayout.setHorizontalGroup(
-            IsiInfoRewardBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout IsiRewardBankLayout = new javax.swing.GroupLayout(IsiRewardBank);
+        IsiRewardBank.setLayout(IsiRewardBankLayout);
+        IsiRewardBankLayout.setHorizontalGroup(
+            IsiRewardBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 434, Short.MAX_VALUE)
         );
-        IsiInfoRewardBankLayout.setVerticalGroup(
-            IsiInfoRewardBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        IsiRewardBankLayout.setVerticalGroup(
+            IsiRewardBankLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 661, Short.MAX_VALUE)
         );
 
-        scroll.setViewportView(IsiInfoRewardBank);
+        scroll.setViewportView(IsiRewardBank);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -221,7 +225,7 @@ public class UserInfoRewardBank extends javax.swing.JPanel
             {
                 if (origin != null)
                 {
-                    JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, IsiInfoRewardBank);
+                    JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, IsiRewardBank);
                     if (viewPort != null)
                     {
                         int deltaX = origin.x - e.getX();
@@ -231,15 +235,15 @@ public class UserInfoRewardBank extends javax.swing.JPanel
                         view.x += deltaX;
                         view.y += deltaY;
 
-                        IsiInfoRewardBank.scrollRectToVisible(view);
+                        IsiRewardBank.scrollRectToVisible(view);
                     }
                 }
             }
 
         };
 
-        IsiInfoRewardBank.addMouseListener(ma);
-        IsiInfoRewardBank.addMouseMotionListener(ma);
+        IsiRewardBank.addMouseListener(ma);
+        IsiRewardBank.addMouseMotionListener(ma);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel1MouseClicked
@@ -263,10 +267,34 @@ public class UserInfoRewardBank extends javax.swing.JPanel
         umi.umm.uh.getContent().repaint();
     }//GEN-LAST:event_BackMouseClicked
 
-
+    public void ShowRewardBank()
+    {
+        ArrayList<RewardBankCard> rbc = new ArrayList<>();
+        
+        IsiRewardBank.removeAll();
+        if ((117+10)*umi.umm.uh.active.getRewardBank().size() >= 661)
+        {
+            IsiRewardBank.setPreferredSize(new Dimension(434, (117+10)*umi.umm.uh.active.getRewardBank().size()));
+        }
+        else 
+        {
+            IsiRewardBank.setPreferredSize(new Dimension(434, 661));
+        }
+        
+        for (int i = 0; i < umi.umm.uh.active.getRewardBank().size(); i++) 
+        {
+            rbc.add(new RewardBankCard());
+            rbc.get(i).getNama().setText(umi.umm.uh.active.getRewardBank().get(i));
+            rbc.get(i).setBounds(0, (117+10)*i, 424,105);
+            rbc.get(i).setVisible(true);
+            IsiRewardBank.add(rbc.get(i));
+        }
+        IsiRewardBank.revalidate();
+        IsiRewardBank.repaint();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Back;
-    private javax.swing.JPanel IsiInfoRewardBank;
+    private javax.swing.JPanel IsiRewardBank;
     private javax.swing.JPanel Judul;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
