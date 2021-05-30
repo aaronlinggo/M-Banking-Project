@@ -43,15 +43,17 @@ public class UserAntarRek extends javax.swing.JPanel {
         initComponents();
         this.setBackground(new Color(0.0f,0.0f,0.0f,0.0f));
         this.setBounds(0, 0, 500, 750);
-        if(!jComboBox1.getSelectedItem().toString().equals("")){
-            String chosen = jComboBox1.getSelectedItem().toString(); //dapet norek
-            String display ="";
-            for(Member cari: ut.utf.u.Account){
-            if(cari.getNoRekening().equals(chosen)){
-                display = cari.getNama();
+        if(ut.utf.u.active.getDaftarrek().size()>0){
+            if(!jComboBox1.getSelectedItem().toString().equals("")){
+                String chosen = jComboBox1.getSelectedItem().toString(); //dapet norek
+                String display ="";
+                for(Member cari: ut.utf.u.Account){
+                    if(cari.getNoRekening().equals(chosen)){
+                        display = cari.getNama();
+                    }
+                }
+            nama.setText(display);
             }
-        }
-        nama.setText(display);
         }
         else{
             nama.setText("");
@@ -403,12 +405,14 @@ public class UserAntarRek extends javax.swing.JPanel {
                             saya.setRupiah(saya.getRupiah()-tf_amount);
                             double poin = tf_amount*0.1;
                             saya.setPoint(saya.getPoint() + (int)poin);
-                            saya.getInbox().add("Transfered Rp."+tf_amount+ " to "+target.getNoRekening()+"\nReceived "+(int)poin+" Points");
-                            saya.getMutasi().add("Transfered Rp."+tf_amount+ " to "+target.getNoRekening()+" on "+date);
+                            saya.getInbox().add("Transfered Rp."+tf_amount+ " \nto "+target.getNoRekening()+"\nReceived "+(int)poin+" Points");
+                            System.out.println("inbox trf done");
+                            saya.getMutasi().add("Transfered Rp."+tf_amount+ " \nto "+target.getNoRekening()+" \non "+date);
+                            System.out.println("mutasi tf done");
                             //target
                             target.setRupiah(target.getRupiah()+tf_amount);
                             target.getInbox().add("Received Rp."+tf_amount +"From "+saya.getNoRekening());
-                            target.getMutasi().add("Received Rp."+tf_amount +"From "+saya.getNoRekening()+ " on "+date);
+                            target.getMutasi().add("Received Rp."+tf_amount +"From "+saya.getNoRekening()+ " \non "+date);
                             //msg
                             msg+="\nSuccesfully Transfered "+tf_amount+ " to "+target.getNama();
                             ArrayList<Log> logAdmin = new ArrayList<>();

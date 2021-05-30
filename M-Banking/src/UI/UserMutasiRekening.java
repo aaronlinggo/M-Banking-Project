@@ -6,7 +6,21 @@
 package UI;
 
 import RoundedField.RoundJPanel;
+import ScrollBar.MyScrollBarUI;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JViewport;
+import javax.swing.ScrollPaneLayout;
+import javax.swing.SwingUtilities;
+import m.banking.Member;
 
 /**
  *
@@ -19,9 +33,12 @@ public class UserMutasiRekening extends javax.swing.JPanel
      * Creates new form UserMInfo
      */
     UserMInfo umi;
-    public UserMutasiRekening()
+    public UserMutasiRekening(UserMInfo umi)
     {
+        this.umi = umi ;
         initComponents();
+        showallMutasi(umi.umm.uh.active);
+        
     }
     
     public void passUserMInfo(UserMInfo umi)
@@ -35,32 +52,29 @@ public class UserMutasiRekening extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         Back = new RoundJPanel(25);
         jLabel1 = new javax.swing.JLabel();
         Judul = new RoundJPanel(25);
         jLabel2 = new javax.swing.JLabel();
+        scroll = new javax.swing.JScrollPane();
+        mutasilist = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(250, 243, 243));
 
         Back.setBackground(new java.awt.Color(255, 255, 255));
         Back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Back.setOpaque(false);
-        Back.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        Back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackMouseClicked(evt);
             }
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/Back.png"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
         });
@@ -108,6 +122,21 @@ public class UserMutasiRekening extends javax.swing.JPanel
                 .addContainerGap())
         );
 
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+        javax.swing.GroupLayout mutasilistLayout = new javax.swing.GroupLayout(mutasilist);
+        mutasilist.setLayout(mutasilistLayout);
+        mutasilistLayout.setHorizontalGroup(
+            mutasilistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 409, Short.MAX_VALUE)
+        );
+        mutasilistLayout.setVerticalGroup(
+            mutasilistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 547, Short.MAX_VALUE)
+        );
+
+        scroll.setViewportView(mutasilist);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,6 +147,11 @@ public class UserMutasiRekening extends javax.swing.JPanel
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Judul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(44, 44, 44)
+                    .addComponent(scroll)
+                    .addGap(44, 44, 44)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +161,77 @@ public class UserMutasiRekening extends javax.swing.JPanel
                     .addComponent(Judul, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
                     .addComponent(Back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(682, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(100, 100, 100)
+                    .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(100, Short.MAX_VALUE)))
         );
+
+        scroll.setLayout(new ScrollPaneLayout() {
+            @Override
+            public void layoutContainer(Container parent) {
+                JScrollPane scrollPane = (JScrollPane) parent;
+
+                Rectangle availR = scrollPane.getBounds();
+                availR.x = availR.y = 0;
+
+                Insets parentInsets = parent.getInsets();
+                availR.x = parentInsets.left;
+                availR.y = parentInsets.top;
+                availR.width -= parentInsets.left + parentInsets.right;
+                availR.height -= parentInsets.top + parentInsets.bottom;
+
+                Rectangle vsbR = new Rectangle();
+                vsbR.width = 12;
+                vsbR.height = availR.height;
+                vsbR.x = availR.x + availR.width - vsbR.width;
+                vsbR.y = availR.y;
+
+                if (viewport != null) {
+                    viewport.setBounds(availR);
+                }
+                if (vsb != null) {
+                    vsb.setVisible(true);
+                    vsb.setBounds(vsbR);
+                }
+            }
+        });
+        scroll.getVerticalScrollBar().setUI(new MyScrollBarUI());
+        MouseAdapter ma = new MouseAdapter() {
+
+            private Point origin;
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                origin = new Point(e.getPoint());
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                if (origin != null) {
+                    JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, mutasilist);
+                    if (viewPort != null) {
+                        int deltaX = origin.x - e.getX();
+                        int deltaY = origin.y - e.getY();
+
+                        Rectangle view = viewPort.getViewRect();
+                        view.x += deltaX;
+                        view.y += deltaY;
+
+                        mutasilist.scrollRectToVisible(view);
+                    }
+                }
+            }
+
+        };
+
+        mutasilist.addMouseListener(ma);
+        mutasilist.addMouseMotionListener(ma);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jLabel1MouseClicked
@@ -150,12 +254,40 @@ public class UserMutasiRekening extends javax.swing.JPanel
         umi.umm.uh.getContent().revalidate();
         umi.umm.uh.getContent().repaint();
     }//GEN-LAST:event_BackMouseClicked
-
+    
+    public void showallMutasi(Member saya){
+        
+        ArrayList<UserMutasiCard> listing = new ArrayList<>();
+        mutasilist.removeAll();
+        if(saya.getMutasi().size()*(70+10)>=547){
+            mutasilist.setPreferredSize(new Dimension(409,saya.getMutasi().size()*(70+10) ));
+        }
+        else{
+            mutasilist.setPreferredSize(new Dimension(409,547));
+        }
+        int max = 0;
+        for (int i = 0; i < saya.getMutasi().size(); i++) {
+            
+            listing.add(new UserMutasiCard());
+            listing.get(i).getjTextArea1().append(saya.getMutasi().get(i));
+//            System.out.println(listing.get(i).getIsi().getPreferredSize().width);
+//            if(listing.get(i).getIsi().getPreferredSize().width>max){
+//                max = listing.get(i).getIsi().getPreferredSize().width;
+//            }
+            listing.get(i).setBounds(0,i*(70+10),402,70);
+            mutasilist.setPreferredSize(new Dimension(max, mutasilist.getPreferredSize().height));
+            mutasilist.add(listing.get(i));
+        }
+        mutasilist.revalidate();
+        mutasilist.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Back;
     private javax.swing.JPanel Judul;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel mutasilist;
+    private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 }

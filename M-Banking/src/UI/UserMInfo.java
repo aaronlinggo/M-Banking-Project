@@ -518,7 +518,7 @@ public class UserMInfo extends javax.swing.JPanel
     private void MutasiRekeningMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_MutasiRekeningMouseClicked
     {//GEN-HEADEREND:event_MutasiRekeningMouseClicked
         // TODO add your handling code here:
-        UserMutasiRekening umr = new UserMutasiRekening();
+        UserMutasiRekening umr = new UserMutasiRekening(this);
         umr.passUserMInfo(this);
         umm.uh.getContent().removeAll();
         umr.setBounds(0,0,500,750);

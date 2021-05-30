@@ -9,16 +9,19 @@ import RoundedField.RoundJPanel;
 import ScrollBar.MyScrollBarUI;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.ScrollPaneLayout;
 import javax.swing.SwingUtilities;
 import m.banking.Login.Login;
+import m.banking.Member;
 
 /**
  *
@@ -29,8 +32,10 @@ public class UTInbox extends javax.swing.JPanel {
     /**
      * Creates new form UTDaftar
      */
-    public UTInbox() {
+    public UTInbox(UTTransfer ut) {
+        this.ut = ut;
         initComponents();
+        showallInbox(ut.utf.u.active);
     }
 
     /**
@@ -109,7 +114,7 @@ public class UTInbox extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        maillist.setBackground(new java.awt.Color(255, 255, 255));
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         javax.swing.GroupLayout maillistLayout = new javax.swing.GroupLayout(maillist);
         maillist.setLayout(maillistLayout);
@@ -119,7 +124,7 @@ public class UTInbox extends javax.swing.JPanel {
         );
         maillistLayout.setVerticalGroup(
             maillistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 547, Short.MAX_VALUE)
         );
 
         scroll.setViewportView(maillist);
@@ -145,9 +150,9 @@ public class UTInbox extends javax.swing.JPanel {
                 .addGroup(bgutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(backbtnpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         scroll.setLayout(new ScrollPaneLayout() {
@@ -242,7 +247,34 @@ public class UTInbox extends javax.swing.JPanel {
     public void passData(UTTransfer ut){
         this.ut = ut;
     }
-
+    
+    
+    public void showallInbox(Member saya){
+        
+        ArrayList<InboxCard> listing = new ArrayList<>();
+        maillist.removeAll();
+        if(saya.getInbox().size()*(70+10)>=547){
+            maillist.setPreferredSize(new Dimension(409,saya.getInbox().size()*(70+10) ));
+        }
+        else{
+            maillist.setPreferredSize(new Dimension(409,547));
+        }
+        int max = 0;
+        for (int i = 0; i < saya.getInbox().size(); i++) {
+            
+            listing.add(new InboxCard());
+            listing.get(i).getjTextArea1().append(saya.getInbox().get(i));
+//            System.out.println(listing.get(i).getIsi().getPreferredSize().width);
+//            if(listing.get(i).getIsi().getPreferredSize().width>max){
+//                max = listing.get(i).getIsi().getPreferredSize().width;
+//            }
+            listing.get(i).setBounds(0,i*(70+10),402,70);
+            maillist.setPreferredSize(new Dimension(max, maillist.getPreferredSize().height));
+            maillist.add(listing.get(i));
+        }
+        maillist.revalidate();
+        maillist.repaint();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backbtn;
     private javax.swing.JPanel backbtnpanel;
