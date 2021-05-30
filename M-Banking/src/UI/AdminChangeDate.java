@@ -528,12 +528,12 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                     System.out.println("dollar naek : "+listKurs.get(j).getPersen());
                         if(listKurs.get(j).getPersen()>0) {
                         //naik
-                        Account.get(i).getInbox().add("Today's Dollar Buy price Rises,\nWhy not sell to us Now!");
+                        Account.get(i).getInbox().add(0,"Today's Dollar Buy price Rises,\nWhy not sell to us Now!");
                             System.out.println("masuk ke inbox naik(dollar)");
                         }
                         else {
                             //turun
-                        Account.get(i).getInbox().add("Dollar Buy price Drops for Today,\nWhy not also buy from us!");
+                        Account.get(i).getInbox().add(0,"Dollar Buy price Drops for Today,\nWhy not also buy from us!");
                         System.out.println("masuk ke inbox turun(dollar)");
                         }
                     }
@@ -541,19 +541,18 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                         System.out.println("eur naek : "+listKurs.get(j).getPersen());
                         if(listKurs.get(j).getPersen()>0) {
                         //naik
-                        Account.get(i).getInbox().add("Euro's Buy price Rises on this Day,\nWhy not sell to us Now!");
+                        Account.get(i).getInbox().add(0,"Euro's Buy price Rises on this Day,\nWhy not sell to us Now!");
                         System.out.println("masuk ke inbox naik(eur)");
                         }
                         else {
                             //turun
-                        Account.get(i).getInbox().add("Today's Euro Buy price Drops,\nWhy not also buy from us!");
+                        Account.get(i).getInbox().add(0,"Today's Euro Buy price Drops,\nWhy not also buy from us!");
                         System.out.println("masuk ke inbox turun (eur)");
                         }
                     }
                     
                 }
             }
-            
             try
             {
                 FileOutputStream file = new FileOutputStream("Kurs.ser");
@@ -589,15 +588,15 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                     Account.get(i).setRupiah(Account.get(i).getRupiah() + bunga);
                     //inbox
                     
-                    Account.get(i).getInbox().add("You have Received Rp. "+priceWithoutDecimal(bunga) + " \nFrom Bank Interest");
+                    Account.get(i).getInbox().add(0,"You have Received Rp. "+priceWithoutDecimal(bunga) + " \nFrom Bank Interest");
                     //mutasi
                     
-                    Account.get(i).getMutasi().add("Received Rp. "+priceWithoutDecimal(bunga) + " \nFrom Interest");
+                    Account.get(i).getMutasi().add(0,"Received Rp. "+priceWithoutDecimal(bunga) + " \nFrom Interest");
                     if (rangeBulan != 0){
                         int temp = Account.get(i).getBiayaAdmin()*rangeBulan;
                         Account.get(i).setRupiah(Account.get(i).getRupiah() - temp);
-                        Account.get(i).getInbox().add("You have been Charged Rp. "+priceWithoutDecimal((double)temp) + " \nFor Admin Fees");
-                        Account.get(i).getMutasi().add("Charged Rp. "+priceWithoutDecimal((double)temp) + " \nFor Admin Fees");
+                        Account.get(i).getInbox().add(0,"You have been Charged Rp. "+priceWithoutDecimal((double)temp) + " \nFor Admin Fees");
+                        Account.get(i).getMutasi().add(0,"Charged Rp. "+priceWithoutDecimal((double)temp) + " \nFor Admin Fees");
                     }
                     //masukin ke inbox -> Bunga sama biaya admin
                 }

@@ -23,9 +23,9 @@ public class UserInfoSaldo extends javax.swing.JPanel
     public UserInfoSaldo(UserMInfo umi)
     {
         initComponents();
-        this.BalRupiah.setText("Balance Rupiah : " + priceWithoutDecimal(umi.umm.uh.active.getRupiah()));
-        this.BalEuro.setText("Balance Euro   : " + priceWithoutDecimal(umi.umm.uh.active.getEuro()));
-        this.BalUSD.setText("Balance USD    : " + priceWithoutDecimal(umi.umm.uh.active.getUsd()));
+        this.newRupiah.setText(priceWithoutDecimal(umi.umm.uh.active.getRupiah()));
+        this.newEuro.setText(priceWithoutDecimal(umi.umm.uh.active.getEuro()));
+        this.newUSD.setText(priceWithoutDecimal(umi.umm.uh.active.getUsd()));
     }
     
     public void passUserMInfo(UserMInfo umi)
@@ -55,10 +55,16 @@ public class UserInfoSaldo extends javax.swing.JPanel
         jLabel2 = new javax.swing.JLabel();
         IDR = new RoundJPanel(25);
         BalRupiah = new javax.swing.JLabel();
+        jPanel3 = new RoundJPanel(25);
+        newRupiah = new javax.swing.JLabel();
         Euro = new RoundJPanel(25);
         BalEuro = new javax.swing.JLabel();
+        jPanel2 = new RoundJPanel(25);
+        newEuro = new javax.swing.JLabel();
         USD = new RoundJPanel(25);
         BalUSD = new javax.swing.JLabel();
+        jPanel1 = new RoundJPanel(25);
+        newUSD = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(250, 243, 243));
 
@@ -129,7 +135,31 @@ public class UserInfoSaldo extends javax.swing.JPanel
 
         BalRupiah.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         BalRupiah.setForeground(new java.awt.Color(0, 0, 0));
-        BalRupiah.setText("Saldo : 0");
+        BalRupiah.setText("Balance Rupiah :");
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setOpaque(false);
+
+        newRupiah.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        newRupiah.setForeground(new java.awt.Color(0, 0, 0));
+        newRupiah.setText("jLabel3");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(newRupiah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(newRupiah, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout IDRLayout = new javax.swing.GroupLayout(IDR);
         IDR.setLayout(IDRLayout);
@@ -137,15 +167,21 @@ public class UserInfoSaldo extends javax.swing.JPanel
             IDRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(IDRLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BalRupiah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BalRupiah)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         IDRLayout.setVerticalGroup(
             IDRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(IDRLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IDRLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BalRupiah, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(IDRLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Euro.setBackground(new java.awt.Color(249, 117, 218));
@@ -153,7 +189,31 @@ public class UserInfoSaldo extends javax.swing.JPanel
 
         BalEuro.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         BalEuro.setForeground(new java.awt.Color(0, 0, 0));
-        BalEuro.setText("jLabel3");
+        BalEuro.setText("Balance Euro   :");
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setOpaque(false);
+
+        newEuro.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        newEuro.setForeground(new java.awt.Color(0, 0, 0));
+        newEuro.setText("jLabel4");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(newEuro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(newEuro, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout EuroLayout = new javax.swing.GroupLayout(Euro);
         Euro.setLayout(EuroLayout);
@@ -161,14 +221,21 @@ public class UserInfoSaldo extends javax.swing.JPanel
             EuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EuroLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BalEuro, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(BalEuro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         EuroLayout.setVerticalGroup(
             EuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EuroLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EuroLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BalEuro, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addGroup(EuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BalEuro, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addGroup(EuroLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -177,7 +244,32 @@ public class UserInfoSaldo extends javax.swing.JPanel
 
         BalUSD.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         BalUSD.setForeground(new java.awt.Color(0, 0, 0));
-        BalUSD.setText("jLabel3");
+        BalUSD.setText("Balance USD    :");
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(100, 28));
+
+        newUSD.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        newUSD.setForeground(new java.awt.Color(0, 0, 0));
+        newUSD.setText("jLabel5");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(newUSD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(newUSD, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout USDLayout = new javax.swing.GroupLayout(USD);
         USD.setLayout(USDLayout);
@@ -185,14 +277,21 @@ public class UserInfoSaldo extends javax.swing.JPanel
             USDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(USDLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BalUSD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BalUSD)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                 .addContainerGap())
         );
         USDLayout.setVerticalGroup(
             USDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(USDLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, USDLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BalUSD, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                .addGroup(USDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BalUSD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(USDLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 12, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -202,16 +301,15 @@ public class UserInfoSaldo extends javax.swing.JPanel
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(Euro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(IDR, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Judul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(IDR, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Euro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(USD, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(USD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +324,7 @@ public class UserInfoSaldo extends javax.swing.JPanel
                 .addComponent(Euro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(USD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(461, Short.MAX_VALUE))
+                .addContainerGap(473, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -263,5 +361,11 @@ public class UserInfoSaldo extends javax.swing.JPanel
     private javax.swing.JPanel USD;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel newEuro;
+    private javax.swing.JLabel newRupiah;
+    private javax.swing.JLabel newUSD;
     // End of variables declaration//GEN-END:variables
 }
