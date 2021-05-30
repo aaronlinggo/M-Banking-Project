@@ -323,12 +323,12 @@ public class UserMerchandise extends javax.swing.JPanel
                         }
                         else
                         {
-                            TotalPoint.setText("0");
+                            TotalPoint.setText("Total : 0");
                         }
                     }
                     else
                     {
-                        TotalPoint.setText("0");
+                        TotalPoint.setText("Total : 0");
                     }
                 }
                 else
@@ -512,86 +512,119 @@ public class UserMerchandise extends javax.swing.JPanel
     private void SubmitMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_SubmitMouseClicked
     {//GEN-HEADEREND:event_SubmitMouseClicked
         // TODO add your handling code here:
-        if(input.getText().equals("0"))
+        if(isNumeric(input.getText()))
         {
-            if(utf.u.active.getPoint() - Integer.parseInt(input.getText()) < 0)
+            if(!input.getText().equals("0"))
             {
-                JOptionPane.showMessageDialog(this,"Maaf, Point yang Anda Kurang.");
-            }
-            else
-            {
-                utf.u.active.setPoint(utf.u.active.getPoint() - Integer.parseInt(input.getText()));
-                this.PointUser.setText("Point : " + utf.u.active.getPoint());
-                for (int i = 0; i < pl.size(); i++)
+                if(Integer.parseInt(input.getText()) > 0 && Integer.parseInt(input.getText()) < 10)
                 {
-                   
+                    ArrayList<Merchandise> myMerchandise = new ArrayList<>();
+                    try 
+                    {
+                        FileInputStream file = new FileInputStream("Merchandise.ser");
+                        ObjectInputStream in = new ObjectInputStream(file);
+
+                        myMerchandise = (ArrayList<Merchandise>) in.readObject();
+
+                        in.close();
+                        file.close();
+                    }
+                    catch(IOException ex) 
+                    {
+                        System.out.println("IOException is caught1");
+                    }
+                    catch(ClassNotFoundException ex) 
+                    {
+                        System.out.println("ClassNotFoundException is caught");
+                    }
+                    if(utf.u.active.getPoint() - Integer.parseInt(input.getText())*myMerchandise.get(index).getPoint() < 0)
+                    {
+                        JOptionPane.showMessageDialog(this,"sorry, you don't have the point to echange this amount of rewards");
+                    }
+                    else
+                    {
+                        utf.u.active.setPoint(utf.u.active.getPoint() - Integer.parseInt(input.getText())*myMerchandise.get(index).getPoint());
+                        utf.u.active.getRewardBank().add(0, "<html>" + "User berhasil menukar <br>" + input.getText() + " " + myMerchandise.get(index).getNamaMerchandise()+ "</html>");
+                        System.out.println("a : " + myMerchandise.get(index).getNamaMerchandise());
+                        this.PointUser.setText("Point : " + utf.u.active.getPoint());
+                        System.out.println(utf.u.active.getRewardBank().size());
+                        JOptionPane.showMessageDialog(this,"Successfully exchange reward");
+                        ArrayList<Log> logAdmin = new ArrayList<>();
+                        try 
+                        {
+                            FileInputStream file = new FileInputStream("logAdmin.ser");
+                            ObjectInputStream in = new ObjectInputStream(file);
+
+                            logAdmin = (ArrayList<Log>) in.readObject();
+
+                            in.close();
+                            file.close();
+                        }
+                        catch(IOException ex) 
+                        {
+                            System.out.println("IOException is caught");
+                        }
+                        catch(ClassNotFoundException ex) 
+                        {
+                            System.out.println("ClassNotFoundException is caught");
+                        }
+                        //<No>. <Date> <Nama> <Activity>
+                        String date = utf.u.d1.getD1().getDate() + "/" + utf.u.d1.getD1().getMonth() + "/" + utf.u.d1.getD1().getYear();
+                        logAdmin.add(0, new Log(date + "-" + utf.u.active.getNoRekening() + " Success exchange point"));
+                        System.out.println(date);
+                        System.out.println(logAdmin.get(0).getLog());
+                        try 
+                        {
+                            FileOutputStream file = new FileOutputStream("logAdmin.ser");
+                            ObjectOutputStream out = new ObjectOutputStream(file);
+
+                            out.writeObject(logAdmin);
+
+                            out.close();
+                            file.close();
+
+                            System.out.println("Object has been serialized");
+
+                        }
+                        catch(IOException ex) 
+                        {
+                            System.out.println("IOException is caught2");
+                            System.out.println(ex);
+                        }
+
+                        try 
+                        {
+                            FileOutputStream file = new FileOutputStream("Account.ser");
+                            ObjectOutputStream out = new ObjectOutputStream(file);
+
+                            out.writeObject(utf.u.Account);
+
+                            out.close();
+                            file.close();
+
+                            System.out.println("Object has been serialized");
+
+                        }
+                        catch(IOException ex) 
+                        {
+                            System.out.println("IOException is caught");
+                        }
+                    }
                 }
-                System.out.println(utf.u.active.getRewardBank().size());
-                JOptionPane.showMessageDialog(this,"Berhasil Menukar Point dengan Merchandise");
-                ArrayList<Log> logAdmin = new ArrayList<>();
-                try 
+                else if(Integer.parseInt(input.getText())<1)
                 {
-                    FileInputStream file = new FileInputStream("logAdmin.ser");
-                    ObjectInputStream in = new ObjectInputStream(file);
-
-                    logAdmin = (ArrayList<Log>) in.readObject();
-
-                    in.close();
-                    file.close();
+                    JOptionPane.showMessageDialog(this,"input must be greater than 0");
                 }
-                catch(IOException ex) 
+                else if(Integer.parseInt(input.getText())>9)
                 {
-                    System.out.println("IOException is caught");
-                }
-                catch(ClassNotFoundException ex) 
-                {
-                    System.out.println("ClassNotFoundException is caught");
-                }
-                //<No>. <Date> <Nama> <Activity>
-                String date = utf.u.d1.getD1().getDate() + "/" + utf.u.d1.getD1().getMonth() + "/" + utf.u.d1.getD1().getYear();
-                logAdmin.add(0, new Log(date + "-" + utf.u.active.getNoRekening() + " Success exchange point"));
-                System.out.println(date);
-                System.out.println(logAdmin.get(0).getLog());
-                try 
-                {
-                    FileOutputStream file = new FileOutputStream("logAdmin.ser");
-                    ObjectOutputStream out = new ObjectOutputStream(file);
-
-                    out.writeObject(logAdmin);
-
-                    out.close();
-                    file.close();
-
-                    System.out.println("Object has been serialized");
-
-                }
-                catch(IOException ex) 
-                {
-                    System.out.println("IOException is caught2");
-                    System.out.println(ex);
-                }
-                
-                
-                try 
-                {
-                    FileOutputStream file = new FileOutputStream("Account.ser");
-                    ObjectOutputStream out = new ObjectOutputStream(file);
-
-                    out.writeObject(utf.u.Account);
-
-                    out.close();
-                    file.close();
-
-                    System.out.println("Object has been serialized");
-
-                }
-                catch(IOException ex) 
-                {
-                    System.out.println("IOException is caught");
+                    JOptionPane.showMessageDialog(this,"input must be less than 9");
                 }
             }
         }
-           
+        else
+        {
+            JOptionPane.showMessageDialog(this,"Error, input must be none decimal!");
+        }
     }//GEN-LAST:event_SubmitMouseClicked
 
     private void inputActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_inputActionPerformed
