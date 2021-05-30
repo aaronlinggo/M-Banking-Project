@@ -441,7 +441,7 @@ public class AdminListMember extends javax.swing.JPanel {
             catch(IOException ex) {
                 System.out.println("IOException is caught");
             }
-            JOptionPane.showMessageDialog(this, "Berhasil delete");
+            JOptionPane.showMessageDialog(this, "Success Delete");
         }
         else {
             JOptionPane.showMessageDialog(this, "Pick a new member pls");
@@ -508,7 +508,7 @@ public class AdminListMember extends javax.swing.JPanel {
     private void addTagihanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addTagihanMouseClicked
         // TODO add your handling code here:
         if (idx != -1){
-            String namaMerchandise = JOptionPane.showInputDialog(this, "Name Tagihan");
+            String namaMerchandise = JOptionPane.showInputDialog(this, "Name Bill");
             String jumlahTagihan =  "";
             boolean stop = false;
             do {
@@ -640,7 +640,7 @@ public class AdminListMember extends javax.swing.JPanel {
                 System.out.println("IOException is caught");
             }
             
-            JOptionPane.showMessageDialog(this, "Berhasil Blokir Member " + banned.get(banned.size()-1).getNama());
+            JOptionPane.showMessageDialog(this, "Success banned Member " + banned.get(banned.size()-1).getNama());
         }
         else {
             JOptionPane.showMessageDialog(this, "Pick a new member pls");

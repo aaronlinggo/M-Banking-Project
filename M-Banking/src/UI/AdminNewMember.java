@@ -264,7 +264,7 @@ public class AdminNewMember extends javax.swing.JPanel {
             catch(IOException ex) {
                 System.out.println("IOException is caught");
             }
-            JOptionPane.showMessageDialog(this, "Berhasil delete");
+            JOptionPane.showMessageDialog(this, "Success Reject a new Member");
         }
         else {
             JOptionPane.showMessageDialog(this, "Pick a new member pls");
@@ -346,7 +346,7 @@ public class AdminNewMember extends javax.swing.JPanel {
                 System.out.println("IOException is caught");
             }
             System.out.println(Account.size());
-            JOptionPane.showMessageDialog(this, "Berhasil confirm " + Account.get(Account.size()-1).getNama() + "!");
+            JOptionPane.showMessageDialog(this, "Success Confim Member " + Account.get(Account.size()-1).getNama() + "!");
         }
         else {
             JOptionPane.showMessageDialog(this, "Pick a new member pls");
