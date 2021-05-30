@@ -32,6 +32,8 @@ import javax.swing.ScrollPaneLayout;
 import javax.swing.SwingUtilities;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import m.banking.Log;
 import m.banking.Member;
 import m.banking.Merchandise;
@@ -42,7 +44,7 @@ import m.banking.Merchandise;
  */
 public class UserMerchandise extends javax.swing.JPanel
 {
-    
+    int index = -1;
     ArrayList<ProductList> pl;
     /**
      * Creates new form UserMerchandise
@@ -69,8 +71,6 @@ public class UserMerchandise extends javax.swing.JPanel
         BackButton = new javax.swing.JLabel();
         PointUserPanel = new RoundJPanel(25);
         PointUser = new javax.swing.JLabel();
-        Total = new RoundJPanel(25);
-        TotalPoint = new javax.swing.JLabel();
         Reset = new RoundJPanel(25);
         jLabel5 = new javax.swing.JLabel();
         Submit =  new RoundJPanel(25);
@@ -79,6 +79,11 @@ public class UserMerchandise extends javax.swing.JPanel
         jLabel2 = new javax.swing.JLabel();
         scroll = new javax.swing.JScrollPane();
         IsiKonten = new RoundJPanel(25);
+        TempatTukar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        input = new javax.swing.JTextField();
+        TotalPoints = new javax.swing.JPanel();
+        TotalPoint = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(250, 243, 243));
 
@@ -125,7 +130,7 @@ public class UserMerchandise extends javax.swing.JPanel
             PointUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PointUserPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PointUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PointUser, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PointUserPanelLayout.setVerticalGroup(
@@ -134,30 +139,6 @@ public class UserMerchandise extends javax.swing.JPanel
                 .addContainerGap()
                 .addComponent(PointUser, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        Total.setBackground(new java.awt.Color(255, 255, 255));
-        Total.setOpaque(false);
-
-        TotalPoint.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        TotalPoint.setForeground(new java.awt.Color(0, 0, 0));
-        TotalPoint.setText("Total : 0");
-
-        javax.swing.GroupLayout TotalLayout = new javax.swing.GroupLayout(Total);
-        Total.setLayout(TotalLayout);
-        TotalLayout.setHorizontalGroup(
-            TotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TotalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(TotalPoint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        TotalLayout.setVerticalGroup(
-            TotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TotalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TotalPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
 
         Reset.setBackground(new java.awt.Color(255, 51, 51));
@@ -181,7 +162,7 @@ public class UserMerchandise extends javax.swing.JPanel
             ResetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ResetLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                 .addContainerGap())
         );
         ResetLayout.setVerticalGroup(
@@ -213,7 +194,7 @@ public class UserMerchandise extends javax.swing.JPanel
             SubmitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SubmitLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                 .addContainerGap())
         );
         SubmitLayout.setVerticalGroup(
@@ -238,7 +219,7 @@ public class UserMerchandise extends javax.swing.JPanel
             JudulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JudulLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
                 .addContainerGap())
         );
         JudulLayout.setVerticalGroup(
@@ -269,47 +250,170 @@ public class UserMerchandise extends javax.swing.JPanel
 
         scroll.setViewportView(IsiKonten);
 
+        TempatTukar.setBackground(new java.awt.Color(250, 243, 243));
+
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        jLabel1.setText("Jumlah : ");
+
+        input.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        input.setText("0");
+        input.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusGained(java.awt.event.FocusEvent evt)
+            {
+                inputFocusGained(evt);
+            }
+        });
+        input.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                inputActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout TempatTukarLayout = new javax.swing.GroupLayout(TempatTukar);
+        TempatTukar.setLayout(TempatTukarLayout);
+        TempatTukarLayout.setHorizontalGroup(
+            TempatTukarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TempatTukarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        TempatTukarLayout.setVerticalGroup(
+            TempatTukarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TempatTukarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(TempatTukarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(input, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        DocumentListener dl = new DocumentListener()
+        {
+            @Override
+            public void insertUpdate(DocumentEvent e)
+            {
+                updateFieldState();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e)
+            {
+                updateFieldState();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e)
+            {
+                updateFieldState();
+            }
+            protected void updateFieldState()
+            {
+                if(!input.getText().equals(""))
+                {
+                    if (isNumeric(input.getText()))
+                    {
+                        if (index != -1)
+                        {
+                            String temp = String.valueOf(pl.get(index).getPoint()*Integer.parseInt(input.getText()));
+                            TotalPoint.setText("Total : " + temp);
+                        }
+                        else
+                        {
+                            TotalPoint.setText("0");
+                        }
+                    }
+                    else
+                    {
+                        TotalPoint.setText("0");
+                    }
+                }
+                else
+                {
+                    TotalPoint.setText("Total : 0");
+                }
+            }
+        };
+
+        input.getDocument().addDocumentListener(dl);
+
+        TotalPoints.setBackground(new java.awt.Color(250, 243, 243));
+
+        TotalPoint.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        TotalPoint.setForeground(new java.awt.Color(0, 0, 0));
+        TotalPoint.setText("Total : 0");
+
+        javax.swing.GroupLayout TotalPointsLayout = new javax.swing.GroupLayout(TotalPoints);
+        TotalPoints.setLayout(TotalPointsLayout);
+        TotalPointsLayout.setHorizontalGroup(
+            TotalPointsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TotalPointsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TotalPoint, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        TotalPointsLayout.setVerticalGroup(
+            TotalPointsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TotalPointsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TotalPoint, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PointUserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Judul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(PointUserPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(Reset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Submit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(54, 54, 54))
+                        .addComponent(Judul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Reset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(124, 124, 124)
+                        .addComponent(Submit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TempatTukar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TotalPoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Judul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(PointUserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(scroll)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Reset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(35, 35, 35))
+                .addComponent(PointUserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TempatTukar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TotalPoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Submit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         scroll.setLayout(new ScrollPaneLayout()
@@ -408,23 +512,19 @@ public class UserMerchandise extends javax.swing.JPanel
     private void SubmitMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_SubmitMouseClicked
     {//GEN-HEADEREND:event_SubmitMouseClicked
         // TODO add your handling code here:
-        if(total != 0)
+        if(input.getText().equals("0"))
         {
-            if(utf.u.active.getPoint() - total < 0)
+            if(utf.u.active.getPoint() - Integer.parseInt(input.getText()) < 0)
             {
                 JOptionPane.showMessageDialog(this,"Maaf, Point yang Anda Kurang.");
             }
             else
             {
-                utf.u.active.setPoint(utf.u.active.getPoint() - total);
+                utf.u.active.setPoint(utf.u.active.getPoint() - Integer.parseInt(input.getText()));
                 this.PointUser.setText("Point : " + utf.u.active.getPoint());
                 for (int i = 0; i < pl.size(); i++)
                 {
-                    if (!pl.get(i).getJumlahTukar().equals("0"))
-                    {
-                        utf.u.active.getRewardBank().add("Berhasil menukar " + pl.get(i).getJumlahTukar() + " " + pl.get(i).getNamaProduct());
-                        System.out.println("s");
-                    }
+                   
                 }
                 System.out.println(utf.u.active.getRewardBank().size());
                 JOptionPane.showMessageDialog(this,"Berhasil Menukar Point dengan Merchandise");
@@ -493,6 +593,17 @@ public class UserMerchandise extends javax.swing.JPanel
         }
            
     }//GEN-LAST:event_SubmitMouseClicked
+
+    private void inputActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_inputActionPerformed
+    {//GEN-HEADEREND:event_inputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputActionPerformed
+
+    private void inputFocusGained(java.awt.event.FocusEvent evt)//GEN-FIRST:event_inputFocusGained
+    {//GEN-HEADEREND:event_inputFocusGained
+        // TODO add your handling code here:
+        this.input.setText("");
+    }//GEN-LAST:event_inputFocusGained
     public void pass(UserTransfer utf)
     {
         this.utf=utf;
@@ -546,22 +657,17 @@ public class UserMerchandise extends javax.swing.JPanel
             pl.get(i).getPointProductList().setText("Point : " + String.valueOf(myMerchandise.get(i).getPoint()));
             pl.get(i).setBounds(0, (95+10)*i, 450,100);
             pl.get(i).setVisible(true);
-            pl.get(i).getMinus().addMouseListener(new MouseAdapter()
+            pl.get(i).addMouseListener(new MouseAdapter() 
             {
                 public void mouseClicked(MouseEvent e)
                 {
-                    SetTotal(pl);
+                    System.out.println("klik");
+                    System.out.println(pl.indexOf(e.getComponent()));
+                    index = pl.indexOf(e.getComponent());
+                    resetBGPanel(pl);
+                    pl.get(index).setNewColorBG(84,190,229);
                 }
             });
-            pl.get(i).getPlus().addMouseListener(new MouseAdapter()
-            {
-                public void mouseClicked(MouseEvent e)
-                {
-                    SetTotal(pl);
-                }
-            });
-//            pl.get(i).getMinus().addAncestorListener(new EventHandler(pl));
-//            pl.get(i).getPlus().addAncestorListener(new EventHandler(pl));
             pl.get(i).setPoint(myMerchandise.get(i).getPoint());
             IsiKonten.add(pl.get(i));
             JumlahMerchandise++;
@@ -571,43 +677,24 @@ public class UserMerchandise extends javax.swing.JPanel
         System.out.println("jumlah merchandise : " + JumlahMerchandise);
     }
     
-    class EventHandler implements AncestorListener
+    public boolean isNumeric(String str)
     {
-        ArrayList<ProductList> pl;
-        public EventHandler (ArrayList<ProductList> pl)
+        for (char c : str.toCharArray())
         {
-            this.pl = pl;
+            if (!Character.isDigit(c)) 
+            {
+                return false;
+            }
         }
-        @Override
-        public void ancestorAdded(AncestorEvent event) 
-        {
-            SetTotal(pl);
-        }
-
-        @Override
-        public void ancestorMoved(AncestorEvent event) 
-        {
-            SetTotal(pl);
-        }
-
-        @Override
-        public void ancestorRemoved(AncestorEvent event) 
-        {
-            SetTotal(pl);
-        }
+        return true;
     }
     
-    int total = 0;
-    public void SetTotal(ArrayList<ProductList> pl)
+    public void resetBGPanel(ArrayList<ProductList> pl)
     {
-        total = 0;
-        for (int i = 0; i < pl.size(); i++)
-        {
-            total += (pl.get(i).getJumlah()*pl.get(i).getPoint());
+        for (int j = 0; j < pl.size(); j++) {
+            pl.get(j).setNewColorBG(255,255,255);
         }
-        this.TotalPoint.setText("Total : " + total);
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Back;
     private javax.swing.JLabel BackButton;
@@ -617,8 +704,11 @@ public class UserMerchandise extends javax.swing.JPanel
     private javax.swing.JPanel PointUserPanel;
     private javax.swing.JPanel Reset;
     private javax.swing.JPanel Submit;
-    private javax.swing.JPanel Total;
+    private javax.swing.JPanel TempatTukar;
     private javax.swing.JLabel TotalPoint;
+    private javax.swing.JPanel TotalPoints;
+    private javax.swing.JTextField input;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
