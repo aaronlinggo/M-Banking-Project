@@ -617,7 +617,7 @@ public class UserMerchandise extends javax.swing.JPanel
                 }
                 else if(Integer.parseInt(input.getText())>9)
                 {
-                    JOptionPane.showMessageDialog(this,"input must be less than 3");
+                    JOptionPane.showMessageDialog(this,"input must be less than 9");
                 }
             }
         }
