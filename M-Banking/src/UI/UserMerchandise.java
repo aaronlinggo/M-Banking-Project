@@ -545,6 +545,7 @@ public class UserMerchandise extends javax.swing.JPanel
                     {
                         utf.u.active.setPoint(utf.u.active.getPoint() - Integer.parseInt(input.getText())*myMerchandise.get(index).getPoint());
                         utf.u.active.getRewardBank().add(0, "<html>" + "User berhasil menukar <br>" + input.getText() + " " + myMerchandise.get(index).getNamaMerchandise()+ "</html>");
+                        utf.u.active.getInbox().add(0,"Used "+Integer.parseInt(input.getText())*myMerchandise.get(index).getPoint() +" Points \nto Redeem "+myMerchandise.get(index).getNamaMerchandise());
                         System.out.println("a : " + myMerchandise.get(index).getNamaMerchandise());
                         this.PointUser.setText("Point : " + utf.u.active.getPoint());
                         System.out.println(utf.u.active.getRewardBank().size());
