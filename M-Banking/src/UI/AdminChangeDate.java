@@ -521,15 +521,36 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
             }
             
             for (int i = 0; i < Account.size(); i++) {
+                Account.get(i).getInbox().clear();
                 for (int j = 0; j < listKurs.size(); j++) {
                     //dollar index 0, euro index 1
-                    if(listKurs.get(j).getPersen()>0) {
+                    if(j==0){
+                    System.out.println("dollar naek : "+listKurs.get(j).getPersen());
+                        if(listKurs.get(j).getPersen()>0) {
                         //naik
+                        Account.get(i).getInbox().add("Today's Dollar Buy price Rises,\nWhy not sell to us Now!");
+                            System.out.println("masuk ke inbox naik(dollar)");
+                        }
+                        else {
+                            //turun
+                        Account.get(i).getInbox().add("Dollar Buy price Drops for Today,\nWhy not also buy from us!");
+                        System.out.println("masuk ke inbox turun(dollar)");
+                        }
                     }
-                    else {
-                        //turun
+                    else{
+                        System.out.println("eur naek : "+listKurs.get(j).getPersen());
+                        if(listKurs.get(j).getPersen()>0) {
+                        //naik
+                        Account.get(i).getInbox().add("Euro's Buy price Rises on this Day,\nWhy not sell to us Now!");
+                        System.out.println("masuk ke inbox naik(eur)");
+                        }
+                        else {
+                            //turun
+                        Account.get(i).getInbox().add("Today's Euro Buy price Drops,\nWhy not also buy from us!");
+                        System.out.println("masuk ke inbox turun (eur)");
+                        }
                     }
-                    Account.get(i).getInbox().add("");
+                    
                 }
             }
             
@@ -563,17 +584,20 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
             if (rangeYear != 0){
                 
                 for (int i = 0; i < Account.size(); i++) {
-                    double biaya =  ((Account.get(i).getRupiah()*Account.get(i).getBunga())/100);
-                    Account.get(i).setRupiah(Account.get(i).getRupiah() + biaya);
+                    double bunga =  ((Account.get(i).getRupiah()*Account.get(i).getBunga())/100);
+                    
+                    Account.get(i).setRupiah(Account.get(i).getRupiah() + bunga);
                     //inbox
-                    Account.get(i).getInbox().add("You have been Charged Rp. "+priceWithoutDecimal(biaya) + " For Admin Fees");
-                    Account.get(i).getInbox().add("You have Received Rp. "+priceWithoutDecimal((double)Account.get(i).getBunga()) + " From Bank Interest");
+                    
+                    Account.get(i).getInbox().add("You have Received Rp. "+priceWithoutDecimal(bunga) + " \nFrom Bank Interest");
                     //mutasi
-                    Account.get(i).getMutasi().add("Charged Rp. "+priceWithoutDecimal(biaya) + " For Admin Fees");
-                    Account.get(i).getMutasi().add("Received Rp. "+priceWithoutDecimal((double)Account.get(i).getBunga()) + " From Interest");
+                    
+                    Account.get(i).getMutasi().add("Received Rp. "+priceWithoutDecimal(bunga) + " \nFrom Interest");
                     if (rangeBulan != 0){
                         int temp = Account.get(i).getBiayaAdmin()*rangeBulan;
                         Account.get(i).setRupiah(Account.get(i).getRupiah() - temp);
+                        Account.get(i).getInbox().add("You have been Charged Rp. "+priceWithoutDecimal((double)temp) + " \nFor Admin Fees");
+                        Account.get(i).getMutasi().add("Charged Rp. "+priceWithoutDecimal((double)temp) + " \nFor Admin Fees");
                     }
                     //masukin ke inbox -> Bunga sama biaya admin
                 }
@@ -608,21 +632,7 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                     }
                 };
                 
-                try {
-                    FileOutputStream file = new FileOutputStream("Account.ser");
-                    ObjectOutputStream out = new ObjectOutputStream(file);
-
-                    out.writeObject(Account);
-
-                    out.close();
-                    file.close();
-
-                    System.out.println("Object has been serialized");
-
-                }
-                catch(IOException ex) {
-                    System.out.println("IOException is caught");
-                }
+                
                 
                 try {
                     FileOutputStream file = new FileOutputStream("BannedAccount.ser");
@@ -640,6 +650,21 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                     System.out.println("IOException is caught");
                 }
             }
+            try {
+                    FileOutputStream file = new FileOutputStream("Account.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(file);
+
+                    out.writeObject(Account);
+
+                    out.close();
+                    file.close();
+
+                    System.out.println("Object has been serialized");
+
+                }
+                catch(IOException ex) {
+                    System.out.println("IOException is caught");
+                }
         }
     }//GEN-LAST:event_changeMouseClicked
 

@@ -54,6 +54,7 @@ public abstract class Member implements Serializable{
         this.upgrade = 0;
         this.cekUpgrade = false;
         this.RewardBank = new ArrayList<>();
+        this.Mutasi = new ArrayList<>();
     }
 
     public ArrayList<String> getRewardBank()

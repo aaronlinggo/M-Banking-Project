@@ -28,6 +28,13 @@
               <Component id="Judul" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="38" max="32767" attributes="0"/>
           </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="scroll" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -39,6 +46,13 @@
                   <Component id="Back" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="682" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="scroll" min="-2" pref="550" max="-2" attributes="0"/>
+                  <EmptySpace pref="100" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -141,6 +155,34 @@
             <Property name="text" type="java.lang.String" value="Mutasi Rekening"/>
           </Properties>
         </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="scroll">
+      <Properties>
+        <Property name="horizontalScrollBarPolicy" type="int" value="32"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="scroll.setLayout(new ScrollPaneLayout() {&#xa;      @Override&#xa;      public void layoutContainer(Container parent) {&#xa;        JScrollPane scrollPane = (JScrollPane) parent;&#xa;&#xa;        Rectangle availR = scrollPane.getBounds();&#xa;        availR.x = availR.y = 0;&#xa;&#xa;        Insets parentInsets = parent.getInsets();&#xa;        availR.x = parentInsets.left;&#xa;        availR.y = parentInsets.top;&#xa;        availR.width -= parentInsets.left + parentInsets.right;&#xa;        availR.height -= parentInsets.top + parentInsets.bottom;&#xa;&#xa;        Rectangle vsbR = new Rectangle();&#xa;        vsbR.width = 12;&#xa;        vsbR.height = availR.height;&#xa;        vsbR.x = availR.x + availR.width - vsbR.width;&#xa;        vsbR.y = availR.y;&#xa;&#xa;        if (viewport != null) {&#xa;          viewport.setBounds(availR);&#xa;        }&#xa;        if (vsb != null) {&#xa;          vsb.setVisible(true);&#xa;          vsb.setBounds(vsbR);&#xa;        }&#xa;      }&#xa;    });&#xa;    scroll.getVerticalScrollBar().setUI(new MyScrollBarUI());&#xa;MouseAdapter ma = new MouseAdapter() {&#xa;&#xa;private Point origin;&#xa;&#xa;@Override&#xa;public void mousePressed(MouseEvent e) {&#xa;    origin = new Point(e.getPoint());&#xa;}&#xa;&#xa;@Override&#xa;public void mouseReleased(MouseEvent e) {&#xa;}&#xa;&#xa;@Override&#xa;public void mouseDragged(MouseEvent e) {&#xa;    if (origin != null) {&#xa;        JViewport viewPort = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, mutasilist);&#xa;        if (viewPort != null) {&#xa;            int deltaX = origin.x - e.getX();&#xa;            int deltaY = origin.y - e.getY();&#xa;&#xa;            Rectangle view = viewPort.getViewRect();&#xa;            view.x += deltaX;&#xa;            view.y += deltaY;&#xa;&#xa;            mutasilist.scrollRectToVisible(view);&#xa;        }&#xa;    }&#xa;}&#xa;&#xa;};&#xa;&#xa;mutasilist.addMouseListener(ma);&#xa;mutasilist.addMouseMotionListener(ma);"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane()"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="mutasilist">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="409" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="547" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>
