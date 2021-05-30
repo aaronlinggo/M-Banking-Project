@@ -72,9 +72,7 @@ public class UserMainmenu extends javax.swing.JPanel {
         date = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new RoundJPanel(35);
-        lastActivityIcon = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        activity = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(496, 768));
         setPreferredSize(new java.awt.Dimension(500, 768));
@@ -496,16 +494,9 @@ public class UserMainmenu extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(219, 219, 229));
         jPanel3.setOpaque(false);
 
-        lastActivityIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lastActivityIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/transfer_biru.png"))); // NOI18N
-
-        jLabel9.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Nama Activity");
-
-        jLabel20.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel20.setText("Tanggal");
+        activity.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        activity.setForeground(new java.awt.Color(0, 0, 0));
+        activity.setText("<html><body style=\"word-wrap: break-word; overflow-wrap: break-word;\">" + uh.active.getMutasi().get(0) + "</body></html>");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -513,23 +504,14 @@ public class UserMainmenu extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lastActivityIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(activity, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
-                    .addComponent(lastActivityIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(activity, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -550,7 +532,7 @@ public class UserMainmenu extends javax.swing.JPanel {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -656,6 +638,7 @@ public class UserMainmenu extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Logo;
+    private javax.swing.JLabel activity;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel boxlogo;
     private javax.swing.JLabel date;
@@ -672,18 +655,15 @@ public class UserMainmenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lastActivityIcon;
     private javax.swing.JPanel logobox;
     private javax.swing.JPanel logobox1;
     private javax.swing.JPanel logout;
