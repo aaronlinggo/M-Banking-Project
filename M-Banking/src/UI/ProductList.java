@@ -62,6 +62,7 @@ public class ProductList extends javax.swing.JPanel
 
         PointProductList.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         PointProductList.setForeground(new java.awt.Color(0, 0, 0));
+        PointProductList.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PointProductList.setText("point : 0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
