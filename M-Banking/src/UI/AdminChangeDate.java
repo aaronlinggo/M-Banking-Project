@@ -499,8 +499,38 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                 System.out.println("IOException is caught");
             }
             
+            ArrayList<Member> Account = new ArrayList<>();
+            try {
+                FileInputStream file = new FileInputStream("Account.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                Account = (ArrayList<Member>) in.readObject();
+
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
+            
             for (int i = 0; i < listKurs.size(); i++) {
                 listKurs.get(i).gantiHari();
+            }
+            
+            for (int i = 0; i < Account.size(); i++) {
+                for (int j = 0; j < listKurs.size(); j++) {
+                    //dollar index 0, euro index 1
+                    if(listKurs.get(j).getPersen()>0) {
+                        //naik
+                    }
+                    else {
+                        //turun
+                    }
+                    Account.get(i).getInbox().add("");
+                }
             }
             
             try
@@ -531,22 +561,7 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
             ad.ah.getContent().revalidate();
             ad.ah.getContent().repaint();
             if (rangeYear != 0){
-                ArrayList<Member> Account = new ArrayList<>();
-                try {
-                    FileInputStream file = new FileInputStream("Account.ser");
-                    ObjectInputStream in = new ObjectInputStream(file);
-
-                    Account = (ArrayList<Member>) in.readObject();
-
-                    in.close();
-                    file.close();
-                }
-                catch(IOException ex) {
-                    System.out.println("IOException is caught");
-                }
-                catch(ClassNotFoundException ex) {
-                    System.out.println("ClassNotFoundException is caught");
-                }
+                
                 for (int i = 0; i < Account.size(); i++) {
                     double biaya =  ((Account.get(i).getRupiah()*Account.get(i).getBunga())/100);
                     Account.get(i).setRupiah(Account.get(i).getRupiah() + biaya);
