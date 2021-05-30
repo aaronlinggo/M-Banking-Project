@@ -550,10 +550,10 @@ public class UserVirtualAccount extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "Successfully Paid " + priceWithoutDecimal(saya.getMyTagihan().get(idx).getJumlahTagihan()) + " - Virtual Account " + saya.getMyTagihan().get(idx).getVirtualAccount());
                         //inbox
                         double poin = saya.getMyTagihan().get(idx).getJumlahTagihan()*0.1;
-                        saya.getInbox().add("Succesfully Paid "+saya.getMyTagihan().get(idx).getNamaTagihan() + " \nRp."+saya.getMyTagihan().get(idx).getJumlahTagihan()+"\nReceived "+ (int)poin + " from "+saya.getMyTagihan().get(idx).getNamaTagihan()+ " Virtual Account Payment" );
+                        saya.getInbox().add(0,"Succesfully Paid "+saya.getMyTagihan().get(idx).getNamaTagihan() + "\nRp."+saya.getMyTagihan().get(idx).getJumlahTagihan()+"\nReceived "+ (int)poin + " from "+saya.getMyTagihan().get(idx).getNamaTagihan()+ " Payment" );
                         saya.setPoint(saya.getPoint() + (int)poin);
                         //mutasi
-                        saya.getMutasi().add("Paid "+saya.getMyTagihan().get(idx).getNamaTagihan() + " \nRp."+saya.getMyTagihan().get(idx).getJumlahTagihan());
+                        saya.getMutasi().add(0,"Paid "+saya.getMyTagihan().get(idx).getNamaTagihan() + " \nRp."+saya.getMyTagihan().get(idx).getJumlahTagihan());
                         //logAdmin
                         ArrayList<Log> logAdmin = new ArrayList<>();
                         try {
