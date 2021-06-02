@@ -368,7 +368,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
             ResetSubmit();
         } else {
             //berhasil
-            JOptionPane.showMessageDialog(null, "PIN berhasil diubah");
+            JOptionPane.showMessageDialog(null, "PIN has changed");
             up.uh.active.setPin(FieldPinBaru.getText());
             ResetSubmit();
             try {
