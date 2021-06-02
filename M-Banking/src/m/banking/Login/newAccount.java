@@ -744,128 +744,134 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                 if ((maleBtn.isSelected() && !femaleBtn.isSelected()) || (!maleBtn.isSelected() && femaleBtn.isSelected())){
                     if (!address.getText().equals("")){
                         if (!nomorHP.equals("")){
-                            if ((silverBtn.isSelected() && !goldBtn.isSelected() && !platinumBtn.isSelected()) ||
-                                    (!silverBtn.isSelected() && goldBtn.isSelected() && !platinumBtn.isSelected()) ||
-                                    (!silverBtn.isSelected() && !goldBtn.isSelected() && platinumBtn.isSelected())){
-                                if (!saldo.getText().equals("")){
-                                    String tempPin = new String(pin.getPassword());
-                                    if (!tempPin.equals("")){
-                                        if (pin.getPassword().length == 6){
-                                            String tempConfirmPin = new String(confirmPin.getPassword());
-                                            if (!tempConfirmPin.equals("")){
-                                                if (confirmPin.getPassword().length == 6){
-                                                    if (isNumeric(nomorHP.getText())){
-                                                        if (isNumeric(saldo.getText())){
-                                                            int jumlahSaldo = Integer.parseInt(saldo.getText());
-                                                            if (jumlahSaldo >= 50000){
-                                                                if (isNumeric(tempPin)){
-                                                                    if (isNumeric(tempConfirmPin)){
-                                                                        if (tempPin.equals(tempConfirmPin)){
-                                                                            Date temp = (Date) tglLahir.getValue();
-                                                                            //String temp = (String) tglLahir.getValue();
-                                                                            System.out.println("- " + temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000));
-                                                                            String tempTgl = temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000);
-                                                                            //System.out.println(temp);
-                                                                            System.out.println((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)));
-                                                                            if ((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)) >= 18){
+                            if (nomorHP.getText().length()==12){
+                                if ((silverBtn.isSelected() && !goldBtn.isSelected() && !platinumBtn.isSelected()) ||
+                                        (!silverBtn.isSelected() && goldBtn.isSelected() && !platinumBtn.isSelected()) ||
+                                        (!silverBtn.isSelected() && !goldBtn.isSelected() && platinumBtn.isSelected())){
+                                    if (!saldo.getText().equals("")){
+                                        String tempPin = new String(pin.getPassword());
+                                        if (!tempPin.equals("")){
+                                            if (pin.getPassword().length == 6){
+                                                String tempConfirmPin = new String(confirmPin.getPassword());
+                                                if (!tempConfirmPin.equals("")){
+                                                    if (confirmPin.getPassword().length == 6){
+                                                        if (isNumeric(nomorHP.getText())){
+                                                            if (isNumeric(saldo.getText())){
+                                                                int jumlahSaldo = Integer.parseInt(saldo.getText());
+                                                                if (jumlahSaldo >= 50000){
+                                                                    if (isNumeric(tempPin)){
+                                                                        if (isNumeric(tempConfirmPin)){
+                                                                            if (tempPin.equals(tempConfirmPin)){
+                                                                                Date temp = (Date) tglLahir.getValue();
+                                                                                //String temp = (String) tglLahir.getValue();
+                                                                                System.out.println("- " + temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000));
+                                                                                String tempTgl = temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000);
+                                                                                //System.out.println(temp);
                                                                                 System.out.println((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)));
-                                                                                System.out.println(l.d1.getD1().getYear()-18);
-                                                                                System.out.println(((temp.getYear()-100)+2000));
-                                                                                if (silverBtn.isSelected()){
-                                                                                    if (maleBtn.isSelected()){
-                                                                                        l.requestMember.add(new Silver((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                                if ((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)) >= 18){
+                                                                                    System.out.println((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)));
+                                                                                    System.out.println(l.d1.getD1().getYear()-18);
+                                                                                    System.out.println(((temp.getYear()-100)+2000));
+                                                                                    if (silverBtn.isSelected()){
+                                                                                        if (maleBtn.isSelected()){
+                                                                                            l.requestMember.add(new Silver((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                                        }
+                                                                                        else if (femaleBtn.isSelected()){
+                                                                                            l.requestMember.add(new Silver((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
+                                                                                        }
                                                                                     }
-                                                                                    else if (femaleBtn.isSelected()){
-                                                                                        l.requestMember.add(new Silver((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
+                                                                                    else if (goldBtn.isSelected()){
+                                                                                        if (maleBtn.isSelected()){
+                                                                                            l.requestMember.add(new Gold((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                                        }
+                                                                                        else if (femaleBtn.isSelected()){
+                                                                                            l.requestMember.add(new Gold((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
+                                                                                        }
                                                                                     }
-                                                                                }
-                                                                                else if (goldBtn.isSelected()){
-                                                                                    if (maleBtn.isSelected()){
-                                                                                        l.requestMember.add(new Gold((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                                    else if (platinumBtn.isSelected()){
+                                                                                        if (maleBtn.isSelected()){
+                                                                                            l.requestMember.add(new Platinum((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
+                                                                                        }
+                                                                                        else if (femaleBtn.isSelected()){
+                                                                                            l.requestMember.add(new Platinum((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
+                                                                                        }
                                                                                     }
-                                                                                    else if (femaleBtn.isSelected()){
-                                                                                        l.requestMember.add(new Gold((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
-                                                                                    }
-                                                                                }
-                                                                                else if (platinumBtn.isSelected()){
-                                                                                    if (maleBtn.isSelected()){
-                                                                                        l.requestMember.add(new Platinum((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));
-                                                                                    }
-                                                                                    else if (femaleBtn.isSelected()){
-                                                                                        l.requestMember.add(new Platinum((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Female"));
-                                                                                    }
-                                                                                }
-                                                                                String filename = "requestMember.ser";
-                                                                                try {
-                                                                                    FileOutputStream file = new FileOutputStream(filename);
-                                                                                    ObjectOutputStream out = new ObjectOutputStream(file);
+                                                                                    String filename = "requestMember.ser";
+                                                                                    try {
+                                                                                        FileOutputStream file = new FileOutputStream(filename);
+                                                                                        ObjectOutputStream out = new ObjectOutputStream(file);
 
-                                                                                    out.writeObject(l.requestMember);
+                                                                                        out.writeObject(l.requestMember);
 
-                                                                                    out.close();
-                                                                                    file.close();
+                                                                                        out.close();
+                                                                                        file.close();
 
-                                                                                    System.out.println("Object has been serialized");
+                                                                                        System.out.println("Object has been serialized");
 
+                                                                                    }
+                                                                                    catch(IOException ex) {
+                                                                                        System.out.println("IOException is caught");
+                                                                                    }
+                                                                                    JOptionPane.showMessageDialog(this, "Success create a member..");
+                                                                                    this.setVisible(false);
+                                                                                    l.setVisible(true);
                                                                                 }
-                                                                                catch(IOException ex) {
-                                                                                    System.out.println("IOException is caught");
+                                                                                else {
+                                                                                    JOptionPane.showMessageDialog(this, "Minimum Age 18 years");
                                                                                 }
-                                                                                JOptionPane.showMessageDialog(this, "Success create a member..");
-                                                                                this.setVisible(false);
-                                                                                l.setVisible(true);
                                                                             }
                                                                             else {
-                                                                                JOptionPane.showMessageDialog(this, "Minimum Age 18 years");
+                                                                                JOptionPane.showMessageDialog(this, "Confirm Pin doesn't match");
                                                                             }
                                                                         }
                                                                         else {
-                                                                            JOptionPane.showMessageDialog(this, "Confirm Pin doesn't match");
+                                                                            JOptionPane.showMessageDialog(this, "Confirm pin must be numeric");
                                                                         }
                                                                     }
                                                                     else {
-                                                                        JOptionPane.showMessageDialog(this, "Confirm pin must be numeric");
+                                                                        JOptionPane.showMessageDialog(this, "Pin must be numeric");
                                                                     }
                                                                 }
                                                                 else {
-                                                                    JOptionPane.showMessageDialog(this, "Pin must be numeric");
+                                                                    JOptionPane.showMessageDialog(this, "Minimum balance 50000");
                                                                 }
                                                             }
                                                             else {
-                                                                JOptionPane.showMessageDialog(this, "Minimum balance 50000");
+                                                                JOptionPane.showMessageDialog(this, "Balance must be numeric");
                                                             }
                                                         }
                                                         else {
-                                                            JOptionPane.showMessageDialog(this, "Balance must be numeric");
+                                                            JOptionPane.showMessageDialog(this, "Phone Number must be numeric");
                                                         }
                                                     }
                                                     else {
-                                                        JOptionPane.showMessageDialog(this, "Phone Number must be numeric");
+                                                        JOptionPane.showMessageDialog(this, "Confirm pin must be 6 digit number");
                                                     }
                                                 }
                                                 else {
-                                                    JOptionPane.showMessageDialog(this, "Confirm pin must be 6 digit number");
+                                                    JOptionPane.showMessageDialog(this, "Confirm pin must be filled");
                                                 }
                                             }
                                             else {
-                                                JOptionPane.showMessageDialog(this, "Confirm pin must be filled");
+                                                JOptionPane.showMessageDialog(this, "Pin must be 6 digit number");
                                             }
                                         }
                                         else {
-                                            JOptionPane.showMessageDialog(this, "Pin must be 6 digit number");
+                                            JOptionPane.showMessageDialog(this, "Pin must be filled");
                                         }
                                     }
                                     else {
-                                        JOptionPane.showMessageDialog(this, "Pin must be filled");
+                                        JOptionPane.showMessageDialog(this, "Balance must be filled");
                                     }
                                 }
                                 else {
-                                    JOptionPane.showMessageDialog(this, "Balance must be filled");
+                                    JOptionPane.showMessageDialog(this, "Card type must be filled");
                                 }
                             }
                             else {
-                                JOptionPane.showMessageDialog(this, "Card type must be filled");
+                                JOptionPane.showMessageDialog(this, "Phone Number must be 12 digit number");
                             }
+                            
                         }
                         else {
                             JOptionPane.showMessageDialog(this, "Phone Number must be filled");
