@@ -79,7 +79,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         Submit = new javax.swing.JButton();
         Reset = new javax.swing.JButton();
-        panelBack = new javax.swing.JPanel();
+        panelBack = new RoundJPanel(25);
         lblBack = new javax.swing.JLabel();
         jPanel2 = new RoundJPanel(35);
         jLabel7 = new javax.swing.JLabel();
@@ -199,6 +199,7 @@ public class UserProfileGantiPin extends javax.swing.JPanel {
 
         panelBack.setBackground(new java.awt.Color(255, 255, 255));
         panelBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelBack.setOpaque(false);
         panelBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelBackMouseClicked(evt);
