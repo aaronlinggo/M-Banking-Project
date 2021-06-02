@@ -480,6 +480,7 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                 bulan = "Desember";
             }
             ad.setDate(date + " " + bulan + " " + year);
+            ad.setKurs();
             try
             {
                 FileOutputStream file = new FileOutputStream(filename);

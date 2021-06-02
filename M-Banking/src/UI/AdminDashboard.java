@@ -61,23 +61,7 @@ public class AdminDashboard extends javax.swing.JPanel {
         catch(ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException is caught");
         }
-        try {
-            FileInputStream file = new FileInputStream("Kurs.ser");
-            ObjectInputStream in = new ObjectInputStream(file);
-
-            listKurs = (ArrayList<Kurs>) in.readObject();
-
-            in.close();
-            file.close();
-            System.out.println("Dollar : " + listKurs.get(0).getKursBeli());
-            System.out.println("Euro : " + listKurs.get(1).getKursBeli());
-        }
-        catch(IOException ex) {
-            System.out.println("IOException is caught");
-        }
-        catch(ClassNotFoundException ex) {
-            System.out.println("ClassNotFoundException is caught");
-        }
+        
         String bulan = "";
         if (d1.getD1().getMonth() == 1){
             bulan = "Januari";
@@ -116,26 +100,7 @@ public class AdminDashboard extends javax.swing.JPanel {
             bulan = "Desember";
         }
         date.setText(d1.getD1().getDate() + " " + bulan + " " + d1.getD1().getYear());
-        Color green = new Color(0,102,51);
-        Color red = new Color(153,0,0);
-        lblKursBeliUSD.setText(listKurs.get(0).getKursBeli()+"");
-        if(listKurs.get(0).getPersen() >= 0) {
-            lblPersenUSD.setText("+" + listKurs.get(0).getPersen() + "%");
-            lblPersenUSD.setForeground(green);
-        } 
-        else {
-            lblPersenUSD.setText(listKurs.get(0).getPersen() + "%");
-            lblPersenUSD.setForeground(red);
-        }
-        lblKursBeliEuro.setText(listKurs.get(1).getKursBeli()+"");
-        if(listKurs.get(1).getPersen() >= 0) {
-            lblPersenEuro.setText("+" + listKurs.get(1).getPersen()+"%");
-            lblPersenEuro.setForeground(green);
-        } 
-        else {
-            lblPersenEuro.setText(listKurs.get(1).getPersen()+"%");
-            lblPersenEuro.setForeground(red);
-        }
+        setKurs();
     }
     
     public void getAdmin(AdminHomepage ah){
@@ -973,5 +938,46 @@ public class AdminDashboard extends javax.swing.JPanel {
     
     public void setDate(String txt){
         date.setText(txt);
+        
+    }
+    
+    public void setKurs() {
+        try {
+            FileInputStream file = new FileInputStream("Kurs.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            listKurs = (ArrayList<Kurs>) in.readObject();
+
+            in.close();
+            file.close();
+            System.out.println("Dollar : " + listKurs.get(0).getKursBeli());
+            System.out.println("Euro : " + listKurs.get(1).getKursBeli());
+        }
+        catch(IOException ex) {
+            System.out.println("IOException is caught");
+        }
+        catch(ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        Color green = new Color(0,102,51);
+        Color red = new Color(153,0,0);
+        lblKursBeliUSD.setText(listKurs.get(0).getKursBeli()+"");
+        if(listKurs.get(0).getPersen() >= 0) {
+            lblPersenUSD.setText("+" + listKurs.get(0).getPersen() + "%");
+            lblPersenUSD.setForeground(green);
+        } 
+        else {
+            lblPersenUSD.setText(listKurs.get(0).getPersen() + "%");
+            lblPersenUSD.setForeground(red);
+        }
+        lblKursBeliEuro.setText(listKurs.get(1).getKursBeli()+"");
+        if(listKurs.get(1).getPersen() >= 0) {
+            lblPersenEuro.setText("+" + listKurs.get(1).getPersen()+"%");
+            lblPersenEuro.setForeground(green);
+        } 
+        else {
+            lblPersenEuro.setText(listKurs.get(1).getPersen()+"%");
+            lblPersenEuro.setForeground(red);
+        }
     }
 }
