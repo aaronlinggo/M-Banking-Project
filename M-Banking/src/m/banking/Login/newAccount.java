@@ -695,8 +695,7 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
         // TODO add your handling code here:
         cf = new CalendarFrame();
         cf.addPropertyChangeListener(this);
-        cf.setLocation(tglLahir.getLocationOnScreen().x, 
-                (tglLahir.getLocationOnScreen().y + tglLahir.getHeight()));
+        cf.setLocation(tglLahir.getLocationOnScreen().x, (tglLahir.getLocationOnScreen().y + tglLahir.getHeight()));
         Date selectedDate = (Date) tglLahir.getValue();
         cf.resetSelection(selectedDate);
         cf.setVisible(true);
@@ -763,15 +762,8 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                                                                         if (isNumeric(tempConfirmPin)){
                                                                             if (tempPin.equals(tempConfirmPin)){
                                                                                 Date temp = (Date) tglLahir.getValue();
-                                                                                //String temp = (String) tglLahir.getValue();
-                                                                                System.out.println("- " + temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000));
                                                                                 String tempTgl = temp.getDate() + "/" + (temp.getMonth()+1) + "/" + ((temp.getYear()-100)+2000);
-                                                                                //System.out.println(temp);
-                                                                                System.out.println((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)));
                                                                                 if ((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)) >= 18){
-                                                                                    System.out.println((l.d1.getD1().getYear() - ((temp.getYear()-100)+2000)));
-                                                                                    System.out.println(l.d1.getD1().getYear()-18);
-                                                                                    System.out.println(((temp.getYear()-100)+2000));
                                                                                     if (silverBtn.isSelected()){
                                                                                         if (maleBtn.isSelected()){
                                                                                             l.requestMember.add(new Silver((firstName.getText() + " " + lastName.getText()).toUpperCase(), Double.parseDouble(saldo.getText()), l.noRek, nomorHP.getText(), address.getText(), tempPin, tempTgl, "Male"));

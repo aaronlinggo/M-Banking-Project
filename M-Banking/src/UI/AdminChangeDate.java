@@ -49,7 +49,6 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
 
             in.close();
             file.close();
-            //System.out.println(d1.getD1().getDate() + " - " + d1.getD1().getMonth() + " - " + d1.getD1().getYear());
         }
         catch(IOException ex) {
             System.out.println("IOException is caught");
@@ -66,7 +65,6 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
 
             in.close();
             file.close();
-            System.out.println(d2.getD1().getDate() + " - " + d2.getD1().getMonth() + " - " + d2.getD1().getYear());
         }
         catch(IOException ex) {
             System.out.println("IOException is caught");
@@ -83,8 +81,6 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
 
             in.close();
             file.close();
-            System.out.println("Dollar : " + listKurs.get(0).getKursBeli());
-            System.out.println("Euro : " + listKurs.get(1).getKursBeli());
         }
         catch(IOException ex) {
             System.out.println("IOException is caught");
@@ -379,8 +375,7 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
         // TODO add your handling code here:
         cf = new CalendarFrame();
         cf.addPropertyChangeListener(this);
-        cf.setLocation(newDate.getLocationOnScreen().x, 
-                (newDate.getLocationOnScreen().y + newDate.getHeight()));
+        cf.setLocation(newDate.getLocationOnScreen().x, (newDate.getLocationOnScreen().y + newDate.getHeight()));
         Date selectedDate = (Date) newDate.getValue();
         cf.resetSelection(selectedDate);
         cf.setVisible(true);
@@ -526,29 +521,23 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                 for (int j = 0; j < listKurs.size(); j++) {
                     //dollar index 0, euro index 1
                     if(j==0){
-                    System.out.println("dollar naek : "+listKurs.get(j).getPersen());
                         if(listKurs.get(j).getPersen()>0) {
                         //naik
-                        Account.get(i).getInbox().add(0,"Today's Dollar Buy price Rises,\nWhy not sell to us Now!");
-                            System.out.println("masuk ke inbox naik(dollar)");
+                            Account.get(i).getInbox().add(0,"Today's Dollar Buy price Rises,\nWhy not sell to us Now!");
                         }
                         else {
                             //turun
-                        Account.get(i).getInbox().add(0,"Dollar Buy price Drops for Today,\nWhy not also buy from us!");
-                        System.out.println("masuk ke inbox turun(dollar)");
+                            Account.get(i).getInbox().add(0,"Dollar Buy price Drops for Today,\nWhy not also buy from us!");
                         }
                     }
                     else{
-                        System.out.println("eur naek : "+listKurs.get(j).getPersen());
                         if(listKurs.get(j).getPersen()>0) {
                         //naik
-                        Account.get(i).getInbox().add(0,"Euro's Buy price Rises on this Day,\nWhy not sell to us Now!");
-                        System.out.println("masuk ke inbox naik(eur)");
+                            Account.get(i).getInbox().add(0,"Euro's Buy price Rises on this Day,\nWhy not sell to us Now!");
                         }
                         else {
                             //turun
-                        Account.get(i).getInbox().add(0,"Today's Euro Buy price Drops,\nWhy not also buy from us!");
-                        System.out.println("masuk ke inbox turun (eur)");
+                            Account.get(i).getInbox().add(0,"Today's Euro Buy price Drops,\nWhy not also buy from us!");
                         }
                     }
                     

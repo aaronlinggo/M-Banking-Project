@@ -795,11 +795,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Courier New" size="18" style="1"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor" postCode="if (uh.active.getMutasi().size()&gt;0){&#xa;    activity.setText(&quot;&lt;html&gt;&lt;body style=\&quot;word-wrap: break-word; overflow-wrap: break-word;\&quot;&gt;&quot; + uh.active.getMutasi().get(0) + &quot;&lt;/body&gt;&lt;/html&gt;&quot;);&#xa;}&#xa;else {&#xa;    activity.setText(&quot;&lt;html&gt;&lt;body style=\&quot;word-wrap: break-word; overflow-wrap: break-word;\&quot;&gt;&quot; + &quot;No Activity&quot; + &quot;&lt;/body&gt;&lt;/html&gt;&quot;);&#xa;}">
                   <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="&quot;&lt;html&gt;&lt;body style=\&quot;word-wrap: break-word; overflow-wrap: break-word;\&quot;&gt;&quot; + uh.active.getMutasi().get(0) + &quot;&lt;/body&gt;&lt;/html&gt;&quot;" type="code"/>
                 </Property>
               </Properties>
             </Component>

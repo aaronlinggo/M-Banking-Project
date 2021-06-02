@@ -96,7 +96,6 @@ public class Login extends javax.swing.JFrame {
 
             in.close();
             file.close();
-            System.out.println(d1.getD1().getDate() + " - " + d1.getD1().getMonth() + " - " + d1.getD1().getYear());
         }
         catch(IOException ex) {
             System.out.println("IOException is caught");
@@ -165,8 +164,6 @@ public class Login extends javax.swing.JFrame {
 
             in.close();
             file.close();
-            System.out.println("Dollar : " + listKurs.get(0).getKursBeli());
-            System.out.println("Euro : " + listKurs.get(1).getKursBeli());
         }
         catch(IOException ex) {
             System.out.println("IOException is caught");
@@ -174,23 +171,9 @@ public class Login extends javax.swing.JFrame {
         catch(ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException is caught");
         }
-        
-        System.out.println(requestUpgrade.size());
-        System.out.println("Size rm " + requestMember.size());
-        System.out.println("Size A " + Account.size());
         initComponents();
         this.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
-        //System.out.println(requestMember.size());
     }
-
-    
-//    public void passAccount(ArrayList<Member> Account){
-//        this.Account = Account;
-//    }
-//    
-//    public void passRequestMember(ArrayList<Member> requestMember){
-//        this.requestMember = requestMember;
-//    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -431,9 +414,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_pinFocusGained
     Member active = null;
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
-        System.out.println(norek.getText());
-        System.out.println(pin.getPassword());
-        
         if (norek.getText().equals("admin") && new String(pin.getPassword()).equals("admin")) {
             this.setVisible(false);
             AdminHomepage Admin = new AdminHomepage();
@@ -442,19 +422,14 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Success Login");
         }
         else if (!norek.getText().equals("") && !new String(pin.getPassword()).equals("")) {
-            System.out.println("masuk else if");
-            System.out.println(Account.size());
             for(Member acc : Account){
-                System.out.println("ngecek");
                 String norekA = String.valueOf(acc.getNoRekening());
                 String pinA = acc.getPin();
                 if(norek.getText().equals(norekA) && new String(pin.getPassword()).equals(pinA) ){
                     active = acc;
-                    System.out.println("keganti");
                 }
             }
             if(active!=null){
-                System.out.println("masuk");
                 this.setVisible(false);
                 UserHomepage user = new UserHomepage(active, d1, Account);
                 user.passmember(active);
@@ -528,8 +503,6 @@ public class Login extends javax.swing.JFrame {
         while(true);
         newAccount nA = new newAccount(this);
         nA.setVisible(true);
-        
-        //nA.passLogin(this);
     }//GEN-LAST:event_rekBaruBtnMouseClicked
 
     /**

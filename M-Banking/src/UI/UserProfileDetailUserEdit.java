@@ -323,8 +323,6 @@ public class UserProfileDetailUserEdit extends javax.swing.JPanel {
             //<No>. <Date> <Nama> <Activity>
             String date = du.up.uh.d1.getD1().getDate() + "/" + du.up.uh.d1.getD1().getMonth() + "/" + du.up.uh.d1.getD1().getYear();
             logAdmin.add(0, new Log(date + "-" + du.up.uh.active.getNoRekening() + " Edited Profile"));
-            System.out.println(date);
-            System.out.println(logAdmin.get(0).getLog());
             try {
                 FileOutputStream file = new FileOutputStream("logAdmin.ser");
                 ObjectOutputStream out = new ObjectOutputStream(file);

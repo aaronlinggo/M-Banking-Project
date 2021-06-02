@@ -496,7 +496,12 @@ public class UserMainmenu extends javax.swing.JPanel {
 
         activity.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         activity.setForeground(new java.awt.Color(0, 0, 0));
-        activity.setText("<html><body style=\"word-wrap: break-word; overflow-wrap: break-word;\">" + uh.active.getMutasi().get(0) + "</body></html>");
+        if (uh.active.getMutasi().size()>0){
+            activity.setText("<html><body style=\"word-wrap: break-word; overflow-wrap: break-word;\">" + uh.active.getMutasi().get(0) + "</body></html>");
+        }
+        else {
+            activity.setText("<html><body style=\"word-wrap: break-word; overflow-wrap: break-word;\">" + "No Activity" + "</body></html>");
+        }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

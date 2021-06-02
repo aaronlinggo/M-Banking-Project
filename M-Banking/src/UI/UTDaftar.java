@@ -332,7 +332,6 @@ public class UTDaftar extends javax.swing.JPanel {
                 for(Member cari: Account){
                     if(cari.getNoRekening().equals(jTextField1.getText())){
                         exist = true;
-                        System.out.println("ada di list");
                     }
                 }
                 if(exist){
@@ -363,8 +362,6 @@ public class UTDaftar extends javax.swing.JPanel {
                         //<No>. <Date> <Nama> <Activity>
                         String date = utf.u.d1.getD1().getDate() + "/" + utf.u.d1.getD1().getMonth() + "/" + utf.u.d1.getD1().getYear();
                         logAdmin.add(0, new Log(date + "-" + utf.u.active.getNoRekening() + " added a Card Number " + cek1));
-                        System.out.println(date);
-                        System.out.println(logAdmin.get(0).getLog());
                         try {
                             FileOutputStream file = new FileOutputStream("logAdmin.ser");
                             ObjectOutputStream out = new ObjectOutputStream(file);
@@ -387,8 +384,7 @@ public class UTDaftar extends javax.swing.JPanel {
                         msg+="\nAccount Number 1 Already Registered!";      //berati kembar
                     }
                 }
-                else{       //ga nemu masal
-                    System.out.println("Ga nemu masal");
+                else{
                     msg +="\nAccount Number 1 does not Exist!";
                 }
             }
@@ -404,7 +400,6 @@ public class UTDaftar extends javax.swing.JPanel {
                 for(Member cari: Account){
                     if(cari.getNoRekening().equals(jTextField2.getText())){
                         exist = true;
-                        System.out.println("ada di list");
                     }
                 }
                 if(exist){
@@ -435,8 +430,6 @@ public class UTDaftar extends javax.swing.JPanel {
                         //<No>. <Date> <Nama> <Activity>
                         String date = utf.u.d1.getD1().getDate() + "/" + utf.u.d1.getD1().getMonth() + "/" + utf.u.d1.getD1().getYear();
                         logAdmin.add(0, new Log(date + "-" + utf.u.active.getNoRekening() + " added a Card Number " + cek2));
-                        System.out.println(date);
-                        System.out.println(logAdmin.get(0).getLog());
                         try {
                             FileOutputStream file = new FileOutputStream("logAdmin.ser");
                             ObjectOutputStream out = new ObjectOutputStream(file);
@@ -459,8 +452,7 @@ public class UTDaftar extends javax.swing.JPanel {
                         msg+="\nAccount Number 2 Already Registered!";      //berati kembar
                     }
                 }
-                else{       //ga nemu masal
-                    System.out.println("Ga nemu masal");
+                else{
                     msg +="\nAccount Number 2 does not Exist!";
                 }
             }
@@ -476,7 +468,6 @@ public class UTDaftar extends javax.swing.JPanel {
                 for(Member cari: Account){
                     if(cari.getNoRekening().equals(jTextField3.getText())){
                         exist = true;
-                        System.out.println("ada di list");
                     }
                 }
                 if(exist){
@@ -507,8 +498,6 @@ public class UTDaftar extends javax.swing.JPanel {
                         //<No>. <Date> <Nama> <Activity>
                         String date = utf.u.d1.getD1().getDate() + "/" + utf.u.d1.getD1().getMonth() + "/" + utf.u.d1.getD1().getYear();
                         logAdmin.add(0, new Log(date + "-" + utf.u.active.getNoRekening() + " added a Card Number " + cek3));
-                        System.out.println(date);
-                        System.out.println(logAdmin.get(0).getLog());
                         try {
                             FileOutputStream file = new FileOutputStream("logAdmin.ser");
                             ObjectOutputStream out = new ObjectOutputStream(file);
@@ -528,12 +517,10 @@ public class UTDaftar extends javax.swing.JPanel {
                         msg+="\nAccount Number 3 Succesfuly Registered";
                     }
                     else{
-                        msg+="\nAccount Number 3 Already Registered!";      //berati kembar
-                        System.out.println("Kembar");
+                        msg+="\nAccount Number 3 Already Registered!";
                     }
                 }
-                else{       //ga nemu masal
-                    System.out.println("Ga nemu masal");
+                else{
                     msg +="\nAccount Number 3 does not Exist!";
                 }
             }

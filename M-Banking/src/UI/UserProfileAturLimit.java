@@ -329,8 +329,6 @@ public class UserProfileAturLimit extends javax.swing.JPanel {
         //<No>. <Date> <Nama> <Activity>
         String date = up.uh.d1.getD1().getDate() + "/" + up.uh.d1.getD1().getMonth() + "/" + up.uh.d1.getD1().getYear();
         logAdmin.add(0, new Log(date + "-" + up.uh.active.getNoRekening() + " Set a new Limit"));
-        System.out.println(date);
-        System.out.println(logAdmin.get(0).getLog());
         try {
             FileOutputStream file = new FileOutputStream("logAdmin.ser");
             ObjectOutputStream out = new ObjectOutputStream(file);

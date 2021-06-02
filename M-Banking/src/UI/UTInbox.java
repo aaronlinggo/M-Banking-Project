@@ -264,10 +264,6 @@ public class UTInbox extends javax.swing.JPanel {
             
             listing.add(new InboxCard());
             listing.get(i).getjTextArea1().append(saya.getInbox().get(i));
-//            System.out.println(listing.get(i).getIsi().getPreferredSize().width);
-//            if(listing.get(i).getIsi().getPreferredSize().width>max){
-//                max = listing.get(i).getIsi().getPreferredSize().width;
-//            }
             listing.get(i).setBounds(0,i*(70+10),402,70);
             maillist.setPreferredSize(new Dimension(max, maillist.getPreferredSize().height));
             maillist.add(listing.get(i));

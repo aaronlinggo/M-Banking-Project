@@ -573,8 +573,6 @@ public class UserVirtualAccount extends javax.swing.JPanel {
                         //<No>. <Date> <Nama> <Activity>
                         String date = ut.utf.u.d1.getD1().getDate() + "/" + ut.utf.u.d1.getD1().getMonth() + "/" + ut.utf.u.d1.getD1().getYear();
                         logAdmin.add(0, new Log(date + "-" + ut.utf.u.active.getNoRekening() + " paid Virtual Account " + ut.utf.u.active.getMyTagihan().get(idx).getVirtualAccount()));
-                        System.out.println(date);
-                        System.out.println(logAdmin.get(0).getLog());
                         try {
                             FileOutputStream file = new FileOutputStream("logAdmin.ser");
                             ObjectOutputStream out = new ObjectOutputStream(file);

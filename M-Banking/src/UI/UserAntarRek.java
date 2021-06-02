@@ -406,9 +406,7 @@ public class UserAntarRek extends javax.swing.JPanel {
                             double poin = tf_amount*0.1;
                             saya.setPoint(saya.getPoint() + (int)poin);
                             saya.getInbox().add(0,"Transfered Rp."+tf_amount+ " \nto "+target.getNoRekening()+"\nReceived "+(int)poin+" Points");
-                            System.out.println("inbox trf done");
                             saya.getMutasi().add(0,"Transfered Rp."+tf_amount+ " \nto "+target.getNoRekening()+" \non "+date);
-                            System.out.println("mutasi tf done");
                             //target
                             target.setRupiah(target.getRupiah()+tf_amount);
                             target.getInbox().add(0,"Received Rp."+tf_amount +"From "+saya.getNoRekening());

@@ -312,7 +312,6 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
             catch(IOException ex) {
                 System.out.println("IOException is caught");
             }
-            System.out.println(Account.size());
             JOptionPane.showMessageDialog(this, "Reject Upgrade Card Member " + Account.get(Account.size()-1).getNama() + "!");
         }
         else {
@@ -408,7 +407,6 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
             catch(IOException ex) {
                 System.out.println("IOException is caught");
             }
-            System.out.println(Account.size());
             JOptionPane.showMessageDialog(this, "Berhasil confirm Member " + Account.get(Account.size()-1).getNama() + "!");
         }
         else {
@@ -460,14 +458,12 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
             listnewMember.setPreferredSize(new Dimension(488, 532));
         }
         for (int i = 0; i < requestUpgrade.size(); i++) {
-            System.out.println(i);
             ACLMU.add(new AdminCardListMemberUpgrade());
             ACLMU.get(i).setName("ALNM"+i);
             ACLMU.get(i).setFullName("Full Name     : " + requestUpgrade.get(i).getNama().toUpperCase());
             String tempnorek = requestUpgrade.get(i).getNoRekening().substring(0,4) + "-" + requestUpgrade.get(i).getNoRekening().substring(4,8) + "-" + requestUpgrade.get(i).getNoRekening().substring(8,12) + "-" + requestUpgrade.get(i).getNoRekening().substring(12,16);
             ACLMU.get(i).setNoRek("Card Number   : " + tempnorek);
             String tempSaldo = Double.toString(requestUpgrade.get(i).getRupiah());
-            System.out.println(tempSaldo);
             for (int j = 0; j < Account.size(); j++) {
                 if (requestUpgrade.get(i).getNoRekening().equals(Account.get(j).getNoRekening())){
                     ACLMU.get(i).setSaldo("Balance       : " + priceWithoutDecimal(Account.get(j).getRupiah()));
@@ -501,11 +497,6 @@ public class AdminRequestUpgrade extends javax.swing.JPanel {
             ACLMU.get(i).setVisible(true);
             ACLMU.get(i).addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e){
-                    System.out.println("klik");
-                    System.out.println(e.getSource());
-                    System.out.println(e.getY());
-                    System.out.println(e.getComponent().getName());
-                    System.out.println(ACLMU.indexOf(e.getComponent()));
                     idx = ACLMU.indexOf(e.getComponent());
                     resetBGPanel(ACLMU);
                     ACLMU.get(idx).setNewColorBG(84,190,229);

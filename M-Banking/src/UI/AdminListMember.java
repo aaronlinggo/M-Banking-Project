@@ -375,7 +375,6 @@ public class AdminListMember extends javax.swing.JPanel {
         catch(ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException is caught");
         }
-        System.out.println("abc");
         Collections.sort(Account, new Comparator<Member>(){
             @Override
             public int compare(Member t1, Member t2) {
@@ -537,11 +536,9 @@ public class AdminListMember extends javax.swing.JPanel {
             }
             
             int va = Account.get(idx).randomVA();
-            System.out.println(va);
             double temp = Double.parseDouble(jumlahTagihan);
             Account.get(idx).addTagihan(namaMerchandise, temp, va);
             JOptionPane.showMessageDialog(this, "Success add a bill \""+ namaMerchandise + "\" - " + priceWithoutDecimal(temp)+ " - Virtual Account : " + va);
-            System.out.println(Account.size());
             try {
                 FileOutputStream file = new FileOutputStream("Account.ser");
                 ObjectOutputStream out = new ObjectOutputStream(file);
@@ -558,7 +555,6 @@ public class AdminListMember extends javax.swing.JPanel {
                 System.out.println("IOException is caught2");
                 System.out.println(ex);
             }
-            System.out.println(Account.size());
         }
         else {
             JOptionPane.showMessageDialog(this, "Pick a new member pls");
@@ -685,14 +681,12 @@ public class AdminListMember extends javax.swing.JPanel {
             listnewMember.setPreferredSize(new Dimension(488, 460));
         }
         for (int i = 0; i < Account.size(); i++) {
-            System.out.println(i);
             ACLM.add(new AdminCardListMember());
             ACLM.get(i).setName("ALNM"+i);
             ACLM.get(i).setFullName("Full Name     : " + Account.get(i).getNama().toUpperCase());
             String tempnorek = Account.get(i).getNoRekening().substring(0,4) + "-" + Account.get(i).getNoRekening().substring(4,8) + "-" + Account.get(i).getNoRekening().substring(8,12) + "-" + Account.get(i).getNoRekening().substring(12,16);
             ACLM.get(i).setNoRek("Card Number   : " + tempnorek);
             String tempSaldo = Double.toString(Account.get(i).getRupiah());
-            System.out.println(tempSaldo);
             ACLM.get(i).setSaldo("Balance       : " + priceWithoutDecimal(Account.get(i).getRupiah()));
             String jenis = "";
             if (Account.get(i) instanceof Silver){
@@ -712,11 +706,6 @@ public class AdminListMember extends javax.swing.JPanel {
             ACLM.get(i).setVisible(true);
             ACLM.get(i).addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e){
-                    System.out.println("klik");
-                    System.out.println(e.getSource());
-                    System.out.println(e.getY());
-                    System.out.println(e.getComponent().getName());
-                    System.out.println(ACLM.indexOf(e.getComponent()));
                     idx = ACLM.indexOf(e.getComponent());
                     resetBGPanel(ACLM);
                     ACLM.get(idx).setNewColorBG(84,190,229);

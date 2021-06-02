@@ -502,8 +502,6 @@ public class AdminGift extends javax.swing.JPanel {
             cardM.get(i).setVisible(true);
             cardM.get(i).addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e){
-                    System.out.println("klik");
-                    System.out.println(cardM.indexOf(e.getComponent()));
                     idx = cardM.indexOf(e.getComponent());
                     resetBGPanel(cardM);
                     cardM.get(idx).setNewColorBG(84,190,229);

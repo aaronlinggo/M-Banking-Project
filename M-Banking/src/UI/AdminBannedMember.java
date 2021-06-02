@@ -282,7 +282,7 @@ public class AdminBannedMember extends javax.swing.JPanel {
             catch(IOException ex) {
                 System.out.println("IOException is caught");
             }
-            JOptionPane.showMessageDialog(this, "Berhasil delete");
+            JOptionPane.showMessageDialog(this, "Success Delete");
         }
         else {
             JOptionPane.showMessageDialog(this, "Pick a new member pls");
@@ -416,7 +416,6 @@ public class AdminBannedMember extends javax.swing.JPanel {
             String tempnorek = banned.get(i).getNoRekening().substring(0,4) + "-" + banned.get(i).getNoRekening().substring(4,8) + "-" + banned.get(i).getNoRekening().substring(8,12) + "-" + banned.get(i).getNoRekening().substring(12,16);
             ACLM.get(i).setNoRek("Card Number   : " + tempnorek);
             String tempSaldo = Double.toString(banned.get(i).getRupiah());
-            System.out.println(tempSaldo);
             ACLM.get(i).setSaldo("Balance       : " + priceWithoutDecimal(banned.get(i).getRupiah()));
             String jenis = "";
             if (banned.get(i) instanceof Silver){

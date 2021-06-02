@@ -345,7 +345,6 @@ public class AdminNewMember extends javax.swing.JPanel {
             catch(IOException ex) {
                 System.out.println("IOException is caught");
             }
-            System.out.println(Account.size());
             JOptionPane.showMessageDialog(this, "Success Confim Member " + Account.get(Account.size()-1).getNama() + "!");
         }
         else {
@@ -381,11 +380,9 @@ public class AdminNewMember extends javax.swing.JPanel {
             listnewMember.setPreferredSize(new Dimension(488, 542));
         }
         for (int i = 0; i < requestMember.size(); i++) {
-            System.out.println(i);
             ALNM.add(new AdminCardListNewMember());
             ALNM.get(i).setName("ALNM"+i);
             ALNM.get(i).setFullName("Full Name     : " + requestMember.get(i).getNama().toUpperCase());
-            System.out.println(requestMember.get(i).getTanggalLahir());
             ALNM.get(i).setTglLahir("Date of Birth : " + requestMember.get(i).getTanggalLahir());
             ALNM.get(i).setGender("Gender        : " + requestMember.get(i).getGender());
             ALNM.get(i).setAlamat("Address       : " + requestMember.get(i).getAlamat());
@@ -393,7 +390,6 @@ public class AdminNewMember extends javax.swing.JPanel {
             String tempnorek = requestMember.get(i).getNoRekening().substring(0,4) + "-" + requestMember.get(i).getNoRekening().substring(4,8) + "-" + requestMember.get(i).getNoRekening().substring(8,12) + "-" + requestMember.get(i).getNoRekening().substring(12,16);
             ALNM.get(i).setNoRek("Card Number   : " + tempnorek);
             String tempSaldo = Double.toString(requestMember.get(i).getRupiah());
-            System.out.println(tempSaldo);
             ALNM.get(i).setSaldo("Balance       : " + priceWithoutDecimal(requestMember.get(i).getRupiah()));
             String jenis = "";
             if (requestMember.get(i) instanceof Silver){
@@ -413,11 +409,6 @@ public class AdminNewMember extends javax.swing.JPanel {
             ALNM.get(i).setVisible(true);
             ALNM.get(i).addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e){
-                    System.out.println("klik");
-                    System.out.println(e.getSource());
-                    System.out.println(e.getY());
-                    System.out.println(e.getComponent().getName());
-                    System.out.println(ALNM.indexOf(e.getComponent()));
                     idx = ALNM.indexOf(e.getComponent());
                     resetBGPanel(ALNM);
                     ALNM.get(idx).setNewColorBG(84,190,229);

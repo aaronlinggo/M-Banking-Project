@@ -53,7 +53,6 @@ public class AdminDashboard extends javax.swing.JPanel {
 
             in.close();
             file.close();
-            System.out.println(d1.getD1().getDate() + " - " + d1.getD1().getMonth() + " - " + d1.getD1().getYear());
         }
         catch(IOException ex) {
             System.out.println("IOException is caught");
@@ -564,7 +563,6 @@ public class AdminDashboard extends javax.swing.JPanel {
             temp1 = Account.get(i).getNama();
         }
     }
-    System.out.println(temp1);
     name.setText(temp1);
 
     jPanel11.setBackground(new java.awt.Color(102, 102, 255));
@@ -950,8 +948,6 @@ public class AdminDashboard extends javax.swing.JPanel {
 
             in.close();
             file.close();
-            System.out.println("Dollar : " + listKurs.get(0).getKursBeli());
-            System.out.println("Euro : " + listKurs.get(1).getKursBeli());
         }
         catch(IOException ex) {
             System.out.println("IOException is caught");

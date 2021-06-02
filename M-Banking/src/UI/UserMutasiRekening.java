@@ -270,10 +270,6 @@ public class UserMutasiRekening extends javax.swing.JPanel
             
             listing.add(new UserMutasiCard());
             listing.get(i).getjTextArea1().append(saya.getMutasi().get(i));
-//            System.out.println(listing.get(i).getIsi().getPreferredSize().width);
-//            if(listing.get(i).getIsi().getPreferredSize().width>max){
-//                max = listing.get(i).getIsi().getPreferredSize().width;
-//            }
             listing.get(i).setBounds(0,i*(70+10),402,70);
             mutasilist.setPreferredSize(new Dimension(max, mutasilist.getPreferredSize().height));
             mutasilist.add(listing.get(i));

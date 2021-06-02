@@ -546,9 +546,7 @@ public class UserMerchandise extends javax.swing.JPanel
                         utf.u.active.setPoint(utf.u.active.getPoint() - Integer.parseInt(input.getText())*myMerchandise.get(index).getPoint());
                         utf.u.active.getRewardBank().add(0, "<html>" + "User berhasil menukar <br>" + input.getText() + " " + myMerchandise.get(index).getNamaMerchandise()+ "</html>");
                         utf.u.active.getInbox().add(0,"Used "+Integer.parseInt(input.getText())*myMerchandise.get(index).getPoint() +" Points \nto Redeem "+myMerchandise.get(index).getNamaMerchandise());
-                        System.out.println("a : " + myMerchandise.get(index).getNamaMerchandise());
                         this.PointUser.setText("Point : " + utf.u.active.getPoint());
-                        System.out.println(utf.u.active.getRewardBank().size());
                         JOptionPane.showMessageDialog(this,"Successfully exchange reward");
                         ArrayList<Log> logAdmin = new ArrayList<>();
                         try 
@@ -572,8 +570,6 @@ public class UserMerchandise extends javax.swing.JPanel
                         //<No>. <Date> <Nama> <Activity>
                         String date = utf.u.d1.getD1().getDate() + "/" + utf.u.d1.getD1().getMonth() + "/" + utf.u.d1.getD1().getYear();
                         logAdmin.add(0, new Log(date + "-" + utf.u.active.getNoRekening() + " Success exchange point"));
-                        System.out.println(date);
-                        System.out.println(logAdmin.get(0).getLog());
                         try 
                         {
                             FileOutputStream file = new FileOutputStream("logAdmin.ser");
@@ -695,8 +691,6 @@ public class UserMerchandise extends javax.swing.JPanel
             {
                 public void mouseClicked(MouseEvent e)
                 {
-                    System.out.println("klik");
-                    System.out.println(pl.indexOf(e.getComponent()));
                     index = pl.indexOf(e.getComponent());
                     resetBGPanel(pl);
                     pl.get(index).setNewColorBG(84,190,229);
@@ -708,7 +702,6 @@ public class UserMerchandise extends javax.swing.JPanel
         }
         IsiKonten.revalidate();
         IsiKonten.repaint();
-        System.out.println("jumlah merchandise : " + JumlahMerchandise);
     }
     
     public boolean isNumeric(String str)

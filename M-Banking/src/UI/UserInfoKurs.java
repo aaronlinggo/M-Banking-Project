@@ -36,8 +36,6 @@ public class UserInfoKurs extends javax.swing.JPanel
 
             in.close();
             file.close();
-            System.out.println("Dollar : " + listKurs.get(0).getKursBeli());
-            System.out.println("Euro : " + listKurs.get(1).getKursBeli());
         }
         catch(IOException ex) {
             System.out.println("IOException is caught");
