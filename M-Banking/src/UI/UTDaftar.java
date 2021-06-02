@@ -60,7 +60,7 @@ public class UTDaftar extends javax.swing.JPanel {
         jTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jTextField1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setText("Nomor Rekening 1");
+        jTextField1.setText("Account Number 1");
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField1FocusGained(evt);
@@ -75,7 +75,7 @@ public class UTDaftar extends javax.swing.JPanel {
         jTextField2.setBackground(new java.awt.Color(204, 204, 204));
         jTextField2.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setText("Nomor Rekening 2");
+        jTextField2.setText("Account Number 2");
         jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField2FocusGained(evt);
@@ -152,7 +152,7 @@ public class UTDaftar extends javax.swing.JPanel {
         jTextField3.setBackground(new java.awt.Color(204, 204, 204));
         jTextField3.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.setText("Nomor Rekening 3");
+        jTextField3.setText("Account Number 3");
         jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField3FocusGained(evt);
@@ -233,7 +233,7 @@ public class UTDaftar extends javax.swing.JPanel {
                     .addGroup(bgutamaLayout.createSequentialGroup()
                         .addComponent(backbtnpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 326, Short.MAX_VALUE))
                     .addComponent(jTextField2)
                     .addComponent(jTextField1)
                     .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -324,7 +324,7 @@ public class UTDaftar extends javax.swing.JPanel {
         }
         String msg="";
         boolean fill1=false,fill2=false,fill3=false;// cek terisi ga
-        if(!jTextField1.getText().equals("") && !jTextField1.getText().equals("Nomor Rekening 1")){
+        if(!jTextField1.getText().equals("") && !jTextField1.getText().equals("Account Number 1")){
             fill1=true;
             if(isNumeric(jTextField1.getText())){
                 String cek1 = jTextField1.getText();
@@ -381,22 +381,22 @@ public class UTDaftar extends javax.swing.JPanel {
                             System.out.println("IOException is caught2");
                             System.out.println(ex);
                         }
-                        msg+="\nNomor Rekening 1 Berhasil Terdaftar";
+                        msg+="\nAccount Number 1 Succesfuly Registered";
                     }
                     else{
-                        msg+="\nNomor Rekening 1 Sudah Terdaftar";      //berati kembar
+                        msg+="\nAccount Number 1 Already Registered!";      //berati kembar
                     }
                 }
                 else{       //ga nemu masal
                     System.out.println("Ga nemu masal");
-                    msg +="\nNomor Rekening 1 Tidak Ditemukan!";
+                    msg +="\nAccount Number 1 does not Exist!";
                 }
             }
             else{
-                msg +="\nGagal! Nomor Rekening 1 mengandung Huruf";
+                msg +="\nAccount Number 1 must be Numeric!";
             }
         }
-        if(!jTextField2.getText().equals("") && !jTextField2.getText().equals("Nomor Rekening 2")){
+        if(!jTextField2.getText().equals("") && !jTextField2.getText().equals("Account Number 2")){
             fill2=true;
             if(isNumeric(jTextField2.getText())){
                 String cek2 = jTextField2.getText();
@@ -453,22 +453,22 @@ public class UTDaftar extends javax.swing.JPanel {
                             System.out.println("IOException is caught2");
                             System.out.println(ex);
                         }
-                        msg+="\nNomor Rekening 2 Berhasil Terdaftar";
+                        msg+="\nAccount Number 2 Succesfuly Registered";
                     }
                     else{
-                        msg+="\nNomor Rekening 2 Sudah Terdaftar";      //berati kembar
+                        msg+="\nAccount Number 2 Already Registered!";      //berati kembar
                     }
                 }
                 else{       //ga nemu masal
                     System.out.println("Ga nemu masal");
-                    msg +="\nNomor Rekening 2 Tidak Ditemukan!";
+                    msg +="\nAccount Number 2 does not Exist!";
                 }
             }
             else{
-                msg +="\nGagal! Nomor Rekening 2 mengandung Huruf";
+                msg +="\nAccount Number 2 must be Numeric!";
             }
         }
-        if(!jTextField3.getText().equals("")&&!jTextField3.getText().equals("Nomor Rekening 3")){
+        if(!jTextField3.getText().equals("")&&!jTextField3.getText().equals("Account Number 3")){
             fill3=true;
             if(isNumeric(jTextField3.getText())){
                 String cek3 = jTextField3.getText();
@@ -525,29 +525,29 @@ public class UTDaftar extends javax.swing.JPanel {
                             System.out.println("IOException is caught2");
                             System.out.println(ex);
                         }
-                        msg+="\nNomor Rekening 3 Berhasil Terdaftar";
+                        msg+="\nAccount Number 3 Succesfuly Registered";
                     }
                     else{
-                        msg+="\nNomor Rekening 3 Sudah Terdaftar";      //berati kembar
+                        msg+="\nAccount Number 3 Already Registered!";      //berati kembar
                         System.out.println("Kembar");
                     }
                 }
                 else{       //ga nemu masal
                     System.out.println("Ga nemu masal");
-                    msg +="\nNomor Rekening 3 Tidak Ditemukan!";
+                    msg +="\nAccount Number 3 does not Exist!";
                 }
             }
             else{
-                msg +="\nGagal! Nomor Rekening 3 mengandung Huruf";
+                msg +="\nAccount Number 3 must be Numeric!";
             }
         }
         if(!fill1&&!fill2&&!fill3){
-            JOptionPane.showMessageDialog(this, "Tidak Ada yang mau di Daftarkan");
+            JOptionPane.showMessageDialog(this, "Fields Cannot be Empty!");
         }
         else JOptionPane.showMessageDialog(this, "Status : "+ msg);
-        jTextField1.setText("Nomor Rekening 1");
-        jTextField2.setText("Nomor Rekening 2");
-        jTextField3.setText("Nomor Rekening 3");
+        jTextField1.setText("Account Number 1");
+        jTextField2.setText("Account Number 2");
+        jTextField3.setText("Account Number 3");
         
         try {
             FileOutputStream file = new FileOutputStream("Account.ser");
