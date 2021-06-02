@@ -572,14 +572,6 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                 System.out.println("IOException is caught");
             }
             
-            JOptionPane.showMessageDialog(this, "Success Change Date");
-          
-            ad.ah.getContent().removeAll();
-            ad.setVisible(true);
-            ad.setBounds(0,0, 500, 717);
-            ad.ah.getContent().add(ad);
-            ad.ah.getContent().revalidate();
-            ad.ah.getContent().repaint();
             if (rangeYear != 0){
                 
                 for (int i = 0; i < Account.size(); i++) {
@@ -601,69 +593,85 @@ public class AdminChangeDate extends javax.swing.JPanel implements PropertyChang
                     //masukin ke inbox -> Bunga sama biaya admin
                 }
                 
-                ArrayList<Member> banned = new ArrayList<>();
-                try {
-                    FileInputStream file = new FileInputStream("BannedAccount.ser");
-                    ObjectInputStream in = new ObjectInputStream(file);
-
-                    banned = (ArrayList<Member>) in.readObject();
-
-                    in.close();
-                    file.close();
-                }
-                catch(IOException ex) {
-                    System.out.println("IOException is caught");
-                }
-                catch(ClassNotFoundException ex) {
-                    System.out.println("ClassNotFoundException is caught");
-                }
-                
-                boolean keluar = false;
-                while (keluar){
-                    keluar = false;
-                    for (int i = 0; i < Account.size(); i++) {
-                        if (Account.get(i).getRupiah()<=0){
-                            banned.add(Account.get(i));
-                            Account.remove(i);
-                            keluar = true;
-                            break;
-                        }
-                    }
-                };
-                
-                
-                
-                try {
-                    FileOutputStream file = new FileOutputStream("BannedAccount.ser");
-                    ObjectOutputStream out = new ObjectOutputStream(file);
-
-                    out.writeObject(banned);
-
-                    out.close();
-                    file.close();
-
-                    System.out.println("Object has been serialized");
-
-                }
-                catch(IOException ex) {
-                    System.out.println("IOException is caught");
+            }
+            if (rangeBulan != 0){
+                for (int i = 0; i < Account.size(); i++) {
+                    int temp = Account.get(i).getBiayaAdmin()*rangeBulan;
+                    Account.get(i).setRupiah(Account.get(i).getRupiah() - temp);
+                    Account.get(i).getInbox().add(0,"You have been Charged Rp. "+priceWithoutDecimal((double)temp) + " \nFor Admin Fees");
+                    Account.get(i).getMutasi().add(0,"Charged Rp. "+priceWithoutDecimal((double)temp) + " \nFor Admin Fees");
                 }
             }
+            
+            
+            ArrayList<Member> banned = new ArrayList<>();
             try {
-                    FileOutputStream file = new FileOutputStream("Account.ser");
-                    ObjectOutputStream out = new ObjectOutputStream(file);
+                FileInputStream file = new FileInputStream("BannedAccount.ser");
+                ObjectInputStream in = new ObjectInputStream(file);
 
-                    out.writeObject(Account);
+                banned = (ArrayList<Member>) in.readObject();
 
-                    out.close();
-                    file.close();
+                in.close();
+                file.close();
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            catch(ClassNotFoundException ex) {
+                System.out.println("ClassNotFoundException is caught");
+            }
 
-                    System.out.println("Object has been serialized");
-
+            boolean keluar = false;
+            while (!keluar){
+                keluar = true;
+                for (int i = 0; i < Account.size(); i++) {
+                    if (Account.get(i).getRupiah()<=0){
+                        banned.add(Account.get(i));
+                        Account.remove(i);
+                        keluar = false;
+                        break;
+                    }
                 }
-                catch(IOException ex) {
-                    System.out.println("IOException is caught");
-                }
+            };
+
+            try {
+                FileOutputStream file = new FileOutputStream("BannedAccount.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(banned);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            try {
+                FileOutputStream file = new FileOutputStream("Account.ser");
+                ObjectOutputStream out = new ObjectOutputStream(file);
+
+                out.writeObject(Account);
+
+                out.close();
+                file.close();
+
+                System.out.println("Object has been serialized");
+
+            }
+            catch(IOException ex) {
+                System.out.println("IOException is caught");
+            }
+            JOptionPane.showMessageDialog(this, "Success Change Date");
+          
+            ad.ah.getContent().removeAll();
+            ad.setVisible(true);
+            ad.setBounds(0,0, 500, 717);
+            ad.ah.getContent().add(ad);
+            ad.ah.getContent().revalidate();
+            ad.ah.getContent().repaint();
         }
     }//GEN-LAST:event_changeMouseClicked
 

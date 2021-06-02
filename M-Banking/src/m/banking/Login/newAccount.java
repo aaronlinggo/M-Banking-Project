@@ -811,7 +811,7 @@ public class newAccount extends javax.swing.JFrame implements PropertyChangeList
                                                                                 catch(IOException ex) {
                                                                                     System.out.println("IOException is caught");
                                                                                 }
-                                                                                JOptionPane.showMessageDialog(this, "Berhasil membuat member.. tunggu konfirmasi dari admin");
+                                                                                JOptionPane.showMessageDialog(this, "Success create a member..");
                                                                                 this.setVisible(false);
                                                                                 l.setVisible(true);
                                                                             }
