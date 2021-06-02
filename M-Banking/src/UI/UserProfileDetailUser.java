@@ -45,7 +45,7 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        panelBack = new javax.swing.JPanel();
+        panelBack = new RoundJPanel(25);
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -68,6 +68,7 @@ public class UserProfileDetailUser extends javax.swing.JPanel {
 
         panelBack.setBackground(new java.awt.Color(255, 255, 255));
         panelBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelBack.setOpaque(false);
         panelBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelBackMouseClicked(evt);
