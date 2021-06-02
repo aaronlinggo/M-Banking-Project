@@ -288,7 +288,7 @@ public class AdminLog extends javax.swing.JPanel{
         ArrayList<AdminCardLog> ACL = new ArrayList<>();
         for (int i = 0; i < logAdmin.size(); i++) {
             ACL.add(new AdminCardLog());
-            ACL.get(i).getDetail().setText(logAdmin.get(i).getLog());
+            ACL.get(i).getDetail().setText("<html><body style=\"word-wrap: break-word; overflow-wrap: break-word;\">" + logAdmin.get(i).getLog() + "</body></html>");
             ACL.get(i).setBounds(0, (70)*i, 505, 70);
             ACL.get(i).setVisible(true);
             listLog.add(ACL.get(i));
