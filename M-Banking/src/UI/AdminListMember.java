@@ -303,7 +303,7 @@ public class AdminListMember extends javax.swing.JPanel {
         bannnedLbl.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         bannnedLbl.setForeground(new java.awt.Color(0, 0, 0));
         bannnedLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bannnedLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/sort.png"))); // NOI18N
+        bannnedLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/banned.png"))); // NOI18N
         bannnedLbl.setText("Banned");
 
         javax.swing.GroupLayout bannedLayout = new javax.swing.GroupLayout(banned);

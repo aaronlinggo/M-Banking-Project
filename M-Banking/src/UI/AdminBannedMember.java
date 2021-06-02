@@ -201,7 +201,7 @@ public class AdminBannedMember extends javax.swing.JPanel {
         unbannnedLbl.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         unbannnedLbl.setForeground(new java.awt.Color(0, 0, 0));
         unbannnedLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        unbannnedLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/sort.png"))); // NOI18N
+        unbannnedLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/m/banking/Asset/unban.png"))); // NOI18N
         unbannnedLbl.setText("Unbanned");
 
         javax.swing.GroupLayout unbannedLayout = new javax.swing.GroupLayout(unbanned);
