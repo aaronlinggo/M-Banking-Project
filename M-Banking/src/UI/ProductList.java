@@ -158,8 +158,6 @@ public class ProductList extends javax.swing.JPanel
         this.bg = jPanel1;
     }
 
-    
-
     public ComponentUI getUi()
     {
         return ui;
