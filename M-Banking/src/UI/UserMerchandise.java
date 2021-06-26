@@ -513,126 +513,131 @@ public class UserMerchandise extends javax.swing.JPanel
     private void SubmitMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_SubmitMouseClicked
     {//GEN-HEADEREND:event_SubmitMouseClicked
         // TODO add your handling code here:
-        if(isNumeric(input.getText()))
-        {
-            if(!input.getText().equals("0"))
+        if (!input.getText().equals("") || !input.getText().equals("0")){
+            if(isNumeric(input.getText()))
             {
-                if(index != -1)
+                if(!input.getText().equals("0"))
                 {
-                    if(Integer.parseInt(input.getText()) > 0 && Integer.parseInt(input.getText()) < 10)
+                    if(index != -1)
                     {
-                        ArrayList<Merchandise> myMerchandise = new ArrayList<>();
-                        try 
+                        if(Integer.parseInt(input.getText()) > 0 && Integer.parseInt(input.getText()) < 10)
                         {
-                            FileInputStream file = new FileInputStream("Merchandise.ser");
-                            ObjectInputStream in = new ObjectInputStream(file);
-
-                            myMerchandise = (ArrayList<Merchandise>) in.readObject();
-
-                            in.close();
-                            file.close();
-                        }
-                        catch(IOException ex) 
-                        {
-                            System.out.println("IOException is caught1");
-                        }
-                        catch(ClassNotFoundException ex) 
-                        {
-                            System.out.println("ClassNotFoundException is caught");
-                        }
-                        if(utf.u.active.getPoint() - Integer.parseInt(input.getText())*myMerchandise.get(index).getPoint() < 0)
-                        {
-                            JOptionPane.showMessageDialog(this,"sorry, you don't have the point to echange this amount of rewards");
-                        }
-                        else 
-                        {
-                            utf.u.active.setPoint(utf.u.active.getPoint() - Integer.parseInt(input.getText())*myMerchandise.get(index).getPoint());
-                            utf.u.active.getRewardBank().add(0, "<html>" + "User berhasil menukar <br>" + input.getText() + " " + myMerchandise.get(index).getNamaMerchandise()+ "</html>");
-                            utf.u.active.getInbox().add(0,"Used "+Integer.parseInt(input.getText())*myMerchandise.get(index).getPoint() +" Points \nto Redeem "+myMerchandise.get(index).getNamaMerchandise());
-                            this.PointUser.setText("Point : " + utf.u.active.getPoint());
-                            JOptionPane.showMessageDialog(this,"Successfully exchange reward");
-                            ArrayList<Log> logAdmin = new ArrayList<>();
+                            ArrayList<Merchandise> myMerchandise = new ArrayList<>();
                             try 
                             {
-                                FileInputStream file = new FileInputStream("logAdmin.ser");
+                                FileInputStream file = new FileInputStream("Merchandise.ser");
                                 ObjectInputStream in = new ObjectInputStream(file);
 
-                                logAdmin = (ArrayList<Log>) in.readObject();
+                                myMerchandise = (ArrayList<Merchandise>) in.readObject();
 
                                 in.close();
                                 file.close();
                             }
                             catch(IOException ex) 
                             {
-                                System.out.println("IOException is caught");
+                                System.out.println("IOException is caught1");
                             }
                             catch(ClassNotFoundException ex) 
                             {
                                 System.out.println("ClassNotFoundException is caught");
                             }
-                            //<No>. <Date> <Nama> <Activity>
-                            String date = utf.u.d1.getD1().getDate() + "/" + utf.u.d1.getD1().getMonth() + "/" + utf.u.d1.getD1().getYear();
-                            logAdmin.add(0, new Log(date + "-" + utf.u.active.getNoRekening() + " Success exchange point"));
-                            try 
+                            if(utf.u.active.getPoint() - Integer.parseInt(input.getText())*myMerchandise.get(index).getPoint() < 0)
                             {
-                                FileOutputStream file = new FileOutputStream("logAdmin.ser");
-                                ObjectOutputStream out = new ObjectOutputStream(file);
-
-                                out.writeObject(logAdmin);
-
-                                out.close();
-                                file.close();
-
-                                System.out.println("Object has been serialized");
-
+                                JOptionPane.showMessageDialog(this,"sorry, you don't have the point to echange this amount of rewards");
                             }
-                            catch(IOException ex) 
+                            else 
                             {
-                                System.out.println("IOException is caught2");
-                                System.out.println(ex);
-                            }
+                                utf.u.active.setPoint(utf.u.active.getPoint() - Integer.parseInt(input.getText())*myMerchandise.get(index).getPoint());
+                                utf.u.active.getRewardBank().add(0, "<html>" + "User berhasil menukar <br>" + input.getText() + " " + myMerchandise.get(index).getNamaMerchandise()+ "</html>");
+                                utf.u.active.getInbox().add(0,"Used "+Integer.parseInt(input.getText())*myMerchandise.get(index).getPoint() +" Points \nto Redeem "+myMerchandise.get(index).getNamaMerchandise());
+                                this.PointUser.setText("Point : " + utf.u.active.getPoint());
+                                JOptionPane.showMessageDialog(this,"Successfully exchange reward");
+                                ArrayList<Log> logAdmin = new ArrayList<>();
+                                try 
+                                {
+                                    FileInputStream file = new FileInputStream("logAdmin.ser");
+                                    ObjectInputStream in = new ObjectInputStream(file);
 
-                            try 
-                            {
-                                FileOutputStream file = new FileOutputStream("Account.ser");
-                                ObjectOutputStream out = new ObjectOutputStream(file);
+                                    logAdmin = (ArrayList<Log>) in.readObject();
 
-                                out.writeObject(utf.u.Account);
+                                    in.close();
+                                    file.close();
+                                }
+                                catch(IOException ex) 
+                                {
+                                    System.out.println("IOException is caught");
+                                }
+                                catch(ClassNotFoundException ex) 
+                                {
+                                    System.out.println("ClassNotFoundException is caught");
+                                }
+                                //<No>. <Date> <Nama> <Activity>
+                                String date = utf.u.d1.getD1().getDate() + "/" + utf.u.d1.getD1().getMonth() + "/" + utf.u.d1.getD1().getYear();
+                                logAdmin.add(0, new Log(date + "-" + utf.u.active.getNoRekening() + " Success exchange point"));
+                                try 
+                                {
+                                    FileOutputStream file = new FileOutputStream("logAdmin.ser");
+                                    ObjectOutputStream out = new ObjectOutputStream(file);
 
-                                out.close();
-                                file.close();
+                                    out.writeObject(logAdmin);
 
-                                System.out.println("Object has been serialized");
+                                    out.close();
+                                    file.close();
 
-                            }
-                            catch(IOException ex) 
-                            {
-                                System.out.println("IOException is caught");
+                                    System.out.println("Object has been serialized");
+
+                                }
+                                catch(IOException ex) 
+                                {
+                                    System.out.println("IOException is caught2");
+                                    System.out.println(ex);
+                                }
+
+                                try 
+                                {
+                                    FileOutputStream file = new FileOutputStream("Account.ser");
+                                    ObjectOutputStream out = new ObjectOutputStream(file);
+
+                                    out.writeObject(utf.u.Account);
+
+                                    out.close();
+                                    file.close();
+
+                                    System.out.println("Object has been serialized");
+
+                                }
+                                catch(IOException ex) 
+                                {
+                                    System.out.println("IOException is caught");
+                                }
                             }
                         }
+                        else if(Integer.parseInt(input.getText())<1)
+                        {
+                            JOptionPane.showMessageDialog(this,"input must be greater than 0");
+                        }
+                        else if(Integer.parseInt(input.getText())>9)
+                        {
+                            JOptionPane.showMessageDialog(this,"input must be less than 9");
+                        }
                     }
-                    else if(Integer.parseInt(input.getText())<1)
+                    else
                     {
-                        JOptionPane.showMessageDialog(this,"input must be greater than 0");
-                    }
-                    else if(Integer.parseInt(input.getText())>9)
-                    {
-                        JOptionPane.showMessageDialog(this,"input must be less than 9");
+                        JOptionPane.showMessageDialog(this,"sorry, you have to choose your rewards");
                     }
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(this,"sorry, you have to choose your rewards");
+                    JOptionPane.showMessageDialog(this,"amount must be greater than 0");
                 }
             }
             else
             {
-                JOptionPane.showMessageDialog(this,"amount must be greater than 0");
+                JOptionPane.showMessageDialog(this,"Error, input must be none decimal!");
             }
         }
-        else
-        {
-            JOptionPane.showMessageDialog(this,"Error, input must be none decimal!");
+        else {
+            JOptionPane.showMessageDialog(this,"Pls Input");
         }
     }//GEN-LAST:event_SubmitMouseClicked
 
