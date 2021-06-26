@@ -507,6 +507,7 @@ public class UserMerchandise extends javax.swing.JPanel
     {//GEN-HEADEREND:event_ResetMouseClicked
         // TODO add your handling code here:
         ShowAllMerchandiseList();
+        index = -1;
     }//GEN-LAST:event_ResetMouseClicked
 
     private void SubmitMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_SubmitMouseClicked
